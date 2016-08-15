@@ -1,0 +1,34 @@
+{
+  "name": "es6-bingo-game",
+  "version": "0.0.1",
+  "description": "A Bingo game developer with ES6 in TDD manner.",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihailgaberov/es6-bingo-game.git"
+  },
+  "keywords": [
+    "bingo",
+    "tdd",
+    "es6",
+    "js",
+    "game"
+  ],
+  "author": "Mihail Gaberov",
+  "license": "MIT",
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "babel-preset-es2015": "^6.5.0"
+  },
+  "bugs": {
+    "url": "https://github.com/mihailgaberov/es6-bingo-game/issues"
+  },
+  "homepage": "https://github.com/mihailgaberov/es6-bingo-game#readme"
+}
