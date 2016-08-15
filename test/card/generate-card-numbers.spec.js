@@ -9,10 +9,10 @@ import { expect } from 'chai';
 
 describe('Card Numbers Generator', () => {
 
-	var genNumbers = new GenerateCardNumbers();
+	let genNumbers = new GenerateCardNumbers();
 
 	it ('Should initialize with an array of 75 numbers', () => {
-		var arrNums = genNumbers.arrAmericanNumbers;
+		let arrNums = genNumbers.arrAmericanNumbers;
 		expect(arrNums.length).to.be.equal(75);
 	});
 

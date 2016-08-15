@@ -23,12 +23,15 @@ class GenerateCardNumbers {
 														 ];
 	}
 
-
+	/**
+	 * Generates an array with 24 random numbers our of 75
+	 * @returns {Array}
+	 */
 	generate() {
-		var arrGeneratedNums = [];
-		var i = 1;
+		let arrGeneratedNums = [];
+		let i = 1;
 		while (i <= 24) {
-			var num = this.arrAmericanNumbers[Math.floor(Math.random() * this.arrAmericanNumbers.length)];
+			let num = this.arrAmericanNumbers[Math.floor(Math.random() * this.arrAmericanNumbers.length)];
 			arrGeneratedNums.push(num);
 			i++;
 		}

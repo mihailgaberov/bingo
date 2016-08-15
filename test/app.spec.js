@@ -8,14 +8,13 @@ import { expect } from 'chai';
 
 describe('Bingo App', () => {
 
-	var appBingo = new App();
+	let appBingo = new App();
 
 	it('Should set the title of the application', () => {
 		expect(appBingo.title).to.equal('Bingo game');
 	});
 
-	it('Should start the application', () => {
-		var action = appBingo.doIt();
-		expect(action).to.equal('Bingo game: start');
+	it('Should initialize the necessary services to start the app', () => {
+		expect(appBingo.cardGenerator).not.to.be.undefined;
 	});
 });
