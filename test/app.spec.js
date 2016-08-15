@@ -10,7 +10,6 @@ describe('Bingo App', () => {
 	var appBingo = new App();
 
 	it('Should set the title of the application', () => {
-		//var appBingo = new App('Bingo');
 		expect(appBingo.title).to.equal('Bingo game');
 	});
 
