@@ -1,6 +1,7 @@
 /**
  * Created by Mihail on 8/15/2016.
  */
+'use strict';
 import assert from 'assert';
 import App from '../src/app';
 import { expect } from 'chai';
