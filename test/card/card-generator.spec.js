@@ -10,7 +10,7 @@ describe('Card Generator', () => {
 
 	var cardGen = new CardGenerator();
 
-	it ('Should initialize itself', () => {
-		expect(cardGen.initialized).to.be.true;
+	it ('Should initialize Card creation services', () => {
+		expect(cardGen.genRandomNumbers).not.to.be.undefined;
 	});
 });
