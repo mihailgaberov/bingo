@@ -10,6 +10,10 @@ class App {
 		this.title = title;
 		this.cardGenerator = new CardGenerator();
 	}
+
+	loadConfigs() {
+		return { 'gameConf' : {}};
+	}
 }
 
 export default App;
