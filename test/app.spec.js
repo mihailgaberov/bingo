@@ -4,6 +4,7 @@
 'use strict';
 import App from '../src/app';
 import { expect, assert } from 'chai';
+import sinon from 'sinon';
 
 describe('Bingo App', () => {
 
@@ -17,15 +18,12 @@ describe('Bingo App', () => {
 		expect(appBingo.cardGenerator).not.to.be.undefined;
 	});
 
-	it('Should load the configuration settings from the backend', () => {
-		let configs = appBingo.loadConfigs();
-		expect(configs).not.to.be.undefined;
-	});
+	it("Should call the callback when get the configs", function () {
+		let callback = sinon.spy();
+		let proxy = appBingo.loadConfigs(callback);
 
-	it('Should have the proper gameConf settings', () => {
-		let configs = appBingo.loadConfigs();
-		assert.isNotNull(configs, 'Configurations are not null.');
-		assert.isObject(configs, 'Configuration settings are object.');
-		expect(configs).to.have.property('gameConf');
+		proxy();
+
+		assert(callback.called);
 	});
 });

@@ -1,7 +1,7 @@
 {
   "name": "es6-bingo-game",
   "version": "0.0.1",
-  "description": "A Bingo game developer with ES6 in TDD manner.",
+  "description": "A Bingo game developed with ES6 in TDD manner.",
   "main": "src/app.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register"
@@ -36,5 +36,10 @@
   "bugs": {
     "url": "https://github.com/mihailgaberov/es6-bingo-game/issues"
   },
-  "homepage": "https://github.com/mihailgaberov/es6-bingo-game#readme"
+  "homepage": "https://github.com/mihailgaberov/es6-bingo-game#readme",
+  "dependencies": {
+    "es6-promise": "^3.2.1",
+    "isomorphic-fetch": "^2.2.1",
+    "whatwg-fetch": "^1.0.0"
+  }
 }
