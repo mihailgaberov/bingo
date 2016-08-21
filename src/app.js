@@ -4,23 +4,23 @@
 'use strict';
 
 import CardGenerator from './card/card-generator';
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
+import 'es6-promise';
+import 'isomorphic-fetch';
 
 class App {
 	constructor(title = 'Bingo game') {
+		this.confUrl = 'http://localhost:9080/config.json';
 		this.title = title;
 		this.cardGenerator = new CardGenerator();
-		this.loadConfigs(this.getConfig);
+		this.loadConfigs(App.getConfig);
 	}
 
-	getConfig(conf) {
-		console.log('>>> conf: ', conf);
+	static getConfig(conf) {
 		return conf;
 	}
 
 	loadConfigs(callback) {
-		fetch('http://localhost:9080/config.json')
+		fetch(this.confUrl)
 			.then((response) => {
 				if (response.status >= 400) {
 					throw new Error("Bad response from server");
