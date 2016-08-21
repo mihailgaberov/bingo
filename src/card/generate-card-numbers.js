@@ -3,9 +3,13 @@
  */
 'use strict';
 
+import App from '../app';
+
 class GenerateCardNumbers {
-	constructor() {
-		this.arrAmericanNumbers = [1, 2, 3, 4, 5,
+	constructor(conf) {
+		if (conf !== undefined)
+			this.arrAmericanNumbers = conf.numbers;
+		/*this.arrAmericanNumbers = [1, 2, 3, 4, 5,
 															 6, 7, 8, 9, 10,
 															 11, 12, 13, 14, 15,
 															 16, 17, 18, 19, 20,
@@ -20,18 +24,18 @@ class GenerateCardNumbers {
 															 61, 62, 63, 64, 65,
 															 66, 67, 68, 69, 70,
 															 71, 72, 73, 74, 75
-														 ];
+														 ];*/
 	}
 
 	/**
 	 * Generates an array with 24 random numbers our of 75
 	 * @returns {Array}
 	 */
-	generate() {
+	generate(arrNums) {
 		let arrGeneratedNums = [];
 		let i = 1;
 		while (i <= 24) {
-			let num = this.arrAmericanNumbers[Math.floor(Math.random() * this.arrAmericanNumbers.length)];
+			let num = arrNums[Math.floor(Math.random() * arrNums.length)];
 			arrGeneratedNums.push(num);
 			i++;
 		}

@@ -6,8 +6,8 @@
 import GenerateCardNumbers from './generate-card-numbers'
 
 class CardGenerator {
-	constructor() {
-		this.genRandomNumbers = new GenerateCardNumbers();
+	constructor(conf) {
+		this.genRandomNumbers = new GenerateCardNumbers(conf);
 	}
 }
 

@@ -8,15 +8,15 @@ import 'es6-promise';
 import 'isomorphic-fetch';
 
 class App {
+
 	constructor(title = 'Bingo game') {
 		this.confUrl = 'http://localhost:9080/config.json';
 		this.title = title;
-		this.cardGenerator = new CardGenerator();
-		this.loadConfigs(App.getConfig);
+		this.loadConfigs(this.init);
 	}
 
-	static getConfig(conf) {
-		return conf;
+	init(conf) {
+		this.cardGenerator = new CardGenerator(conf.gameConf);
 	}
 
 	loadConfigs(callback) {
