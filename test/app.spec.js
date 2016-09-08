@@ -34,6 +34,6 @@ describe('Bingo App', () => {
 		let callback = sinon.spy();
 		let conf = appBingo.loadConfigs(callback);
 		appBingo.init(conf);
-		expect(appBingo.cardGenerator).not.to.be.undefined;
+		expect(appBingo.randomNums).not.to.be.undefined;
 	});
 });

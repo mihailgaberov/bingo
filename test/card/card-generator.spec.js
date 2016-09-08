@@ -12,6 +12,6 @@ describe('Card Generator', () => {
 	const cardGen = new CardGenerator();
 
 	it ('Should initialize Card creation services', () => {
-		expect(cardGen.genRandomNumbers).not.to.be.undefined;
+		expect(cardGen).not.to.be.undefined;
 	});
 });

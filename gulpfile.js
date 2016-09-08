@@ -60,6 +60,15 @@ gulp.task('sass', () => {
 		.pipe(gulp.dest('build/css'));
 });
 
+gulp.task('test', () => {
+	return gulp.src([paths.tests])
+		.pipe(mocha({
+			compilers: {
+				js: babel
+			}
+		}));
+});
+
 gulp.task('webserver', () => {
 	gulp.src('./')
 		.pipe(server({
@@ -74,19 +83,10 @@ gulp.task('lint', () => {
 		.pipe(eslint.format());
 });
 
-gulp.task('default', ['clean', 'lint', 'scripts', 'sass', 'watch', 'webserver']);
+gulp.task('default', ['clean', 'lint', 'scripts', 'sass', 'watch', 'test', 'webserver']);
 
 gulp.task('watch', () => {
 	gulp.watch(paths.scripts, ['scripts']);
 	gulp.watch(paths.sass, ['sass']);
 	gulp.watch(paths.tests, ['test']);
-});
-
-gulp.task('test', () => {
-	return gulp.src(['test/**/*.js'])
-		.pipe(mocha({
-			compilers: {
-				js: babel
-			}
-		}));
 });

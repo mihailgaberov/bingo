@@ -10,13 +10,15 @@ import 'isomorphic-fetch';
 class App {
 
 	constructor(title = 'Bingo game') {
-		this.confUrl = 'http://localhost:9080/config.json';
+		this.confUrl = 'http://localhost:8000/config.json';
 		this.title = title;
 		this.loadConfigs(this.init);
 	}
 
 	init(conf) {
-		this.cardGenerator = new CardGenerator(conf.gameConf);
+		this.randomNums = new CardGenerator(conf.gameConf);
+		//let randomNums = new CardGenerator(conf.gameConf);
+		//document.getElementById('game-container').innerHTML = randomNums.arrAmericanNumbers;
 	}
 
 	loadConfigs(callback) {
@@ -33,5 +35,7 @@ class App {
 		return callback;
 	}
 }
+
+let app = new App();
 
 export default App;
