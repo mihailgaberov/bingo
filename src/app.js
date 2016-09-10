@@ -17,8 +17,6 @@ class App {
 
 	init(conf) {
 		this.randomNums = new CardGenerator(conf.gameConf);
-		//let randomNums = new CardGenerator(conf.gameConf);
-		//document.getElementById('game-container').innerHTML = randomNums.arrAmericanNumbers;
 	}
 
 	loadConfigs(callback) {
@@ -39,6 +37,6 @@ class App {
 export default App;
 
 (() => {
-	let app = new App();
+	let app = new App('asddas');
 	//document.addEventListener('DOMContentLoaded', () => {});
 })();

@@ -12,21 +12,16 @@ const NumbersGeneration = {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	},
 
-	getDifferentRandomNumber (min, max, numbers) {
-		console.log('>>>> getDifferentRandomNumber');
+	getDifferentRandomNumber(min, max, numbers) {
 		let randomNumber;
 		do {
 			randomNumber = this.getRandomNumber(min, max);
-			//numbers.splice(randomNumber, 0);
-			//console.log(numbers);
 		} while (numbers.indexOf(randomNumber) !== -1);
-
 		return randomNumber;
 	},
 
 	getFirstColumnAmerican (arrNumbers) {
-		//console.log('>>>>>>>>> 1', arrNumbers);
-		let i;
+		/*let i;
 		let arrToReturn = [];
 		for (i = 0; i < 5; i ++) {
 			console.log('>>>>>>>>> 2');
@@ -36,7 +31,7 @@ const NumbersGeneration = {
 		}
 
 		console.log('>> first column: ', arrToReturn);
-		return arrToReturn;
+		return arrToReturn;*/
 	}
 };
 

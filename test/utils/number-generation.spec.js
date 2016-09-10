@@ -30,8 +30,18 @@ describe('Numbers generation util', () => {
 		71, 72, 73, 74, 75
 	];
 
-	it ('Should do random generation of 24 numbers by columns - first: B is 1-15', () => {
+	it ('Should produce random number between min and max values', () => {
+		let min = 1, max = 5, res1 = 0, res2 = 0;
+		while (res1 === res2) {
+			res1 = NumbersGeneration.getRandomNumber(min, max)
+			res2 = NumbersGeneration.getRandomNumber(min, max)
+		}
+
+		expect(res1).not.to.be.equal(res2);
+	});
+
+	/*it ('Should do random generation of 24 numbers by columns - first: B is 1-15', () => {
 		//console.log(NumbersGeneration.getFirstColumnAmerican(arrAmericanNumbers));
 		//NumbersGeneration.getFirstColumnAmerican(arrAmericanNumbers);
-	});
+	});*/
 });
