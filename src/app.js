@@ -36,6 +36,9 @@ class App {
 	}
 }
 
-let app = new App();
-
 export default App;
+
+(() => {
+	let app = new App();
+	//document.addEventListener('DOMContentLoaded', () => {});
+})();

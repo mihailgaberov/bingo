@@ -32,6 +32,6 @@ describe('Numbers generation util', () => {
 
 	it ('Should do random generation of 24 numbers by columns - first: B is 1-15', () => {
 		//console.log(NumbersGeneration.getFirstColumnAmerican(arrAmericanNumbers));
-		NumbersGeneration.getFirstColumnAmerican(arrAmericanNumbers);
+		//NumbersGeneration.getFirstColumnAmerican(arrAmericanNumbers);
 	});
 });

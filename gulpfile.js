@@ -35,7 +35,7 @@ function compile() {
 		.pipe(buffer())
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('./build'));
+		.pipe(gulp.dest('build/js'));
 }
 
 gulp.task('scripts', () => compile());
@@ -83,7 +83,7 @@ gulp.task('lint', () => {
 		.pipe(eslint.format());
 });
 
-gulp.task('default', ['clean', 'lint', 'scripts', 'sass', 'watch', 'test', 'webserver']);
+gulp.task('default', ['clean', 'lint', 'scripts', 'sass', 'test', 'watch', 'webserver']);
 
 gulp.task('watch', () => {
 	gulp.watch(paths.scripts, ['scripts']);
