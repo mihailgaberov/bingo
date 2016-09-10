@@ -16,14 +16,14 @@ const NumbersGeneration = {
 		let objAdded = {}, arrOutput = [], i, l;
 
 		for(i = 0, l = arrNumbers.length; i < l; ++i) {
-			let randonNum = this.getRandomNumber(1 ,15);
+			let randomNum = this.getRandomNumber(1 ,15);
 
-			if(objAdded.hasOwnProperty(randonNum) || arrOutput.length === 5) {
+			if(objAdded.hasOwnProperty(randomNum) || arrOutput.length === 5) {
 				continue;
 			}
 
-			arrOutput.push(randonNum);
-			objAdded[randonNum] = 1;
+			arrOutput.push(randomNum);
+			objAdded[randomNum] = 1;
 		}
 
 		return arrOutput;
