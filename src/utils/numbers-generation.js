@@ -12,27 +12,23 @@ const NumbersGeneration = {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	},
 
-	getDifferentRandomNumber(min, max, numbers) {
-		let randomNumber;
-		do {
-			randomNumber = this.getRandomNumber(min, max);
-		} while (numbers.indexOf(randomNumber) !== -1);
-		return randomNumber;
-	},
+	getColumnNumbers(arrNumbers) {
+		let objAdded = {}, arrOutput = [], i, l;
 
-	getFirstColumnAmerican (arrNumbers) {
-		/*let i;
-		let arrToReturn = [];
-		for (i = 0; i < 5; i ++) {
-			console.log('>>>>>>>>> 2');
-			arrToReturn.push(this.getDifferentRandomNumber(1, 15, arrNumbers));
+		for(i = 0, l = arrNumbers.length; i < l; ++i) {
+			let randonNum = this.getRandomNumber(1 ,15);
 
-			//console.log('>> first column: ', arrToReturn);
+			if(objAdded.hasOwnProperty(randonNum) || arrOutput.length === 5) {
+				continue;
+			}
+
+			arrOutput.push(randonNum);
+			objAdded[randonNum] = 1;
 		}
 
-		console.log('>> first column: ', arrToReturn);
-		return arrToReturn;*/
+		return arrOutput;
 	}
+
 };
 
 export { NumbersGeneration };

@@ -33,15 +33,19 @@ describe('Numbers generation util', () => {
 	it ('Should produce random number between min and max values', () => {
 		let min = 1, max = 5, res1 = 0, res2 = 0;
 		while (res1 === res2) {
-			res1 = NumbersGeneration.getRandomNumber(min, max)
-			res2 = NumbersGeneration.getRandomNumber(min, max)
+			res1 = NumbersGeneration.getRandomNumber(min, max);
+			res2 = NumbersGeneration.getRandomNumber(min, max);
 		}
 
 		expect(res1).not.to.be.equal(res2);
 	});
 
-	/*it ('Should do random generation of 24 numbers by columns - first: B is 1-15', () => {
-		//console.log(NumbersGeneration.getFirstColumnAmerican(arrAmericanNumbers));
-		//NumbersGeneration.getFirstColumnAmerican(arrAmericanNumbers);
-	});*/
+	it ('Should produce 5 different random numbers out of array of 15 numbers', () => {
+		const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+		const  arrOutput =  NumbersGeneration.getColumnNumbers(arr);
+
+		expect(arrOutput[0]).not.to.be.equal(arrOutput[1]).not.to.be.equal(arrOutput[2])
+			.not.to.be.equal(arrOutput[3]).not.to.be.equal(arrOutput[4]);
+
+	 });
 });
