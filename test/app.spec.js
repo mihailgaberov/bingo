@@ -30,10 +30,15 @@ describe('Bingo App', () => {
 	});
 
 
-	it('Should initialize the necessary services to start the app', () => {
+	it('Should initialize the CardGenerator to start the app', () => {
 		let callback = sinon.spy();
 		let conf = appBingo.loadConfigs(callback);
 		appBingo.init(conf);
-		expect(appBingo.randomNums).not.to.be.undefined;
+
+		expect(appBingo.cardGen).not.to.be.undefined;
+	});
+
+	it('Should initialize the CardDrawer to start the app', () => {
+		expect(appBingo.cardDrawer).not.to.be.undefined;
 	});
 });

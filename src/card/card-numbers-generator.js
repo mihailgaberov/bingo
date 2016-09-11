@@ -7,8 +7,10 @@ import { NumbersGenerator } from '../utils/numbers-generator';
 
 class CardNumbersGenerator {
 	constructor(conf) {
-		if (conf !== undefined)
-			this.arrAmericanNumbers = conf.numbers;
+		if (conf !== undefined) {
+			//console.log('>>. cond ot klas: ', conf.gameConf);
+			this.arrAmericanNumbers = conf.gameConf.numbers;
+		}
 	}
 
 	/**

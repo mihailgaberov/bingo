@@ -26,7 +26,8 @@ describe('Card Numbers Generator', () => {
 							  71, 72, 73, 74, 75
 							 ];
 
-	let cardGen = new GenerateCardNumbers({'numbers': arrAmericanNumbers});
+	let cardGen = new GenerateCardNumbers({'gameConf': {'numbers': arrAmericanNumbers}});
+
 
 	it ('Should initialize with an array of 75 numbers', () => {
 		expect(cardGen.arrAmericanNumbers.length).to.be.equal(75);

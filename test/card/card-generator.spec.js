@@ -26,8 +26,6 @@ describe('Card Generator', () => {
 		71, 72, 73, 74, 75
 	];
 
-	//let cardGen = new CardNumbersGenerator({'numbers': arrAmericanNumbers});
-
 	const cardGen = new CardGenerator({'numbers': arrAmericanNumbers});
 
 	it ('Should initialize Card creation services', () => {

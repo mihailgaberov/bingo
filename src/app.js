@@ -4,6 +4,7 @@
 'use strict';
 
 import CardGenerator from './card/card-generator';
+import CardDrawer from './card/card-drawer';
 import 'es6-promise';
 import 'isomorphic-fetch';
 
@@ -15,10 +16,6 @@ class App {
 		this.loadConfigs(this.init);
 	}
 
-	init(conf) {
-		this.randomNums = new CardGenerator(conf.gameConf);
-	}
-
 	loadConfigs(callback) {
 		fetch(this.confUrl)
 			.then((response) => {
@@ -27,16 +24,26 @@ class App {
 				}
 				return response.json();
 			}).then((config) => {
-				callback(config);
+			callback(this, config);
 		});
 
 		return callback;
+	}
+
+	init(context, conf) {
+		context.start(conf);
+	}
+
+	start(conf) {
+		this.cardGen = new CardGenerator(conf);
+		this.cardDrawer = new CardDrawer();
+		this.cardDrawer.draw(this.cardGen.generateCards());
 	}
 }
 
 export default App;
 
 (() => {
-	let app = new App('asddas');
+	let app = new App();
 	//document.addEventListener('DOMContentLoaded', () => {});
 })();

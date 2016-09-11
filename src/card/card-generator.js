@@ -3,15 +3,19 @@
  */
 'use strict';
 
-import GenerateCardNumbers from './card-numbers-generator'
+import CardNumbersGenerator from './card-numbers-generator'
 
 class CardGenerator {
 	constructor(conf) {
-		this.cardsGenerator = new GenerateCardNumbers(conf);
-		//return this.cardsGenerator;
+		this.cardsGenerator = new CardNumbersGenerator(conf);
 	}
 
-	generateCards(count) {
+	/**
+	 * Generated given number of cards with random number. One card by default.
+	 * @param count
+	 * @returns {{}}
+	 */
+	generateCards(count = 1) {
 		let objCards = {};
 		while(count > 0) {
 			objCards['card' + count] = this.cardsGenerator.generate();
