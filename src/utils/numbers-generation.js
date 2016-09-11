@@ -12,13 +12,13 @@ const NumbersGeneration = {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	},
 
-	getColumnNumbers(arrNumbers) {
+	getColumnNumbers(arrNumbers, countNums = 5) {
 		let objAdded = {}, arrOutput = [], i, l;
 
 		for(i = 0, l = arrNumbers.length; i < l; ++i) {
-			let randomNum = this.getRandomNumber(1 ,15);
+			let randomNum = this.getRandomNumber(arrNumbers[1] , arrNumbers[14]);
 
-			if(objAdded.hasOwnProperty(randomNum) || arrOutput.length === 5) {
+			if(objAdded.hasOwnProperty(randomNum) || arrOutput.length === countNums) {
 				continue;
 			}
 

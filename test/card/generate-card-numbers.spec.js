@@ -38,20 +38,4 @@ describe('Card Numbers Generator', () => {
 		expect(randomNums1).to.not.be.equal(randomNums2);
 	});
 
-
-	it ('Should do random generation of 24 numbers by columns - second: I is 16-30', () => {
-
-	});
-
-	it ('Should do random generation of 24 numbers by columns - first: N is 31-45', () => {
-
-	});
-
-	it ('Should do random generation of 24 numbers by columns - first: G is 46-60', () => {
-
-	});
-
-	it ('Should do random generation of 24 numbers by columns - first: O is 61-75', () => {
-
-	});
 });
