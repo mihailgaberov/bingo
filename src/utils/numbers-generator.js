@@ -3,7 +3,7 @@
  */
 "use strict";
 
-const NumbersGeneration = {
+const NumbersGenerator = {
 	getRandomNumber (min, max) {
 		if (max === undefined) {
 			max = min;
@@ -39,4 +39,4 @@ const NumbersGeneration = {
 
 };
 
-export { NumbersGeneration };
+export { NumbersGenerator };

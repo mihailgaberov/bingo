@@ -4,7 +4,7 @@
 'use strict';
 
 import assert from 'assert';
-import GenerateCardNumbers from '../../src/card/generate-card-numbers';
+import GenerateCardNumbers from '../../src/card/card-numbers-generator';
 import { expect } from 'chai';
 
 describe('Card Numbers Generator', () => {

@@ -3,11 +3,22 @@
  */
 'use strict';
 
-import GenerateCardNumbers from './generate-card-numbers'
+import GenerateCardNumbers from './card-numbers-generator'
 
 class CardGenerator {
 	constructor(conf) {
-		return new GenerateCardNumbers(conf);
+		this.cardsGenerator = new GenerateCardNumbers(conf);
+		//return this.cardsGenerator;
+	}
+
+	generateCards(count) {
+		let objCards = {};
+		while(count > 0) {
+			objCards['card' + count] = this.cardsGenerator.generate();
+			count--;
+		}
+
+		return objCards;
 	}
 }
 
