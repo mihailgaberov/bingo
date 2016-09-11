@@ -22,13 +22,12 @@ describe('Numbers generation util', () => {
 		expect(res1).not.to.be.equal(res2);
 	});
 
-	it ('Should produce X (max=7) different random numbers out of array of 15 numbers', () => {
+	it ('Should produce 5 different random numbers out of array of 15 numbers', () => {
 		const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-		const countNums = 7;
 
-		const  arrRes =  NumbersGeneration.getColumnNumbers(arr, countNums);
+		const  arrRes =  NumbersGeneration.getColumnNumbers(arr);
 
-		expect(arrRes.length).to.be.equal(countNums);
+		expect(arrRes.length).to.be.equal(5);
 		expect(arrRes[0]).not.to.be.equal(arrRes[1]).not.to.be.equal(arrRes[2])
 			.not.to.be.equal(arrRes[3]).not.to.be.equal(arrRes[4]);
 

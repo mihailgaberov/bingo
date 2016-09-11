@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import App from '../app';
+import { NumbersGeneration } from '../utils/numbers-generation';
 
 class GenerateCardNumbers {
 	constructor(conf) {
@@ -12,21 +12,22 @@ class GenerateCardNumbers {
 	}
 
 	/**
-	 * Do random generation of the numbers by columns:
-	 * On a real Bingo card, each column has a different
-	 * range of numbers: B is 1–15, I is 16–30, N is 31–45,
-	 * G is 46–60, and O is 61–75
-	 * @returns {Array}
+	 * Generates a random card with 5 columns and theirs numbers accordingly
+	 * @returns {{col1: (*|Array), col2: (*|Array), col3: (*|Array), col4: (*|Array), col5: (*|Array)}}
 	 */
-	generate(arrNums) {
-		let arrGeneratedNums = [];
-		let i = 1;
-		while (i <= 24) {
-			let num = arrNums[Math.floor(Math.random() * arrNums.length)];
-			arrGeneratedNums.push(num);
-			i++;
-		}
-		return arrGeneratedNums;
+	generate() {
+		let arrCol1 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(0, 15));
+		let arrCol2 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(15, 30));
+		let arrCol3 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(30, 45));
+		let arrCol4 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(45, 60));
+		let arrCol5 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(60, 75));
+
+		return {'col1': arrCol1,
+				'col2': arrCol2,
+				'col3': arrCol3,
+				'col4': arrCol4,
+				'col5': arrCol5
+			  };
 	}
 }
 

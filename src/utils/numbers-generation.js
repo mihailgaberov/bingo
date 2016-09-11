@@ -12,6 +12,14 @@ const NumbersGeneration = {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	},
 
+
+	/**
+	 * Do random generation of the numbers by columns:
+	 * On a real Bingo card, each column has a different
+	 * range of numbers: B is 1–15, I is 16–30, N is 31–45,
+	 * G is 46–60, and O is 61–75
+	 * @returns {Array}
+	 */
 	getColumnNumbers(arrNumbers, countNums = 5) {
 		let objAdded = {}, arrOutput = [], i, l;
 
