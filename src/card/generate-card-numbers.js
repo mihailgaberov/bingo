@@ -18,7 +18,7 @@ class GenerateCardNumbers {
 	generate() {
 		let arrCol1 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(0, 15));
 		let arrCol2 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(15, 30));
-		let arrCol3 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(30, 45));
+		let arrCol3 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(30, 45), 4);
 		let arrCol4 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(45, 60));
 		let arrCol5 = NumbersGeneration.getColumnNumbers(this.arrAmericanNumbers.slice(60, 75));
 
