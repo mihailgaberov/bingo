@@ -13,7 +13,7 @@ class App {
 	constructor(title = 'Bingo game') {
 		this.confUrl = 'http://localhost:8000/config.json';
 		this.title = title;
-		this.loadConfigs(this.init);
+		this.loadConfigs(App.init);
 	}
 
 	loadConfigs(callback) {
@@ -30,16 +30,17 @@ class App {
 		return callback;
 	}
 
-	init(context, conf) {
+	static init(context, conf) {
 		context.start(conf);
 	}
 
 	start(conf) {
 		this.cardGen = new CardGenerator(conf);
-		this.cardDrawer = new CardDrawer();
-		this.cardDrawer.draw(this.cardGen.generateCards());
+		let cardDrawer = new CardDrawer();
+		let htmlCards = cardDrawer.draw(this.cardGen.generateCards());
 		document.getElementById('startBtn').addEventListener('click', (e) => {
 			console.log('>>> Start Game!');
+			document.getElementById('gameContainer').appendChild(htmlCards);
 		});
 	}
 }

@@ -19,9 +19,12 @@ class CardNumbersGenerator {
 	generate() {
 		let arrCol1 = NumbersGenerator.getColumnNumbers(this.arrAmericanNumbers.slice(0, 15));
 		let arrCol2 = NumbersGenerator.getColumnNumbers(this.arrAmericanNumbers.slice(15, 30));
-		let arrCol3 = NumbersGenerator.getColumnNumbers(this.arrAmericanNumbers.slice(30, 45), 4);
+		let arrCol3 = NumbersGenerator.getColumnNumbers(this.arrAmericanNumbers.slice(30, 45));
 		let arrCol4 = NumbersGenerator.getColumnNumbers(this.arrAmericanNumbers.slice(45, 60));
 		let arrCol5 = NumbersGenerator.getColumnNumbers(this.arrAmericanNumbers.slice(60, 75));
+
+		// Add 'free' field
+		arrCol3[2] = 'x';
 
 		return {'col1': arrCol1,
 				'col2': arrCol2,
