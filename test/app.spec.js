@@ -31,10 +31,6 @@ describe('Bingo App', () => {
 
 
 	it('Should initialize the CardGenerator to start the app', () => {
-		let callback = sinon.spy();
-		let conf = appBingo.loadConfigs(callback);
-		appBingo.init(conf);
-
 		expect(appBingo.cardGen).not.to.be.undefined;
 	});
 

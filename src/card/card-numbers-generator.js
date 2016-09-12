@@ -8,7 +8,6 @@ import { NumbersGenerator } from '../utils/numbers-generator';
 class CardNumbersGenerator {
 	constructor(conf) {
 		if (conf !== undefined) {
-			console.log('>>. cond ot clas: ', typeof conf.gameConf);
 			this.arrAmericanNumbers = conf.gameConf.numbers;
 		}
 	}

@@ -35,13 +35,11 @@ class App {
 	}
 
 	start(conf) {
-		/*this.cardGen = new CardGenerator(conf);
+		this.cardGen = new CardGenerator(conf);
 		this.cardDrawer = new CardDrawer();
-		this.cardDrawer.draw(this.cardGen.generateCards());*/
+		this.cardDrawer.draw(this.cardGen.generateCards());
 		document.getElementById('startBtn').addEventListener('click', (e) => {
-			this.cardGen = new CardGenerator(conf);
-			this.cardDrawer = new CardDrawer();
-			this.cardDrawer.draw(this.cardGen.generateCards());
+			console.log('>>> Start Game!');
 		});
 	}
 }
