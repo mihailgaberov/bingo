@@ -26,7 +26,7 @@ describe('Card Generator', () => {
 		71, 72, 73, 74, 75
 	];
 
-	const cardGen = new CardGenerator({'numbers': arrAmericanNumbers});
+	const cardGen = new CardGenerator({'gameConf': {'numbers': arrAmericanNumbers}});
 
 	it ('Should initialize Card creation services', () => {
 		expect(cardGen).not.to.be.undefined;
