@@ -40,7 +40,9 @@ class App {
 		let htmlCards = cardDrawer.draw(this.cardGen.generateCards());
 		document.getElementById('startBtn').addEventListener('click', (e) => {
 			console.log('>>> Start Game!');
-			document.getElementById('gameContainer').appendChild(htmlCards);
+			htmlCards.forEach((el) => {
+				document.getElementById('gameContainer').appendChild(el);
+			});
 		});
 	}
 }

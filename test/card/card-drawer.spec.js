@@ -14,6 +14,18 @@ describe('Card Drawer', () => {
 
 	jsdom();
 
+	it('Should get the number of the cards to be generated', () => {
+		const objCard = {
+			col1: [ 10, 14, 13, 15, 5 ],
+			col2: [ 27, 23, 21, 29, 22 ],
+			col3: [ 39, 37, 'x', 32, 33 ],
+			col4: [ 56, 51, 60, 57, 59 ],
+			col5: [ 72, 74, 63, 71, 70 ]
+		};
+		let toBeGenerated = cardDrawer.draw({'card1': objCard});
+		expect(toBeGenerated).to.be.eql(1);
+	});
+
 
 	it('Should create a div element with id "card" with a Bingo card table inside', () => {
 		const objCard = {
@@ -24,7 +36,7 @@ describe('Card Drawer', () => {
 			col5: [ 72, 74, 63, 71, 70 ]
 		};
 
-		const htmlCard = cardDrawer.draw(objCard);
+		const htmlCard = CardDrawer.generateCardTable(objCard);
 
 		expect(htmlCard.id).to.be.equal('card');
 		expect(htmlCard.children[0].tagName).to.be.equal('TABLE');
