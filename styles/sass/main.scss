@@ -1,0 +1,17 @@
+@import '_fonts';
+@import '_variables';
+@import '_header';
+
+#mainWrapper {
+
+  #gameContainer {
+    display: flex;
+    flex-direction: row;
+
+    div {
+      flex-grow: 1;
+      text-align: center;
+
+    }
+  }
+}

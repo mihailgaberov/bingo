@@ -57,7 +57,7 @@ gulp.task('sass', () => {
 		})]))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('build/css'));
+		.pipe(gulp.dest('build/styles'));
 });
 
 gulp.task('test', () => {
