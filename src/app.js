@@ -36,11 +36,10 @@ class App {
 
 	start(conf) {
 		this.cardGen = new CardGenerator(conf);
-		let cardDrawer = new CardDrawer();
-		let htmlCards = cardDrawer.draw(this.cardGen.generateCards());
+		this.htmlCards = CardDrawer.draw(this.cardGen.generateCards(4));
 		document.getElementById('startBtn').addEventListener('click', (e) => {
 			console.log('>>> Start Game!');
-			htmlCards.forEach((el) => {
+			this.htmlCards.forEach((el) => {
 				document.getElementById('gameContainer').appendChild(el);
 			});
 		});

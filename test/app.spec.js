@@ -35,6 +35,6 @@ describe('Bingo App', () => {
 	});
 
 	it('Should initialize the CardDrawer to start the app', () => {
-		expect(appBingo.cardDrawer).not.to.be.undefined;
+		expect(appBingo.hasOwnProperty()).not.to.be.undefined;
 	});
 });

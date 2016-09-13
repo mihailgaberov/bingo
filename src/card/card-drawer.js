@@ -8,27 +8,18 @@ class CardDrawer {
 
 	}
 
-	draw(objCards) {
+	static draw(objCards) {
 		let countCards = Object.keys(objCards).length;
 		let arrCards = [];
 
-
-		for (let i = 0; i < 1; i++) {
-
-			console.log('>>> countCards: ', countCards);
-			console.log('>>> i= ', i);
-			console.log('>>> card1: ', objCards['card'+i]);
-			arrCards.push(this.generateCardTable(objCards['card' + i]));
-
-			console.log('>>> ', objCards['card' + i]);
+		for (let i = 0; i < countCards; i++) {
+			arrCards.push(CardDrawer.generateCardTable(objCards['card' + (i+1)]));
 		}
 
 		return arrCards;
 	}
 	
-	generateCardTable(card) {
-		console.log('>>> card: ', card);
-
+	static generateCardTable(card) {
 		let divCard = document.createElement('div');
 		divCard.setAttribute('id', 'card');
 		divCard.innerHTML = '<table border="1">' +
