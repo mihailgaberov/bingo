@@ -1,12 +1,14 @@
 /**
  * Created by Mihail on 9/14/2016.
  */
-let crypto = require('kcrypto');
-let jwt = require('jsonwebtoken');
-let envs= require('.envs');
+var mongoose = require('mongoose');
+var crypto = require('crypto');
+var jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 
-let userSchema = new mongoose.Schema({
+
+var userSchema = new mongoose.Schema({
 	email: {
 		type: String,
 		unique: true,
@@ -26,12 +28,12 @@ userSchema.methods.setPassword = function(password){
 };
 
 userSchema.methods.validPassword = function(password) {
-	let hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
+	var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 	return this.hash === hash;
 };
 
 userSchema.methods.generateJwt = function() {
-	let expiry = new Date();
+	var expiry = new Date();
 	expiry.setDate(expiry.getDate() + 7);
 
 	return jwt.sign({
@@ -39,5 +41,7 @@ userSchema.methods.generateJwt = function() {
 		email: this.email,
 		name: this.name,
 		exp: parseInt(expiry.getTime() / 1000)
-	}, envs('DB_SECRET')); // DO NOT KEEP YOUR SECRET IN THE CODE!
+	},  process.env.DB_SECRET);
 };
+
+mongoose.model('User', userSchema);
