@@ -41,6 +41,7 @@
     "jsdom": "^9.5.0",
     "mocha": "^3.0.2",
     "mocha-jsdom": "^1.1.0",
+    "mongoose": "^4.6.0",
     "sinon": "^1.17.5",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
