@@ -21,14 +21,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use('/bingo-api', routesApi);
 
-// [SH] Otherwise render the index.html page for the Angular SPA
-// [SH] This means we don't have to map all of the SPA routes in Express
 app.use(function(req, res) {
 	res.sendFile(path.join(__dirname, '/', 'index.html'));
 });
 
-// error handlers
-// Catch unauthorised errors
 app.use(function (err, req, res, next) {
 	if (err.name === 'UnauthorizedError') {
 		res.status(401);
