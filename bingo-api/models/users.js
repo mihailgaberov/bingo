@@ -6,8 +6,6 @@ var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-
-
 var userSchema = new mongoose.Schema({
 	email: {
 		type: String,
@@ -44,4 +42,4 @@ userSchema.methods.generateJwt = function() {
 	},  process.env.DB_SECRET);
 };
 
-mongoose.model('User', userSchema);
+mongoose.model('Users', userSchema);

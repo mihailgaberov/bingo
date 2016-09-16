@@ -2,8 +2,6 @@
  * Created by Mihail on 9/14/2016.
  */
 var express = require('express');
-//var path = require('path');
-//var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 
@@ -31,3 +29,6 @@ app.use(function (err, req, res, next) {
 		res.json({"message" : err.name + ": " + err.message});
 	}
 });
+
+
+app.listen(8000);
