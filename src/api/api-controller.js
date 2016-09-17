@@ -4,8 +4,16 @@
 
 'use strict';
 
+import LocalStorageService from '../local-storage/local-storage-service';
+
 class ApiController {
 	constructor() {
+		// Check if the user is already logged in
+		if (LocalStorageService.isLoggedIn()) {
+			document.querySelector('#gameWrapper').style.display = 'block';
+			document.querySelector('#registerPage').style.display = 'none';
+		}
+
 		let registerUrl = "http://localhost:8888/bingo-api/register";
 		let loginUrl = "http://localhost:8888/bingo-api/login";
 
@@ -57,14 +65,15 @@ class ApiController {
 				headers: new Headers({
 					'Content-Type': 'application/json'
 				})
-			}).then(function(res) {
-				console.log('>>>> res: ', res);
-				if (res.status === 200 && res.ok === true) {
-					// TODO: catch the case for existing user
-					console.log('Show success message');
-				} else {
-					console.log('Show error message for registration failed.');
-				}
+			}).then((res) => {
+				return res.json();
+			}).then((returnedValue) => {
+				if (returnedValue) {
+				 console.log('Show success message');
+					LocalStorageService.saveToken(returnedValue.token);
+				 } else {
+				    console.log('Show error message for registration failed.');
+				 }
 			}).catch(function(err) {
 				console.log('>>> Fetching error: ', err);
 			});
@@ -94,11 +103,13 @@ class ApiController {
 				headers: new Headers({
 					'Content-Type': 'application/json'
 				})
-			}).then(function(res) {
-				console.log('>>>> res: ', res);
-				if (res.status === 200 && res.ok === true) {
+			}).then((res) => {
+				return res.json();
+			}).then((returnedValue) => {
+				if (returnedValue) {
 					document.querySelector('#gameWrapper').style.display = 'block';
 					document.querySelector('#registerPage').style.display = 'none';
+					LocalStorageService.saveToken(returnedValue.token);
 				} else {
 					console.log('Show error message for login failed.');
 				}
