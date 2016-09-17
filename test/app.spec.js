@@ -29,12 +29,11 @@ describe('Bingo App', () => {
 		assert(callback.called);
 	});
 
-
 	it('Should initialize the CardGenerator to start the app', () => {
-		expect(appBingo.cardGen).not.to.be.undefined;
+		expect(appBingo.hasOwnProperty(appBingo.cardGen)).not.to.be.undefined;
 	});
 
 	it('Should initialize the CardDrawer to start the app', () => {
-		expect(appBingo.hasOwnProperty()).not.to.be.undefined;
+		expect(appBingo.hasOwnProperty(appBingo.CardDrawer)).not.to.be.undefined;
 	});
 });
