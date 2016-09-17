@@ -1,7 +1,40 @@
 .register-page {
-  width: 50%;
-
-  border: 1px solid red;
+  width: 100%;
   margin: 0 auto;
   position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include breakpointMinWidth('xxl') {
+    width: 30%;
+  }
+
+  .brand-text {
+    font-family: $main-font;
+  }
+
+  .panel {
+    box-shadow: none;
+  }
+
+  .form-control {
+    display: block;
+    width: 100%;
+    height: 70px;
+    padding: 33px 12px 0;
+    font-size: 1.3em;
+    line-height: 1.42857;
+    color: #555555;
+    background-color: #fff;
+    border-radius: 0;
+    border-bottom: 1px solid #ccc;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  .sign-in-link {
+    margin-top: 3%;
+  }
 }

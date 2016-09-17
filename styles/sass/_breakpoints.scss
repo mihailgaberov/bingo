@@ -1,0 +1,14 @@
+@mixin breakpointMinWidth($point) {
+  //1024px - laptop
+  @if $point == xxl {
+    @media (min-width: 64em) { @content; }
+  }
+    //768px - tablet
+  @else if $point == m {
+    @media (min-width: 48em) { @content; }
+  }
+    //480px - mobile
+  @else if $point == xs {
+    @media (min-width: 30em)  { @content; }
+  }
+}
