@@ -97,7 +97,8 @@ class ApiController {
 			}).then(function(res) {
 				console.log('>>>> res: ', res);
 				if (res.status === 200 && res.ok === true) {
-					window.location = '/';
+					document.querySelector('#gameWrapper').style.display = 'block';
+					document.querySelector('#registerPage').style.display = 'none';
 				} else {
 					console.log('Show error message for login failed.');
 				}

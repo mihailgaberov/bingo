@@ -38,7 +38,6 @@ class App {
 	start(conf) {
 		let apiCtrl = new ApiController();
 		this.cardGen = new CardGenerator(conf);
-		console.log('>>> ', this.cardGen);
 		this.htmlCards = CardDrawer.draw(this.cardGen.generateCards(4));
 		let startBtn = document.querySelector('#startBtn');
 		if (startBtn) {

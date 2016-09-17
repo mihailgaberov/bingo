@@ -12,8 +12,8 @@ html, body {
   background-color: lightgreen;
 }
 
-#mainWrapper {
-
+#gameWrapper {
+  width: 75%;
   #gameContainer {
     display: flex;
     flex-direction: row;

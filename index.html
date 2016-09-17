@@ -1,18 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Bingo Bigul</title>
-		<link rel="stylesheet" href="build/styles/all.min.css"/>
-	</head>
-	<body>
-		<div id="mainWrapper">
-			<h1>Welcome to Bingo Bigul!</h1>
-
-			<button class="start-btn" id="startBtn">START GAME</button>
-
-			<section id="gameContainer"></section>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Welcome to Bingo Bigul!</title>
+	<link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+	<link rel="manifest" href="/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="build/styles/all.min.css"/>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="vertical-align text-center" id="registerPage">
+	<div class="page-content vertical-align-middle">
+		<div class="panel">
+			<div class="panel-body">
+				<div class="brand">
+					<img class="brand-img" src="/images/logo.png" alt="Bingo Bigul" />
+					<h2 class="brand-text font-size-18">Bingo Bigul</h2>
+				</div>
+				<!-- Register Form START -->
+				<form method="post" id="registerForm" accept-charset="utf-8">
+					<div class="form-group form-material floating">
+						<input type="text" class="form-control" id="registerName" name="registerName" placeholder="Your name..." required />
+					</div>
+					<div class="form-group form-material floating">
+						<input type="email" id="regEmail" name="regEmail" class="form-control" placeholder="Your email..." required />
+					</div>
+					<div class="form-group form-material floating">
+						<input type="password" class="form-control" id="registerPassword" name="registerPassword" placeholder="Your passowrd..." required />
+					</div>
+					<button class="btn btn-primary btn-block btn-lg margin-top-40" type="submit" id="registerBtn" name="registerBtn">
+						Sign Up
+					</button>
+				</form>
+				<!-- Register Form END -->
+				<!-- Login Form START -->
+				<form method="post" id="loginForm" accept-charset="utf-8" style="display: none;">
+					<div class="form-group form-material floating">
+						<input type="email" class="form-control" id="email" name="email" placeholder="Your email..." required />
+					</div>
+					<div class="form-group form-material floating">
+						<input type="password" class="form-control" id="password" name="password" placeholder="Your passowrd..." required />
+					</div>
+					<button class="btn btn-primary btn-block btn-lg margin-top-40" type="submit" id="loginBtn" name="loginBtn">
+						Sign Up
+					</button>
+				</form>
+				<!-- Login Form END -->
+				<div class="sign-in-link">
+					<a href="#"><span class="icon0-question-sign icon0-white"></span> Already have an account? Sign in here!</a>
+				</div>
+			</div>
 		</div>
-		<script src="build/js/app.js"></script>
-	</body>
+		<footer>
+			<div class="social">
+				<ul>
+					<li><a href="https://www.facebook.com/profile.php?id=100000218793770"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="https://twitter.com/mihailgaberov"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="https://es.linkedin.com/in/mihail-gaberov-6a73b03a"><i class="fa fa-linkedin"></i></a></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+</div>
+<div id="gameWrapper" style="display: none;">
+	<h1>Welcome to Bingo Bigul!</h1>
+	<button class="btn btn-primary btn-lg start-btn" id="startBtn">START GAME</button>
+	<section id="gameContainer"></section>
+</div>
+<script src="build/js/app.js"></script>
+</body>
 </html>
