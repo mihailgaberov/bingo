@@ -3,6 +3,7 @@
  */
 'use strict';
 
+import ApiController from './api/api-controller';
 import CardGenerator from './card/card-generator';
 import CardDrawer from './card/card-drawer';
 import 'es6-promise';
@@ -35,14 +36,18 @@ class App {
 	}
 
 	start(conf) {
+		let apiCtrl = new ApiController();
 		this.cardGen = new CardGenerator(conf);
 		this.htmlCards = CardDrawer.draw(this.cardGen.generateCards(4));
-		document.getElementById('startBtn').addEventListener('click', (e) => {
-			console.log('>>> Start Game!');
-			this.htmlCards.forEach((el) => {
-				document.getElementById('gameContainer').appendChild(el);
+		let startBtn = document.querySelector('#startBtn');
+		if (startBtn) {
+			startBtn.addEventListener('click', (e) => {
+				console.log('>>> Start Game!');
+				this.htmlCards.forEach((el) => {
+					document.getElementById('gameContainer').appendChild(el);
+				});
 			});
-		});
+		}
 	}
 }
 
