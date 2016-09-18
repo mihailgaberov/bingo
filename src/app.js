@@ -39,13 +39,20 @@ class App {
 		let apiCtrl = new ApiController();
 		this.cardGen = new CardGenerator(conf);
 		this.htmlCards = CardDrawer.draw(this.cardGen.generateCards(4));
-		let startBtn = document.querySelector('#startBtn');
+		const startBtn = document.querySelector('#startBtn');
 		if (startBtn) {
 			startBtn.addEventListener('click', (e) => {
 				console.log('>>> Start Game!');
 				this.htmlCards.forEach((el) => {
 					document.getElementById('gameContainer').appendChild(el);
 				});
+			});
+		}
+
+		const logoutBtn = document.querySelector('#logoutBtn');
+		if (logoutBtn) {
+			logoutBtn.addEventListener('click', (e) => {
+				ApiController.logout();
 			});
 		}
 	}

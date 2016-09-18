@@ -14,109 +14,140 @@ class ApiController {
 			document.querySelector('#registerPage').style.display = 'none';
 		}
 
-		let registerUrl = "http://localhost:8888/bingo-api/register";
-		let loginUrl = "http://localhost:8888/bingo-api/login";
+		// Routes
+		this.registerUrl = "http://localhost:8888/bingo-api/register";
+		this.loginUrl = "http://localhost:8888/bingo-api/login";
 
-		let loginForm = document.querySelector('#loginForm');
-		let registerForm = document.querySelector('#registerForm');
-		let signInLink = document.querySelector('.sign-in-link a');
-		let isOnLoginPage = false;
+		// Selectors
+		this.signInLink = document.querySelector('.sign-in-link a');
+		this.registerForm = document.querySelector('#registerForm');
+		this.loginForm = document.querySelector('#loginForm');
 
+		this.isOnLoginPage = false;
+
+		this.attachListeners();
+	}
+
+	attachListeners() {
 		// Show/hide register/login form
-		if (signInLink)
-			signInLink.addEventListener('click', () => {
-			if (!isOnLoginPage) {
-				registerForm.style.display = 'none';
-				loginForm.style.display = 'block';
-				signInLink.innerText = 'Don\'t have an account? Register here!';
-				isOnLoginPage = true;
+		if (this.signInLink)
+			this.signInLink.addEventListener('click', () => {
+				this.toggleFormView();
+			});
+
+		// Registration form
+		if (this.registerForm) {
+			this.registerForm.addEventListener('submit', (e) => {
+				e.preventDefault();
+				this.register();
+			});
+
+		}
+
+		// Login form
+		if (this.loginForm) {
+			this.loginForm.addEventListener('submit', (e) => {
+				e.preventDefault();
+				this.login();
+			});
+		}
+	}
+
+	login() {
+		let elEmail = document.querySelector('#email');
+		let elPass = document.querySelector('#password');
+
+		if (elEmail === null || elEmail.value === undefined ||
+			elPass === null || elPass.value === undefined) {
+			console.log('Not valid user data.');
+			return;
+		}
+
+		fetch(this.loginUrl, {
+			method: 'POST',
+			body: JSON.stringify({
+				email: elEmail.value,
+				password: elPass.value
+			}),
+			mode: 'cors',
+			redirect: 'follow',
+			headers: new Headers({
+				'Content-Type': 'application/json'
+			})
+		}).then((res) => {
+			return res.json();
+		}).then((returnedValue) => {
+			if (returnedValue) {
+				document.querySelector('#gameWrapper').style.display = 'block';
+				document.querySelector('#registerPage').style.display = 'none';
+				LocalStorageService.saveToken(returnedValue.token);
 			} else {
-				registerForm.style.display = 'block';
-				loginForm.style.display = 'none';
-				signInLink.innerText = 'Already have an account? Sign in here!';
-				isOnLoginPage = false;
+				console.log('Show error message for login failed.');
 			}
+		}).catch(function (err) {
+			console.log('>>> Fetching error: ', err);
 		});
+	}
 
-		if (registerForm)
-			registerForm.addEventListener('submit', (e) => {
-			e.preventDefault();
+	register() {
+		let elName = document.querySelector('#registerName');
+		let elEmail = document.querySelector('#regEmail');
+		let elPass = document.querySelector('#registerPassword');
 
-			let elName = document.querySelector('#registerName');
-			let elEmail = document.querySelector('#regEmail');
-			let elPass = document.querySelector('#registerPassword');
+		if (elName === null || elName.value === undefined ||
+			elEmail === null || elEmail.value === undefined ||
+			elPass === null || elPass.value === undefined) {
+			console.log('Not valid user data.');
+			return;
+		}
 
-			if (elName === null || elName.value === undefined ||
-				elEmail === null || elEmail.value === undefined ||
-				elPass === null || elPass.value === undefined) {
-				console.log('Not valid user data.');
-				return;
+		fetch(this.registerUrl, {
+			method: 'POST',
+			body: JSON.stringify({
+				name: elName.value,
+				email: elEmail.value,
+				password: elPass.value
+			}),
+			mode: 'cors',
+			redirect: 'follow',
+			headers: new Headers({
+				'Content-Type': 'application/json'
+			})
+		}).then((res) => {
+			return res.json();
+		}).then((returnedValue) => {
+			if (returnedValue) {
+				console.log('Show success message');
+				LocalStorageService.saveToken(returnedValue.token);
+			} else {
+				console.log('Show error message for registration failed.');
 			}
-
-			fetch(registerUrl, {
-				method: 'POST',
-				body: JSON.stringify({
-					name: elName.value,
-					email: elEmail.value,
-					password: elPass.value
-				}),
-				mode: 'cors',
-				redirect: 'follow',
-				headers: new Headers({
-					'Content-Type': 'application/json'
-				})
-			}).then((res) => {
-				return res.json();
-			}).then((returnedValue) => {
-				if (returnedValue) {
-				 console.log('Show success message');
-					LocalStorageService.saveToken(returnedValue.token);
-				 } else {
-				    console.log('Show error message for registration failed.');
-				 }
-			}).catch(function(err) {
-				console.log('>>> Fetching error: ', err);
-			});
+		}).catch(function (err) {
+			console.log('>>> Fetching error: ', err);
 		});
+	}
 
-		if (loginForm)
-			loginForm.addEventListener('submit', (e) => {
-			e.preventDefault();
+	toggleFormView() {
+		if (!this.isOnLoginPage) {
+			this.registerForm.style.display = 'none';
+			this.loginForm.style.display = 'block';
+			this.signInLink.innerText = 'Don\'t have an account? Register here!';
+			this.isOnLoginPage = true;
+		} else {
+			this.registerForm.style.display = 'block';
+			this.loginForm.style.display = 'none';
+			this.signInLink.innerText = 'Already have an account? Sign in here!';
+			this.isOnLoginPage = false;
+		}
+	}
 
-			let elEmail = document.querySelector('#email');
-			let elPass = document.querySelector('#password');
+	static logout() {
+		LocalStorageService.logout();
 
-			if (elEmail === null || elEmail.value === undefined ||
-				elPass === null || elPass.value === undefined) {
-				console.log('Not valid user data.');
-				return;
-			}
-
-			fetch(loginUrl, {
-				method: 'POST',
-				body: JSON.stringify({
-					email: elEmail.value,
-					password: elPass.value
-				}),
-				mode: 'cors',
-				redirect: 'follow',
-				headers: new Headers({
-					'Content-Type': 'application/json'
-				})
-			}).then((res) => {
-				return res.json();
-			}).then((returnedValue) => {
-				if (returnedValue) {
-					document.querySelector('#gameWrapper').style.display = 'block';
-					document.querySelector('#registerPage').style.display = 'none';
-					LocalStorageService.saveToken(returnedValue.token);
-				} else {
-					console.log('Show error message for login failed.');
-				}
-			}).catch(function(err) {
-				console.log('>>> Fetching error: ', err);
-			});
-		});
+		if (!LocalStorageService.isLoggedIn()) {
+			document.querySelector('#gameWrapper').style.display = 'none';
+			document.querySelector('#registerPage').style.display = 'block';
+		}
 	}
 }
 
