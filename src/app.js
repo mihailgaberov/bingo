@@ -56,7 +56,9 @@ class App {
 			});
 		}
 
-		ApiController.showUserInfo();
+		if (ApiController.isLogged()) {
+			ApiController.showUserInfo();
+		}
 	}
 }
 

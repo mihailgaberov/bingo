@@ -5,6 +5,7 @@
 'use strict';
 
 import LocalStorageService from '../local-storage/local-storage-service';
+import AlertMessagesService from '../alert-messages/alert-messages-service';
 
 class ApiController {
 	constructor() {
@@ -22,6 +23,8 @@ class ApiController {
 		this.signInLink = document.querySelector('.sign-in-link a');
 		this.registerForm = document.querySelector('#registerForm');
 		this.loginForm = document.querySelector('#loginForm');
+		this.alertMsg = document.querySelector('#alertMsg');
+
 
 		this.isOnLoginPage = true;
 
@@ -84,6 +87,11 @@ class ApiController {
 				ApiController.showUserInfo();
 			} else {
 				console.log('Show error message for login failed.');
+				AlertMessagesService.showMsg(this.alertMsg);
+				this.alertMsg.querySelector('#messageText').innerHTML = 'Wrong login details.';
+				this.alertMsg.querySelector('.close').addEventListener('click', () => {
+					AlertMessagesService.hideMsg(this.alertMsg);
+				});
 			}
 		}).catch(function (err) {
 			console.log('>>> Fetching error: ', err);
@@ -119,7 +127,8 @@ class ApiController {
 		}).then((returnedValue) => {
 			if (returnedValue) {
 				if (returnedValue.isExisted) {
-					console.log('>>> Show error message for existed user!');
+					AlertMessagesService.showMsg(this.alertMsg);
+					this.alertMsg.querySelector('#messageText').innerHTML = 'User already existed.';
 				} else {
 					LocalStorageService.saveToken(returnedValue.token);
 					 document.querySelector('#gameWrapper').style.display = 'block';
@@ -134,6 +143,7 @@ class ApiController {
 	}
 
 	toggleFormView() {
+		AlertMessagesService.hideMsg(this.alertMsg);
 		if (!this.isOnLoginPage) {
 			this.registerForm.style.display = 'none';
 			this.loginForm.style.display = 'block';
@@ -172,6 +182,10 @@ class ApiController {
 			elEmail.innerHTML = ApiController.getUserInfo().email;
 			elBalance.innerHTML = ApiController.getUserInfo().balance;
 		}
+	}
+
+	static isLogged() {
+		return LocalStorageService.isLoggedIn();
 	}
 }
 
