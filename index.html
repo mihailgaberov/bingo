@@ -34,7 +34,7 @@
 					<h2 class="brand-text font-size-18">Bingo Bigul</h2>
 				</div>
 				<!-- Register Form START -->
-				<form method="post" id="registerForm" accept-charset="utf-8">
+				<form method="post" id="registerForm" accept-charset="utf-8" style="display: none;">
 					<div class="form-group form-material floating">
 						<input type="text" class="form-control" id="registerName" name="registerName" placeholder="Your name..." required />
 					</div>
@@ -50,7 +50,7 @@
 				</form>
 				<!-- Register Form END -->
 				<!-- Login Form START -->
-				<form method="post" id="loginForm" accept-charset="utf-8" style="display: none;">
+				<form method="post" id="loginForm" accept-charset="utf-8">
 					<div class="form-group form-material floating">
 						<input type="email" class="form-control" id="email" name="email" placeholder="Your email..." required />
 					</div>
@@ -63,7 +63,7 @@
 				</form>
 				<!-- Login Form END -->
 				<div class="sign-in-link">
-					<a href="#"><span class="icon0-question-sign icon0-white"></span> Already have an account? Sign in here!</a>
+					<a href="#"><span class="icon0-question-sign icon0-white"></span> Don't have an account? Register here!</a>
 				</div>
 			</div>
 		</div>
@@ -82,6 +82,11 @@
 	<h1>Welcome to Bingo Bigul!</h1>
 	<button class="btn btn-primary btn-lg start-btn" id="startBtn">START GAME</button>
 	<button class="btn btn-primary btn-lg" id="logoutBtn">LOGOUT</button>
+	<section id="userProfile">
+		<h2>Gosho Porcheto</h2>
+		<h3>gogo22@gmail.com</h3>
+		<h4>balance: <span>534</span></h4>
+	</section>
 	<section id="gameContainer"></section>
 </div>
 <script src="build/js/app.js"></script>

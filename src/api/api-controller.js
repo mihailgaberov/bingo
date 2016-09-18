@@ -23,7 +23,7 @@ class ApiController {
 		this.registerForm = document.querySelector('#registerForm');
 		this.loginForm = document.querySelector('#loginForm');
 
-		this.isOnLoginPage = false;
+		this.isOnLoginPage = true;
 
 		this.attachListeners();
 	}
