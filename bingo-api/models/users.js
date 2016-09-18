@@ -17,8 +17,13 @@ var userSchema = new mongoose.Schema({
 		required: true
 	},
 	hash: String,
-	salt: String
+	salt: String,
+	balance: Number
 });
+
+userSchema.methods.setBalance = function(amount) {
+	this.balance = amount;
+};
 
 userSchema.methods.setPassword = function(password) {
 	this.salt = crypto.randomBytes(16).toString('hex');
