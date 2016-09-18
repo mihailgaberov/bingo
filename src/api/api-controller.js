@@ -160,7 +160,15 @@ class ApiController {
 	static logout() {
 		LocalStorageService.logout();
 
-		if (!LocalStorageService.isLoggedIn()) {
+		ApiController.updateViewState();
+	}
+
+	static updateViewState() {
+		// Check if the user is already logged in
+		if (LocalStorageService.isLoggedIn()) {
+			document.querySelector('#gameWrapper').style.display = 'block';
+			document.querySelector('#registerPage').style.display = 'none';
+		} else {
 			document.querySelector('#gameWrapper').style.display = 'none';
 			document.querySelector('#registerPage').style.display = 'block';
 		}
