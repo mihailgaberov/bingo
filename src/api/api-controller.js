@@ -77,7 +77,7 @@ class ApiController {
 		}).then((res) => {
 			return res.json();
 		}).then((returnedValue) => {
-			if (returnedValue) {
+			if (returnedValue.token) {
 				document.querySelector('#gameWrapper').style.display = 'block';
 				document.querySelector('#registerPage').style.display = 'none';
 				LocalStorageService.saveToken(returnedValue.token);
@@ -153,6 +153,10 @@ class ApiController {
 			document.querySelector('#gameWrapper').style.display = 'none';
 			document.querySelector('#registerPage').style.display = 'block';
 		}
+	}
+
+	static getUserInfo() {
+		return LocalStorageService.currentUser();
 	}
 }
 
