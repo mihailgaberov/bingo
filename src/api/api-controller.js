@@ -81,6 +81,7 @@ class ApiController {
 				document.querySelector('#gameWrapper').style.display = 'block';
 				document.querySelector('#registerPage').style.display = 'none';
 				LocalStorageService.saveToken(returnedValue.token);
+				ApiController.showUserInfo();
 			} else {
 				console.log('Show error message for login failed.');
 			}
@@ -157,6 +158,20 @@ class ApiController {
 
 	static getUserInfo() {
 		return LocalStorageService.currentUser();
+	}
+
+	static showUserInfo() {
+		const elUserProfile = document.querySelector('#userProfile');
+
+		if (elUserProfile) {
+			const elName = elUserProfile.querySelector('h2');
+			const elEmail = elUserProfile.querySelector('h3');
+			const elBalance = elUserProfile.querySelector('h4 span');
+
+			elName.innerHTML = ApiController.getUserInfo().name;
+			elEmail.innerHTML = ApiController.getUserInfo().email;
+			elBalance.innerHTML = ApiController.getUserInfo().balance;
+		}
 	}
 }
 

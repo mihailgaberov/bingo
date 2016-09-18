@@ -56,25 +56,7 @@ class App {
 			});
 		}
 
-		App.showUserInfo();
-	}
-
-	static showUserInfo() {
-		const elUserProfile = document.querySelector('#userProfile');
-
-		if (elUserProfile) {
-			const elName = elUserProfile.querySelector('h2');
-			const elEmail = elUserProfile.querySelector('h3');
-			const elBalance = elUserProfile.querySelector('h4 span');
-
-			elName.innerHTML = '';
-			elEmail.innerHTML = '';
-			elBalance.innerHTML = '';
-
-			elName.innerHTML = ApiController.getUserInfo().name;
-			elEmail.innerHTML = ApiController.getUserInfo().email;
-			elBalance.innerHTML = ApiController.getUserInfo().balance;
-		}
+		ApiController.showUserInfo();
 	}
 }
 
