@@ -5,27 +5,37 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('Users');
 
-module.exports.register = function(req, res) {
+module.exports.register = function (req, res) {
 	var user = new User();
 
 	user.name = req.body.name;
 	user.email = req.body.email;
 
-	user.setBalance(50);
-	user.setPassword(req.body.password);
-	user.save(function(err) {
-		var token;
-		token = user.generateJwt();
-		res.status(200);
-		res.json({
-			"token" : token
-		});
+	// Check for existence
+	User.count({email: user.email}, function (err, count) {
+		if (count > 0) {
+			res.status(200);
+			res.json({
+				'isExisted': true
+			});
+		} else {
+			user.setBalance(50);
+			user.setPassword(req.body.password);
+			user.save(function (err) {
+				var token;
+				token = user.generateJwt();
+				res.status(200);
+				res.json({
+					'token': token
+				});
+			});
+		}
 	});
 };
 
-module.exports.login = function(req, res) {
+module.exports.login = function (req, res) {
 
-	passport.authenticate('local', function(err, user, info){
+	passport.authenticate('local', function (err, user, info) {
 		var token;
 
 		if (err) {
@@ -33,11 +43,11 @@ module.exports.login = function(req, res) {
 			return;
 		}
 
-		if(user){
+		if (user) {
 			token = user.generateJwt();
 			res.status(200);
 			res.json({
-				"token" : token
+				'token': token
 			});
 		} else {
 			res.status(401).json(info);

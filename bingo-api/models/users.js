@@ -18,7 +18,10 @@ var userSchema = new mongoose.Schema({
 	},
 	hash: String,
 	salt: String,
-	balance: Number
+	balance: {
+		type: Number,
+		required: true
+	}
 });
 
 userSchema.methods.setBalance = function(amount) {

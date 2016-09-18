@@ -117,8 +117,13 @@ class ApiController {
 			return res.json();
 		}).then((returnedValue) => {
 			if (returnedValue) {
-				console.log('Show success message');
-				LocalStorageService.saveToken(returnedValue.token);
+				if (returnedValue.isExisted) {
+					console.log('>>> Show error message for existed user!');
+				} else {
+					LocalStorageService.saveToken(returnedValue.token);
+					 document.querySelector('#gameWrapper').style.display = 'block';
+					 document.querySelector('#registerPage').style.display = 'none';
+				}
 			} else {
 				console.log('Show error message for registration failed.');
 			}

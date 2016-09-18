@@ -11,7 +11,8 @@ class LocalStorageService {
 	};
 
 	static getToken() {
-		return window.localStorage['mean-token'];
+		if (window.localStorage['mean-token'] !== undefined)
+			return window.localStorage['mean-token'];
 	};
 
 	static logout() {
@@ -20,6 +21,7 @@ class LocalStorageService {
 
 	static isLoggedIn() {
 		let token = LocalStorageService.getToken();
+
 		let payload;
 
 		if (token) {
