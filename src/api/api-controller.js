@@ -5,33 +5,29 @@
 'use strict';
 
 import LocalStorageService from '../local-storage/local-storage-service';
-import AlertMessagesService from '../alert-messages/alert-messages-service';
+//import AlertMessagesService from '../alert-messages/alert-messages-service';
+import ViewController from '../utils/view-controller';
 
 class ApiController {
 	constructor() {
 		// Check if the user is already logged in
 		if (LocalStorageService.isLoggedIn()) {
-			document.querySelector('#gameWrapper').style.display = 'block';
-			document.querySelector('#registerPage').style.display = 'none';
+			ViewController.showGameScreen();
 		}
 
-		// Routes
-		this.registerUrl = "http://localhost:8888/bingo-api/register";
-		this.loginUrl = "http://localhost:8888/bingo-api/login";
-
 		// Selectors
-		this.signInLink = document.querySelector('.sign-in-link a');
+		/*this.signInLink = document.querySelector('.sign-in-link a');
 		this.registerForm = document.querySelector('#registerForm');
 		this.loginForm = document.querySelector('#loginForm');
-		this.alertMsg = document.querySelector('#alertMsg');
+		this.alertMsg = document.querySelector('#alertMsg');*/
 
 
-		this.isOnLoginPage = true;
+		//this.isOnLoginPage = true;
 
-		this.attachListeners();
+		const viewCtrl = new ViewController();
 	}
 
-	attachListeners() {
+	/*attachListeners() {
 		// Show/hide register/login form
 		if (this.signInLink)
 			this.signInLink.addEventListener('click', () => {
@@ -54,11 +50,12 @@ class ApiController {
 				this.login();
 			});
 		}
-	}
+	}*/
 
-	login() {
-		let elEmail = document.querySelector('#email');
-		let elPass = document.querySelector('#password');
+	static login() {
+		const loginUrl = "http://localhost:8888/bingo-api/login";
+		const elEmail = document.querySelector('#email');
+		const elPass = document.querySelector('#password');
 
 		if (elEmail === null || elEmail.value === undefined ||
 			elPass === null || elPass.value === undefined) {
@@ -66,7 +63,7 @@ class ApiController {
 			return;
 		}
 
-		fetch(this.loginUrl, {
+		fetch(loginUrl, {
 			method: 'POST',
 			body: JSON.stringify({
 				email: elEmail.value,
@@ -81,27 +78,30 @@ class ApiController {
 			return res.json();
 		}).then((returnedValue) => {
 			if (returnedValue.token) {
-				document.querySelector('#gameWrapper').style.display = 'block';
-				document.querySelector('#registerPage').style.display = 'none';
+				/*document.querySelector('#gameWrapper').style.display = 'block';
+				document.querySelector('#registerPage').style.display = 'none';*/
+				ViewController.showGameScreen();
 				LocalStorageService.saveToken(returnedValue.token);
-				ApiController.showUserInfo();
+				ViewController.showUserInfo();
 			} else {
 				console.log('Show error message for login failed.');
-				AlertMessagesService.showMsg(this.alertMsg);
-				this.alertMsg.querySelector('#messageText').innerHTML = 'Wrong login details.';
-				this.alertMsg.querySelector('.close').addEventListener('click', () => {
+				//AlertMessagesService.showMsg(this.alertMsg);
+				ViewController.showErrorMessage('Wrong login details.');
+				//this.alertMsg.querySelector('#messageText').innerHTML = 'Wrong login details.';
+				/*this.alertMsg.querySelector('.close').addEventListener('click', () => {
 					AlertMessagesService.hideMsg(this.alertMsg);
-				});
+				});*/
 			}
 		}).catch(function (err) {
 			console.log('>>> Fetching error: ', err);
 		});
 	}
 
-	register() {
-		let elName = document.querySelector('#registerName');
-		let elEmail = document.querySelector('#regEmail');
-		let elPass = document.querySelector('#registerPassword');
+	static register() {
+		const registerUrl = "http://localhost:8888/bingo-api/register";
+		const elName = document.querySelector('#registerName');
+		const elEmail = document.querySelector('#regEmail');
+		const elPass = document.querySelector('#registerPassword');
 
 		if (elName === null || elName.value === undefined ||
 			elEmail === null || elEmail.value === undefined ||
@@ -110,7 +110,7 @@ class ApiController {
 			return;
 		}
 
-		fetch(this.registerUrl, {
+		fetch(registerUrl, {
 			method: 'POST',
 			body: JSON.stringify({
 				name: elName.value,
@@ -127,12 +127,14 @@ class ApiController {
 		}).then((returnedValue) => {
 			if (returnedValue) {
 				if (returnedValue.isExisted) {
-					AlertMessagesService.showMsg(this.alertMsg);
-					this.alertMsg.querySelector('#messageText').innerHTML = 'User already existed.';
+					//AlertMessagesService.showMsg(this.alertMsg);
+					//this.alertMsg.querySelector('#messageText').innerHTML = 'User already existed.';
+					ViewController.showErrorMessage('User already existed.');
 				} else {
 					LocalStorageService.saveToken(returnedValue.token);
-					 document.querySelector('#gameWrapper').style.display = 'block';
-					 document.querySelector('#registerPage').style.display = 'none';
+					 /*document.querySelector('#gameWrapper').style.display = 'block';
+					 document.querySelector('#registerPage').style.display = 'none';*/
+					ViewController.showGameScreen();
 				}
 			} else {
 				console.log('Show error message for registration failed.');
@@ -142,7 +144,7 @@ class ApiController {
 		});
 	}
 
-	toggleFormView() {
+	/*toggleFormView() {
 		AlertMessagesService.hideMsg(this.alertMsg);
 		if (!this.isOnLoginPage) {
 			this.registerForm.style.display = 'none';
@@ -155,15 +157,15 @@ class ApiController {
 			this.signInLink.innerText = 'Already have an account? Sign in here!';
 			this.isOnLoginPage = false;
 		}
-	}
+	}*/
 
 	static logout() {
 		LocalStorageService.logout();
 
-		ApiController.updateViewState();
+		ViewController.updateViewState();
 	}
 
-	static updateViewState() {
+	/*static updateViewState() {
 		// Check if the user is already logged in
 		if (LocalStorageService.isLoggedIn()) {
 			document.querySelector('#gameWrapper').style.display = 'block';
@@ -172,13 +174,13 @@ class ApiController {
 			document.querySelector('#gameWrapper').style.display = 'none';
 			document.querySelector('#registerPage').style.display = 'block';
 		}
-	}
+	}*/
 
 	static getUserInfo() {
 		return LocalStorageService.currentUser();
 	}
 
-	static showUserInfo() {
+	/*static showUserInfo() {
 		const elUserProfile = document.querySelector('#userProfile');
 
 		if (elUserProfile) {
@@ -190,7 +192,7 @@ class ApiController {
 			elEmail.innerHTML = ApiController.getUserInfo().email;
 			elBalance.innerHTML = ApiController.getUserInfo().balance;
 		}
-	}
+	}*/
 
 	static isLogged() {
 		return LocalStorageService.isLoggedIn();

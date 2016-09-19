@@ -4,6 +4,7 @@
 'use strict';
 
 import ApiController from './api/api-controller';
+import ViewController from './utils/view-controller';
 import CardGenerator from './card/card-generator';
 import CardDrawer from './card/card-drawer';
 import 'es6-promise';
@@ -57,7 +58,7 @@ class App {
 		}
 
 		if (ApiController.isLogged()) {
-			ApiController.showUserInfo();
+			ViewController.showUserInfo();
 		}
 	}
 }
