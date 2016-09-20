@@ -5,12 +5,11 @@
 'use strict';
 
 import LocalStorageService from '../local-storage/local-storage-service';
-//import AlertMessagesService from '../alert-messages/alert-messages-service';
+import PubSubService from '../events/pubsub-service';
 import ViewController from '../utils/view-controller';
 
 class ApiController {
 	constructor() {
-		// Check if the user is already logged in
 		if (LocalStorageService.isLoggedIn()) {
 			ViewController.showGameScreen();
 		}
@@ -101,6 +100,8 @@ class ApiController {
 
 	static logout() {
 		LocalStorageService.logout();
+		let pubsub = new PubSubService();
+		pubsub.publish('/logout', { isLogout: true});
 
 		ViewController.updateViewState();
 	}
