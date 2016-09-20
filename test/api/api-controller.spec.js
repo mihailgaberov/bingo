@@ -42,22 +42,7 @@ describe('Api Controller', () => {
 		const window = document.defaultView;
 		window.localStorage = storageMock();
 
-		let apiCtrl = new ApiController();
-		expect(apiCtrl.registerUrl).not.to.be.undefined;
-		expect(apiCtrl.loginUrl).not.to.be.undefined;
-		expect(apiCtrl.signInLink).not.to.be.undefined;
-		expect(apiCtrl.registerForm).not.to.be.undefined;
-		expect(apiCtrl.loginForm).not.to.be.undefined;
-		expect(apiCtrl.alertMsg).not.to.be.undefined;
-	});
-
-	it ('Should attached all necessary listeners', () => {
-		const window = document.defaultView;
-		window.localStorage = storageMock();
-		let apiCtrl = new ApiController();
-
-		expect(apiCtrl.registerForm).to.have.listener;
-		expect(apiCtrl.loginForm).to.have.listener;
-		expect(apiCtrl.signInLink).to.have.listener;
+		const apiCtrl = new ApiController();
+		expect(apiCtrl.viewCtrl).not.to.be.undefined;
 	});
 });

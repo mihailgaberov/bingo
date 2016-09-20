@@ -59,22 +59,13 @@ class ViewController {
 		}
 	}
 
-	static showErrorMessage(msg) {
+	static toggleErrorMessageView(msg, isShow) {
 		const alertMsg = document.querySelector('#alertMsg');
-
-		if (alertMsg) {
-			document.querySelector('.close').addEventListener('click', () => {
-				AlertMessagesService.hideMsg(alertMsg);
-			});
+		if (!isShow) {
+			AlertMessagesService.hideMsg(alertMsg);
+		} else {
+			AlertMessagesService.showMsg(alertMsg);
 		}
-
-		alertMsg.innerHTML = msg;
-		AlertMessagesService.showMsg(alertMsg);
-	}
-
-	static hideErrorMessage() {
-		const alertMsg = document.querySelector('#alertMsg');
-		AlertMessagesService.hideMsg(alertMsg);
 	}
 
 	static showGameScreen() {
