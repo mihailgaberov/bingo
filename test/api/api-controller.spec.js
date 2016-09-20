@@ -38,7 +38,7 @@ describe('Api Controller', () => {
 		};
 	}
 
-	it ('Should have all necessary routes and selectors', () => {
+	it ('Should initialize View Ctrl to interact with the views', () => {
 		const window = document.defaultView;
 		window.localStorage = storageMock();
 
