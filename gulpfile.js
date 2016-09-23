@@ -14,6 +14,8 @@ const browserify = require('browserify');
 const watchify = require('watchify');
 const babelify = require('babelify');
 const babel = require('babel-core/register');
+const isparta = require('isparta');
+const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
 
 const paths = {
@@ -60,13 +62,28 @@ gulp.task('sass', () => {
 		.pipe(gulp.dest('build/styles'));
 });
 
-gulp.task('test', () => {
-	return gulp.src([paths.tests])
+gulp.task('pre-test', () => {
+	gulp.src(paths.scripts)
+		.pipe(istanbul({
+			// supports es6
+			instrumenter: isparta.Instrumenter
+		}))
+		.pipe(istanbul.hookRequire());
+});
+
+gulp.task('test', ['pre-test'], () => {
+	gulp.src(paths.tests)
 		.pipe(mocha({
 			compilers: {
 				js: babel
 			}
-		}));
+		}))
+		.pipe(istanbul.writeReports({
+			dir: './coverage',
+			reporters: [ 'lcov' ],
+			reportOpts: { dir: './coverage'}
+		}))
+		.pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
 });
 
 gulp.task('webserver', () => {
