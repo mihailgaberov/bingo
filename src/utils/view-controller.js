@@ -4,13 +4,13 @@
 
 "use strict";
 
-import PubSubService from '../events/pubsub-service';
+import { EventsConsts } from '../events/events-consts';
 import ApiController from '../api/api-controller';
 import AlertMessagesService from '../alert-messages/alert-messages-service';
 import LocalStorageService from '../local-storage/local-storage-service';
 
 class ViewController {
-	constructor() {
+	constructor(pubsub) {
 		this.signInLink = document.querySelector('.sign-in-link a');
 		this.registerForm = document.querySelector('#registerForm');
 		this.loginForm = document.querySelector('#loginForm');
@@ -20,12 +20,12 @@ class ViewController {
 
 		this.attachViewListeners();
 
-		const pubsub = new PubSubService();
-		let subscription = pubsub.subscribe('/logout', function(obj) {
-			console.log('>>> event logout: ', obj);
+		pubsub.subscribe(EventsConsts.LOGOUT, (eventData) => {
+			if (eventData.isLogout) {
+				ViewController.updateViewState();
+			}
 		});
 
-		subscription.remove();
 	}
 
 	attachViewListeners() {

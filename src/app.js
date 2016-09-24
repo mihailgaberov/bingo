@@ -53,7 +53,7 @@ class App {
 		const logoutBtn = document.querySelector('#logoutBtn');
 		if (logoutBtn) {
 			logoutBtn.addEventListener('click', (e) => {
-				ApiController.logout();
+				apiCtrl.logout();
 			});
 		}
 

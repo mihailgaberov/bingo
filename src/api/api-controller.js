@@ -4,8 +4,9 @@
 
 'use strict';
 
-import LocalStorageService from '../local-storage/local-storage-service';
+import { EventsConsts } from '../events/events-consts';
 import PubSubService from '../events/pubsub-service';
+import LocalStorageService from '../local-storage/local-storage-service';
 import ViewController from '../utils/view-controller';
 
 class ApiController {
@@ -14,7 +15,8 @@ class ApiController {
 			ViewController.showGameScreen();
 		}
 
-		this.viewCtrl = new ViewController();
+		this.pubsub = new PubSubService();
+		this.viewCtrl = new ViewController(this.pubsub);
 	}
 
 	static login() {
@@ -98,12 +100,11 @@ class ApiController {
 		});
 	}
 
-	static logout() {
+	logout() {
 		LocalStorageService.logout();
-		let pubsub = new PubSubService();
-		pubsub.publish('/logout', { isLogout: true});
-
-		ViewController.updateViewState();
+		this.pubsub.publish(EventsConsts.LOGOUT, {
+			isLogout: true
+		});
 	}
 
 	static getUserInfo() {
