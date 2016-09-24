@@ -36,4 +36,12 @@ describe('PubSub Service', () => {
 		pubsub.publish('eventName', {});
 		expect(listener).to.be.calledOnce;
 	});
+
+	it ('Should remove subscriptions', () => {
+		const removeMe = () => {};
+		pubsub.subscribe('removeMeEvent', removeMe);
+		expect(pubsub.topics['removeMeEvent']).not.to.be.undefined;
+		pubsub.remove('removeMeEvent');
+		expect(pubsub.topics['removeMeEvent'][0]).not.to.be.equal(removeMe);
+	});
 });

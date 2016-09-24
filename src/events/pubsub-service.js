@@ -9,6 +9,7 @@ class PubSubService {
     constructor() {
         this.topics = {};
         this.hOP = this.topics.hasOwnProperty;
+        this.idx = 0;
     }
 
     subscribe(topic, listener) {
@@ -16,14 +17,11 @@ class PubSubService {
             this.topics[topic] = [];
 
 
-        let index = this.topics[topic].push(listener) -1;
+        this.idx = this.topics[topic].push(listener) -1;
+    }
 
-
-        return {
-            remove() {
-                delete this.topics[topic][index];
-            }
-        };
+    remove(topic) {
+        delete this.topics[topic][this.idx];
     }
 
     publish(topic, info) {
