@@ -31,7 +31,7 @@ class PubSubService {
             return;
 
         this.topics[topic].forEach((item) => {
-            item(info != undefined ? info : {});
+            item(info !== undefined ? info : {});
         });
     }
 }
