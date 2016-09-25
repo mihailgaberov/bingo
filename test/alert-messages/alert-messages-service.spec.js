@@ -13,17 +13,19 @@ describe('Alert Messages Service', () => {
 
 	jsdom();
 
-	it ('Should show given alert message element', () => {
+	it ('Should show given alert message element', (done) => {
 		let el = document.createElement('div');
 		el.style.display = 'none';
 		AlertMessagesService.showMsg(el);
 		expect(el.style.display).to.be.equal('block');
+		done();
 	});
 
-	it ('Should hide given alert message element', () => {
+	it ('Should hide given alert message element', (done) => {
 		let el = document.createElement('div');
 		el.style.display = 'block';
 		AlertMessagesService.hideMsg(el);
 		expect(el.style.display).to.be.equal('none');
+		done();
 	});
 });
