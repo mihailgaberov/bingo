@@ -1,9 +1,10 @@
-@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 @import '_fonts';
 @import '_variables';
-@import "_breakpoints";
+@import '_breakpoints';
 @import '_header';
 @import '_register_page';
+@import 'dauber/_blower';
 
 html, body {
   height: 100%;

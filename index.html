@@ -25,10 +25,8 @@
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<script type="text/javascript" src="node_modules/paper/dist/paper-full.js"></script>
-	<script type="text/paperscript" src="src/dauber/blower.js" canvas="myCanvas"></script>
 </head>
 <body>
-<canvas id="myCanvas" resize></canvas>
 <div class="vertical-align text-center" id="registerPage">
 	<div class="page-content vertical-align-middle">
 		<div class="panel">
@@ -98,7 +96,11 @@
 	<section id="gameContainer"></section>
 </div>
 
+<div id="dauber">
+	<canvas id="blower" resize></canvas>
+</div>
 
 <script src="build/js/app.js"></script>
+<script type="text/paperscript" src="src/dauber/blower.js" canvas="blower"></script>
 </body>
 </html>
