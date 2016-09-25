@@ -2,6 +2,7 @@
  * Created by Mihail on 9/24/2016.
  */
 
+// TODO: Try to convert it to ES6 class and use Utils method for random generated numbers
 var Ball = function (point, vector) {
 	if (!vector || vector.isZero()) {
 		this.vector = Point.random() * 5;
@@ -41,7 +42,9 @@ var Ball = function (point, vector) {
 		fillColor: 'white'
 	};
 
-	txt.content = '33';
+	// Generate random random from 1 to 75 to attach it to a ball
+	txt.content = Math.floor(Math.random() * (75)) + 1;
+
 
 	ball.addChild(txt);
 
