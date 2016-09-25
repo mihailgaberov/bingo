@@ -59,11 +59,11 @@ Ball.prototype.iterate = function () {
 	var pre = this.point + this.vector;
 
 	if (pre.x < this.radius || pre.x > size.width - this.radius)
-		this.vector.x *= -this.dampen;
+		this.vector.x *= -this.dampen / 2;
 	if (pre.y < this.radius || pre.y > size.height - this.radius) {
 		if (Math.abs(this.vector.x) < 3)
 			this.vector = Point.random() * [150, 100] + [-75, 20];
-		this.vector.y *= this.bounce;
+		this.vector.y *= this.bounce / 2;
 	}
 
 	var max = Point.max(this.radius, this.point + this.vector);
