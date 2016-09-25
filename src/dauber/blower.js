@@ -23,20 +23,27 @@ var Ball = function (point, vector) {
 
 	//var radius = this.radius = 50 * Math.random() + 30;
 	var radius = this.radius = 15;
-	// Wrap CompoundPath in a Group, since CompoundPaths directly
-	// applies the transformations to the content, just like Path.
-	var ball = new CompoundPath({
+
+
+	var ball = new Group({
 		children: [
 			new Path.Circle({
 				radius: radius
-			})/*,
-			 new Path.Circle({
-			 center: radius / 8,
-			 radius: radius / 3
-			 })*/
+			})
 		],
 		fillColor: new Color(gradient, 0, radius, radius / 8)
 	});
+
+	var txt = new PointText(this.center);
+	txt.style = {
+		justification: 'center',
+		fontWeight: 'bold',
+		fillColor: 'white'
+	};
+
+	txt.content = '33';
+
+	ball.addChild(txt);
 
 	this.item = new Group({
 		children: [ball],
@@ -50,6 +57,7 @@ Ball.prototype.iterate = function () {
 	this.vector.y += this.gravity;
 	this.vector.x *= 0.99;
 	var pre = this.point + this.vector;
+
 	if (pre.x < this.radius || pre.x > size.width - this.radius)
 		this.vector.x *= -this.dampen;
 	if (pre.y < this.radius || pre.y > size.height - this.radius) {
