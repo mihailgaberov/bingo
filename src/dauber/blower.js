@@ -20,11 +20,9 @@ var Ball = function (point, vector) {
 		saturation: 1,
 		brightness: 1
 	};
+
 	var gradient = new Gradient([color, 'black'], true);
-
-	//var radius = this.radius = 50 * Math.random() + 30;
 	var radius = this.radius = 15;
-
 
 	var ball = new Group({
 		children: [
@@ -97,7 +95,7 @@ var balls = [];
 for (var i = 0; i < 75; i++) {
 	var position = {
 			x: Math.random() * (view.size.width - 1) + 1,
-			y: Math.random() * (250 - 220) + 220
+			y: Math.random() * (330 - 300) + 300
 		},
 		vector = (Point.random() - [0.5, 0]) * [50, 100],
 		ball = new Ball(position, vector);

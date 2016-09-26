@@ -10,7 +10,9 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: url("../../images/background.jpg") repeat-y;
+  background: url("../../images/background.jpg");
+  -webkit-background-size: cover;
+  background-size: cover;
   color: $main-front-color;
 }
 
