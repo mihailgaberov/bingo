@@ -149,18 +149,13 @@ import { paper } from '../../node_modules/paper/dist/paper-full';
 
 class Ball {
 	constructor(point, vector) {
-		this.vector = null;
-		this.point = null;
-
-
 		if (!vector || vector.isZero()) {
 			//this.vector = paper.Point.random() * 5;
-			this.vector = new paper.Point(Math.random() * 5, Math.random() * 5);
+			this.vector = { x: Math.random() * 5, y: Math.random() * 5 };
 		} else {
-			this.vector = vector * 2;
+			//this.vector = vector * 2;
+			this.vector = { x: vector.x * 2, y: vector.y * 2};
 		}
-
-		console.log('>>> vector: ', vector);
 
 		this.point = point;
 		this.dampen = 0.4;
@@ -203,9 +198,14 @@ class Ball {
 			transformContent: false,
 			position: this.point
 		});
+
+		//console.log('>>> this.point: ', this.point);
 	}
 
 	iterate() {
+
+		//console.log('>>>> this.point: ', this.point);
+
 		var size = paper.view.size;
 		this.vector.y += this.gravity;
 		this.vector.x *= 0.99;
@@ -215,7 +215,6 @@ class Ball {
 			y: this.point.y + this.vector.y
 		};
 
-		console.log('>>>> ', pre);
 
 		if (pre.x < this.radius || pre.x > size.width - this.radius)
 			this.vector.x *= -this.dampen / 2;
@@ -229,7 +228,7 @@ class Ball {
 
 		var max = paper.Point.max(this.radius, this.point + this.vector);
 
-		console.log('>>> this.item.position: ', this.item.position);
+		//console.log('>>> this.item.position: ', this.item.position);
 
 		this.item.position = this.point = paper.Point.min(max, size - this.radius);
 
@@ -267,14 +266,12 @@ class Blower {
 			throw new Error('There is no canvas element to draw the blower in.');
 		}
 
-		/*var canvas = document.getElementById('blower');
-		 paper.setup(canvas);
-		 paper.view.draw();*/
+		 //paper.view.draw();
 
 		for (var i = 0; i < 75; i++) {
 			var position = {
 					x: Math.random() * (paper.view.size.width - 1) + 1,
-					y: Math.random() * paper.view.size.width
+					y: Math.random() * (paper.view.size.height - 300) + 300
 				},
 				// vector = (paper.Point.random() - [0.5, 0]) * [50, 100],
 				vector = new paper.Point((Math.random() - 0.5) * 50, Math.random() * 100),
@@ -303,9 +300,10 @@ class Blower {
 		console.log('>>> Start');
 		for (var i = 0, l = this.balls.length; i < l; i++) {
 			//this.balls[i].point = paper.Point.random() * paper.view.size;
-			this.balls[i].point = paper.Point(Math.random() * paper.view.size.width,
+			this.balls[i].point = new paper.Point(Math.random() * paper.view.size.width,
 				Math.random() * paper.view.size.height);
 		}
+		//console.log(this.balls);
 		this.init.play = true;
 		this.init.isPlaying = true;
 	}
