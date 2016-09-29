@@ -7,7 +7,7 @@ import ApiController from './api/api-controller';
 import ViewController from './utils/view-controller';
 import CardGenerator from './card/card-generator';
 import CardDrawer from './card/card-drawer';
-import Blower from './dauber/blower';
+import Blower from './blower/blower';
 import 'es6-promise';
 import 'isomorphic-fetch';
 

@@ -2,7 +2,6 @@
  * Created by Mihail on 9/24/2016.
  */
 
-// TODO: Try to convert it to ES6 class and use Utils method for random generated numbers
 /*
  var Ball = function (point, vector) {
  if (!vector || vector.isZero()) {
@@ -150,12 +149,18 @@ import { paper } from '../../node_modules/paper/dist/paper-full';
 
 class Ball {
 	constructor(point, vector) {
+		this.vector = null;
+		this.point = null;
+
+
 		if (!vector || vector.isZero()) {
 			//this.vector = paper.Point.random() * 5;
-			this.vector = paper.Point.random();
+			this.vector = new paper.Point(Math.random() * 5, Math.random() * 5);
 		} else {
 			this.vector = vector * 2;
 		}
+
+		console.log('>>> vector: ', vector);
 
 		this.point = point;
 		this.dampen = 0.4;
@@ -205,20 +210,27 @@ class Ball {
 		this.vector.y += this.gravity;
 		this.vector.x *= 0.99;
 		//var pre = this.point + this.vector;
-		var pre = { _x: this.point.x, _y: this.point.y, x: this.vector, y: this.vector.y };
+		var pre = {
+			x: this.point.x + this.vector.x,
+			y: this.point.y + this.vector.y
+		};
 
-		//console.log(pre);
+		console.log('>>>> ', pre);
 
 		if (pre.x < this.radius || pre.x > size.width - this.radius)
 			this.vector.x *= -this.dampen / 2;
 
 		if (pre.y < this.radius || pre.y > size.height - this.radius) {
 			if (Math.abs(this.vector.x) < 3)
-				this.vector = paper.Point.random() * [150, 100] + [-75, 20]; // http://paperjs.org/tutorials/getting-started/using-javascript-directly/#setting-up-a-scope
+				// this.vector = paper.Point.random() * [150, 100] + [-75, 20];
+				this.vector = paper.Point(Math.random() * 150,  Math.random() * 20);
 			this.vector.y *= this.bounce / 2;
 		}
 
 		var max = paper.Point.max(this.radius, this.point + this.vector);
+
+		console.log('>>> this.item.position: ', this.item.position);
+
 		this.item.position = this.point = paper.Point.min(max, size - this.radius);
 
 		this.item.rotate(this.vector.x);
@@ -249,8 +261,12 @@ class Blower {
 	constructor() {
 		this.balls = [];
 		var canvas = document.getElementById('blower');
-		if (canvas)
+		if (canvas) {
 			paper.setup(canvas);
+		} else {
+			throw new Error('There is no canvas element to draw the blower in.');
+		}
+
 		/*var canvas = document.getElementById('blower');
 		 paper.setup(canvas);
 		 paper.view.draw();*/
@@ -258,9 +274,10 @@ class Blower {
 		for (var i = 0; i < 75; i++) {
 			var position = {
 					x: Math.random() * (paper.view.size.width - 1) + 1,
-					y: Math.random() * (330 - 300) + 300
+					y: Math.random() * paper.view.size.width
 				},
-				vector = (paper.Point.random() - [0.5, 0]) * [50, 100],
+				// vector = (paper.Point.random() - [0.5, 0]) * [50, 100],
+				vector = new paper.Point((Math.random() - 0.5) * 50, Math.random() * 100),
 				ball = new Ball(position, vector);
 
 			this.balls.push(ball);
@@ -272,7 +289,6 @@ class Blower {
 		};
 
 		paper.view.onFrame = (event) => {
-			//console.log('>>> on frame', event);
 			for (var i = 0, l = this.balls.length; i < l; i++) {
 				if (this.init.play) {
 					this.balls[i].iterate();
@@ -287,7 +303,7 @@ class Blower {
 		console.log('>>> Start');
 		for (var i = 0, l = this.balls.length; i < l; i++) {
 			//this.balls[i].point = paper.Point.random() * paper.view.size;
-			this.balls[i].point = new paper.Point(Math.random() * paper.view.size.width,
+			this.balls[i].point = paper.Point(Math.random() * paper.view.size.width,
 				Math.random() * paper.view.size.height);
 		}
 		this.init.play = true;
@@ -302,15 +318,13 @@ class Blower {
 		}, 2000);
 	}
 
-	onMouseUp(event) {
+	/*onMouseUp(event) {
 		if (!this.init.play) {
 			this.startAnimation();
 		} else {
 			this.stopAnimation();
 		}
-	}
+	}*/
 }
 
 export default Blower;
-
-
