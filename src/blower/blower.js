@@ -301,20 +301,20 @@ class Blower {
 		for (var i = 0, l = this.balls.length; i < l; i++) {
 			//this.balls[i].point = paper.Point.random() * paper.view.size;
 			this.balls[i].point = new paper.Point(Math.random() * paper.view.size.width,
-				Math.random() * paper.view.size.height);
+												  Math.random() * paper.view.size.height);
 		}
 		//console.log(this.balls);
 		this.init.play = true;
 		this.init.isPlaying = true;
 	}
 
-	stopAnimation() {
+	/*stopAnimation() {
 		this.init.play = false;
 
 		setTimeout(function () {
 			this.init.isPlaying = false;
 		}, 2000);
-	}
+	}*/
 
 	/*onMouseUp(event) {
 		if (!this.init.play) {
