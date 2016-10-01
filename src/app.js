@@ -38,20 +38,17 @@ class App {
 	}
 
 	start(conf) {
-		let blower = new Blower();
+		//let blower = new Blower();
 
 		let apiCtrl = new ApiController();
 		this.cardGen = new CardGenerator(conf);
 		this.htmlCards = CardDrawer.draw(this.cardGen.generateCards(4));
 		const startBtn = document.querySelector('#startBtn');
-		const stop = document.querySelector('#stop');
-		stop.addEventListener('click', (e) => {
-			blower.stopAnimation();
-		});
+
 		if (startBtn) {
 			startBtn.addEventListener('click', (e) => {
 				console.log('>>> Start Game!');
-				blower.startAnimation();
+				//blower.startAnimation();
 				this.htmlCards.forEach((el) => {
 					document.getElementById('gameContainer').appendChild(el);
 				});

@@ -321,7 +321,7 @@ class Blower {
 
 		setTimeout(() => {
 			this.init.isPlaying = false;
-		}, 4000);
+		}, 5000);
 	}
 }
 
