@@ -47,9 +47,9 @@ class App {
 		if (startBtn) {
 			startBtn.addEventListener('click', (e) => {
 				console.log('>>> Start Game!');
+				blower.startAnimation();
 				this.htmlCards.forEach((el) => {
 					document.getElementById('gameContainer').appendChild(el);
-					blower.startAnimation();
 				});
 			});
 		}
