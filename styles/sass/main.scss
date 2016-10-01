@@ -18,6 +18,7 @@ html, body {
 
 #gameWrapper {
   width: 75%;
+
   #gameContainer {
     display: flex;
     flex-direction: row;
@@ -44,5 +45,9 @@ html, body {
       font-weight: bold;
       font-size: 3em;
     }
+  }
+
+  #dauber {
+    float: right;
   }
 }

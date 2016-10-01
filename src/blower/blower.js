@@ -210,8 +210,8 @@ class Ball {
 		if (pre.y < this.radius || pre.y > size.height - this.radius) {
 			if (Math.abs(this.vector.x) < 3) {
 				this.vector = {
-						x: Math.random() * 150,
-						y: Math.random() * 320
+					x: Math.random() * 150,
+					y: Math.random() * 320
 				};
 			}
 			this.vector.y *= this.bounce / 2;
@@ -222,7 +222,10 @@ class Ball {
 			y: this.point.y + this.vector.y
 		});
 
-		this.item.position = this.point = paper.Point.min(max, { x: size.width - this.radius, y: size.height - this.radius });
+		this.item.position = this.point = paper.Point.min(max, {
+			x: size.width - this.radius,
+			y: size.height - this.radius
+		});
 		this.item.rotate(this.vector.x);
 	}
 
@@ -230,19 +233,37 @@ class Ball {
 		let size = paper.view.size;
 		this.vector.y += this.gravity;
 		this.vector.x *= 0.99;
-		let pre = this.point + this.vector;
+		let pre = {
+			x: this.point.x + this.vector.x,
+			y: this.point.y + this.vector.y
+		};
 
 		if (pre.x < this.radius || pre.x > size.width - this.radius)
 			this.vector.x *= -this.dampen;
 
 		if (pre.y < this.radius || pre.y > size.height - this.radius) {
-			if (Math.abs(this.vector.x) < .3)
+			/*if (Math.abs(this.vector.x) < .3)
 				this.vector = Point.random() * [150, 100] + [-75, 20];
-			this.vector.y *= this.bounce;
+			this.vector.y *= this.bounce;*/
+			if (Math.abs(this.vector.x) < .3) {
+				this.vector = {
+					x: Math.random() * 150,
+					y: Math.random() * 320
+				};
+			}
 		}
 
-		let max = Point.max(this.radius, this.point + this.vector);
-		this.item.position = this.point = Point.min(max, size - this.radius);
+		/*let max = Point.max(this.radius, this.point + this.vector);
+		this.item.position = this.point = Point.min(max, size - this.radius);*/
+		let max = paper.Point.max(this.radius, {
+			x: this.point.x + this.vector.x,
+			y: this.point.y + this.vector.y
+		});
+
+		this.item.position = this.point = paper.Point.min(max, {
+			x: size.width - this.radius,
+			y: size.height - this.radius
+		});
 		this.item.rotate(this.vector.x);
 	}
 }
@@ -295,13 +316,13 @@ class Blower {
 		this.init.isPlaying = true;
 	}
 
-	/*stopAnimation() {
-	 this.init.play = false;
+	stopAnimation() {
+		this.init.play = false;
 
-	 setTimeout(function () {
-	 this.init.isPlaying = false;
-	 }, 2000);
-	 }*/
+		setTimeout(() => {
+			this.init.isPlaying = false;
+		}, 4000);
+	}
 }
 
 export default Blower;

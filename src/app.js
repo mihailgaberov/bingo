@@ -44,6 +44,10 @@ class App {
 		this.cardGen = new CardGenerator(conf);
 		this.htmlCards = CardDrawer.draw(this.cardGen.generateCards(4));
 		const startBtn = document.querySelector('#startBtn');
+		const stop = document.querySelector('#stop');
+		stop.addEventListener('click', (e) => {
+			blower.stopAnimation();
+		});
 		if (startBtn) {
 			startBtn.addEventListener('click', (e) => {
 				console.log('>>> Start Game!');
