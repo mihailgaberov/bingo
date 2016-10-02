@@ -8,9 +8,10 @@ import { NumbersGenerator } from '../utils/numbers-generator';
 import Ball from './ball';
 
 class Dauber {
-	constructor(conf = null) {
+	constructor(conf = null, selector) {
 		if (conf !== null) {
 			this.conf = conf;
+			this.selector = selector;
 			this.drawnNumbers = [];
 			this.drawTimeout = null;
 		} else {
@@ -18,10 +19,10 @@ class Dauber {
 		}
 	}
 
-	startDrawing(intervalinMs) {
+	startDrawing(intervalinMs = 7000) {
 		this.drawTimeout = setInterval(() => {
 			let ball = new Ball(this.drawNewNumber());
-			ball.draw();
+			ball.draw(this.selector);
 		}, intervalinMs);
 	}
 

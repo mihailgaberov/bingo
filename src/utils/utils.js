@@ -32,8 +32,10 @@ const Utils = {
 	 * G is 46–60, and O is 61–75
 	 */
 	getColorByNumber(num) {
-		if (num === undefined)
-			throw new Error('Undefined number given to define ball color');
+		if (num === undefined) {
+			return;
+		}
+
 
 		if (num >=1 && num <=15) {
 			return '#990000';

@@ -12,8 +12,13 @@ class Ball {
 		this.color = Utils.getColorByNumber(num);
 	}
 
-	draw() {
-		console.log('>>> draw ball');
+	draw(parentElement) {
+		const elBall = document.createElement('div');
+		const elNumber = document.createElement('span');
+		elNumber.innerText = this.number;
+		elBall.style.backgroundColor = this.color;
+		elBall.appendChild(elNumber);
+		parentElement.appendChild(elBall);
 	}
 }
 

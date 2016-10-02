@@ -8,6 +8,7 @@ import ViewController from './utils/view-controller';
 import CardGenerator from './card/card-generator';
 import CardDrawer from './card/card-drawer';
 //import Blower from './blower/blower';
+import Dauber from './dauber/dauber';
 import 'es6-promise';
 import 'isomorphic-fetch';
 
@@ -39,6 +40,7 @@ class App {
 
 	start(conf) {
 		//let blower = new Blower(document.querySelector('#blower'));
+		let dauber = new Dauber(conf, document.querySelector('#tube'));
 
 		let apiCtrl = new ApiController();
 		this.cardGen = new CardGenerator(conf);
@@ -49,6 +51,7 @@ class App {
 			startBtn.addEventListener('click', (e) => {
 				console.log('>>> Start Game!');
 				//blower.startAnimation();
+				dauber.startDrawing(2000);
 				this.htmlCards.forEach((el) => {
 					document.getElementById('gameContainer').appendChild(el);
 				});

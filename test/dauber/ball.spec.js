@@ -32,6 +32,10 @@ describe('Ball module', () => {
 
 	it('Should be able to draw itself', (done) => {
 		expect(ball.draw).not.to.be.undefined;
+		const el = document.createElement('div');
+		el.setAttribute('id', 'tube');
+		ball.draw(el);
+		expect(document.querySelector('#tube')).to.have.children;
 		done();
 	});
 });
