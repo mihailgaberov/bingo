@@ -33,7 +33,7 @@ const Utils = {
 	 */
 	getColorByNumber(num) {
 		if (num === undefined) {
-			return;
+			throw new Error('Undefined number given to define ball color');
 		}
 
 

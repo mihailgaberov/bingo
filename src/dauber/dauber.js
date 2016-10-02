@@ -36,7 +36,7 @@ class Dauber {
 		if (num !== undefined) {
 			if (this.drawnNumbers.indexOf(num) !== -1) {
 				// This number is already drawn - get another
-				this.drawNewNumber();
+				return this.drawNewNumber();
 			} else {
 				this.drawnNumbers.push(num);
 				return num;
