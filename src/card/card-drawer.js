@@ -4,9 +4,7 @@
 'use strict';
 
 class CardDrawer {
-	constructor() {
-
-	}
+	constructor() {}
 
 	static draw(objCards) {
 		let countCards = Object.keys(objCards).length;
