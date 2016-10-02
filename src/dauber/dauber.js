@@ -11,22 +11,24 @@ class Dauber {
 		if (conf !== null) {
 			this.conf = conf;
 			this.drawnNumbers = [];
+			this.drawTimeout = null;
 		} else {
 			throw new Error('Dauber initialization error - no config');
 		}
 	}
 
-	startDrawing(interval) {
-
+	startDrawing(intervalinMs) {
+		this.drawTimeout = setInterval(() => {
+			this.drawBall(this.drawNewNumber());
+		}, intervalinMs);
 	}
 
 	stopDrawing() {
-
+		clearInterval(this.drawTimeout);
 	}
 
 	drawNewNumber() {
 		const randomIdx = NumbersGenerator.getRandomNumber(0, this.conf.gameConf.numbers.length-1);
-		//console.log('>>> ranbdomidx: ', randomIdx);
 		const num = this.conf.gameConf.numbers[randomIdx];
 		if (num !== undefined) {
 			if (this.drawnNumbers.indexOf(num) !== -1) {
@@ -39,6 +41,10 @@ class Dauber {
 		} else {
 			throw new Error('Dauber draws undefined number');
 		}
+	}
+
+	drawBall() {
+		console.log('>>> drawBall called...');
 	}
 }
 

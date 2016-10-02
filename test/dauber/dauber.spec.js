@@ -39,43 +39,44 @@ describe('Dauber module', () => {
 
 	let dauber = new Dauber(conf);
 
-	it ('Should create a dauber module', (done) => {
+	it('Should create a dauber module', (done) => {
 		expect(dauber).to.not.be.undefined;
 		done();
 	});
 
-	it ('Should be able to start the drawing of numbers/balls', (done) => {
+	it('Should be able to start the drawing of numbers/balls', (done) => {
 		expect(dauber.startDrawing).not.to.be.undefined;
 		done();
 	});
 
-	it ('Should be able to stop the drawing of numbers/balls', (done) => {
+	it('Should be able to stop the drawing of numbers/balls', (done) => {
 		expect(dauber.stopDrawing).not.to.be.undefined;
 		done();
 	});
 
-	it ('Should produce each number from the range only once', (done) => {
+	it('Should produce each number from the range only once', (done) => {
 		expect(dauber.drawNewNumber).not.to.be.undefined;
 		let arrDrawnNumbers = [];
 
 		for (let i = 0, l = conf.gameConf.numbers.length; i < l; ++i) {
-			let num =  dauber.drawNewNumber();
+			let num = dauber.drawNewNumber();
 			if (num !== undefined)
 				arrDrawnNumbers.push(num);
 		}
 
 		const arrRes = Utils.eliminateDuplicates(arrDrawnNumbers);
 		expect(arrDrawnNumbers.length).to.be.equal(arrRes.length);
-;		done();
+		done();
 	});
 
-	/*
-	 it ('Should be able to produce a new number from the range on given time interval', (done) => {
-	 expect(dauber.drawNewNumber).not.to.be.undefined;
+	it('Should be able to draw a new ball with number from the range on given time interval', (done) => {
+		const intervalInMs = 2000;
+		dauber.startDrawing(intervalInMs);
+		setTimeout(() => {
+			dauber.stopDrawing();
+		}, 6000);
 
-	 /!*let intervalInMs = 2000;
-	 dauber.drawNewNumber(intervalInMs);*!/
-
-	 done();
-	 });*/
+		expect(dauber.drawBall).to.be.calledTwice;
+		done();
+	});
 });
