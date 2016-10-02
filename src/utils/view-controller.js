@@ -6,7 +6,7 @@
 
 import { EventsConsts } from '../events/events-consts';
 import ApiController from '../api/api-controller';
-import AlertMessagesService from '../alert-messages/alert-messages-service';
+import AlertMessagesService from '../messages/alert-messages-service';
 import LocalStorageService from '../local-storage/local-storage-service';
 
 class ViewController {

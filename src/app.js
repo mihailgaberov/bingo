@@ -7,7 +7,7 @@ import ApiController from './api/api-controller';
 import ViewController from './utils/view-controller';
 import CardGenerator from './card/card-generator';
 import CardDrawer from './card/card-drawer';
-import Blower from './blower/blower';
+//import Blower from './blower/blower';
 import 'es6-promise';
 import 'isomorphic-fetch';
 
@@ -38,7 +38,7 @@ class App {
 	}
 
 	start(conf) {
-		//let blower = new Blower();
+		//let blower = new Blower(document.querySelector('#blower'));
 
 		let apiCtrl = new ApiController();
 		this.cardGen = new CardGenerator(conf);

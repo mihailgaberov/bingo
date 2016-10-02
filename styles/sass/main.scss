@@ -13,11 +13,11 @@ html, body {
   background: url("../../images/background.jpg");
   -webkit-background-size: cover;
   background-size: cover;
-  color: $main-front-color;
 }
 
 #gameWrapper {
   width: 75%;
+  color: $main-front-color;
 
   #gameContainer {
     display: flex;

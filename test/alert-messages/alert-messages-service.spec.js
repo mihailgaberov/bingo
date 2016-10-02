@@ -5,7 +5,7 @@
 'use strict';
 
 import assert from 'assert';
-import AlertMessagesService from '../../src/alert-messages/alert-messages-service';
+import AlertMessagesService from '../../src/messages/alert-messages-service';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

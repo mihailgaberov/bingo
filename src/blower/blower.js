@@ -242,9 +242,6 @@ class Ball {
 			this.vector.x *= -this.dampen;
 
 		if (pre.y < this.radius || pre.y > size.height - this.radius) {
-			/*if (Math.abs(this.vector.x) < .3)
-				this.vector = Point.random() * [150, 100] + [-75, 20];
-			this.vector.y *= this.bounce;*/
 			if (Math.abs(this.vector.x) < .3) {
 				this.vector = {
 					x: Math.random() * 150,
@@ -253,8 +250,6 @@ class Ball {
 			}
 		}
 
-		/*let max = Point.max(this.radius, this.point + this.vector);
-		this.item.position = this.point = Point.min(max, size - this.radius);*/
 		let max = paper.Point.max(this.radius, {
 			x: this.point.x + this.vector.x,
 			y: this.point.y + this.vector.y
@@ -269,16 +264,15 @@ class Ball {
 }
 
 class Blower {
-	constructor() {
+	constructor(elCanvas = document.querySelector('#blower')) {
 		this.balls = [];
 		this.init = {
 			play: false,
 			isPlaying: false
 		};
 
-		let canvas = document.getElementById('blower');
-		if (canvas) {
-			paper.setup(canvas);
+		if (elCanvas) {
+			paper.setup(elCanvas);
 		} else {
 			throw new Error('There is no canvas element to draw the blower in.');
 		}
