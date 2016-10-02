@@ -4,10 +4,16 @@
 
 'use strict';
 
+import { Utils } from '../utils/utils';
+
 class Ball {
-	constructor(number, color) {
-		this.number = number;
-		this.color = color;
+	constructor(num) {
+		this.number = num;
+		this.color = Utils.getColorByNumber(num);
+	}
+
+	draw() {
+		console.log('>>> draw ball');
 	}
 }
 

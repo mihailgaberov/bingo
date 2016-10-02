@@ -16,4 +16,10 @@ describe('Utils service', () => {
 		done();
 	});
 
+	it ('Should provide a method for defining the ball color accordiong to its number', (done) => {
+		const num = 15;
+		const resColor = Utils.getColorByNumber(num);
+		expect(resColor).to.be.equal('#990000');
+		done();
+	});
 });

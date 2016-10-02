@@ -5,6 +5,7 @@
 'use strict';
 
 import { NumbersGenerator } from '../utils/numbers-generator';
+import Ball from './ball';
 
 class Dauber {
 	constructor(conf = null) {
@@ -19,7 +20,8 @@ class Dauber {
 
 	startDrawing(intervalinMs) {
 		this.drawTimeout = setInterval(() => {
-			this.drawBall(this.drawNewNumber());
+			let ball = new Ball(this.drawNewNumber());
+			ball.draw();
 		}, intervalinMs);
 	}
 
@@ -41,10 +43,6 @@ class Dauber {
 		} else {
 			throw new Error('Dauber draws undefined number');
 		}
-	}
-
-	drawBall() {
-		console.log('>>> drawBall called...');
 	}
 }
 

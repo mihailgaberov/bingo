@@ -69,7 +69,7 @@ describe('Dauber module', () => {
 		done();
 	});
 
-	it('Should be able to draw a new ball with number from the range on given time interval', (done) => {
+	it('Should be able start drawing of a new ball with on each given time interval', (done) => {
 		const intervalInMs = 2000;
 		dauber.startDrawing(intervalInMs);
 		setTimeout(() => {
@@ -79,4 +79,5 @@ describe('Dauber module', () => {
 		expect(dauber.drawBall).to.be.calledTwice;
 		done();
 	});
+
 });

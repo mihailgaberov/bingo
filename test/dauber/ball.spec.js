@@ -11,26 +11,27 @@ import jsdom  from 'mocha-jsdom';
 describe('Ball module', () => {
 
 	jsdom();
-
+	const ball = new Ball(34);
 
 	it('Should create a ball object', (done) => {
-		const ball = new Ball(4, 'blue');
 		expect(ball).not.to.be.undefined;
 		done();
 	});
 
 	it('Should create a ball object with given number', (done) => {
-		const ball = new Ball(4, 'blue');
 		expect(ball.number).not.to.be.undefined;
-		expect(ball.number).to.be.equal(4);
+		expect(ball.number).to.be.equal(34);
 		done();
 	});
 
 	it('Should create a ball object with given color', (done) => {
-		const ball = new Ball(4, 'blue');
 		expect(ball.color).not.to.be.undefined;
-		expect(ball.color).to.be.equal('blue');
+		expect(ball.color).to.be.equal('#660099');
 		done();
 	});
 
+	it('Should be able to draw itself', (done) => {
+		expect(ball.draw).not.to.be.undefined;
+		done();
+	});
 });
