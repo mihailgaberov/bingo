@@ -31,11 +31,30 @@ const Utils = {
 	 * B is 1–15, I is 16–30, N is 31–45,
 	 * G is 46–60, and O is 61–75
 	 */
+	// TODO: Get the colors from the config
 	getColorByNumber(num) {
 		if (num === undefined) {
 			throw new Error('Undefined number given to define ball color');
 		}
 
+		if (num >=1 && num <=15) {
+			return 'radial-gradient(circle, #990000, #fff)';
+		} else if (num > 15 && num <= 30) {
+			return 'radial-gradient(circle, #006666, #fff)';
+		} else if (num > 30 && num <= 45) {
+			return 'radial-gradient(circle, #660099, #fff)';
+		} else if (num > 45 && num <= 60) {
+			return 'radial-gradient(circle, #CC3300, #fff)';
+		} else if (num > 60 && num <= 75) {
+			return 'radial-gradient(circle, #009900, #fff)';
+		}
+	},
+
+	// TODO: Get the colors from the config
+	getBorderColorByNumber(num) {
+		if (num === undefined) {
+			throw new Error('Undefined number given to define ball color');
+		}
 
 		if (num >=1 && num <=15) {
 			return '#990000';

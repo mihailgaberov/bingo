@@ -26,7 +26,7 @@ describe('Ball module', () => {
 
 	it('Should create a ball object with given color', (done) => {
 		expect(ball.color).not.to.be.undefined;
-		expect(ball.color).to.be.equal('#660099');
+		expect(ball.color).to.be.equal('radial-gradient(circle, #660099, #fff)');
 		done();
 	});
 

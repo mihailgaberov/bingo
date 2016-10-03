@@ -10,13 +10,15 @@ class Ball {
 	constructor(num) {
 		this.number = num;
 		this.color = Utils.getColorByNumber(num);
+		this.borderColor = Utils.getBorderColorByNumber(num);
 	}
 
 	draw(parentElement) {
 		const elBall = document.createElement('div');
 		const elNumber = document.createElement('span');
 		elNumber.innerText = this.number;
-		elBall.style.backgroundColor = this.color;
+		elBall.style.backgroundImage = this.color;
+		elBall.style.borderColor = this.borderColor;
 		elBall.appendChild(elNumber);
 		parentElement.appendChild(elBall);
 	}
