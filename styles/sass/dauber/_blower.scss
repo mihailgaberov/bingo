@@ -1,10 +1,10 @@
 #blower {
-  background-image: url("../../../images/blower_background.png");
   border: 3px solid rgba(0, 0, 0, 0.5);
+  border-top: none;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  width: 330px;
-  height: 330px;
   position: relative;
+  margin-top: 23%;
+  margin-left: 33%;
 }

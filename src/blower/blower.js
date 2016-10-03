@@ -130,6 +130,8 @@ class Blower {
 		};
 
 		if (elCanvas) {
+			elCanvas.setAttribute('width', '220px');
+			elCanvas.setAttribute('height', '220px');
 			paper.setup(elCanvas);
 		} else {
 			throw new Error('There is no canvas element to draw the blower in.');
@@ -138,7 +140,7 @@ class Blower {
 		for (let i = 0; i < 75; i++) {
 			let position = {
 					x: Math.random() * (paper.view.size.width - 1) + 1,
-					y: Math.random() * (paper.view.size.height - 300) + 300
+					y: Math.random() * (paper.view.size.height - 140) + 140
 				},
 				vector = new paper.Point((Math.random() - 0.5) * 50, Math.random() * 100),
 				ball = new Ball(position, vector);

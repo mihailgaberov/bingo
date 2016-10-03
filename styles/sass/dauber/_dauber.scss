@@ -1,24 +1,29 @@
 #dauber {
+  background: url("../../../images/blower_with_tube_bgr.png") center no-repeat;
+  width: 330px;
+  height: 294px;
+
   #tube {
-    
     div {
       display: inline-block;
-      width: 50px;
-      height: 50px;
+      position: absolute;
+      width: 40px;
+      height: 40px;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       border-radius: 50%;
       border: 1px solid white;
-      margin: 0 1%;
+      margin: 5px 1%;
       text-align: center;
 
       span {
         position: absolute;
         display: block;
-        width: 50px;
+        width: 40px;
         margin: 0 auto;
+        padding-top:7%;
         font-weight: bold;
-        font-size: 2.1em;
+        font-size: 1.5em;
         text-shadow: 1px 1px #2e2e2e;
       }
     }
