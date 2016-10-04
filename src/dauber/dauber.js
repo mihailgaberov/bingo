@@ -24,7 +24,8 @@ class Dauber {
 		this.drawTimeout = setInterval(() => {
 			let ball = new Ball(this.drawNewNumber());
 			ball.draw(this.selector, ++this.visibleBallNum);
-			this.visibleBallNum = (this.visibleBallNum === 5 ? 0 : this.visibleBallNum);
+			if (this.visibleBallNum === 5)
+				this.visibleBallNum = 0;
 		}, intervalinMs);
 	}
 
