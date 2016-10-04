@@ -4,6 +4,9 @@
   height: 294px;
 
   #tube {
+    width: 200px;
+    height: 42px;
+
     div {
       display: inline-block;
       position: absolute;
@@ -13,7 +16,8 @@
       -moz-border-radius: 50%;
       border-radius: 50%;
       border: 1px solid white;
-      margin: 5px 1%;
+      margin-left: 15%;
+      margin-top: 6%;
       text-align: center;
 
       span {

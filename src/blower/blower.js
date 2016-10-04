@@ -17,7 +17,7 @@ class Ball {
 		this.point = point;
 		this.dampen = 0.4;
 		this.gravity = 3;
-		this.bounce = -0.6;
+		Ball.bounce = -0.6;
 
 		let color = {
 			hue: Math.random() * 360,
@@ -72,7 +72,7 @@ class Ball {
 					y: Math.random() * 320
 				};
 			}
-			this.vector.y *= this.bounce / 2;
+			this.vector.y *= Ball.bounce / 2;
 		}
 
 		let max = paper.Point.max(this.radius, {
