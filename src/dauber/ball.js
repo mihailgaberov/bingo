@@ -13,7 +13,7 @@ class Ball {
 		this.borderColor = Utils.getBorderColorByNumber(num);
 	}
 
-	draw(parentElement) {
+	draw(parentElement, visibleBallNum) {
 		const elBall = document.createElement('div');
 		const elNumber = document.createElement('span');
 		elNumber.innerText = this.number;
@@ -23,8 +23,49 @@ class Ball {
 		parentElement.appendChild(elBall);
 
 		setTimeout(() => {
-			this.move(elBall, Ball.bounce);
+			this.move(elBall, Ball.bounce, 1000, visibleBallNum);
 		}, 200);
+	}
+
+	move(element, delta, duration = 1000, visibleBallNum) {
+		let posUp = 5;
+		let posLeft = 3;
+
+		this.animate({
+			delay: 10,
+			duration: duration,
+			delta: delta,
+			step: function(delta) {
+				element.style.marginTop = (-posUp * delta) + 5.5 + "%";
+			}
+		});
+
+		setTimeout(() => {
+			this.animate({
+				delay: 12,
+				duration: 1200,
+				delta: Ball.linear,
+				step: function(delta) {
+					switch (visibleBallNum) {
+						case 1:
+							element.style.marginLeft = -posLeft * 2 * delta + 6 + "%";
+						break;
+						case 2:
+							element.style.marginLeft = -posLeft * 2 * delta + 9 + "%";
+						break;
+						case 3:
+							element.style.marginLeft = -posLeft * 2 * delta + 12 + "%";
+						break;
+						case 4:
+							element.style.marginLeft = -posLeft * 2 * delta + 15 + "%";
+						break;
+						case 5:
+							element.style.marginLeft = -posLeft * 2 * delta + 18 + "%";
+						break;
+					}
+				}
+			});
+		}, 1000);
 	}
 
 	animate(opts) {
@@ -45,31 +86,6 @@ class Ball {
 				clearInterval(id)
 			}
 		}, opts.delay || 10);
-	}
-
-	move(element, delta, duration) {
-		let posUp = 5;
-		let posLeft = 3;
-
-		this.animate({
-			delay: 10,
-			duration: duration || 1000,
-			delta: delta,
-			step: function(delta) {
-				element.style.marginTop = (-posUp * delta) + 5.5 + "%";
-			}
-		});
-
-		setTimeout(() => {
-			this.animate({
-				delay: 12,
-				duration: duration || 1200,
-				delta: Ball.linear,
-				step: function(delta) {
-					element.style.marginLeft = -posLeft * 2 * delta + 6 + "%";
-				}
-			});
-		}, 1000);
 	}
 
 	static bounce(progress) {

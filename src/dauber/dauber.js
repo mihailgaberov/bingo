@@ -14,6 +14,7 @@ class Dauber {
 			this.selector = selector;
 			this.drawnNumbers = [];
 			this.drawTimeout = null;
+			this.visibleBallNum = 0;
 		} else {
 			throw new Error('Dauber initialization error - no config');
 		}
@@ -22,7 +23,8 @@ class Dauber {
 	startDrawing(intervalinMs = 7000) {
 		this.drawTimeout = setInterval(() => {
 			let ball = new Ball(this.drawNewNumber());
-			ball.draw(this.selector);
+			ball.draw(this.selector, ++this.visibleBallNum);
+			this.visibleBallNum = (this.visibleBallNum === 5 ? 0 : this.visibleBallNum);
 		}, intervalinMs);
 	}
 
