@@ -61,13 +61,11 @@ class Dauber {
 	}
 
 	animateVisibleBalls() {
-		setTimeout(() => {
-			this.arrVisibleBalls[0].elBall.style.display = 'none';
-			this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
-			this.arrVisibleBalls.forEach((ball) => {
-				ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 12) + '%';
-			});
-		}, 2500);
+		this.arrVisibleBalls[0].elBall.style.display = 'none';
+		this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
+		this.arrVisibleBalls.forEach((ball) => {
+			ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 12) + '%';
+		});
 	}
 }
 

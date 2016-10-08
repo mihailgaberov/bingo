@@ -13,11 +13,7 @@ class Ball {
 		this.elNumber.innerText = num;
 		this.elBall.style.backgroundImage = Utils.getColorByNumber(num);
 		this.elBall.style.borderColor = Utils.getBorderColorByNumber(num);
-
 		this.pubsub = pubsub;
-		this.pubsub.subscribe('secondPhaseStarted', (eventData) => {
-			console.log('>>> second phase started...');
-		});
 	}
 
 	draw(parentElement, visibleBallNum, isSecondPhase = false) {
@@ -56,15 +52,11 @@ class Ball {
 		// If there is the second animation - run it
 		if (delta2 !== null) {
 			setTimeout(() => {
-
-				if (visibleBallNum === 5) {
-					this.pubsub.publish('fifthBallDrawn', {});
-				}
-
 				this.animate({
 					delay: 10,
 					duration: 1000,
 					delta: delta2,
+					isFifth: visibleBallNum,
 					step: function (delta) {
 						switch (visibleBallNum) {
 							case 1:
@@ -92,7 +84,7 @@ class Ball {
 	animate(opts) {
 		const start = new Date;
 
-		let id = setInterval(function () {
+		const id = setInterval(() => {
 			let timePassed = new Date - start;
 			let progress = timePassed / opts.duration;
 
@@ -103,7 +95,9 @@ class Ball {
 			opts.step(delta);
 
 			if (progress == 1) {
-				clearInterval(id)
+				if (opts.isFifth === 5)
+					this.pubsub.publish('fifthBallDrawn', {});
+				clearInterval(id);
 			}
 		}, opts.delay || 10);
 	}
