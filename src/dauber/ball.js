@@ -23,7 +23,7 @@ class Ball {
 		parentElement.appendChild(elBall);
 
 		setTimeout(() => {
-			this.move(elBall, Ball.bounce, null, 1000, visibleBallNum);
+			this.move(elBall, Ball.bounce, Ball.quad, 1000, visibleBallNum);
 		}, 200);
 	}
 
