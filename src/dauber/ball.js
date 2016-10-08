@@ -23,7 +23,7 @@ class Ball {
 		parentElement.appendChild(elBall);
 
 		setTimeout(() => {
-			this.move(elBall, Ball.bounce, Ball.quad, 1000, visibleBallNum);
+			this.move(elBall, Ball.bounce, null, 1000, visibleBallNum);
 		}, 200);
 	}
 
@@ -44,32 +44,35 @@ class Ball {
 			}
 		});
 
-		setTimeout(() => {
+		// If there is a second animation - run it
+		if (delta2 !== null) {
+			setTimeout(() => {
 				this.animate({
-				delay: 10,
-				duration: 1000,
-				delta: delta2,
-				step: function (delta) {
-					switch (visibleBallNum) {
-						case 1:
-							element.style.left = (-(startPos * delta) + startPos) + "%";
-							break;
-						case 2:
-							element.style.left = (-(endPosBall2 * delta) + startPos) + "%";
-							break;
-						case 3:
-							element.style.left = (-(endPosBall3 * delta) + startPos) + "%";
-							break;
-						case 4:
-							element.style.left = (-(endPosBall4 * delta) + startPos) + "%";
-							break;
-						case 5:
-							element.style.left = (-(endPosBall5 * delta) + startPos) + "%";
-							break;
+					delay: 10,
+					duration: 1000,
+					delta: delta2,
+					step: function (delta) {
+						switch (visibleBallNum) {
+							case 1:
+								element.style.left = (-(startPos * delta) + startPos) + "%";
+								break;
+							case 2:
+								element.style.left = (-(endPosBall2 * delta) + startPos) + "%";
+								break;
+							case 3:
+								element.style.left = (-(endPosBall3 * delta) + startPos) + "%";
+								break;
+							case 4:
+								element.style.left = (-(endPosBall4 * delta) + startPos) + "%";
+								break;
+							case 5:
+								element.style.left = (-(endPosBall5 * delta) + startPos) + "%";
+								break;
+						}
 					}
-				}
-			});
-		}, 1000);
+				});
+			}, 1000);
+		}
 	}
 
 	animate(opts) {
