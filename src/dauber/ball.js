@@ -99,10 +99,6 @@ class Ball {
 		}
 	}
 
-	static linear(progress) {
-		return progress
-	}
-
 	static quad(progress) {
 		return Math.pow(progress, 2)
 	}
