@@ -130,8 +130,8 @@ class Blower {
 		};
 
 		if (elCanvas) {
-			elCanvas.setAttribute('width', '220px');
-			elCanvas.setAttribute('height', '220px');
+			elCanvas.setAttribute('width', '208px');
+			elCanvas.setAttribute('height', '208px');
 			paper.setup(elCanvas);
 		} else {
 			throw new Error('There is no canvas element to draw the blower in.');
@@ -148,7 +148,7 @@ class Blower {
 			this.balls.push(ball);
 		}
 
-		paper.view.onFrame = (event) => {
+		paper.view.onFrame = () => {
 			for (let i = 0, l = this.balls.length; i < l; i++) {
 				if (this.init.play) {
 					this.balls[i].iterate();
