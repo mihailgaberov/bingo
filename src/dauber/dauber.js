@@ -5,6 +5,7 @@
 'use strict';
 
 import { NumbersGenerator } from '../utils/numbers-generator';
+import PubSubService from '../events/pubsub-service';
 import Ball from './ball';
 
 class Dauber {
@@ -15,6 +16,13 @@ class Dauber {
 			this.drawnNumbers = [];
 			this.drawTimeout = null;
 			this.visibleBallNum = 0;
+			this.arrVisibleBalls = [];
+			this.isSecondPhase = false;
+			this.pubsub = new PubSubService();
+			this.pubsub.subscribe('fifthBallDrawn', (evData) => {
+				console.log('>>> fifthBallDrawn');
+				this.animateVisibleBalls();
+			});
 		} else {
 			throw new Error('Dauber initialization error - no config');
 		}
@@ -22,10 +30,13 @@ class Dauber {
 
 	startDrawing(intervalinMs = 7000) {
 		this.drawTimeout = setInterval(() => {
-			let ball = new Ball(this.drawNewNumber());
-			ball.draw(this.selector, ++this.visibleBallNum);
-			if (this.visibleBallNum === 5)
+			let ball = new Ball(this.drawNewNumber(), this.pubsub);
+			ball.draw(this.selector, ++this.visibleBallNum, this.isSecondPhase);
+			this.arrVisibleBalls.push(ball);
+			if (this.visibleBallNum === 5) {
 				this.visibleBallNum = 0;
+				this.isSecondPhase = true;
+			}
 		}, intervalinMs);
 	}
 
@@ -47,6 +58,16 @@ class Dauber {
 		} else {
 			throw new Error('Dauber draws undefined number');
 		}
+	}
+
+	animateVisibleBalls() {
+		setTimeout(() => {
+			this.arrVisibleBalls[0].elBall.style.display = 'none';
+			this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
+			this.arrVisibleBalls.forEach((ball) => {
+				ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 12) + '%';
+			});
+		}, 2500);
 	}
 }
 

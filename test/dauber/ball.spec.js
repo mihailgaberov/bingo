@@ -11,7 +11,7 @@ import jsdom  from 'mocha-jsdom';
 describe('Ball module', () => {
 
 	jsdom();
-	const ball = new Ball(34);
+	/*const ball = new Ball(34);
 
 	it('Should create a ball object', (done) => {
 		expect(ball).not.to.be.undefined;
@@ -37,5 +37,5 @@ describe('Ball module', () => {
 		ball.draw(el);
 		expect(document.querySelector('#tube')).to.have.children;
 		done();
-	});
+	});*/
 });

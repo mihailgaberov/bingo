@@ -7,23 +7,29 @@
 import { Utils } from '../utils/utils';
 
 class Ball {
-	constructor(num) {
-		this.number = num;
-		this.color = Utils.getColorByNumber(num);
-		this.borderColor = Utils.getBorderColorByNumber(num);
+	constructor(num, pubsub) {
+		this.elBall = document.createElement('div');
+		this.elNumber = document.createElement('span');
+		this.elNumber.innerText = num;
+		this.elBall.style.backgroundImage = Utils.getColorByNumber(num);
+		this.elBall.style.borderColor = Utils.getBorderColorByNumber(num);
+
+		this.pubsub = pubsub;
+		this.pubsub.subscribe('secondPhaseStarted', (eventData) => {
+			console.log('>>> second phase started...');
+		});
 	}
 
-	draw(parentElement, visibleBallNum) {
-		const elBall = document.createElement('div');
-		const elNumber = document.createElement('span');
-		elNumber.innerText = this.number;
-		elBall.style.backgroundImage = this.color;
-		elBall.style.borderColor = this.borderColor;
-		elBall.appendChild(elNumber);
-		parentElement.appendChild(elBall);
+	draw(parentElement, visibleBallNum, isSecondPhase = false) {
+		this.elBall.appendChild(this.elNumber);
+		parentElement.appendChild(this.elBall);
 
 		setTimeout(() => {
-			this.move(elBall, Ball.bounce, Ball.quad, 1000, visibleBallNum);
+			if (isSecondPhase) {
+				this.move(this.elBall, Ball.bounce, Ball.quad, 1000, 5);
+			} else {
+				this.move(this.elBall, Ball.bounce, Ball.quad, 1000, visibleBallNum);
+			}
 		}, 200);
 	}
 
@@ -35,18 +41,26 @@ class Ball {
 		const endPosBall4 = 25;
 		const endPosBall5 = 13;
 
-		this.animate({
-			delay: 10,
-			duration: duration,
-			delta: delta1,
-			step: function (delta) {
-				element.style.top = (-posUp * delta) + 5.5 + "%";
-			}
-		});
+		// If there is the first animation - run it
+		if (delta1 !== null) {
+			this.animate({
+				delay: 10,
+				duration: duration,
+				delta: delta1,
+				step: function (delta) {
+					element.style.top = (-posUp * delta) + 5.5 + "%";
+				}
+			});
+		}
 
-		// If there is a second animation - run it
+		// If there is the second animation - run it
 		if (delta2 !== null) {
 			setTimeout(() => {
+
+				if (visibleBallNum === 5) {
+					this.pubsub.publish('fifthBallDrawn', {});
+				}
+
 				this.animate({
 					delay: 10,
 					duration: 1000,
