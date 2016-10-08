@@ -23,45 +23,49 @@ class Ball {
 		parentElement.appendChild(elBall);
 
 		setTimeout(() => {
-			this.move(elBall, Ball.bounce, 1000, visibleBallNum);
+			this.move(elBall, Ball.bounce, Ball.quad, 1000, visibleBallNum);
 		}, 200);
 	}
 
-	move(element, delta, duration = 1000, visibleBallNum) {
-		let posUp = 5;
-		let posLeft = 3;
+	move(element, delta1, delta2, duration = 1000, visibleBallNum) {
+		const posUp = 5;
+		const startPos = 61;
+		const endPosBall2 = 49;
+		const endPosBall3 = 37;
+		const endPosBall4 = 25;
+		const endPosBall5 = 13;
 
 		this.animate({
 			delay: 10,
 			duration: duration,
-			delta: delta,
-			step: function(delta) {
-				element.style.marginTop = (-posUp * delta) + 5.5 + "%";
+			delta: delta1,
+			step: function (delta) {
+				element.style.top = (-posUp * delta) + 5.5 + "%";
 			}
 		});
 
 		setTimeout(() => {
-			this.animate({
-				delay: 12,
-				duration: 1200,
-				delta: Ball.linear,
-				step: function(delta) {
+				this.animate({
+				delay: 10,
+				duration: 1000,
+				delta: delta2,
+				step: function (delta) {
 					switch (visibleBallNum) {
 						case 1:
-							element.style.marginLeft = -posLeft * 2 * delta + 6 + "%";
-						break;
+							element.style.left = (-(startPos * delta) + startPos) + "%";
+							break;
 						case 2:
-							element.style.marginLeft = -posLeft * 2 * delta + 9 + "%";
-						break;
+							element.style.left = (-(endPosBall2 * delta) + startPos) + "%";
+							break;
 						case 3:
-							element.style.marginLeft = -posLeft * 2 * delta + 12 + "%";
-						break;
+							element.style.left = (-(endPosBall3 * delta) + startPos) + "%";
+							break;
 						case 4:
-							element.style.marginLeft = -posLeft * 2 * delta + 15 + "%";
-						break;
+							element.style.left = (-(endPosBall4 * delta) + startPos) + "%";
+							break;
 						case 5:
-							element.style.marginLeft = -posLeft * 2 * delta + 18 + "%";
-						break;
+							element.style.left = (-(endPosBall5 * delta) + startPos) + "%";
+							break;
 					}
 				}
 			});
@@ -79,7 +83,6 @@ class Ball {
 				progress = 1;
 
 			let delta = opts.delta(progress);
-
 			opts.step(delta);
 
 			if (progress == 1) {
@@ -89,7 +92,7 @@ class Ball {
 	}
 
 	static bounce(progress) {
-		for(var a = 0, b = 1, result; 1; a += b, b /= 2) {
+		for (var a = 0, b = 1; 1; a += b, b /= 2) {
 			if (progress >= (7 - 4 * a) / 11) {
 				return -Math.pow((11 - 6 * a - 11 * progress) / 4, 2) + Math.pow(b, 2)
 			}
@@ -99,6 +102,11 @@ class Ball {
 	static linear(progress) {
 		return progress
 	}
+
+	static quad(progress) {
+		return Math.pow(progress, 2)
+	}
+
 }
 
 export default Ball;

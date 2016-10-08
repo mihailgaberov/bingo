@@ -13,20 +13,19 @@
       position: absolute;
       width: 40px;
       height: 40px;
+      top: 20%;
+      left: 62%;
+      text-align: center;
       -webkit-border-radius: 50%;
       -moz-border-radius: 50%;
       border-radius: 50%;
-      border: 1px solid white;
-      margin-left: 15%;
-      margin-top: 6%;
-      text-align: center;
+      border: 5px solid;
 
       span {
-        position: absolute;
+        position: relative;
         display: block;
-        width: 40px;
         margin: 0 auto;
-        padding-top:7%;
+        padding-top: 7%;
         font-weight: bold;
         font-size: 1.5em;
         text-shadow: 1px 1px #2e2e2e;
