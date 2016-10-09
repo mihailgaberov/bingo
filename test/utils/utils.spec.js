@@ -16,17 +16,10 @@ describe('Utils service', () => {
 		done();
 	});
 
-	it ('Should provide a method for defining the ball color according to its number', (done) => {
+	it ('Should provide a method for defining the ball css class', (done) => {
 		const num = 15;
-		const resColor = Utils.getColorByNumber(num);
-		expect(resColor).to.be.equal('radial-gradient(circle, #990000, #fff)');
-		done();
-	});
-
-	it ('Should provide a method for defining the ball border color according to its number', (done) => {
-		const num = 16;
-		const resColor = Utils.getBorderColorByNumber(num);
-		expect(resColor).to.be.equal('#006666');
+		const resColor = Utils.getCssClassByNumber(num);
+		expect(resColor).to.be.equal('ballB');
 		done();
 	});
 });

@@ -1,0 +1,65 @@
+@import "../_variables";
+
+#ball {
+  display: inline-block;
+  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 1%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
+    -webkit-filter: blur(5px);
+    z-index: 2;
+  }
+
+  #innerCircle {
+    width: 65%;
+    height: 65%;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0 auto;
+    position: relative;
+    top: 13%;
+
+    span{
+      display: block;
+      width: 25px;
+      margin: 0 auto;
+      font-family: $main-font;
+      font-size: 1.3em;
+      font-weight: bold;
+      position: relative;
+      text-align: center;
+      color: black;
+    }
+  }
+
+  &.ballB {
+    background: radial-gradient(circle at 50% 120%, #008ed6, #76deef 10%, #055194 80%, #062745 100%);
+  }
+
+  &.ballI {
+    background: radial-gradient(circle at 50% 120%, #83d100, #c3ec81 10%, #83d100 80%, #83d100 100%);
+  }
+
+  &.ballN {
+    background: radial-gradient(circle at 50% 120%, #e17000, #f6c079 10%, #e17000 80%, #e17000 100%);
+  }
+
+  &.ballG {
+    background: radial-gradient(circle at 50% 120%, #a71906, #e35a45 10%, #a71906 80%, #a71906 100%);
+  }
+
+  &.ballO {
+    background: radial-gradient(circle at 50% 120%, #642e88, #8f4ad2 10%, #642e88 80%, #642e88 100%);
+  }
+}

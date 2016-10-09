@@ -9,15 +9,19 @@ import { Utils } from '../utils/utils';
 class Ball {
 	constructor(num, pubsub) {
 		this.elBall = document.createElement('div');
+		this.elBall.setAttribute('id', 'ball');
 		this.elNumber = document.createElement('span');
 		this.elNumber.innerText = num;
-		this.elBall.style.backgroundImage = Utils.getColorByNumber(num);
-		this.elBall.style.borderColor = Utils.getBorderColorByNumber(num);
+		this.elInnerCircle = document.createElement('div');
+		this.elInnerCircle.setAttribute('id', 'innerCircle');
+		this.elBall.className = Utils.getCssClassByNumber(num);
 		this.pubsub = pubsub;
 	}
 
 	draw(parentElement, visibleBallNum, isSecondPhase = false) {
-		this.elBall.appendChild(this.elNumber);
+
+		this.elInnerCircle.appendChild(this.elNumber);
+		this.elBall.appendChild(this.elInnerCircle);
 		parentElement.appendChild(this.elBall);
 
 		setTimeout(() => {

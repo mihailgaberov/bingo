@@ -20,7 +20,6 @@ class Dauber {
 			this.isSecondPhase = false;
 			this.pubsub = new PubSubService();
 			this.pubsub.subscribe('fifthBallDrawn', (evData) => {
-				console.log('>>> fifthBallDrawn');
 				this.animateVisibleBalls();
 			});
 		} else {

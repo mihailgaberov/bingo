@@ -28,11 +28,10 @@ describe('Ball module', () => {
 		done();
 	});
 
-	it('Should create a ball object with given color', (done) => {
+	it('Should create a ball object with given css class', (done) => {
 		const pb = new PubSub();
 		const ball = new Ball(34, pb);
-		expect(ball.elBall.style.backgroundImage).not.to.be.undefined;
-		expect(ball.elBall.style.borderColor).to.be.equal('#660099');
+		expect(ball.elBall.className).to.be.equal('ballN');
 		done();
 	});
 

@@ -32,40 +32,21 @@ const Utils = {
 	 * G is 46–60, and O is 61–75
 	 */
 	// TODO: Get the colors from the config
-	getColorByNumber(num) {
+	getCssClassByNumber(num) {
 		if (num === undefined) {
 			throw new Error('Undefined number given to define ball color');
 		}
 
 		if (num >=1 && num <=15) {
-			return 'radial-gradient(circle, #990000, #fff)';
+			return 'ballB';
 		} else if (num > 15 && num <= 30) {
-			return 'radial-gradient(circle, #006666, #fff)';
+			return 'ballI';
 		} else if (num > 30 && num <= 45) {
-			return 'radial-gradient(circle, #660099, #fff)';
+			return 'ballN';
 		} else if (num > 45 && num <= 60) {
-			return 'radial-gradient(circle, #CC3300, #fff)';
+			return 'ballG';
 		} else if (num > 60 && num <= 75) {
-			return 'radial-gradient(circle, #009900, #fff)';
-		}
-	},
-
-	// TODO: Get the colors from the config
-	getBorderColorByNumber(num) {
-		if (num === undefined) {
-			throw new Error('Undefined number given to define ball color');
-		}
-
-		if (num >=1 && num <=15) {
-			return '#990000';
-		} else if (num > 15 && num <= 30) {
-			return '#006666';
-		} else if (num > 30 && num <= 45) {
-			return '#660099';
-		} else if (num > 45 && num <= 60) {
-			return '#CC3300';
-		} else if (num > 60 && num <= 75) {
-			return '#009900';
+			return 'ballO';
 		}
 	}
 };

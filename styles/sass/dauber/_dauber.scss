@@ -8,28 +8,11 @@
     width: 200px;
     height: 42px;
 
-    div {
+    #ball {
       display: inline-block;
       position: absolute;
-      width: 40px;
-      height: 40px;
-      top: 20%;
-      left: 62%;
-      text-align: center;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      border-radius: 50%;
-      border: 5px solid;
-
-      span {
-        position: relative;
-        display: block;
-        margin: 0 auto;
-        padding-top: 7%;
-        font-weight: bold;
-        font-size: 1.5em;
-        text-shadow: 1px 1px #2e2e2e;
-      }
+      top: 20%;   // start position for ball animations
+      left: 62%;  // start position for ball animations
     }
   }
 }
