@@ -80,4 +80,21 @@ describe('Dauber module', () => {
 		done();
 	});
 
+	it('Should be able to move the balls when 5 are visible and hide the first one', (done) => {
+		expect(dauber.arrVisibleBalls).not.to.be.undefined;
+		expect(dauber.arrVisibleBalls).to.be.array;
+
+		const divEl = document.createElement('div');
+		dauber.arrVisibleBalls = [
+			{ elBall: divEl },
+			{ elBall: divEl },
+			{ elBall: divEl },
+			{ elBall: divEl },
+			{ elBall: divEl }
+		];
+		dauber.animateVisibleBalls();
+		expect(dauber.arrVisibleBalls.length).to.be.eql(4);
+		expect(dauber.arrVisibleBalls[0].elBall.style.display).to.be.equal('none');
+		done();
+	});
 });
