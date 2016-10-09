@@ -7,14 +7,14 @@
 import { Utils } from '../utils/utils';
 
 class Ball {
-	constructor(num, pubsub) {
+	constructor(num, pubsub, skin) {
 		this.elBall = document.createElement('div');
 		this.elBall.setAttribute('id', 'ball');
 		this.elNumber = document.createElement('span');
 		this.elNumber.innerText = num;
 		this.elInnerCircle = document.createElement('div');
 		this.elInnerCircle.setAttribute('id', 'innerCircle');
-		this.elBall.className = Utils.getCssClassByNumber(num);
+		this.elBall.className = `${skin.name}_${Utils.getCssClassByNumber(num)}`;
 		this.pubsub = pubsub;
 	}
 

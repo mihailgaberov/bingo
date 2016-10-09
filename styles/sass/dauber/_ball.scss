@@ -43,23 +43,43 @@
     }
   }
 
-  &.ballB {
+  &.original_ballB {
     background: radial-gradient(circle at 50% 120%, #008ed6, #76deef 10%, #055194 80%, #062745 100%);
   }
 
-  &.ballI {
+  &.original_ballI {
     background: radial-gradient(circle at 50% 120%, #83d100, #c3ec81 10%, #83d100 80%, #83d100 100%);
   }
 
-  &.ballN {
+  &.original_ballN {
     background: radial-gradient(circle at 50% 120%, #e17000, #f6c079 10%, #e17000 80%, #e17000 100%);
   }
 
-  &.ballG {
+  &.original_ballG {
     background: radial-gradient(circle at 50% 120%, #a71906, #e35a45 10%, #a71906 80%, #a71906 100%);
   }
 
-  &.ballO {
+  &.original_ballO {
     background: radial-gradient(circle at 50% 120%, #642e88, #8f4ad2 10%, #642e88 80%, #642e88 100%);
+  }
+
+  &.redish_ballB {
+    background: radial-gradient(circle at 50% 120%, #008ed6, #ff0000 10%, #055194 80%, #062745 100%);
+  }
+
+  &.redish_ballI {
+    background: radial-gradient(circle at 50% 120%, #83d100, #ff0000 10%, #83d100 80%, #83d100 100%);
+  }
+
+  &.redish_ballN {
+    background: radial-gradient(circle at 50% 120%, #e17000, #ff0000 10%, #e17000 80%, #e17000 100%);
+  }
+
+  &.redish_ballG {
+    background: radial-gradient(circle at 50% 120%, #a71906, #ff0000 10%, #a71906 80%, #a71906 100%);
+  }
+
+  &.redish_ballO {
+    background: radial-gradient(circle at 50% 120%, #642e88, #ff0000 10%, #642e88 80%, #642e88 100%);
   }
 }

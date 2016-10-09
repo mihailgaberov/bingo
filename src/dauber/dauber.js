@@ -29,7 +29,7 @@ class Dauber {
 
 	startDrawing(intervalinMs = 7000) {
 		this.drawTimeout = setInterval(() => {
-			let ball = new Ball(this.drawNewNumber(), this.pubsub);
+			let ball = new Ball(this.drawNewNumber(), this.pubsub, this.conf.gameConf.skin);
 			ball.draw(this.selector, ++this.visibleBallNum, this.isSecondPhase);
 			this.arrVisibleBalls.push(ball);
 			if (this.visibleBallNum === 5) {
