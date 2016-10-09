@@ -13,7 +13,7 @@ class Dauber {
 		if (conf !== null) {
 			this.conf = conf;
 			this.selector = selector;
-			this.drawnNumbers = [];
+			this.arrDrawnNums = [];
 			this.drawTimeout = null;
 			this.visibleBallNum = 0;
 			this.arrVisibleBalls = [];
@@ -36,6 +36,15 @@ class Dauber {
 				this.visibleBallNum = 0;
 				this.isSecondPhase = true;
 			}
+
+			// Set default value for turns count if no configured
+			if (this.conf.gameConf.turnsCount === undefined)
+				this.conf.gameConf.turnsCount = 23;
+
+			if (this.arrDrawnNums.length >= this.conf.gameConf.turnsCount) {
+				// End Game
+				this.stopDrawing();
+			}
 		}, intervalinMs);
 	}
 
@@ -47,11 +56,11 @@ class Dauber {
 		const randomIdx = NumbersGenerator.getRandomNumber(0, this.conf.gameConf.numbers.length-1);
 		const num = this.conf.gameConf.numbers[randomIdx];
 		if (num !== undefined) {
-			if (this.drawnNumbers.indexOf(num) !== -1) {
+			if (this.arrDrawnNums.indexOf(num) !== -1) {
 				// This number is already drawn - get another
 				return this.drawNewNumber();
 			} else {
-				this.drawnNumbers.push(num);
+				this.arrDrawnNums.push(num);
 				return num;
 			}
 		} else {
