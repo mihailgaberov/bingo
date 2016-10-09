@@ -24,7 +24,7 @@ class CardNumbersGenerator {
 		let arrCol5 = NumbersGenerator.getColumnNumbers(this.arrAmericanNumbers.slice(60, 75));
 
 		// Add 'free' field
-		arrCol3[2] = 'x';
+		arrCol3[2] = '<img src="../../images/small_logo.png" />';
 
 		return {'col1': arrCol1,
 				'col2': arrCol2,
