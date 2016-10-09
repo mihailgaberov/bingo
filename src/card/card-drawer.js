@@ -20,7 +20,14 @@ class CardDrawer {
 	static generateCardTable(card) {
 		let divCard = document.createElement('div');
 		divCard.setAttribute('id', 'card');
-		divCard.innerHTML = '<table border="1">' +
+		divCard.innerHTML = '<table>' +
+			'<tr>' +
+			'<th class="firstCol">B</th>' +
+			'<th class="secondCol">I</th>' +
+			'<th class="thirdCol">N</th>' +
+			'<th class="fourthCol">G</th>' +
+			'<th class="fifthCol">O</th>' +
+			'</tr>' +
 			'<tr>' +
 			'<td>' + card.col1[0] + '</td>' +
 			'<td>' + card.col2[0] + '</td>' +

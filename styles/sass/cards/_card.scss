@@ -1,0 +1,50 @@
+#card {
+  text-align: center;
+  padding: 5px;
+  width: 200px;
+  height: auto;
+  margin: .2em .7em;
+  font-family: $main-font;
+  font-weight: bold;
+  font-size: 2em;
+
+  table {
+    background-color: wheat;
+    color: black;
+
+    th, td {
+      border: 1px solid lightgoldenrodyellow;
+      text-shadow: 0 1px 1px white;
+    }
+
+    th {
+      color: white;
+      text-align: center;
+
+      &.firstCol {
+        background-color: $firstColColour;
+      }
+
+      &.secondCol {
+        background-color: $secondColColour;
+      }
+
+      &.thirdCol {
+        background-color: $thirdColColour;
+      }
+
+      &.fourthCol {
+        background-color: $fourthColColour;
+      }
+
+      &.fifthCol {
+        background-color: $fifthColColour;
+      }
+    }
+
+    td {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+  }
+}
