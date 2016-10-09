@@ -34,20 +34,9 @@ html, body {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-
     -webkit-flex-flow: row wrap;
     justify-content: space-around;
 
-    div {
-      flex-grow: 1;
-      /*text-align: center;
-      padding: 5px;
-      width: 200px;
-      height: auto;
-      margin: .2em .7em;
-      font-weight: bold;
-      font-size: 3em;*/
-    }
   }
 
   #dauber {
