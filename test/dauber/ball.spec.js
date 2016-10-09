@@ -5,37 +5,55 @@
 
 import assert from 'assert';
 import Ball from '../../src/dauber/ball';
+import PubSub from '../../src/events/pubsub-service';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 
 describe('Ball module', () => {
 
 	jsdom();
-	/*const ball = new Ball(34);
 
 	it('Should create a ball object', (done) => {
+		const pb = new PubSub();
+		const ball = new Ball(34, pb);
 		expect(ball).not.to.be.undefined;
 		done();
 	});
 
 	it('Should create a ball object with given number', (done) => {
-		expect(ball.number).not.to.be.undefined;
-		expect(ball.number).to.be.equal(34);
+		const pb = new PubSub();
+		const ball = new Ball(34, pb);
+		expect(ball.elNumber.innerText).not.to.be.undefined;
+		expect(ball.elNumber.innerText).to.be.equal(34);
 		done();
 	});
 
 	it('Should create a ball object with given color', (done) => {
-		expect(ball.color).not.to.be.undefined;
-		expect(ball.color).to.be.equal('radial-gradient(circle, #660099, #fff)');
+		const pb = new PubSub();
+		const ball = new Ball(34, pb);
+		expect(ball.elBall.style.backgroundImage).not.to.be.undefined;
+		expect(ball.elBall.style.borderColor).to.be.equal('#660099');
 		done();
 	});
 
 	it('Should be able to draw itself', (done) => {
+		const pb = new PubSub();
+		const ball = new Ball(34, pb);
 		expect(ball.draw).not.to.be.undefined;
 		const el = document.createElement('div');
 		el.setAttribute('id', 'tube');
 		ball.draw(el);
 		expect(document.querySelector('#tube')).to.have.children;
 		done();
-	});*/
+	});
+
+	it('Should have methods move, animate, bounce and quad', (done) => {
+		const pb = new PubSub();
+		const ball = new Ball(34, pb);
+		expect(ball.move).not.to.be.undefined;
+		expect(ball.animate).not.to.be.undefined;
+		expect(Ball.bounce).not.to.be.undefined;
+		expect(Ball.quad).not.to.be.undefined;
+		done();
+	});
 });
