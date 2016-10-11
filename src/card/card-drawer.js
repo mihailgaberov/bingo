@@ -6,8 +6,6 @@
 import Card from './card';
 
 class CardDrawer {
-	constructor() {}
-
 	static draw(objCards) {
 		let countCards = Object.keys(objCards).length;
 		let arrCards = [];
