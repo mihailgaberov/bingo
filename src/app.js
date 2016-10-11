@@ -53,7 +53,7 @@ class App {
 				blower.startAnimation();
 				dauber.startDrawing(2000);
 				this.htmlCards.forEach((el) => {
-					document.getElementById('gameContainer').appendChild(el);
+					document.getElementById('cardsContainer').appendChild(el);
 				});
 			});
 		}

@@ -19,27 +19,29 @@ html, body {
 }
 
 #gameWrapper {
-  width: 75%;
   color: $main-front-color;
 
   #gameContainer {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    width: 90%;
+    margin: 0 auto;
 
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    justify-content: space-around;
+    #cardsContainer {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      float: left;
+      flex-direction: row;
+      justify-content: flex-start;
+      -webkit-flex-flow: row wrap;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
 
-  }
-
-  #dauber {
-    float: right;
+    #dauber {
+      float: right;
+    }
   }
 }
