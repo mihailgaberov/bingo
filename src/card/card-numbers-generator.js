@@ -8,7 +8,9 @@ import { NumbersGenerator } from '../utils/numbers-generator';
 class CardNumbersGenerator {
 	constructor(conf) {
 		if (conf !== undefined) {
-			this.arrAmericanNumbers = conf.gameConf.numbers;
+			this.conf = conf;
+			//this.arrAmericanNumbers = conf.gameConf.numbers;
+			this.arrAmericanNumbers = this.conf.gameConf.numbers;
 		}
 	}
 
@@ -24,7 +26,7 @@ class CardNumbersGenerator {
 		let arrCol5 = NumbersGenerator.getColumnNumbers(this.arrAmericanNumbers.slice(60, 75));
 
 		// Add 'free' field
-		arrCol3[2] = '<img src="../../images/small_logo.png" />';
+		arrCol3[2] = (this.conf.gameConf.freeSpotImgPath !== undefined ? this.conf.gameConf.freeSpotImgPath : '<img src="../../images/small_logo.png" />');
 
 		return {'col1': arrCol1,
 				'col2': arrCol2,
