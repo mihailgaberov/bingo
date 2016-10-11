@@ -31,72 +31,72 @@ describe('Card Drawer', () => {
 
 		expect(htmlCard.id).to.be.equal('card');
 		expect(htmlCard.children[0].tagName).to.be.equal('TABLE');
-		expect(htmlCard.children[0].firstElementChild.children.length).to.be.equal(5);
+		expect(htmlCard.children[0].firstElementChild.children.length).to.be.equal(6);
 
 		/* row 1 */
-		expect(htmlCard.children[0].firstElementChild.children[0].children.length).to.be.equal(5);
-		// col 1
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[0].children[0].innerHTML)).to.be.equal(10);
-		// col 2
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[0].children[1].innerHTML)).to.be.equal(27);
-		// col 3
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[0].children[2].innerHTML)).to.be.equal(39);
-		// col 4
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[0].children[3].innerHTML)).to.be.equal(56);
-		// col 5
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[0].children[4].innerHTML)).to.be.equal(72);
-
-		/* row 2 */
 		expect(htmlCard.children[0].firstElementChild.children[1].children.length).to.be.equal(5);
 		// col 1
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[0].innerHTML)).to.be.equal(14);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[0].innerHTML)).to.be.equal(10);
 		// col 2
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[1].innerHTML)).to.be.equal(23);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[1].innerHTML)).to.be.equal(27);
 		// col 3
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[2].innerHTML)).to.be.equal(37);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[2].innerHTML)).to.be.equal(39);
 		// col 4
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[3].innerHTML)).to.be.equal(51);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[3].innerHTML)).to.be.equal(56);
 		// col 5
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[4].innerHTML)).to.be.equal(74);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[1].children[4].innerHTML)).to.be.equal(72);
 
-		/* row 3 */
+		/* row 2 */
 		expect(htmlCard.children[0].firstElementChild.children[2].children.length).to.be.equal(5);
 		// col 1
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[2].children[0].innerHTML)).to.be.equal(13);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[2].children[0].innerHTML)).to.be.equal(14);
 		// col 2
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[2].children[1].innerHTML)).to.be.equal(21);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[2].children[1].innerHTML)).to.be.equal(23);
 		// col 3
-		expect(htmlCard.children[0].firstElementChild.children[2].children[2].innerHTML).to.be.equal('x');
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[2].children[2].innerHTML)).to.be.equal(37);
 		// col 4
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[2].children[3].innerHTML)).to.be.equal(60);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[2].children[3].innerHTML)).to.be.equal(51);
 		// col 5
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[2].children[4].innerHTML)).to.be.equal(63);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[2].children[4].innerHTML)).to.be.equal(74);
 
-		/* row 4 */
+		/* row 3 */
 		expect(htmlCard.children[0].firstElementChild.children[3].children.length).to.be.equal(5);
 		// col 1
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[3].children[0].innerHTML)).to.be.equal(15);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[3].children[0].innerHTML)).to.be.equal(13);
 		// col 2
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[3].children[1].innerHTML)).to.be.equal(29);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[3].children[1].innerHTML)).to.be.equal(21);
 		// col 3
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[3].children[2].innerHTML)).to.be.equal(32);
+		expect(htmlCard.children[0].firstElementChild.children[3].children[2].innerHTML).to.be.equal('x');
 		// col 4
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[3].children[3].innerHTML)).to.be.equal(57);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[3].children[3].innerHTML)).to.be.equal(60);
 		// col 5
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[3].children[4].innerHTML)).to.be.equal(71);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[3].children[4].innerHTML)).to.be.equal(63);
 
-		/* row 5 */
+		/* row 4 */
 		expect(htmlCard.children[0].firstElementChild.children[4].children.length).to.be.equal(5);
 		// col 1
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[0].innerHTML)).to.be.equal(5);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[0].innerHTML)).to.be.equal(15);
 		// col 2
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[1].innerHTML)).to.be.equal(22);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[1].innerHTML)).to.be.equal(29);
 		// col 3
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[2].innerHTML)).to.be.equal(33);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[2].innerHTML)).to.be.equal(32);
 		// col 4
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[3].innerHTML)).to.be.equal(59);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[3].innerHTML)).to.be.equal(57);
 		// col 5
-		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[4].innerHTML)).to.be.equal(70);
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[4].children[4].innerHTML)).to.be.equal(71);
+
+		/* row 5 */
+		expect(htmlCard.children[0].firstElementChild.children[5].children.length).to.be.equal(5);
+		// col 1
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[5].children[0].innerHTML)).to.be.equal(5);
+		// col 2
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[5].children[1].innerHTML)).to.be.equal(22);
+		// col 3
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[5].children[2].innerHTML)).to.be.equal(33);
+		// col 4
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[5].children[3].innerHTML)).to.be.equal(59);
+		// col 5
+		expect(parseInt(htmlCard.children[0].firstElementChild.children[5].children[4].innerHTML)).to.be.equal(70);
 	});
 
 });
