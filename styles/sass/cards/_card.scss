@@ -54,8 +54,28 @@ this was each cell is 50px,
     }
 
     td {
+      position: relative;
       padding-left: 3px;
       padding-right: 3px;
+      cursor: pointer;
+
+      &.marked:before {
+        content: "";
+        position: absolute;
+        top: 1%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
+        -webkit-filter: blur(5px);
+        z-index: 2;
+      }
+
+      &.marked {
+        background: radial-gradient(circle at 50% 120%, #e17000, #f6c079 10%, #e17000 80%, #e17000 100%);
+        border-radius: 50%;
+      }
     }
   }
 }

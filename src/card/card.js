@@ -51,13 +51,25 @@ class Card {
 			'<td>' + objCard.col5[4] + '</td>' +
 			'</tr>' +
 			'</table>';
+
+			this.divCard.addEventListener('click', (e) => {
+				Card.click(e.target);
+			});
+
 		return this.divCard;
 	}
 
-	click() {
-		this.divCard.querySelector('td').addEventListener((e) => {
-			console.log('>>> ', e);
-		});
+	static click(element) {
+		const clickedElementValue = element.innerText;
+		if (clickedElementValue && !isNaN(parseInt(clickedElementValue))) {
+			Card.markElement(element);
+
+			console.log('clicked el: ', clickedElementValue);
+		}
+	}
+
+	static markElement(el) {
+		el.classList.toggle('marked');
 	}
 }
 
