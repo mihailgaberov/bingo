@@ -52,9 +52,13 @@ class Card {
 			'</tr>' +
 			'</table>';
 
-			this.divCard.addEventListener('click', (e) => {
-				Card.click(e.target);
-			});
+		this.divCard.addEventListener('click', (e) => {
+			Card.click(e.target);
+		});
+
+		document.addEventListener('arrDrawnNums', (e) => {
+			console.log('>>>>>>>arr: ', e);
+		});
 
 		return this.divCard;
 	}
@@ -63,8 +67,21 @@ class Card {
 		const clickedElementValue = element.innerText;
 		if (clickedElementValue && !isNaN(parseInt(clickedElementValue))) {
 			Card.markElement(element);
+			//console.log('clicked el: ', clickedElementValue);
 
-			console.log('clicked el: ', clickedElementValue);
+			const event = new CustomEvent(
+				"markedBall",
+				{
+					detail: {
+						message: "markedBall",
+						time: new Date()
+					},
+					bubbles: true,
+					cancelable: true
+				}
+			);
+
+			element.dispatchEvent(event);
 		}
 	}
 

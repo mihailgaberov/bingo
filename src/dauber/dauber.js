@@ -22,6 +22,23 @@ class Dauber {
 			this.pubsub.subscribe('fifthBallDrawn', (evData) => {
 				this.animateVisibleBalls();
 			});
+
+			document.addEventListener('markedBall', (e) => {
+				console.log('>>> polucheno: ', e);
+				const event = new CustomEvent(
+					"arrDrawnNums",
+					{
+						detail: {
+							message: this.arrDrawnNums,
+							time: new Date()
+						},
+						bubbles: true,
+						cancelable: true
+					}
+				);
+
+				this.selector.dispatchEvent(event);
+			});
 		} else {
 			throw new Error('Dauber initialization error - no config');
 		}
