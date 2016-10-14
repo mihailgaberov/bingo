@@ -13,7 +13,7 @@
 	<link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
 	<link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
 	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -30,21 +30,25 @@
 		<div class="panel">
 			<div class="panel-body">
 				<div class="brand">
-					<img class="brand-img" src="/images/logo.png" alt="Bingo Bigul" />
+					<img class="brand-img" src="/images/logo.png" alt="Bingo Bigul"/>
 					<h2 class="brand-text font-size-18">Bingo Bigul</h2>
 				</div>
 				<!-- Register Form START -->
 				<form method="post" id="registerForm" accept-charset="utf-8" style="display: none;">
 					<div class="form-group form-material floating">
-						<input type="text" class="form-control" id="registerName" name="registerName" placeholder="Your name..." required />
+						<input type="text" class="form-control" id="registerName" name="registerName" placeholder="Your name..."
+									 required/>
 					</div>
 					<div class="form-group form-material floating">
-						<input type="email" id="regEmail" name="regEmail" class="form-control" placeholder="Your email..." required />
+						<input type="email" id="regEmail" name="regEmail" class="form-control" placeholder="Your email..."
+									 required/>
 					</div>
 					<div class="form-group form-material floating">
-						<input type="password" class="form-control" id="registerPassword" name="registerPassword" placeholder="Your passowrd..." required />
+						<input type="password" class="form-control" id="registerPassword" name="registerPassword"
+									 placeholder="Your passowrd..." required/>
 					</div>
-					<button class="btn btn-primary btn-block btn-lg margin-top-40" type="submit" id="registerBtn" name="registerBtn">
+					<button class="btn btn-primary btn-block btn-lg margin-top-40" type="submit" id="registerBtn"
+									name="registerBtn">
 						Sign Up
 					</button>
 				</form>
@@ -52,10 +56,11 @@
 				<!-- Login Form START -->
 				<form method="post" id="loginForm" accept-charset="utf-8">
 					<div class="form-group form-material floating">
-						<input type="email" class="form-control" id="email" name="email" placeholder="Your email..." required />
+						<input type="email" class="form-control" id="email" name="email" placeholder="Your email..." required/>
 					</div>
 					<div class="form-group form-material floating">
-						<input type="password" class="form-control" id="password" name="password" placeholder="Your passowrd..." required />
+						<input type="password" class="form-control" id="password" name="password" placeholder="Your passowrd..."
+									 required/>
 					</div>
 					<button class="btn btn-primary btn-block btn-lg margin-top-40" type="submit" id="loginBtn" name="loginBtn">
 						Login
@@ -66,7 +71,8 @@
 					<a href="#"><span class="icon0-question-sign icon0-white"></span> Don't have an account? Register here!</a>
 				</div>
 				<div class="alert alert-danger alert-dismissible" role="alert" id="alertMsg" style="display: none;">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
 					<span id="messageText">Wrong login details.</span>
 				</div>
 			</div>
@@ -92,6 +98,9 @@
 		<h4>balance: <span>534</span></h4>
 	</section>
 	<div id="gameContainer">
+		<div id="timerContainer">
+			<p class="pulsate inner-shadow"></p>
+		</div>
 		<section id="dauber">
 			<div id="tube"></div>
 			<canvas id="blower"></canvas>

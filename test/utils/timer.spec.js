@@ -7,8 +7,11 @@ import assert from 'assert';
 import Timer from '../../src/utils/timer';
 import { EventsConsts } from '../../src/events/events-consts';
 import { expect } from 'chai';
+import jsdom  from 'mocha-jsdom';
 
 describe('Timer module', () => {
+
+	jsdom();
 
 	it ('Should create new Timer object', () => {
 		const timer = new Timer(5, EventsConsts.START_GAME, true);
@@ -27,5 +30,10 @@ describe('Timer module', () => {
 		expect(timer.seconds).to.be.equal(5);
 		expect(timer.eventName).to.have.string(EventsConsts.START_GAME);
 		expect(timer.isVisible).to.be.true;
+	});
+
+	it('Should provide method for pulsating', () => {
+		const timer = new Timer(5, EventsConsts.START_GAME, true);
+		expect(timer.pulsate).not.to.be.undefined;
 	});
 });

@@ -1,0 +1,42 @@
+#timerContainer {
+  width: 350px;
+  height: 250px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid gray;
+  color: white;
+  background-color: black;
+  text-align: center;
+
+  .inner-shadow {
+    background-color: #565656;
+    color: transparent;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.4);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+  }
+
+  .pulsate {
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    opacity: 0.5;
+    font-size: 1.5em;
+    font-family: "Goudy Bookletter 1911", sans-serif;
+    font-weight: bold;
+  }
+
+  @-webkit-keyframes pulsate {
+    0% {
+      opacity: 0.5;
+      font-size: 1.5em;
+    }
+    50% {
+      opacity: 1.0;
+    }
+    100% {
+      opacity: 0.5;
+      font-size: 6.5em;
+    }
+  }
+}
