@@ -9,6 +9,8 @@ import CardGenerator from './card/card-generator';
 import CardDrawer from './card/card-drawer';
 import Blower from './blower/blower';
 import Dauber from './dauber/dauber';
+import Timer from './utils/timer';
+import { EventsConsts } from './events/events-consts';
 import 'es6-promise';
 import 'isomorphic-fetch';
 
@@ -46,10 +48,12 @@ class App {
 		this.cardGen = new CardGenerator(conf);
 		this.htmlCards = CardDrawer.draw(this.cardGen.generateCards(4));
 		const startBtn = document.querySelector('#startBtn');
+		const timer = new Timer(document.querySelector('#timerContainer'), 5, EventsConsts.NEW_BALL_DRAWN, true);
 
 		if (startBtn) {
 			startBtn.addEventListener('click', (e) => {
 				console.log('>>> Start Game!');
+				timer.pulsate();
 				blower.startAnimation();
 				dauber.startDrawing(2000);
 				this.htmlCards.forEach((el) => {

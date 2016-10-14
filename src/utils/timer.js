@@ -3,24 +3,29 @@
  */
 
 class Timer {
-	constructor(seconds, eventName, isVisible) {
+	constructor(selector, seconds, eventName, isVisible) {
+		this.selector = selector;
 		this.seconds = seconds;
 		this.eventName = eventName;
 		this.isVisible = isVisible;
 	}
 
 	pulsate() {
-		if (this.isVisible) {
-			let sec = 0;
-			if (!isNaN(parseInt(this.seconds))) {
-				const intervalID = setInterval(function () {
-					document.querySelector('#timerContainer').children[0].innerHTML = '00:0' + (this.seconds - sec);
-					if (sec++ === this.seconds) {
-						window.clearInterval(intervalID);
-					}
-				}, 1000);
-			}
+		let sec = 0;
+		if (!isNaN(parseInt(this.seconds))) {
+			const intervalID = setInterval(() => {
+				this.selector.style.display = (this.isVisible ? 'block' : 'none');
+				this.selector.children[0].innerHTML = `00:0${this.seconds - sec}`;
+				if (sec++ === this.seconds) {
+					window.clearInterval(intervalID);
+					this.hide();
+				}
+			}, 1000);
 		}
+	}
+
+	hide() {
+		this.selector.style.display = 'none';
 	}
 }
 

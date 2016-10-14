@@ -7,7 +7,8 @@
 @import 'dauber/_blower';
 @import 'dauber/_dauber';
 @import 'dauber/_ball';
-@import 'cards/card';
+@import 'cards/_card';
+@import 'timer/_timer';
 
 html, body {
   height: 100%;
