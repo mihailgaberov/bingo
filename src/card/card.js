@@ -55,7 +55,7 @@ class Card {
 			'</table>';
 
 		this.divCard.addEventListener('click', (e) => {
-			Card.click(e.target);
+			Card.clickCell(e.target);
 		});
 
 		document.addEventListener(EventsConsts.NEW_BALL_DRAWN, (e) => {
@@ -65,15 +65,15 @@ class Card {
 		return this.divCard;
 	}
 
-	static click(element) {
+	static clickCell(element) {
 		const clickedElementValue = element.innerText;
 		if (clickedElementValue && !isNaN(parseInt(clickedElementValue))) {
-			Card.markElement(element);
+			Card.markNumber(element);
 			//console.log('clicked el: ', clickedElementValue);
 		}
 	}
 
-	static markElement(el) {
+	static markNumber(el) {
 		el.classList.toggle('marked');
 	}
 }
