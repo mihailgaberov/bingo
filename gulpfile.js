@@ -100,8 +100,8 @@ gulp.task('lint', () => {
 		.pipe(eslint.format());
 });
 
-//gulp.task('default', ['clean', 'lint', 'scripts', 'sass', 'test', 'watch', 'webserver']);
-gulp.task('default', ['clean', 'lint', 'scripts', 'sass', 'watch', 'webserver']);
+gulp.task('default', ['clean', 'lint', 'scripts', 'sass', 'test', 'watch', 'webserver']);
+//gulp.task('default', ['clean', 'lint', 'scripts', 'sass', 'watch', 'webserver']);
 
 gulp.task('watch', () => {
 	gulp.watch(paths.scripts, ['scripts']);

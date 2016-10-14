@@ -4,6 +4,7 @@
 
 'use strict';
 
+import { EventsConsts } from '../events/events-consts';
 import { NumbersGenerator } from '../utils/numbers-generator';
 import PubSubService from '../events/pubsub-service';
 import Ball from './ball';
@@ -22,23 +23,6 @@ class Dauber {
 			this.pubsub.subscribe('fifthBallDrawn', (evData) => {
 				this.animateVisibleBalls();
 			});
-
-			document.addEventListener('markedBall', (e) => {
-				console.log('>>> polucheno: ', e);
-				const event = new CustomEvent(
-					"arrDrawnNums",
-					{
-						detail: {
-							message: this.arrDrawnNums,
-							time: new Date()
-						},
-						bubbles: true,
-						cancelable: true
-					}
-				);
-
-				this.selector.dispatchEvent(event);
-			});
 		} else {
 			throw new Error('Dauber initialization error - no config');
 		}
@@ -46,9 +30,25 @@ class Dauber {
 
 	startDrawing(intervalinMs = 7000) {
 		this.drawTimeout = setInterval(() => {
-			let ball = new Ball(this.drawNewNumber(), this.pubsub, this.conf.gameConf.skin);
+			const drawnNum = this.drawNewNumber();
+			let ball = new Ball(drawnNum, this.pubsub, this.conf.gameConf.skin);
 			ball.draw(this.selector, ++this.visibleBallNum, this.isSecondPhase);
 			this.arrVisibleBalls.push(ball);
+
+			// Dispatch new event with the drawn number
+			const event = new CustomEvent(
+				EventsConsts.NEW_BALL_DRAWN,
+				{
+					detail: {
+						drawnNumber: drawnNum,
+						time: new Date()
+					},
+					bubbles: true,
+					cancelable: true
+				}
+			);
+			this.selector.dispatchEvent(event);
+
 			if (this.visibleBallNum === 5) {
 				this.visibleBallNum = 0;
 				this.isSecondPhase = true;

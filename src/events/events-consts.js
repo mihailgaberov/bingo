@@ -4,7 +4,8 @@
 "use strict";
 
 const EventsConsts = {
-	LOGOUT: 'logout'
+	LOGOUT: 'logout',
+	NEW_BALL_DRAWN: 'newBallDrawn'
 };
 
 export { EventsConsts };

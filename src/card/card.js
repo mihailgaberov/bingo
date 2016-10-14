@@ -3,6 +3,8 @@
  */
 'use strict';
 
+import { EventsConsts } from '../events/events-consts';
+
 class Card {
 	constructor(objCard) {
 		this.divCard = document.createElement('div');
@@ -56,8 +58,8 @@ class Card {
 			Card.click(e.target);
 		});
 
-		document.addEventListener('arrDrawnNums', (e) => {
-			console.log('>>>>>>>arr: ', e);
+		document.addEventListener(EventsConsts.NEW_BALL_DRAWN, (e) => {
+			console.log('>>> num: ', e.detail.drawnNumber);
 		});
 
 		return this.divCard;
@@ -68,20 +70,6 @@ class Card {
 		if (clickedElementValue && !isNaN(parseInt(clickedElementValue))) {
 			Card.markElement(element);
 			//console.log('clicked el: ', clickedElementValue);
-
-			const event = new CustomEvent(
-				"markedBall",
-				{
-					detail: {
-						message: "markedBall",
-						time: new Date()
-					},
-					bubbles: true,
-					cancelable: true
-				}
-			);
-
-			element.dispatchEvent(event);
 		}
 	}
 
