@@ -5,7 +5,8 @@
 
 const EventsConsts = {
 	LOGOUT: 'logout',
-	NEW_BALL_DRAWN: 'newBallDrawn'
+	NEW_BALL_DRAWN: 'newBallDrawn',
+	START_GAME: 'startGame'
 };
 
 export { EventsConsts };
