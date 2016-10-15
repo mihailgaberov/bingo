@@ -6,12 +6,29 @@
   color: $main-front-color;
 
   h1 {
+    display: none;
     height: 130px;
+    width: 500px;
+    margin-left: 48%;
     line-height: 130px;
     text-transform: uppercase;
+
+    @include breakpointMinWidth('m') {
+      display: block;
+    }
+
+    @include breakpointMaxWidth('xxl') {
+      font-size: 2em;
+    }
   }
 
   #userProfile {
     font-size: .9em;
+
+    @include breakpointMaxWidth('m') {
+      h2 {
+        font-size: .7em;
+      }
+    }
   }
 }

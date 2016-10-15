@@ -12,3 +12,18 @@
     @media (min-width: 30em)  { @content; }
   }
 }
+
+@mixin breakpointMaxWidth($point) {
+  //1024px - laptop
+  @if $point == xxl {
+    @media (max-width: 64em) { @content; }
+  }
+    //768px - tablet
+  @else if $point == m {
+    @media (max-width: 48em) { @content; }
+  }
+  //480px - mobile
+  @else if $point == xs {
+    @media (max-width: 30em)  { @content; }
+  }
+}
