@@ -7,13 +7,13 @@ import Card from './card';
 import { EventsConsts } from '../events/events-consts';
 
 class CardDrawer {
-	constructor(objCards) {
+	constructor(objCards, selector) {
 		document.addEventListener(EventsConsts.START_GAME, () => {
-			CardDrawer.draw(objCards);
+			CardDrawer.draw(objCards, selector);
 		});
 	}
 
-	static draw(objCards) {
+	static draw(objCards, selector) {
 		let countCards = Object.keys(objCards).length;
 		let arrCards = [];
 
@@ -22,8 +22,10 @@ class CardDrawer {
 		}
 
 		arrCards.forEach((el) => {
-			document.getElementById('cardsContainer').appendChild(el);
+			selector.appendChild(el);
 		});
+
+		return arrCards;
 	}
 	
 	static generateCardTable(objCard) {

@@ -21,7 +21,8 @@ describe('Card Drawer', () => {
 	};
 
 	it('Should get the number of the cards to be generated', () => {
-		let toBeGenerated = CardDrawer.draw({'card1': objCard});
+		const el = document.createElement('div');
+		let toBeGenerated = CardDrawer.draw({'card1': objCard}, el);
 		expect(toBeGenerated.length).to.be.equal(1);
 	});
 

@@ -37,24 +37,30 @@ describe('Dauber module', () => {
 		}
 	};
 
-	let dauber = new Dauber(conf);
-
 	it('Should create a dauber module', (done) => {
+		const selector = document.createElement('section');
+		const dauber = new Dauber(conf, selector);
 		expect(dauber).to.not.be.undefined;
 		done();
 	});
 
 	it('Should be able to start the drawing of numbers/balls', (done) => {
+		const selector = document.createElement('section');
+		const dauber = new Dauber(conf, selector);
 		expect(dauber.startDrawing).not.to.be.undefined;
 		done();
 	});
 
 	it('Should be able to stop the drawing of numbers/balls', (done) => {
+		const selector = document.createElement('section');
+		const dauber = new Dauber(conf, selector);
 		expect(dauber.stopDrawing).not.to.be.undefined;
 		done();
 	});
 
 	it('Should produce each number from the range only once', (done) => {
+		const selector = document.createElement('section');
+		const dauber = new Dauber(conf, selector);
 		expect(dauber.drawNewNumber).not.to.be.undefined;
 		let arrDrawnNumbers = [];
 
@@ -69,7 +75,10 @@ describe('Dauber module', () => {
 		done();
 	});
 
-	it('Should be able start drawing of a new ball with on each given time interval', (done) => {
+	it('Should be able to start drawing a new ball on each given time interval', (done) => {
+		const elChild = document.createElement('div');
+		document.body.appendChild(elChild);
+		const dauber = new Dauber(conf, elChild);
 		const intervalInMs = 2000;
 		dauber.startDrawing(intervalInMs);
 		setTimeout(() => {
@@ -81,6 +90,10 @@ describe('Dauber module', () => {
 	});
 
 	it('Should be able to move the balls when 5 are visible and hide the first one', (done) => {
+		const selector = document.createElement('div');
+		document.body.appendChild(selector);
+
+		const dauber = new Dauber(conf, selector);
 		expect(dauber.arrVisibleBalls).not.to.be.undefined;
 		expect(dauber.arrVisibleBalls).to.be.array;
 
