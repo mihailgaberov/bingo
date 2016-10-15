@@ -17,6 +17,10 @@ html, body {
   background: url("../../images/background.jpg");
   -webkit-background-size: cover;
   background-size: cover;
+
+  h1 {
+    margin: 0;
+  }
 }
 
 #gameWrapper {
