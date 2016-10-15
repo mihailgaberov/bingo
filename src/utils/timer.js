@@ -18,6 +18,7 @@ class Timer {
 				this.selector.children[0].innerHTML = `00:0${this.seconds - sec}`;
 				if (sec++ === this.seconds) {
 					window.clearInterval(intervalID);
+					this.triggerEvent();
 					this.hide();
 				}
 			}, 1000);
@@ -26,6 +27,21 @@ class Timer {
 
 	hide() {
 		this.selector.style.display = 'none';
+	}
+
+	triggerEvent() {
+		const event = new CustomEvent(
+			this.eventName,
+			{
+				detail: {
+					time: new Date()
+				},
+				bubbles: true,
+				cancelable: true
+			}
+		);
+		console.log('>>> triggerd event by Timer: ', event);
+		this.selector.dispatchEvent(event);
 	}
 }
 

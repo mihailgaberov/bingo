@@ -12,6 +12,11 @@ import Ball from './ball';
 class Dauber {
 	constructor(conf = null, selector) {
 		if (conf !== null) {
+			document.addEventListener(EventsConsts.START_GAME, () => {
+				const drawBallTime = conf.gameConf.drawTimeIntervalSeconds * 1000;
+				this.startDrawing(drawBallTime);
+			});
+
 			this.conf = conf;
 			this.selector = selector;
 			this.arrDrawnNums = [];
@@ -29,6 +34,7 @@ class Dauber {
 	}
 
 	startDrawing(intervalinMs = 7000) {
+		this.selector.parentElement.style.display = 'block';
 		this.drawTimeout = setInterval(() => {
 			const drawnNum = this.drawNewNumber();
 			let ball = new Ball(drawnNum, this.pubsub, this.conf.gameConf.skin);
@@ -36,15 +42,11 @@ class Dauber {
 			this.arrVisibleBalls.push(ball);
 
 			// Dispatch new event with the drawn number
-			const event = new CustomEvent(
-				EventsConsts.NEW_BALL_DRAWN,
-				{
+			const event = new CustomEvent(EventsConsts.NEW_BALL_DRAWN, {
 					detail: {
 						drawnNumber: drawnNum,
 						time: new Date()
-					},
-					bubbles: true,
-					cancelable: true
+					}, bubbles: true, cancelable: true
 				}
 			);
 			this.selector.dispatchEvent(event);
@@ -70,7 +72,7 @@ class Dauber {
 	}
 
 	drawNewNumber() {
-		const randomIdx = NumbersGenerator.getRandomNumber(0, this.conf.gameConf.numbers.length-1);
+		const randomIdx = NumbersGenerator.getRandomNumber(0, this.conf.gameConf.numbers.length - 1);
 		const num = this.conf.gameConf.numbers[randomIdx];
 		if (num !== undefined) {
 			if (this.arrDrawnNums.indexOf(num) !== -1) {

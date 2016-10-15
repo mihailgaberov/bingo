@@ -5,6 +5,7 @@
 
 import { paper } from '../../node_modules/paper/dist/paper-full';
 import { NumbersGenerator } from '../utils/numbers-generator';
+import { EventsConsts } from '../events/events-consts';
 
 class Ball {
 	constructor(point, vector) {
@@ -122,17 +123,21 @@ class Ball {
 }
 
 class Blower {
-	constructor(elCanvas = document.querySelector('#blower')) {
+	constructor(selector) {
+		document.addEventListener(EventsConsts.START_GAME, () => {
+			this.startAnimation();
+		});
+		this.selector = selector;
 		this.balls = [];
 		this.init = {
 			play: false,
 			isPlaying: false
 		};
 
-		if (elCanvas) {
-			elCanvas.setAttribute('width', '208px');
-			elCanvas.setAttribute('height', '208px');
-			paper.setup(elCanvas);
+		if (selector) {
+			selector.setAttribute('width', '208px');
+			selector.setAttribute('height', '208px');
+			paper.setup(selector);
 		} else {
 			throw new Error('There is no canvas element to draw the blower in.');
 		}
@@ -160,6 +165,7 @@ class Blower {
 	}
 
 	startAnimation() {
+		this.selector.style.display = 'block';
 		for (let i = 0, l = this.balls.length; i < l; i++) {
 			this.balls[i].point = {
 				x: Math.random() * (paper.view.size.width - 10) + 10,

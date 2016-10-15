@@ -4,8 +4,15 @@
 'use strict';
 
 import Card from './card';
+import { EventsConsts } from '../events/events-consts';
 
 class CardDrawer {
+	constructor(objCards) {
+		document.addEventListener(EventsConsts.START_GAME, () => {
+			CardDrawer.draw(objCards);
+		});
+	}
+
 	static draw(objCards) {
 		let countCards = Object.keys(objCards).length;
 		let arrCards = [];
@@ -14,7 +21,9 @@ class CardDrawer {
 			arrCards.push(CardDrawer.generateCardTable(objCards['card' + (i+1)]));
 		}
 
-		return arrCards;
+		arrCards.forEach((el) => {
+			document.getElementById('cardsContainer').appendChild(el);
+		});
 	}
 	
 	static generateCardTable(objCard) {

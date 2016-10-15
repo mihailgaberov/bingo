@@ -46,19 +46,14 @@ class App {
 
 		let apiCtrl = new ApiController();
 		this.cardGen = new CardGenerator(conf);
-		this.htmlCards = CardDrawer.draw(this.cardGen.generateCards(4));
+		const cardDrawer = new CardDrawer(this.cardGen.generateCards(4));
 		const startBtn = document.querySelector('#startBtn');
-		const timer = new Timer(document.querySelector('#timerContainer'), 5, EventsConsts.NEW_BALL_DRAWN, true);
+		const timer = new Timer(document.querySelector('#timerContainer'), 5, EventsConsts.START_GAME, true);
 
 		if (startBtn) {
 			startBtn.addEventListener('click', (e) => {
 				console.log('>>> Start Game!');
 				timer.pulsate();
-				blower.startAnimation();
-				dauber.startDrawing(2000);
-				this.htmlCards.forEach((el) => {
-					document.getElementById('cardsContainer').appendChild(el);
-				});
 			});
 		}
 
@@ -78,6 +73,5 @@ class App {
 export default App;
 
 (() => {
-	let app = new App();
-	//document.addEventListener('DOMContentLoaded', () => {});
+	const app = new App();
 })();
