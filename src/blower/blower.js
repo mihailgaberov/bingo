@@ -3,6 +3,7 @@
  */
 'use strict';
 
+import { Utils } from '../utils/utils';
 import { paper } from '../../node_modules/paper/dist/paper-full';
 import { NumbersGenerator } from '../utils/numbers-generator';
 import { EventsConsts } from '../events/events-consts';
@@ -165,7 +166,7 @@ class Blower {
 	}
 
 	startAnimation() {
-		this.selector.style.display = 'block';
+		Utils.toggleVisibility(this.selector, true);
 		for (let i = 0, l = this.balls.length; i < l; i++) {
 			this.balls[i].point = {
 				x: Math.random() * (paper.view.size.width - 10) + 10,

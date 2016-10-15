@@ -4,6 +4,7 @@
 
 'use strict';
 
+import { Utils } from '../utils/utils';
 import { EventsConsts } from '../events/events-consts';
 import { NumbersGenerator } from '../utils/numbers-generator';
 import PubSubService from '../events/pubsub-service';
@@ -34,7 +35,7 @@ class Dauber {
 	}
 
 	startDrawing(intervalinMs = 7000) {
-		this.selector.parentElement.style.display = 'block';
+		Utils.toggleVisibility(this.selector.parentElement, true);
 		this.drawTimeout = setInterval(() => {
 			const drawnNum = this.drawNewNumber();
 			let ball = new Ball(drawnNum, this.pubsub, this.conf.gameConf.skin);
@@ -88,7 +89,7 @@ class Dauber {
 	}
 
 	animateVisibleBalls() {
-		this.arrVisibleBalls[0].elBall.style.display = 'none';
+		Utils.toggleVisibility(this.arrVisibleBalls[0].elBall, false);
 		this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
 		this.arrVisibleBalls.forEach((ball) => {
 			ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 12) + '%';

@@ -31,7 +31,6 @@ const Utils = {
 	 * B is 1–15, I is 16–30, N is 31–45,
 	 * G is 46–60, and O is 61–75
 	 */
-	// TODO: Get the colors from the config
 	getCssClassByNumber(num) {
 		if (num === undefined) {
 			throw new Error('Undefined number given to define ball color');
@@ -48,6 +47,11 @@ const Utils = {
 		} else if (num > 60 && num <= 75) {
 			return 'ballO';
 		}
+	},
+
+	toggleVisibility(selector, isVisible) {
+		console.log('>>> selector: ', selector);
+		selector.style.display = (isVisible ? 'block' : 'none');
 	}
 };
 
