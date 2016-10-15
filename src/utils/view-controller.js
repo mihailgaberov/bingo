@@ -99,7 +99,8 @@ class ViewController {
 
 		if (elUserProfile) {
 			const elName = elUserProfile.querySelector('h2');
-			const elEmail = elUserProfile.querySelector('h3');
+			const elEmail = elUserProfile.querySelector('div a');
+			elEmail.setAttribute('href', 'mailto:' + ApiController.getUserInfo().email);
 			const elBalance = elUserProfile.querySelector('h4 span');
 
 			elName.innerHTML = ApiController.getUserInfo().name;

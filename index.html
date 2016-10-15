@@ -89,13 +89,39 @@
 	</div>
 </div>
 <div id="gameWrapper" style="display: none;">
-	<h1>Welcome to Bingo Bigul!</h1>
-	<button class="btn btn-primary btn-lg start-btn" id="startBtn">START GAME</button>
-	<button class="btn btn-primary btn-lg" id="logoutBtn">LOGOUT</button>
-	<section id="userProfile">
-		<h2>Gosho Porcheto</h2>
-		<h3>gogo22@gmail.com</h3>
-		<h4>balance: <span>534</span></h4>
+	<section id="header">
+		<div class="row">
+			<div class="col col-sm-9">
+				<h1 class="text-center">Welcome to Bingo Bigul</h1>
+			</div>
+			<div class="col col-sm-3 text-right">
+				<section id="userProfile">
+					<h2>Gosho Porcheto</h2>
+					<div><a href="mailto: gogo22@gmail.com">gogo22@gmail.com</a></div>
+					<h4>balance: <span>534</span></h4>
+				</section>
+			</div>
+		</div>
+	</section>
+	<section id="marketPlace">
+		<form>
+			<input type="radio" name="gender" value="1" checked> One Card
+			<input type="radio" name="gender" value="2"> Two Cards
+			<input type="radio" name="gender" value="3"> Three Cards
+			<input type="radio" name="gender" value="4"> Four Cards
+			<input type="radio" name="gender" value="5"> Five Cards
+			<input type="radio" name="gender" value="6"> Six Cards
+			<input type="radio" name="gender" value="7"> Seven Cards
+			<input type="radio" name="gender" value="8"> Eight Cards
+			<input type="radio" name="gender" value="9"> Nine Cards
+			<input type="radio" name="gender" value="10"> Ten Cards
+		</form>
+	</section>
+	<section id="footer">
+		<div class="text-right">
+			<button class="btn btn-primary btn-lg" id="logoutBtn">LOGOUT</button>
+			<button class="btn btn-primary btn-lg start-btn" id="startBtn">START GAME</button>
+		</div>
 	</section>
 	<div id="gameContainer">
 		<div id="timerContainer">

@@ -25,6 +25,6 @@
     "turnsCount": 24,
     "freeSpotImgPath": "<img src='../../images/small_logo.png' />",
     "drawIntervalSeconds": 2,
-    "beforeStartGameSeconds": 9
+    "beforeStartGameSeconds": 5
   }
 }

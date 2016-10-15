@@ -1,0 +1,18 @@
+#header {
+  height: 130px;
+  border-bottom: 1px solid $main-front-color;
+  background: url('../../images/logo.png') no-repeat 1% 60%;
+  font-family: $main-font;
+  color: $main-front-color;
+
+  h1 {
+    height: 130px;
+    line-height: 130px;
+    text-transform: uppercase;
+  }
+
+  #userProfile {
+    font-size: .9em;
+    margin-right: 5%;
+  }
+}

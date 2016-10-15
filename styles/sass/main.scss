@@ -3,6 +3,7 @@
 @import '_variables';
 @import '_breakpoints';
 @import '_header';
+@import '_footer';
 @import '_register_page';
 @import 'dauber/_blower';
 @import 'dauber/_dauber';
@@ -14,7 +15,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: url("../../images/background.jpg");
+  background: url('../../images/background.jpg');
   -webkit-background-size: cover;
   background-size: cover;
 
