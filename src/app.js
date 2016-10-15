@@ -48,7 +48,7 @@ class App {
 		this.cardGen = new CardGenerator(conf);
 		const cardDrawer = new CardDrawer(this.cardGen.generateCards(4), document.getElementById('cardsContainer'));
 		const startBtn = document.querySelector('#startBtn');
-		const timer = new Timer(document.querySelector('#timerContainer'), 5, EventsConsts.START_GAME, true);
+		const timer = new Timer(document.querySelector('#timerContainer'), conf.gameConf.beforeStartGameSeconds, EventsConsts.START_GAME, true);
 
 		if (startBtn) {
 			startBtn.addEventListener('click', (e) => {

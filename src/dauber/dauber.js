@@ -13,7 +13,7 @@ class Dauber {
 	constructor(conf = null, selector) {
 		if (conf !== null) {
 			document.addEventListener(EventsConsts.START_GAME, () => {
-				const drawBallTime = conf.gameConf.drawTimeIntervalSeconds * 1000;
+				const drawBallTime = conf.gameConf.drawIntervalSeconds * 1000;
 				this.startDrawing(drawBallTime);
 			});
 
