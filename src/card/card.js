@@ -18,39 +18,39 @@ class Card {
 			'<th class="fifthCol">O</th>' +
 			'</tr>' +
 			'<tr>' +
-			'<td>' + objCard.col1[0] + '</td>' +
-			'<td>' + objCard.col2[0] + '</td>' +
-			'<td>' + objCard.col3[0] + '</td>' +
-			'<td>' + objCard.col4[0] + '</td>' +
-			'<td>' + objCard.col5[0] + '</td>' +
+			'<td id="x1y1">' + objCard.col1[0] + '</td>' +
+			'<td id="x2y1">' + objCard.col2[0] + '</td>' +
+			'<td id="x3y1">' + objCard.col3[0] + '</td>' +
+			'<td id="x4y1">' + objCard.col4[0] + '</td>' +
+			'<td id="x5y1">' + objCard.col5[0] + '</td>' +
 			'</tr>' +
 			'<tr>' +
-			'<td>' + objCard.col1[1] + '</td>' +
-			'<td>' + objCard.col2[1] + '</td>' +
-			'<td>' + objCard.col3[1] + '</td>' +
-			'<td>' + objCard.col4[1] + '</td>' +
-			'<td>' + objCard.col5[1] + '</td>' +
+			'<td id="x1y2">' + objCard.col1[1] + '</td>' +
+			'<td id="x2y2">' + objCard.col2[1] + '</td>' +
+			'<td id="x3y2">' + objCard.col3[1] + '</td>' +
+			'<td id="x4y2">' + objCard.col4[1] + '</td>' +
+			'<td id="x5y2">' + objCard.col5[1] + '</td>' +
 			'</tr>' +
 			'<tr>' +
-			'<td>' + objCard.col1[2] + '</td>' +
-			'<td>' + objCard.col2[2] + '</td>' +
-			'<td>' + objCard.col3[2] + '</td>' +
-			'<td>' + objCard.col4[2] + '</td>' +
-			'<td>' + objCard.col5[2] + '</td>' +
+			'<td id="x1y3">' + objCard.col1[2] + '</td>' +
+			'<td id="x2y3">' + objCard.col2[2] + '</td>' +
+			'<td id="x3y3">' + objCard.col3[2] + '</td>' +
+			'<td id="x4y3">' + objCard.col4[2] + '</td>' +
+			'<td id="x5y3">' + objCard.col5[2] + '</td>' +
 			'</tr>' +
 			'<tr>' +
-			'<td>' + objCard.col1[3] + '</td>' +
-			'<td>' + objCard.col2[3] + '</td>' +
-			'<td>' + objCard.col3[3] + '</td>' +
-			'<td>' + objCard.col4[3] + '</td>' +
-			'<td>' + objCard.col5[3] + '</td>' +
+			'<td id="x1y4">' + objCard.col1[3] + '</td>' +
+			'<td id="x2y4">' + objCard.col2[3] + '</td>' +
+			'<td id="x3y4">' + objCard.col3[3] + '</td>' +
+			'<td id="x4y4">' + objCard.col4[3] + '</td>' +
+			'<td id="x5y4">' + objCard.col5[3] + '</td>' +
 			'</tr>' +
 			'<tr>' +
-			'<td>' + objCard.col1[4] + '</td>' +
-			'<td>' + objCard.col2[4] + '</td>' +
-			'<td>' + objCard.col3[4] + '</td>' +
-			'<td>' + objCard.col4[4] + '</td>' +
-			'<td>' + objCard.col5[4] + '</td>' +
+			'<td id="x1y5">' + objCard.col1[4] + '</td>' +
+			'<td id="x2y5">' + objCard.col2[4] + '</td>' +
+			'<td id="x3y5">' + objCard.col3[4] + '</td>' +
+			'<td id="x4y5">' + objCard.col4[4] + '</td>' +
+			'<td id="x5y5">' + objCard.col5[4] + '</td>' +
 			'</tr>' +
 			'</table>';
 
