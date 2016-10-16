@@ -41,7 +41,7 @@ describe('Timer module', () => {
 		const el = document.createElement('div');
 		const timer = new Timer(el, 5, EventsConsts.START_GAME, true);
 		setTimeout(() => {
-			expect(timer.selector.style.display).to.be.equal('none');
+			expect(timer.element.style.display).to.be.equal('none');
 		}, timer.seconds);
 	});
 
@@ -54,6 +54,6 @@ describe('Timer module', () => {
 		const el = document.createElement('div');
 		const timer = new Timer(el, 5, EventsConsts.START_GAME, true);
 		timer.hide();
-		expect(timer.selector.style.display).to.be.equal('none');
+		expect(timer.element.style.display).to.be.equal('none');
 	});
 });

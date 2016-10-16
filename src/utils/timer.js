@@ -3,8 +3,8 @@
  */
 
 class Timer {
-	constructor(selector, seconds, eventName, isVisible) {
-		this.selector = selector;
+	constructor(element, seconds, eventName, isVisible) {
+		this.element = element;
 		this.seconds = seconds;
 		this.eventName = eventName;
 		this.isVisible = isVisible;
@@ -14,8 +14,8 @@ class Timer {
 		let sec = 0;
 		if (!isNaN(parseInt(this.seconds))) {
 			const intervalID = setInterval(() => {
-				this.selector.style.display = (this.isVisible ? 'block' : 'none');
-				this.selector.children[0].innerHTML = `00:0${this.seconds - sec}`;
+				this.element.style.display = (this.isVisible ? 'block' : 'none');
+				this.element.children[0].innerHTML = `00:0${this.seconds - sec}`;
 				if (sec++ === this.seconds) {
 					window.clearInterval(intervalID);
 					this.triggerEvent();
@@ -26,7 +26,7 @@ class Timer {
 	}
 
 	hide() {
-		this.selector.style.display = 'none';
+		this.element.style.display = 'none';
 	}
 
 	triggerEvent() {
@@ -41,7 +41,7 @@ class Timer {
 			}
 		);
 		console.log('>>> triggerd event by Timer: ', event);
-		this.selector.dispatchEvent(event);
+		this.element.dispatchEvent(event);
 	}
 }
 

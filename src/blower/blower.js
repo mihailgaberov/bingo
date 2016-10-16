@@ -124,21 +124,21 @@ class Ball {
 }
 
 class Blower {
-	constructor(selector) {
+	constructor(element) {
 		document.addEventListener(EventsConsts.START_GAME, () => {
 			this.startAnimation();
 		});
-		this.selector = selector;
+		this.element = element;
 		this.balls = [];
 		this.init = {
 			play: false,
 			isPlaying: false
 		};
 
-		if (selector) {
-			selector.setAttribute('width', '208px');
-			selector.setAttribute('height', '208px');
-			paper.setup(selector);
+		if (element) {
+			element.setAttribute('width', '208px');
+			element.setAttribute('height', '208px');
+			paper.setup(element);
 		} else {
 			throw new Error('There is no canvas element to draw the blower in.');
 		}
@@ -166,7 +166,7 @@ class Blower {
 	}
 
 	startAnimation() {
-		Utils.toggleVisibility(this.selector, true);
+		Utils.toggleVisibility(this.element, true);
 		for (let i = 0, l = this.balls.length; i < l; i++) {
 			this.balls[i].point = {
 				x: Math.random() * (paper.view.size.width - 10) + 10,

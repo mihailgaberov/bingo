@@ -49,9 +49,8 @@ const Utils = {
 		}
 	},
 
-	toggleVisibility(selector, isVisible) {
-		console.log('>>> selector: ', selector);
-		selector.style.display = (isVisible ? 'block' : 'none');
+	toggleVisibility(element, isVisible) {
+		element.style.display = (isVisible ? 'block' : 'none');
 	}
 };
 

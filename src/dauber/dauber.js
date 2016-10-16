@@ -11,7 +11,7 @@ import PubSubService from '../events/pubsub-service';
 import Ball from './ball';
 
 class Dauber {
-	constructor(conf = null, selector) {
+	constructor(conf = null, element) {
 		if (conf !== null) {
 			document.addEventListener(EventsConsts.START_GAME, () => {
 				const drawBallTime = conf.gameConf.drawIntervalSeconds * 1000;
@@ -19,7 +19,7 @@ class Dauber {
 			});
 
 			this.conf = conf;
-			this.selector = selector;
+			this.element = element;
 			this.arrDrawnNums = [];
 			this.drawTimeout = null;
 			this.visibleBallNum = 0;
@@ -35,11 +35,11 @@ class Dauber {
 	}
 
 	startDrawing(intervalinMs = 7000) {
-		Utils.toggleVisibility(this.selector.parentElement, true);
+		Utils.toggleVisibility(this.element.parentElement, true);
 		this.drawTimeout = setInterval(() => {
 			const drawnNum = this.drawNewNumber();
 			let ball = new Ball(drawnNum, this.pubsub, this.conf.gameConf.skin);
-			ball.draw(this.selector, ++this.visibleBallNum, this.isSecondPhase);
+			ball.draw(this.element, ++this.visibleBallNum, this.isSecondPhase);
 			this.arrVisibleBalls.push(ball);
 
 			// Dispatch new event with the drawn number
@@ -50,7 +50,7 @@ class Dauber {
 					}, bubbles: true, cancelable: true
 				}
 			);
-			this.selector.dispatchEvent(event);
+			this.element.dispatchEvent(event);
 
 			if (this.visibleBallNum === 5) {
 				this.visibleBallNum = 0;
