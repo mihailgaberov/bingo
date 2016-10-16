@@ -73,7 +73,7 @@ class Card {
 		Card.markNumber(element);
 		const clickedElementValue = parseInt(element.innerText);
 		if (clickedElementValue && !isNaN(clickedElementValue)) {
-			if (this.arrDrawnNumbers.indexOf(clickedElementValue) !== -1) {
+			if (this.arrDrawnNumbers.indexOf(clickedElementValue) !== -1 && !element.classList.contains('drawn')) {
 				this.arrWinningNumbers.push(element.id);
 				Card.markDrawnNumber(element);
 
@@ -81,6 +81,8 @@ class Card {
 				if (WinningPatterns.checkHorizontalPattern(this.arrWinningNumbers)) {
 					isBingo = true;
 				} else if (WinningPatterns.checkVerticalPattern(this.arrWinningNumbers)) {
+					isBingo = true;
+				} else if (WinningPatterns.checkDiagonalPattern(this.arrWinningNumbers)) {
 					isBingo = true;
 				}
 

@@ -39,7 +39,22 @@ const WinningPatterns = {
 
 		return isBingo;
 	},
-	checkDiagonalPattern() {},
+
+	checkDiagonalPattern(arr) {
+		const arrStripped = Utils.eliminateDuplicates(arr);
+		let isBingo = false;
+		const arrPatternLeft = ["11", "22", "44", "55"];
+		const arrPatternRight = ["15", "24", "42", "51"];
+
+		console.log(arrStripped);
+
+		isBingo = arrPatternLeft.every(elem => arrStripped.indexOf(elem) > -1);
+		if (!isBingo)
+			isBingo = arrPatternRight.every(elem => arrStripped.indexOf(elem) > -1);
+
+		return isBingo;
+	},
+
 	checkCornersPattern() {}
 };
 
