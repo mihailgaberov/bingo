@@ -40,7 +40,6 @@ class Timer {
 				cancelable: true
 			}
 		);
-		console.log('>>> triggerd event by Timer: ', event);
 		this.element.dispatchEvent(event);
 	}
 }

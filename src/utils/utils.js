@@ -36,7 +36,7 @@ const Utils = {
 			throw new Error('Undefined number given to define ball color');
 		}
 
-		if (num >=1 && num <=15) {
+		if (num >= 1 && num <= 15) {
 			return 'ballB';
 		} else if (num > 15 && num <= 30) {
 			return 'ballI';
@@ -51,6 +51,10 @@ const Utils = {
 
 	toggleVisibility(element, isVisible) {
 		element.style.display = (isVisible ? 'block' : 'none');
+	},
+
+	countInArray(array, what) {
+		return array.filter(item => item == what).length;
 	}
 };
 

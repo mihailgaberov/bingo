@@ -76,6 +76,11 @@ this was each cell is 50px,
         background: radial-gradient(circle at 50% 120%, #e17000, #f6c079 10%, #e17000 80%, #e17000 100%);
         border-radius: 50%;
       }
+
+      &.drawn {
+        background: radial-gradient(circle at 50% 120%, #dce1af, #f6c079 10%, #e11b3c 80%, #93abe1 100%);
+        border-radius: 50%;
+      }
     }
   }
 }

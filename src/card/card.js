@@ -4,9 +4,11 @@
 'use strict';
 
 import { EventsConsts } from '../events/events-consts';
+import { WinningPatterns } from '../utils/winning-patterns';
 
 class Card {
 	constructor(objCard) {
+		this.arrDrawnNumbers = [];
 		this.divCard = document.createElement('div');
 		this.divCard.setAttribute('id', 'card');
 		this.divCard.innerHTML = '<table>' +
@@ -18,63 +20,83 @@ class Card {
 			'<th class="fifthCol">O</th>' +
 			'</tr>' +
 			'<tr>' +
-			'<td id="x1y1">' + objCard.col1[0] + '</td>' +
-			'<td id="x2y1">' + objCard.col2[0] + '</td>' +
-			'<td id="x3y1">' + objCard.col3[0] + '</td>' +
-			'<td id="x4y1">' + objCard.col4[0] + '</td>' +
-			'<td id="x5y1">' + objCard.col5[0] + '</td>' +
+			'<td id="11">' + objCard.col1[0] + '</td>' +
+			'<td id="21">' + objCard.col2[0] + '</td>' +
+			'<td id="31">' + objCard.col3[0] + '</td>' +
+			'<td id="41">' + objCard.col4[0] + '</td>' +
+			'<td id="51">' + objCard.col5[0] + '</td>' +
 			'</tr>' +
 			'<tr>' +
-			'<td id="x1y2">' + objCard.col1[1] + '</td>' +
-			'<td id="x2y2">' + objCard.col2[1] + '</td>' +
-			'<td id="x3y2">' + objCard.col3[1] + '</td>' +
-			'<td id="x4y2">' + objCard.col4[1] + '</td>' +
-			'<td id="x5y2">' + objCard.col5[1] + '</td>' +
+			'<td id="12">' + objCard.col1[1] + '</td>' +
+			'<td id="22">' + objCard.col2[1] + '</td>' +
+			'<td id="32">' + objCard.col3[1] + '</td>' +
+			'<td id="42">' + objCard.col4[1] + '</td>' +
+			'<td id="52">' + objCard.col5[1] + '</td>' +
 			'</tr>' +
 			'<tr>' +
-			'<td id="x1y3">' + objCard.col1[2] + '</td>' +
-			'<td id="x2y3">' + objCard.col2[2] + '</td>' +
-			'<td id="x3y3">' + objCard.col3[2] + '</td>' +
-			'<td id="x4y3">' + objCard.col4[2] + '</td>' +
-			'<td id="x5y3">' + objCard.col5[2] + '</td>' +
+			'<td id="13">' + objCard.col1[2] + '</td>' +
+			'<td id="23">' + objCard.col2[2] + '</td>' +
+			'<td id="33">' + objCard.col3[2] + '</td>' +
+			'<td id="43">' + objCard.col4[2] + '</td>' +
+			'<td id="53">' + objCard.col5[2] + '</td>' +
 			'</tr>' +
 			'<tr>' +
-			'<td id="x1y4">' + objCard.col1[3] + '</td>' +
-			'<td id="x2y4">' + objCard.col2[3] + '</td>' +
-			'<td id="x3y4">' + objCard.col3[3] + '</td>' +
-			'<td id="x4y4">' + objCard.col4[3] + '</td>' +
-			'<td id="x5y4">' + objCard.col5[3] + '</td>' +
+			'<td id="14">' + objCard.col1[3] + '</td>' +
+			'<td id="24">' + objCard.col2[3] + '</td>' +
+			'<td id="34">' + objCard.col3[3] + '</td>' +
+			'<td id="44">' + objCard.col4[3] + '</td>' +
+			'<td id="54">' + objCard.col5[3] + '</td>' +
 			'</tr>' +
 			'<tr>' +
-			'<td id="x1y5">' + objCard.col1[4] + '</td>' +
-			'<td id="x2y5">' + objCard.col2[4] + '</td>' +
-			'<td id="x3y5">' + objCard.col3[4] + '</td>' +
-			'<td id="x4y5">' + objCard.col4[4] + '</td>' +
-			'<td id="x5y5">' + objCard.col5[4] + '</td>' +
+			'<td id="15">' + objCard.col1[4] + '</td>' +
+			'<td id="25">' + objCard.col2[4] + '</td>' +
+			'<td id="35">' + objCard.col3[4] + '</td>' +
+			'<td id="45">' + objCard.col4[4] + '</td>' +
+			'<td id="55">' + objCard.col5[4] + '</td>' +
 			'</tr>' +
 			'</table>';
 
 		this.divCard.addEventListener('click', (e) => {
-			Card.clickCell(e.target);
+			this.clickCell(e.target);
 		});
 
 		document.addEventListener(EventsConsts.NEW_BALL_DRAWN, (e) => {
-			console.log('>>> num: ', e.detail.drawnNumber);
+			this.arrDrawnNumbers.push(parseInt(e.detail.drawnNumber));
 		});
+
+		this.arrWinningNumbers = [];
 
 		return this.divCard;
 	}
 
-	static clickCell(element) {
-		const clickedElementValue = element.innerText;
-		if (clickedElementValue && !isNaN(parseInt(clickedElementValue))) {
-			Card.markNumber(element);
-			//console.log('clicked el: ', clickedElementValue);
+	clickCell(element) {
+		Card.markNumber(element);
+		const clickedElementValue = parseInt(element.innerText);
+		if (clickedElementValue && !isNaN(clickedElementValue)) {
+			if (this.arrDrawnNumbers.indexOf(clickedElementValue) !== -1) {
+				this.arrWinningNumbers.push(element.id);
+				Card.markDrawnNumber(element);
+
+				let isBingo = false;
+				if (WinningPatterns.checkHorizontalPattern(this.arrWinningNumbers)) {
+					isBingo = true;
+				} else if (WinningPatterns.checkVerticalPattern(this.arrWinningNumbers)) {
+					isBingo = true;
+				}
+				console.log('>>> isBingo: ', isBingo);
+			}
+
 		}
 	}
 
 	static markNumber(el) {
-		el.classList.toggle('marked');
+		if (!el.classList.contains('drawn'))
+			el.classList.toggle('marked');
+	}
+
+	static markDrawnNumber(el) {
+		if (!el.classList.contains('drawn'))
+			el.classList.add('drawn');
 	}
 }
 
