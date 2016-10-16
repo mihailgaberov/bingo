@@ -48,7 +48,7 @@ class Ball {
 				duration: duration,
 				delta: delta1,
 				step: function (delta) {
-					element.style.top = (-posUp * delta) + 5.5 + "%";
+					element.style.top = (-posUp * delta) + 6 + "%";
 				}
 			});
 		}
