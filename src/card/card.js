@@ -83,9 +83,12 @@ class Card {
 				} else if (WinningPatterns.checkVerticalPattern(this.arrWinningNumbers)) {
 					isBingo = true;
 				}
-				console.log('>>> isBingo: ', isBingo);
-			}
 
+				if (isBingo) {
+					const elTable = element.parentElement.parentElement.parentElement.parentElement;
+					elTable.classList.add('bingo');
+				}
+			}
 		}
 	}
 

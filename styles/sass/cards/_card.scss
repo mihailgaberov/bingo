@@ -5,7 +5,7 @@ this was each cell is 50px,
   text-align: center;
   padding: 10px;
   width: 271px;
-  height: auto;
+  height: 321px;
   margin: .2em;
   font-family: $main-font;
   font-weight: bold;
@@ -14,6 +14,12 @@ this was each cell is 50px,
   background-color: #fff;
   box-shadow: inset 0 0 7px rgba(0,0,0,0.9);
 
+  &.bingo {
+    background: url('../../../images/logo.png') no-repeat 5px 90px;
+    table {
+      td { display: none; }
+    }
+  }
 
   table {
     width: 100%;
