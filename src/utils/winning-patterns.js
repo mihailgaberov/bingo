@@ -15,8 +15,14 @@ const WinningPatterns = {
 
 		let isBingo = false;
 		for (let i = 1; i <= 5; i++) {
-			if (Utils.countInArray(arrCoordinates, i) === 5) {
-				isBingo = true;
+			if (i !== 3) {
+				if (Utils.countInArray(arrCoordinates, i) === 5) {
+					isBingo = true;
+				}
+			} else {
+				if (Utils.countInArray(arrCoordinates, i) === 4) {
+					isBingo = true;
+				}
 			}
 		}
 
@@ -32,8 +38,14 @@ const WinningPatterns = {
 
 		let isBingo = false;
 		for (let i = 1; i <= 5; i++) {
-			if (Utils.countInArray(arrCoordinates, i) === 5) {
-				isBingo = true;
+			if (i !== 3) {
+				if (Utils.countInArray(arrCoordinates, i) === 5) {
+					isBingo = true;
+				}
+			} else {
+				if (Utils.countInArray(arrCoordinates, i) === 4) {
+					isBingo = true;
+				}
 			}
 		}
 
