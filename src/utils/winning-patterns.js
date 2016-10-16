@@ -46,8 +46,6 @@ const WinningPatterns = {
 		const arrPatternLeft = ["11", "22", "44", "55"];
 		const arrPatternRight = ["15", "24", "42", "51"];
 
-		console.log(arrStripped);
-
 		isBingo = arrPatternLeft.every(elem => arrStripped.indexOf(elem) > -1);
 		if (!isBingo)
 			isBingo = arrPatternRight.every(elem => arrStripped.indexOf(elem) > -1);
@@ -55,7 +53,15 @@ const WinningPatterns = {
 		return isBingo;
 	},
 
-	checkCornersPattern() {}
+	checkCornersPattern(arr) {
+		const arrStripped = Utils.eliminateDuplicates(arr);
+		let isBingo = false;
+		const arrPattern = ["11", "15", "51", "55"];
+
+		isBingo = arrPattern.every(elem => arrStripped.indexOf(elem) > -1);
+
+		return isBingo;
+	}
 };
 
 export { WinningPatterns };

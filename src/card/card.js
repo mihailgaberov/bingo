@@ -84,6 +84,8 @@ class Card {
 					isBingo = true;
 				} else if (WinningPatterns.checkDiagonalPattern(this.arrWinningNumbers)) {
 					isBingo = true;
+				} else if (WinningPatterns.checkCornersPattern(this.arrWinningNumbers)) {
+					isBingo = true;
 				}
 
 				if (isBingo) {
