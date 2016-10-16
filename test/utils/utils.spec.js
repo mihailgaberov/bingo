@@ -26,12 +26,19 @@ describe('Utils service', () => {
 		done();
 	});
 
-	/*it ('Should provide a method for showing/hiding a given element', (done) => {
+	it ('Should provide a method for counting a given element in array', (done) => {
+		const arr = [1, 2, 3, 1];
+		const len = Utils.countInArray(arr, 1);
+		expect(len).to.be.equal(2);
+		done();
+	});
+
+	xit ('Should provide a method for showing/hiding a given element', (done) => {
 		const el = document.createElement('div');
-		el.setAttribute('id', 'test');
+		el.setAttribute('id', 'dauber');
 		document.body.appendChild(el);
 		Utils.toggleVisibility(el, false);
 		expect(el.style.display).to.be.equal('none');
 		done();
-	});*/
+	});
 });
