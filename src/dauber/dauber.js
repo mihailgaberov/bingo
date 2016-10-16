@@ -18,6 +18,13 @@ class Dauber {
 				this.startDrawing(drawBallTime);
 			});
 
+			document.addEventListener(EventsConsts.END_GAME, () => {
+				setTimeout(() => {
+					Utils.toggleVisibility(this.element.parentElement, false);
+				}, 5000);
+			});
+
+
 			this.conf = conf;
 			this.element = element;
 			this.arrDrawnNums = [];
@@ -69,6 +76,14 @@ class Dauber {
 	}
 
 	stopDrawing() {
+		// Dispatch new event when the game ends
+		const event = new CustomEvent(EventsConsts.END_GAME, {
+				detail: {
+					time: new Date()
+				}, bubbles: true, cancelable: true
+			}
+		);
+		this.element.dispatchEvent(event);
 		clearInterval(this.drawTimeout);
 	}
 

@@ -128,6 +128,10 @@ class Blower {
 		document.addEventListener(EventsConsts.START_GAME, () => {
 			this.startAnimation();
 		});
+
+		document.addEventListener(EventsConsts.END_GAME, () => {
+			this.stopAnimation();
+		});
 		this.element = element;
 		this.balls = [];
 		this.init = {
@@ -182,6 +186,7 @@ class Blower {
 
 		setTimeout(() => {
 			this.init.isPlaying = false;
+			Utils.toggleVisibility(this.element, false);
 		}, 5000);
 	}
 }

@@ -46,7 +46,7 @@ class App {
 
 		let apiCtrl = new ApiController();
 		this.cardGen = new CardGenerator(conf);
-		const cardDrawer = new CardDrawer(this.cardGen.generateCards(4), document.getElementById('cardsContainer'));
+		const cardDrawer = new CardDrawer(this.cardGen.generateCards(4), document.querySelector('#cardsContainer'));
 		const startBtn = document.querySelector('#startBtn');
 		const timer = new Timer(document.querySelector('#timerContainer'), conf.gameConf.beforeStartGameSeconds, EventsConsts.START_GAME, true);
 

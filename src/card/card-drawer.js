@@ -5,15 +5,22 @@
 
 import Card from './card';
 import { EventsConsts } from '../events/events-consts';
+import { Utils } from '../utils/utils';
 
 class CardDrawer {
-	constructor(objCards, selector) {
+	constructor(objCards, element) {
 		document.addEventListener(EventsConsts.START_GAME, () => {
-			CardDrawer.draw(objCards, selector);
+			CardDrawer.draw(objCards, element);
+		});
+
+		document.addEventListener(EventsConsts.END_GAME, () => {
+			setTimeout(() => {
+				Utils.toggleVisibility(element, false);
+			}, 5000);
 		});
 	}
 
-	static draw(objCards, selector) {
+	static draw(objCards, element) {
 		let countCards = Object.keys(objCards).length;
 		let arrCards = [];
 
@@ -22,7 +29,7 @@ class CardDrawer {
 		}
 
 		arrCards.forEach((el) => {
-			selector.appendChild(el);
+			element.appendChild(el);
 		});
 
 		return arrCards;
