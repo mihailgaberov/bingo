@@ -1,63 +1,61 @@
 #marketPlace {
   form {
-    ul {
-      list-style: none;
+    label {
+      font-size: 4em;
+      margin-top: -55px;
+    }
 
-      li {
-        display: inline-block;
+    input[type="radio"] {
+      width: 30px;
+      height: 30px;
+    }
 
-        label {
-          font-size: 4em;
-        }
+    #oneCard {
+      background: url('../../../images/market/one_card.png') no-repeat;
+      width: 100px;
+      height: 118px;
+    }
 
-        &.one-card {
-          background: url('../../../images/market/one_card.png') no-repeat;
-          width: 100px;
-          height: 118px;
-        }
+    #twoCards {
+      background: url('../../../images/market/two_cards.png') no-repeat;
+      width: 130px;
+      height: 137px;
+    }
 
-        &.two-cards {
-          background: url('../../../images/market/two_cards.png') no-repeat;
-          width: 130px;
-          height: 137px;
-        }
+    #threeCards {
+      background: url('../../../images/market/three_cards.png') no-repeat;
+      width: 150px;
+      height: 142px;
+    }
 
-        &.three-cards {
-          background: url('../../../images/market/three_cards.png') no-repeat;
-          width: 150px;
-          height: 142px;
-        }
+    #fourCards {
+      background: url('../../../images/market/four_cards.png') no-repeat;
+      width: 180px;
+      height: 150px;
+    }
 
-        &.four-cards {
-          background: url('../../../images/market/four_cards.png') no-repeat;
-          width: 180px;
-          height: 150px;
-        }
+    #fiveCards {
+      background: url('../../../images/market/five_cards.png') no-repeat;
+      width: 174px;
+      height: 148px;
+    }
 
-        &.five-cards {
-          background: url('../../../images/market/five_cards.png') no-repeat;
-          width: 174px;
-          height: 148px;
-        }
+    #sixCards {
+      background: url('../../../images/market/six_cards.png') no-repeat;
+      width: 191px;
+      height: 151px;
+    }
 
-        &.six-cards {
-          background: url('../../../images/market/six_cards.png') no-repeat;
-          width: 191px;
-          height: 151px;
-        }
+    #sevenCards {
+      background: url('../../../images/market/seven_cards.png') no-repeat;
+      width: 206px;
+      height: 153px;
+    }
 
-        &.seven-cards {
-          background: url('../../../images/market/seven_cards.png') no-repeat;
-          width: 206px;
-          height: 153px;
-        }
-
-        &.eight-cards {
-          background: url('../../../images/market/eight_cards.png') no-repeat;
-          width: 218px;
-          height: 153px;
-        }
-      }
+    #eightCards {
+      background: url('../../../images/market/eight_cards.png') no-repeat;
+      width: 218px;
+      height: 153px;
     }
   }
 }
