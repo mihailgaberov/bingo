@@ -10,9 +10,7 @@ form#marketPlaceCards {
       height: 236px;
 
       &:hover {
-        -moz-box-shadow: inset 10px 10px 150px #555ce1;
-        -webkit-box-shadow: inset 10px 10px 150px #555ce1;
-        box-shadow: inset 10px 10px 150px #555ce1;
+        @include selected-state(#555ce1);
       }
 
       label {

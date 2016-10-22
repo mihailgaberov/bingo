@@ -1,0 +1,5 @@
+@mixin selected-state($colour) {
+  -moz-box-shadow: inset 10px 10px 150px $colour;
+  -webkit-box-shadow: inset 10px 10px 150px $colour;
+  box-shadow: inset 10px 10px 150px $colour;
+}
