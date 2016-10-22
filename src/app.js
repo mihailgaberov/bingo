@@ -4,7 +4,7 @@
 'use strict';
 
 import ApiController from './api/api-controller';
-import ViewController from './utils/view-controller';
+import ViewManipulator from './utils/view-manipulator';
 import CardGenerator from './card/card-generator';
 import CardDrawer from './card/card-drawer';
 import Blower from './blower/blower';
@@ -41,10 +41,10 @@ class App {
 	}
 
 	start(conf) {
-		let blower = new Blower(document.querySelector('#blower'));
-		let dauber = new Dauber(conf, document.querySelector('#tube'));
+		const blower = new Blower(document.querySelector('#blower'));
+		const dauber = new Dauber(conf, document.querySelector('#tube'));
 
-		let apiCtrl = new ApiController();
+		const apiCtrl = new ApiController();
 		this.cardGen = new CardGenerator(conf);
 		const cardDrawer = new CardDrawer(this.cardGen.generateCards(4), document.querySelector('#cardsContainer'));
 		const startBtn = document.querySelector('#startBtn');
@@ -65,7 +65,7 @@ class App {
 		}
 
 		if (ApiController.isLogged()) {
-			ViewController.showUserInfo();
+			ViewManipulator.showUserInfo();
 		}
 	}
 }

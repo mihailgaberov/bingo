@@ -13,6 +13,10 @@ form#marketPlaceCards {
         @include selected-state(#555ce1);
       }
 
+      &.selected {
+        @include selected-state(#555ce1);
+      }
+
       label {
         margin: -10px auto 0 auto;
         width: 100%;

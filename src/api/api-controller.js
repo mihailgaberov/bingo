@@ -7,16 +7,16 @@
 import { EventsConsts } from '../events/events-consts';
 import PubSubService from '../events/pubsub-service';
 import LocalStorageService from '../local-storage/local-storage-service';
-import ViewController from '../utils/view-controller';
+import ViewManipulator from '../utils/view-manipulator';
 
 class ApiController {
 	constructor() {
 		if (LocalStorageService.isLoggedIn()) {
-			ViewController.showGameScreen();
+			ViewManipulator.showGameScreen();
 		}
 
 		this.pubsub = new PubSubService();
-		this.viewCtrl = new ViewController(this.pubsub);
+		this.viewCtrl = new ViewManipulator(this.pubsub);
 	}
 
 	static login() {
@@ -45,12 +45,12 @@ class ApiController {
 			return res.json();
 		}).then((returnedValue) => {
 			if (returnedValue.token) {
-				ViewController.showGameScreen();
+				ViewManipulator.showGameScreen();
 				LocalStorageService.saveToken(returnedValue.token);
-				ViewController.showUserInfo();
+				ViewManipulator.showUserInfo();
 			} else {
 				console.log('Show error message for login failed.');
-				ViewController.toggleErrorMessageView('Wrong login details.', true);
+				ViewManipulator.toggleErrorMessageView('Wrong login details.', true);
 			}
 		}).catch(function (err) {
 			console.log('>>> Fetching error: ', err);
@@ -87,10 +87,10 @@ class ApiController {
 		}).then((returnedValue) => {
 			if (returnedValue) {
 				if (returnedValue.isExisted) {
-					ViewController.toggleErrorMessageView('User already existed.', false);
+					ViewManipulator.toggleErrorMessageView('User already existed.', false);
 				} else {
 					LocalStorageService.saveToken(returnedValue.token);
-					ViewController.showGameScreen();
+					ViewManipulator.showGameScreen();
 				}
 			} else {
 				console.log('Show error message for registration failed.');

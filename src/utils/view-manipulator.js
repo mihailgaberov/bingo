@@ -9,7 +9,7 @@ import ApiController from '../api/api-controller';
 import AlertMessagesService from '../messages/alert-messages-service';
 import LocalStorageService from '../local-storage/local-storage-service';
 
-class ViewController {
+class ViewManipulator {
 	constructor(pubsub) {
 		this.signInLink = document.querySelector('.sign-in-link a');
 		this.registerForm = document.querySelector('#registerForm');
@@ -22,7 +22,7 @@ class ViewController {
 
 		pubsub.subscribe(EventsConsts.LOGOUT, (eventData) => {
 			if (eventData.isLogout) {
-				ViewController.updateViewState();
+				ViewManipulator.updateViewState();
 			}
 		});
 
@@ -88,9 +88,9 @@ class ViewController {
 
 	static updateViewState() {
 		if (LocalStorageService.isLoggedIn()) {
-			ViewController.showGameScreen();
+			ViewManipulator.showGameScreen();
 		} else {
-			ViewController.showLoginScreen();
+			ViewManipulator.showLoginScreen();
 		}
 	}
 
@@ -110,4 +110,4 @@ class ViewController {
 	}
 }
 
-export default ViewController;
+export default ViewManipulator;
