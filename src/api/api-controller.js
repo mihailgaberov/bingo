@@ -87,7 +87,7 @@ class ApiController {
 		}).then((returnedValue) => {
 			if (returnedValue) {
 				if (returnedValue.isExisted) {
-					ViewManipulator.toggleErrorMessageView('User already existed.', false);
+					ViewManipulator.toggleErrorMessageView('User already existed.', true);
 				} else {
 					LocalStorageService.saveToken(returnedValue.token);
 					ViewManipulator.showGameScreen();

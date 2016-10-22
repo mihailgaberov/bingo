@@ -14,7 +14,6 @@ class ViewManipulator {
 		this.signInLink = document.querySelector('.sign-in-link a');
 		this.registerForm = document.querySelector('#registerForm');
 		this.loginForm = document.querySelector('#loginForm');
-		this.alertMsg = document.querySelector('#alertMsg');
 
 		this.isOnLoginPage = true;
 
@@ -69,6 +68,8 @@ class ViewManipulator {
 
 	static toggleErrorMessageView(msg, isShow) {
 		const alertMsg = document.querySelector('#alertMsg');
+		console.log(msg);
+		alertMsg.querySelector('#messageText').innerText = msg;
 		if (!isShow) {
 			AlertMessagesService.hideMsg(alertMsg);
 		} else {
