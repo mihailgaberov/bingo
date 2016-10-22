@@ -14,6 +14,7 @@ class ViewManipulator {
 		this.signInLink = document.querySelector('.sign-in-link a');
 		this.registerForm = document.querySelector('#registerForm');
 		this.loginForm = document.querySelector('#loginForm');
+		this.marketPlace = document.querySelector('#marketPlace');
 
 		this.isOnLoginPage = true;
 
@@ -47,6 +48,32 @@ class ViewManipulator {
 			this.loginForm.addEventListener('submit', (e) => {
 				e.preventDefault();
 				ApiController.login();
+			});
+		}
+
+		// Market cards
+		if (this.marketPlace) {
+			this.marketPlace.addEventListener('click', (e) => {
+				const parent = e.target.parentNode.parentNode;
+				const strSelectedClassName = 'selected';
+				const strDesignatedClassName = 'jsMarketCardContainer';
+
+				// Remove 'selected' class from all others elements
+				const arrAllCards = Array.from(document.querySelectorAll('.' + strDesignatedClassName));
+				let len = arrAllCards.length - 1;
+				while (len >= 0) {
+					if (typeof arrAllCards[len] !== 'undefined') {
+						arrAllCards[len].classList.remove(strSelectedClassName);
+					}
+					len--;
+				}
+
+				if (parent.classList.contains(strDesignatedClassName)) {
+					parent.classList.add(strSelectedClassName);
+				} else {
+					parent.parentNode.classList.add(strSelectedClassName);
+				}
+				//e.stopPropagation();
 			});
 		}
 	}
