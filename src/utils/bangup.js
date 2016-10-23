@@ -28,7 +28,6 @@ class Bangup {
 		window.requestAnimationFrame(this.pileNumbers.bind(this));
 	}
 
-
 	pileNumbers(timestamp) {
 		if (!this.startTime) {
 			this.startTime = timestamp;
