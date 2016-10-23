@@ -14,6 +14,7 @@ class ViewManipulator {
 		this.registerForm = document.querySelector('#registerForm');
 		this.loginForm = document.querySelector('#loginForm');
 		this.marketPlace = document.querySelector('#marketPlace');
+		this.btnCloseAlertMsg = document.querySelector('#btnCloseAlertMsg');
 		this.isOnLoginPage = true;
 
 		this.attachViewListeners();
@@ -47,7 +48,13 @@ class ViewManipulator {
 			});
 		}
 
-
+		// We don't use jQuery => cannot use the Bootstrap implementation of closing the
+		// alert messages => implement it custom here
+		if (this.btnCloseAlertMsg) {
+			this.btnCloseAlertMsg.addEventListener('click', (e) => {
+				ViewManipulator.toggleVisibility(e.target.parentNode.parentNode, false);
+			});
+		}
 
 		// Market cards
 		if (this.marketPlace) {
