@@ -12,7 +12,7 @@ import ViewManipulator from '../utils/view-manipulator';
 class ApiController {
 	constructor() {
 		if (LocalStorageService.isLoggedIn()) {
-			ViewManipulator.showGameScreen();
+			ViewManipulator.updateViewState();
 		}
 
 		this.pubsub = new PubSubService();
@@ -45,7 +45,7 @@ class ApiController {
 			return res.json();
 		}).then((returnedValue) => {
 			if (returnedValue.token) {
-				ViewManipulator.showGameScreen();
+				ViewManipulator.updateViewState();
 				LocalStorageService.saveToken(returnedValue.token);
 				ViewManipulator.showUserInfo();
 			} else {
@@ -90,7 +90,7 @@ class ApiController {
 					ViewManipulator.toggleErrorMessageView('User already existed.', true);
 				} else {
 					LocalStorageService.saveToken(returnedValue.token);
-					ViewManipulator.showGameScreen();
+					ViewManipulator.updateViewState();
 				}
 			} else {
 				console.log('Show error message for registration failed.');

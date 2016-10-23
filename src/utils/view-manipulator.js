@@ -14,17 +14,14 @@ class ViewManipulator {
 		this.registerForm = document.querySelector('#registerForm');
 		this.loginForm = document.querySelector('#loginForm');
 		this.marketPlace = document.querySelector('#marketPlace');
-
 		this.isOnLoginPage = true;
 
 		this.attachViewListeners();
-
 		pubsub.subscribe(EventsConsts.LOGOUT, (eventData) => {
 			if (eventData.isLogout) {
 				ViewManipulator.updateViewState();
 			}
 		});
-
 	}
 
 	attachViewListeners() {
@@ -78,22 +75,9 @@ class ViewManipulator {
 		ViewManipulator.toggleVisibility(alertMsg, isShow);
 	}
 
-	static showGameScreen() {
-		document.querySelector('#gameWrapper').style.display = 'block';
-		document.querySelector('#registerPage').style.display = 'none';
-	}
-
-	static showLoginScreen() {
-		document.querySelector('#gameWrapper').style.display = 'none';
-		document.querySelector('#registerPage').style.display = 'block';
-	}
-
 	static updateViewState() {
-		if (LocalStorageService.isLoggedIn()) {
-			ViewManipulator.showGameScreen();
-		} else {
-			ViewManipulator.showLoginScreen();
-		}
+		ViewManipulator.toggleVisibility(document.querySelector('#gameWrapper'), LocalStorageService.isLoggedIn());
+		ViewManipulator.toggleVisibility(document.querySelector('#registerPage'), !LocalStorageService.isLoggedIn());
 	}
 
 	static showUserInfo() {
