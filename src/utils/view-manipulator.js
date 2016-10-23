@@ -73,7 +73,6 @@ class ViewManipulator {
 				} else {
 					parent.parentNode.classList.add(strSelectedClassName);
 				}
-				//e.stopPropagation();
 			});
 		}
 	}
