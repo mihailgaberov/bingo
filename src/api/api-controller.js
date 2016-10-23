@@ -93,6 +93,7 @@ class ApiController {
 				} else {
 					LocalStorageService.saveToken(returnedValue.token);
 					ViewManipulator.updateViewState(undefined, undefined, LocalStorageService.isLoggedIn());
+					ViewManipulator.showUserInfo();
 				}
 			} else {
 				console.log('Show error message for registration failed.');
