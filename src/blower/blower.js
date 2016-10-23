@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import { Utils } from '../utils/utils';
+import ViewManipulator from '../utils/view-manipulator';
 import { paper } from '../../node_modules/paper/dist/paper-full';
 import { NumbersGenerator } from '../utils/numbers-generator';
 import { EventsConsts } from '../events/events-consts';
@@ -170,7 +170,7 @@ class Blower {
 	}
 
 	startAnimation() {
-		Utils.toggleVisibility(this.element, true);
+		ViewManipulator.toggleVisibility(this.element, true);
 		for (let i = 0, l = this.balls.length; i < l; i++) {
 			this.balls[i].point = {
 				x: Math.random() * (paper.view.size.width - 10) + 10,
@@ -186,7 +186,7 @@ class Blower {
 
 		setTimeout(() => {
 			this.init.isPlaying = false;
-			Utils.toggleVisibility(this.element, false);
+			ViewManipulator.toggleVisibility(this.element, false);
 		}, 5000);
 	}
 }

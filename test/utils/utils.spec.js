@@ -33,12 +33,12 @@ describe('Utils service', () => {
 		done();
 	});
 
-	xit ('Should provide a method for showing/hiding a given element', (done) => {
+	/*xit ('Should provide a method for showing/hiding a given element', (done) => {
 		const el = document.createElement('div');
 		el.setAttribute('id', 'dauber');
 		document.body.appendChild(el);
 		Utils.toggleVisibility(el, false);
 		expect(el.style.display).to.be.equal('none');
 		done();
-	});
+	});*/
 });

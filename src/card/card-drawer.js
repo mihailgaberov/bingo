@@ -6,6 +6,7 @@
 import Card from './card';
 import { EventsConsts } from '../events/events-consts';
 import { Utils } from '../utils/utils';
+import ViewManipulator from '../utils/view-manipulator';
 
 class CardDrawer {
 	constructor(objCards, element) {
@@ -15,7 +16,7 @@ class CardDrawer {
 
 		document.addEventListener(EventsConsts.END_GAME, () => {
 			setTimeout(() => {
-				Utils.toggleVisibility(element, false);
+				ViewManipulator.toggleVisibility(element, false);
 			}, 5000);
 		});
 	}

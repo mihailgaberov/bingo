@@ -49,10 +49,6 @@ const Utils = {
 		}
 	},
 
-	toggleVisibility(element, isVisible) {
-		element.style.display = (isVisible ? 'block' : 'none');
-	},
-
 	countInArray(array, what) {
 		return array.filter(item => item == what).length;
 	}

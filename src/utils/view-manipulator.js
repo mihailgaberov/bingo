@@ -6,7 +6,6 @@
 
 import { EventsConsts } from '../events/events-consts';
 import ApiController from '../api/api-controller';
-import AlertMessagesService from '../messages/alert-messages-service';
 import LocalStorageService from '../local-storage/local-storage-service';
 
 class ViewManipulator {
@@ -51,42 +50,23 @@ class ViewManipulator {
 			});
 		}
 
+
+
 		// Market cards
 		if (this.marketPlace) {
 			this.marketPlace.addEventListener('click', (e) => {
-				const parent = e.target.parentNode.parentNode;
-				const strSelectedClassName = 'selected';
-				const strDesignatedClassName = 'jsMarketCardContainer';
-
-				// Remove 'selected' class from all others elements
-				const arrAllCards = Array.from(document.querySelectorAll('.' + strDesignatedClassName));
-				let len = arrAllCards.length - 1;
-				while (len >= 0) {
-					if (typeof arrAllCards[len] !== 'undefined') {
-						arrAllCards[len].classList.remove(strSelectedClassName);
-					}
-					len--;
-				}
-
-				if (parent.classList.contains(strDesignatedClassName)) {
-					parent.classList.add(strSelectedClassName);
-				} else {
-					parent.parentNode.classList.add(strSelectedClassName);
-				}
+				ViewManipulator.toggleMarketCardSelectedState(e);
 			});
 		}
 	}
 
 	toggleFormView(isOnLoginPage) {
-		AlertMessagesService.hideMsg(this.alertMsg);
+		ViewManipulator.toggleVisibility(this.loginForm, !isOnLoginPage);
+		ViewManipulator.toggleVisibility(this.registerForm, isOnLoginPage);
 		if (!isOnLoginPage) {
-			this.registerForm.style.display = 'none';
-			this.loginForm.style.display = 'block';
 			this.signInLink.innerText = 'Don\'t have an account? Register here!';
 			this.isOnLoginPage = true;
 		} else {
-			this.registerForm.style.display = 'block';
-			this.loginForm.style.display = 'none';
 			this.signInLink.innerText = 'Already have an account? Sign in here!';
 			this.isOnLoginPage = false;
 		}
@@ -94,13 +74,8 @@ class ViewManipulator {
 
 	static toggleErrorMessageView(msg, isShow) {
 		const alertMsg = document.querySelector('#alertMsg');
-		console.log(msg);
 		alertMsg.querySelector('#messageText').innerText = msg;
-		if (!isShow) {
-			AlertMessagesService.hideMsg(alertMsg);
-		} else {
-			AlertMessagesService.showMsg(alertMsg);
-		}
+		ViewManipulator.toggleVisibility(alertMsg, isShow);
 	}
 
 	static showGameScreen() {
@@ -134,6 +109,33 @@ class ViewManipulator {
 			elEmail.innerHTML = ApiController.getUserInfo().email;
 			elBalance.innerHTML = ApiController.getUserInfo().balance;
 		}
+	}
+
+	static toggleMarketCardSelectedState(event) {
+		const parent = event.target.parentNode.parentNode;
+		const strSelectedClassName = 'selected';
+		const strDesignatedClassName = 'jsMarketCardContainer';
+
+		// Remove 'selected' class from all others elements
+		const arrAllCards = Array.from(document.querySelectorAll('.' + strDesignatedClassName));
+		let len = arrAllCards.length - 1;
+		while (len >= 0) {
+			if (typeof arrAllCards[len] !== 'undefined') {
+				arrAllCards[len].classList.remove(strSelectedClassName);
+			}
+			len--;
+		}
+
+		if (parent.classList.contains(strDesignatedClassName)) {
+			parent.classList.add(strSelectedClassName);
+		} else {
+			parent.parentNode.classList.add(strSelectedClassName);
+		}
+
+	}
+
+	static toggleVisibility(element, isVisible) {
+		element.style.display = (isVisible ? 'block' : 'none');
 	}
 }
 

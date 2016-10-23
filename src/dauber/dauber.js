@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { Utils } from '../utils/utils';
+import ViewManipulator from '../utils/view-manipulator';
 import { EventsConsts } from '../events/events-consts';
 import { NumbersGenerator } from '../utils/numbers-generator';
 import PubSubService from '../events/pubsub-service';
@@ -20,7 +20,7 @@ class Dauber {
 
 			document.addEventListener(EventsConsts.END_GAME, () => {
 				setTimeout(() => {
-					Utils.toggleVisibility(this.element.parentElement, false);
+					ViewManipulator.toggleVisibility(this.element.parentElement, false);
 				}, 5000);
 			});
 
@@ -33,7 +33,7 @@ class Dauber {
 			this.arrVisibleBalls = [];
 			this.isSecondPhase = false;
 			this.pubsub = new PubSubService();
-			this.pubsub.subscribe('fifthBallDrawn', (evData) => {
+			this.pubsub.subscribe('fifthBallDrawn', () => {
 				this.animateVisibleBalls();
 			});
 		} else {
@@ -42,7 +42,7 @@ class Dauber {
 	}
 
 	startDrawing(intervalinMs = 7000) {
-		Utils.toggleVisibility(this.element.parentElement, true);
+		ViewManipulator.toggleVisibility(this.element.parentElement, true);
 		this.drawTimeout = setInterval(() => {
 			const drawnNum = this.drawNewNumber();
 			let ball = new Ball(drawnNum, this.pubsub, this.conf.gameConf.skin);
@@ -104,7 +104,7 @@ class Dauber {
 	}
 
 	animateVisibleBalls() {
-		Utils.toggleVisibility(this.arrVisibleBalls[0].elBall, false);
+		ViewManipulator.toggleVisibility(this.arrVisibleBalls[0].elBall, false);
 		this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
 		this.arrVisibleBalls.forEach((ball) => {
 			ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 12) + '%';
