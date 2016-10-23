@@ -12,7 +12,7 @@ import ViewManipulator from '../utils/view-manipulator';
 class ApiController {
 	constructor() {
 		if (LocalStorageService.isLoggedIn()) {
-			ViewManipulator.updateViewState();
+			ViewManipulator.updateViewState(undefined, undefined, LocalStorageService.isLoggedIn());
 		}
 
 		this.pubsub = new PubSubService();
@@ -45,12 +45,13 @@ class ApiController {
 			return res.json();
 		}).then((returnedValue) => {
 			if (returnedValue.token) {
-				ViewManipulator.updateViewState();
+				ViewManipulator.updateViewState(undefined, undefined, true);
 				LocalStorageService.saveToken(returnedValue.token);
 				ViewManipulator.showUserInfo();
 			} else {
 				console.log('Show error message for login failed.');
-				ViewManipulator.toggleErrorMessageView('Wrong login details.', true);
+				ViewManipulator.toggleErrorMessageView(document.querySelector('#alertMsg'),
+					 'Wrong login details.', true);
 			}
 		}).catch(function (err) {
 			console.log('>>> Fetching error: ', err);
@@ -87,10 +88,11 @@ class ApiController {
 		}).then((returnedValue) => {
 			if (returnedValue) {
 				if (returnedValue.isExisted) {
-					ViewManipulator.toggleErrorMessageView('User already existed.', true);
+					ViewManipulator.toggleErrorMessageView(document.querySelector('#alertMsg'),
+						'User already existed.', true);
 				} else {
 					LocalStorageService.saveToken(returnedValue.token);
-					ViewManipulator.updateViewState();
+					ViewManipulator.updateViewState(undefined, undefined, LocalStorageService.isLoggedIn());
 				}
 			} else {
 				console.log('Show error message for registration failed.');

@@ -20,7 +20,7 @@ class ViewManipulator {
 		this.attachViewListeners();
 		pubsub.subscribe(EventsConsts.LOGOUT, (eventData) => {
 			if (eventData.isLogout) {
-				ViewManipulator.updateViewState();
+				ViewManipulator.updateViewState(undefined, undefined, LocalStorageService.isLoggedIn());
 			}
 		});
 	}
@@ -76,15 +76,14 @@ class ViewManipulator {
 		}
 	}
 
-	static toggleErrorMessageView(msg, isShow) {
-		const alertMsg = document.querySelector('#alertMsg');
-		alertMsg.querySelector('#messageText').innerText = msg;
-		ViewManipulator.toggleVisibility(alertMsg, isShow);
+	static toggleErrorMessageView(elAlertMsg, msg, isShow) {
+		elAlertMsg.querySelector('#messageText').innerText = msg;
+		ViewManipulator.toggleVisibility(elAlertMsg, isShow);
 	}
 
-	static updateViewState() {
-		ViewManipulator.toggleVisibility(document.querySelector('#gameWrapper'), LocalStorageService.isLoggedIn());
-		ViewManipulator.toggleVisibility(document.querySelector('#registerPage'), !LocalStorageService.isLoggedIn());
+	static updateViewState(elGameWrapper = document.querySelector('#gameWrapper'), elRegisterPage = document.querySelector('#registerPage'), isLoggedIn = false) {
+		ViewManipulator.toggleVisibility(elGameWrapper, isLoggedIn);
+		ViewManipulator.toggleVisibility(elRegisterPage, !isLoggedIn);
 	}
 
 	static showUserInfo() {
