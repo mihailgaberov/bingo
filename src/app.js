@@ -40,11 +40,33 @@ class App {
 		context.start(conf);
 	}
 
+	initPlayingCards(conf) {
+		if (conf.gameConf.playingCards) {
+			this.cardGen = new CardGenerator(conf);
+			const arrRadioButtons = document.querySelectorAll('input[type=radio]');
+			let numberOfCards = 0;
+			let len = arrRadioButtons.length - 1;
+
+			while(len >= 0) {
+				if (arrRadioButtons[len].checked) {
+					console.log(arrRadioButtons[len].value);
+					numberOfCards = Number(arrRadioButtons[len].value);
+				}
+				len--;
+			}
+
+			const cardDrawer = new CardDrawer(this.cardGen.generateCards(numberOfCards), document.querySelector('#cardsContainer'));
+		}
+	}
+
 	start(conf) {
 		// Create the components only if they are allowed in the config
+		const elMarketPlace = document.querySelector('#marketPlace');
 		if (!conf.gameConf.marketCards) {
-			ViewManipulator.toggleVisibility(document.querySelector('#marketPlace'), false);
+			ViewManipulator.toggleVisibility(elMarketPlace, false);
 		}
+
+		this.initPlayingCards(conf);
 
 		if (conf.gameConf.mainGame) {
 			const timer = new Timer(
@@ -54,10 +76,11 @@ class App {
 			);
 
 			const startBtn = document.querySelector('#startBtn');
-
 			if (startBtn) {
 				startBtn.addEventListener('click', (e) => {
 					console.log('>>> Start Game!');
+					ViewManipulator.toggleVisibility(elMarketPlace, false);
+					this.initPlayingCards(conf);
 					timer.pulsate();
 				});
 			}
@@ -68,14 +91,7 @@ class App {
 			const blower = new Blower(document.querySelector('#blower'));
 		}
 
-		if (conf.gameConf.playingCards) {
-			this.cardGen = new CardGenerator(conf);
-			const cardDrawer = new CardDrawer(this.cardGen.generateCards(4), document.querySelector('#cardsContainer'));
-		}
-
 		const apiCtrl = new ApiController();
-
-
 		const logoutBtn = document.querySelector('#logoutBtn');
 		if (logoutBtn) {
 			logoutBtn.addEventListener('click', (e) => {

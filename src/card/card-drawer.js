@@ -29,6 +29,8 @@ class CardDrawer {
 			arrCards.push(CardDrawer.generateCardTable(objCards['card' + (i+1)]));
 		}
 
+		// Clean the cards container first
+		element.innerHTML = '';
 		arrCards.forEach((el) => {
 			element.appendChild(el);
 		});
