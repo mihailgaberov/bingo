@@ -86,9 +86,7 @@ class ViewManipulator {
 		ViewManipulator.toggleVisibility(elRegisterPage, !isLoggedIn);
 	}
 
-	static showUserInfo() {
-		const elUserProfile = document.querySelector('#userProfile');
-
+	static showUserInfo(elUserProfile = document.querySelector('#userProfile')) {
 		if (elUserProfile) {
 			const elName = elUserProfile.querySelector('h2');
 			const elEmail = elUserProfile.querySelector('div a');
