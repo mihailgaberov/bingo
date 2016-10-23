@@ -7,6 +7,7 @@
 import { EventsConsts } from '../events/events-consts';
 import ApiController from '../api/api-controller';
 import LocalStorageService from '../local-storage/local-storage-service';
+import Bangup from '../utils/bangup';
 
 class ViewManipulator {
 	constructor(pubsub) {
@@ -95,7 +96,7 @@ class ViewManipulator {
 
 			elName.innerHTML = ApiController.getUserInfo().name;
 			elEmail.innerHTML = ApiController.getUserInfo().email;
-			elBalance.innerHTML = ApiController.getUserInfo().balance;
+			const balanceBangup = new Bangup(elBalance, 0, ApiController.getUserInfo().balance);
 		}
 	}
 
