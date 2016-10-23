@@ -41,21 +41,40 @@ class App {
 	}
 
 	start(conf) {
-		const blower = new Blower(document.querySelector('#blower'));
-		const dauber = new Dauber(conf, document.querySelector('#tube'));
+		// Create the components only if they are allowed in the config
+		if (!conf.gameConf.marketCards) {
+			ViewManipulator.toggleVisibility(document.querySelector('#marketPlace'), false);
+		}
+
+		if (conf.gameConf.mainGame) {
+			const timer = new Timer(
+				document.querySelector('#timerContainer'),
+				conf.gameConf.beforeStartGameSeconds,
+				EventsConsts.START_GAME, true
+			);
+
+			const startBtn = document.querySelector('#startBtn');
+
+			if (startBtn) {
+				startBtn.addEventListener('click', (e) => {
+					console.log('>>> Start Game!');
+					timer.pulsate();
+				});
+			}
+		}
+
+		if (conf.gameConf.dauber) {
+			const dauber = new Dauber(conf, document.querySelector('#tube'));
+			const blower = new Blower(document.querySelector('#blower'));
+		}
+
+		if (conf.gameConf.playingCards) {
+			this.cardGen = new CardGenerator(conf);
+			const cardDrawer = new CardDrawer(this.cardGen.generateCards(4), document.querySelector('#cardsContainer'));
+		}
 
 		const apiCtrl = new ApiController();
-		this.cardGen = new CardGenerator(conf);
-		const cardDrawer = new CardDrawer(this.cardGen.generateCards(4), document.querySelector('#cardsContainer'));
-		const startBtn = document.querySelector('#startBtn');
-		const timer = new Timer(document.querySelector('#timerContainer'), conf.gameConf.beforeStartGameSeconds, EventsConsts.START_GAME, true);
 
-		if (startBtn) {
-			startBtn.addEventListener('click', (e) => {
-				console.log('>>> Start Game!');
-				timer.pulsate();
-			});
-		}
 
 		const logoutBtn = document.querySelector('#logoutBtn');
 		if (logoutBtn) {
