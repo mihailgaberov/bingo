@@ -12,6 +12,7 @@ class CardDrawer {
 	constructor(objCards, element) {
 		document.addEventListener(EventsConsts.START_GAME, () => {
 			CardDrawer.draw(objCards, element);
+			ViewManipulator.toggleVisibility(element, true);
 		});
 
 		document.addEventListener(EventsConsts.END_GAME, () => {
