@@ -28,11 +28,11 @@ describe('Card Generator', () => {
 
 	const cardGen = new CardGenerator({'gameConf': {'numbers': arrAmericanNumbers}});
 
-	it ('Should initialize Card creation services', () => {
+	it('Should initialize Card creation services', () => {
 		expect(cardGen).not.to.be.undefined;
 	});
 
-	it ('Should generate a given number of cards', () => {
+	it('Should generate a given number of cards', () => {
 		let count = 4;
 
 		const cards = cardGen.generateCards(count);

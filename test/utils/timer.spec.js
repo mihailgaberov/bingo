@@ -13,7 +13,7 @@ describe('Timer module', () => {
 
 	jsdom();
 
-	it ('Should create new Timer object', () => {
+	it('Should create new Timer object', () => {
 		const timer = new Timer(document.querySelector('#timerContainer'), 5, EventsConsts.START_GAME, true);
 		expect(timer).not.to.be.undefined;
 	});
