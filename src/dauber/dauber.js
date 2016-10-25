@@ -21,6 +21,15 @@ class Dauber {
 			document.addEventListener(EventsConsts.END_GAME, () => {
 				setTimeout(() => {
 					ViewManipulator.toggleVisibility(this.element.parentElement, false);
+
+					// Clear all game elements values
+					this.arrDrawnNums = [];
+					this.arrDrawnNums.length = 0;
+					this.arrVisibleBalls = [];
+					this.arrVisibleBalls.length = 0;
+					this.visibleBallNum = 0;
+					this.element.innerHTML = '';
+					this.isSecondPhase = false;
 				}, 5000);
 			});
 

@@ -7,6 +7,7 @@ import ApiController from './api/api-controller';
 import ViewManipulator from './utils/view-manipulator';
 import CardGenerator from './card/card-generator';
 import CardDrawer from './card/card-drawer';
+import MarketCards from './market-place/market-cards';
 import Blower from './blower/blower';
 import Dauber from './dauber/dauber';
 import Timer from './utils/timer';
@@ -40,33 +41,25 @@ class App {
 		context.start(conf);
 	}
 
-	initPlayingCards(conf) {
+	initPlayingCards(conf, container) {
 		if (conf.gameConf.playingCards) {
 			this.cardGen = new CardGenerator(conf);
-			const arrRadioButtons = document.querySelectorAll('input[type=radio]');
-			let numberOfCards = 0;
-			let len = arrRadioButtons.length - 1;
-
-			while(len >= 0) {
-				if (arrRadioButtons[len].checked) {
-					console.log(arrRadioButtons[len].value);
-					numberOfCards = Number(arrRadioButtons[len].value);
-				}
-				len--;
-			}
-
-			const cardDrawer = new CardDrawer(this.cardGen.generateCards(numberOfCards), document.querySelector('#cardsContainer'));
+			const marketCards = new MarketCards(container);
+			const cardDrawer = new CardDrawer(
+				this.cardGen.generateCards(marketCards.getPurchasedCardsCount()),
+				document.querySelector('#cardsContainer')
+			);
 		}
 	}
 
 	start(conf) {
-		// Create the components only if they are allowed in the config
 		const elMarketPlace = document.querySelector('#marketPlace');
+		this.initPlayingCards(conf, elMarketPlace);
+
+		// Create the components only if they are allowed in the config
 		if (!conf.gameConf.marketCards) {
 			ViewManipulator.toggleVisibility(elMarketPlace, false);
 		}
-
-		this.initPlayingCards(conf);
 
 		if (conf.gameConf.mainGame) {
 			const timer = new Timer(
@@ -80,7 +73,7 @@ class App {
 				startBtn.addEventListener('click', (e) => {
 					console.log('>>> Start Game!');
 					ViewManipulator.toggleVisibility(elMarketPlace, false);
-					this.initPlayingCards(conf);
+					this.initPlayingCards(conf, elMarketPlace);
 					timer.pulsate();
 				});
 			}
