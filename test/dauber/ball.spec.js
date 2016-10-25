@@ -46,13 +46,11 @@ describe('Ball module', () => {
 		done();
 	});
 
-	it('Should have methods move, animate, bounce and quad', (done) => {
+	it('Should have methods move and animate', (done) => {
 		const pb = new PubSub();
 		const ball = new Ball(34, pb, 'original');
 		expect(ball.move).not.to.be.undefined;
 		expect(ball.animate).not.to.be.undefined;
-		expect(Ball.bounce).not.to.be.undefined;
-		expect(Ball.quad).not.to.be.undefined;
 		done();
 	});
 });
