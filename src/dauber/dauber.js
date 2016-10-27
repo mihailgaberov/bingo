@@ -42,7 +42,7 @@ class Dauber {
 			this.arrVisibleBalls = [];
 			this.isSecondPhase = false;
 			this.pubsub = new PubSubService();
-			this.pubsub.subscribe('fifthBallDrawn', () => {
+			this.pubsub.subscribe(EventsConsts.FIFTH_BALL_DRAWN, () => {
 				this.animateVisibleBalls();
 			});
 		} else {

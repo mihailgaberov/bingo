@@ -4,6 +4,7 @@
 
 'use strict';
 
+import { EventsConsts } from '../events/events-consts';
 import { Utils } from '../utils/utils';
 
 class Ball {
@@ -100,7 +101,7 @@ class Ball {
 
 			if (progress == 1) {
 				if (opts.isFifth === 5)
-					this.pubsub.publish('fifthBallDrawn', {});
+					this.pubsub.publish(EventsConsts.FIFTH_BALL_DRAWN, {});
 				clearInterval(id);
 			}
 		}, opts.delay || 10);
