@@ -4,8 +4,8 @@
 
 'use strict';
 
-import { EventsConsts } from '../events/events-consts';
 import { Utils } from '../utils/utils';
+import { EventsConsts } from '../events/events-consts';
 
 class Ball {
 	constructor(num, pubsub, skin) {
@@ -35,12 +35,12 @@ class Ball {
 	}
 
 	move(element, delta1, delta2, duration = 1000, visibleBallNum) {
-		const posUp = 5;
-		const startPos = 61;
-		const endPosBall2 = 49;
-		const endPosBall3 = 37;
-		const endPosBall4 = 25;
-		const endPosBall5 = 13;
+		const posUp = 2;
+		const startPos = 58;
+		const endPosBall2 = 43;
+		const endPosBall3 = 28;
+		const endPosBall4 = 13;
+		const endPosBall5 = 1; // TODO: fix this value to align the balls animations
 
 		// If there is the first animation - run it
 		if (delta1 !== null) {
@@ -49,7 +49,7 @@ class Ball {
 				duration: duration,
 				delta: delta1,
 				step: function (delta) {
-					element.style.top = (-posUp * delta) + 6 + "%";
+					element.style.top = (-posUp * delta) + 7 + "%";
 				}
 			});
 		}
