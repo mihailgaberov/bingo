@@ -34,24 +34,13 @@ html, body {
   #gameContainer {
     width: 90%;
     margin: 0 auto;
+    display: flex;
 
     #cardsContainer {
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      float: left;
-      flex-direction: row;
-      justify-content: flex-start;
-      -webkit-flex-flow: row wrap;
+      order: 1;
       padding: 0;
       margin: 0;
       list-style: none;
-    }
-
-    #dauber {
-      float: right;
     }
   }
 }

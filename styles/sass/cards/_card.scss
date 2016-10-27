@@ -4,8 +4,7 @@ this was each cell is 50px,
 #card {
   text-align: center;
   padding: 10px;
-  width: 271px;
-  height: 321px;
+  width: auto;
   margin: .2em;
   font-family: $main-font;
   font-weight: bold;
@@ -30,8 +29,8 @@ this was each cell is 50px,
     th, td {
       border: 1px solid lightgoldenrodyellow;
       text-shadow: 0 1px 1px white;
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
     }
 
     th {

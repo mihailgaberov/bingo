@@ -11,6 +11,7 @@ class Card {
 		this.arrDrawnNumbers = [];
 		this.divCard = document.createElement('div');
 		this.divCard.setAttribute('id', 'card');
+		this.divCard.setAttribute('class', 'col-xs-6 col-sm-3');
 		this.divCard.innerHTML = '<table>' +
 			'<tr>' +
 			'<th class="firstCol">B</th>' +
