@@ -10,7 +10,6 @@
 @import 'market-place/_market-space';
 @import 'market-place/_market_cards';
 @import 'dauber/_blower';
-@import 'dauber/_dauber';
 @import 'dauber/_ball';
 @import 'cards/_card';
 @import 'timer/_timer';
@@ -35,6 +34,11 @@ html, body {
     width: 90%;
     margin: 0 auto;
     display: flex;
+    align-content: flex-start;
+
+    @include breakpointMaxWidth('xs') {
+      flex-wrap: wrap-reverse;
+    }
 
     #cardsContainer {
       order: 1;

@@ -1,11 +1,36 @@
 #blower {
   display: none;
-  border: 3px solid rgba(0, 0, 0, 0.5);
-  border-top: none;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  position: absolute;
-  top: 25%;
-  left: 36%;
+  width: 330px;
+  height: 278px;
+  margin-bottom: 10px;
+  position: relative;
+  order: 2;
+
+  #tube {
+    background: url("../../../images/blower_with_rounded_tube_bgr.png") 0 0;
+    position: relative;
+    width: 260px;
+    height: 75px;
+    margin-right: 65px;
+
+    #ball {
+      display: inline-block;
+      position: absolute;
+      top: 20%;   // start position for ball animations
+      left: 62%;  // start position for ball animations
+    }
+  }
+
+  canvas {
+    background: url("../../../images/blower_with_rounded_tube_bgr.png") -122px -70px;
+    display: none;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    border-top: none;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    left: 36%;
+  }
 }

@@ -81,7 +81,7 @@ class App {
 
 		if (conf.gameConf.dauber) {
 			const dauber = new Dauber(conf, document.querySelector('#tube'));
-			const blower = new Blower(document.querySelector('#blower'));
+			const blower = new Blower(document.querySelector('#blower-balloon'));
 		}
 
 		const apiCtrl = new ApiController();
