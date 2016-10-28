@@ -18,7 +18,11 @@
   @if $point == xxl {
     @media (max-width: 64em) { @content; }
   }
-    //768px - tablet
+  //960px
+  @else if $point == l {
+    @media (max-width: 60em) { @content; }
+  }
+  //768px - tablet
   @else if $point == m {
     @media (max-width: 48em) { @content; }
   }

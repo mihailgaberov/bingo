@@ -25,9 +25,13 @@
   #userProfile {
     font-size: .9em;
 
-    @include breakpointMaxWidth('m') {
+      @include breakpointMaxWidth('l') {
       h2 {
         font-size: .7em;
+      }
+
+      h4 {
+        font-size: .6em;
       }
     }
   }
