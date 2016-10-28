@@ -116,7 +116,7 @@ class Dauber {
 		ViewManipulator.toggleVisibility(this.arrVisibleBalls[0].elBall, false);
 		this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
 		this.arrVisibleBalls.forEach((ball) => {
-			ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 12) + '%';
+			ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 15) + '%';
 		});
 	}
 }

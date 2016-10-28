@@ -36,11 +36,11 @@ class Ball {
 
 	move(element, delta1, delta2, duration = 1000, visibleBallNum) {
 		const posUp = 2;
-		const startPos = 58;
-		const endPosBall2 = 43;
-		const endPosBall3 = 28;
-		const endPosBall4 = 13;
-		const endPosBall5 = 1; // TODO: fix this value to align the balls animations
+		const startPos = 61;
+		const endPosBall2 = 46;
+		const endPosBall3 = 31;
+		const endPosBall4 = 16;
+		const endPosBall5 = 1;
 
 		// If there is the first animation - run it
 		if (delta1 !== null) {
