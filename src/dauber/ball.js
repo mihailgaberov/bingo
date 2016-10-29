@@ -6,6 +6,7 @@
 
 import { Utils } from '../utils/utils';
 import { EventsConsts } from '../events/events-consts';
+import Animator from '../utils/animator';
 
 class Ball {
 	constructor(num, pubsub, skin) {
@@ -27,9 +28,9 @@ class Ball {
 
 		setTimeout(() => {
 			if (isSecondPhase) {
-				this.move(this.elBall, Utils.bounce, Utils.quad, 1000, 5);
+				this.move(this.elBall, Animator.bounce, Animator.quad, 1000, 5);
 			} else {
-				this.move(this.elBall, Utils.bounce, Utils.quad, 1000, visibleBallNum);
+				this.move(this.elBall, Animator.bounce, Animator.quad, 1000, visibleBallNum);
 			}
 		}, 200);
 	}

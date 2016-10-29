@@ -28,9 +28,4 @@ describe('Utils service', () => {
 		expect(len).to.be.equal(2);
 		done();
 	});
-
-	it('Should provide methods used in animataions - bounce and quad', () => {
-		expect(Utils.bounce).not.to.be.undefined;
-		expect(Utils.quad).not.to.be.undefined;
-	});
 });
