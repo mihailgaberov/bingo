@@ -7,11 +7,45 @@
 import Animator from '../../src/utils/animator';
 import assert from 'assert';
 import { expect } from 'chai';
+import jsdom  from 'mocha-jsdom';
 
 describe('Animator module', () => {
 
-	it('Should provide common methods used in animations - bounce(), quad()', () => {
-		expect(Animator.bounce).not.to.be.undefined;
+	jsdom();
+
+	it('Should provide linear method used in animations', () => {
+		expect(Animator.linear).not.to.be.undefined;
+	});
+
+	it('Should provide quadratic method used in animations', () => {
 		expect(Animator.quad).not.to.be.undefined;
+	});
+
+	it('Should provide bounce method used in animations', () => {
+		expect(Animator.bounce).not.to.be.undefined;
+	});
+
+	it('Should provide animate method used in animations', () => {
+		expect(Animator.animate).not.to.be.undefined;
+	});
+
+	it('Should provide move method used in animations', () => {
+		expect(Animator.move).not.to.be.undefined;
+	});
+
+	it('Should animate moving an element from its current to a given coordinates', (done) => {
+		const el = document.createElement('div');
+		el.style.top = '5px';
+		el.style.left = '5px';
+
+		Animator.move(el, 10, 10, Animator.linear, 200, 'px');
+
+		setTimeout(() => {
+			expect(el.style.top).to.be.equal('10px');
+			expect(el.style.left).to.be.equal('10px');
+		}, 500);
+
+		expect(Animator.animate).to.have.been.calledTwice;
+		done();
 	});
 });

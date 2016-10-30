@@ -15,6 +15,53 @@ class Animator {
 	static quad(progress) {
 		return Math.pow(progress, 2)
 	}
+
+	static linear(progress) {
+		return progress
+	}
+
+	static animate(opts) {
+		const start = new Date;
+
+		var id = setInterval(function () {
+			const timePassed = new Date - start;
+			let progress = timePassed / opts.duration;
+
+			if (progress > 1) progress = 1;
+
+			const delta = opts.delta(progress);
+
+			opts.step(delta);
+
+			if (progress === 1) {
+				clearInterval(id);
+			}
+		}, opts.delay || 10);
+	}
+
+	static move(element, toTop, toLeft, delta, duration, units) {
+		if (!isNaN(toTop)) {
+			Animator.animate({
+				delay: 5,
+				duration: duration || 500,
+				delta: delta,
+				step: (delta) => {
+					element.style.top = toTop * delta + units;
+				}
+			});
+		}
+
+		if (!isNaN(toLeft)) {
+			Animator.animate({
+				delay: 10,
+				duration: duration || 1000,
+				delta: delta,
+				step: (delta) => {
+					element.style.left = toLeft * delta + units;
+				}
+			});
+		}
+	}
 }
 
 export default Animator;
