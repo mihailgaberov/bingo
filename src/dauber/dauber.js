@@ -9,6 +9,7 @@ import { EventsConsts } from '../events/events-consts';
 import { NumbersGenerator } from '../utils/numbers-generator';
 import PubSubService from '../events/pubsub-service';
 import Ball from './ball';
+import Animator from '../utils/animator';
 
 class Dauber {
 	constructor(conf = null, element) {
@@ -45,6 +46,10 @@ class Dauber {
 			this.pubsub.subscribe(EventsConsts.FIFTH_BALL_DRAWN, () => {
 				this.animateVisibleBalls();
 			});
+
+			this.elVisibleBallsContainer = document.createElement('div');
+			this.elVisibleBallsContainer.setAttribute('id', 'elVisibleBallsContainer');
+			this.element.appendChild(this.elVisibleBallsContainer);
 		} else {
 			throw new Error('Dauber initialization error - no config');
 		}
@@ -115,9 +120,20 @@ class Dauber {
 	animateVisibleBalls() {
 		ViewManipulator.toggleVisibility(this.arrVisibleBalls[0].elBall, false);
 		this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
+		this.elVisibleBallsContainer.style.left = '0';
+		if (this.elVisibleBallsContainer.lastChild) {
+			this.elVisibleBallsContainer.removeChild(this.elVisibleBallsContainer.lastChild);
+		}
+
 		this.arrVisibleBalls.forEach((ball) => {
 			ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 15) + '%';
 		});
+
+		for (let i = 0, len = this.arrVisibleBalls.length - 1; i < len; i++) {
+			this.elVisibleBallsContainer.appendChild(this.arrVisibleBalls[i].elBall);
+		}
+
+		Animator.move(this.elVisibleBallsContainer, 0, -15, Animator.quad, 1000, '%');
 	}
 }
 

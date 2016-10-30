@@ -37,11 +37,11 @@ class Ball {
 
 	move(element, delta1, delta2, duration = 1000, visibleBallNum) {
 		const posUp = 2;
-		const startPos = 61;
-		const endPosBall2 = 46;
-		const endPosBall3 = 31;
-		const endPosBall4 = 16;
-		const endPosBall5 = 1;
+		const startPos = 62;
+		const endPosBall2 = 47;
+		const endPosBall3 = 32;
+		const endPosBall4 = 17;
+		const endPosBall5 = 2;
 
 		// If there is the first animation - run it
 		if (delta1 !== null) {
@@ -49,7 +49,7 @@ class Ball {
 				delay: 10,
 				duration: duration,
 				delta: delta1,
-				step: function (delta) {
+				step: (delta) => {
 					element.style.top = (-posUp * delta) + 7 + "%";
 				}
 			});
@@ -63,7 +63,7 @@ class Ball {
 					duration: 1000,
 					delta: delta2,
 					isFifth: visibleBallNum,
-					step: function (delta) {
+					step: (delta) => {
 						switch (visibleBallNum) {
 							case 1:
 								element.style.left = (-(startPos * delta) + startPos) + "%";

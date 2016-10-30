@@ -13,6 +13,13 @@
     height: 75px;
     margin-right: 65px;
 
+    #elVisibleBallsContainer {
+      height: 47px;
+      width: 264px;
+      position: absolute;
+      margin-left: 15%;
+    }
+
     #ball {
       display: inline-block;
       position: absolute;
