@@ -133,7 +133,7 @@ class Dauber {
 			this.elVisibleBallsContainer.appendChild(this.arrVisibleBalls[i].elBall);
 		}
 
-		Animator.move(this.elVisibleBallsContainer, 0, -15, Animator.quad, 1000, '%');
+		Animator.move(this.elVisibleBallsContainer, 0, -15, Animator.quad, 500, '%');
 	}
 }
 
