@@ -121,14 +121,18 @@ a[rel="modal:close"] {
 /* Winning Dialog styles */
 #winningDialog {
   width: 500px;
-  height: 400px;
+  height: 405px;
   font-family: $main-font;
 
   header {
+    background: url('../../../images/winner.png') no-repeat center;
+    background-size: 70px 100px;
     height: 100px;
-    background: url('../../../images/logo.png') no-repeat 50% 1%;
-    background-size: 115px 100px;
     border-bottom: 1px solid $winningDialogMainColour;
+
+    @include breakpointMaxWidth('xs') {
+      background-position: left;
+    }
   }
 
   #content {
@@ -141,7 +145,12 @@ a[rel="modal:close"] {
   footer {
     color: $winningDialogMainColour;
     button {
-      //margin: 0 auto;
+      margin-top: 5px;
+      width: 100px;
+
+      @include breakpointMaxWidth('xs') {
+        margin-left: 5px;
+      }
     }
   }
 }
