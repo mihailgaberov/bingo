@@ -12,6 +12,7 @@ import Blower from './blower/blower';
 import Dauber from './dauber/dauber';
 import Timer from './utils/timer';
 import { EventsConsts } from './events/events-consts';
+import WinningDialog from './winning-dialog/winning-dialog';
 import 'es6-promise';
 import 'isomorphic-fetch';
 
@@ -55,6 +56,10 @@ class App {
 	start(conf) {
 		const elMarketPlace = document.querySelector('#marketPlace');
 		this.initPlayingCards(conf, elMarketPlace);
+
+		if (conf.gameConf.winningDialog) {
+			const winningDialog = new WinningDialog('#winningDialog');
+		}
 
 		// Create the components only if they are allowed in the config
 		if (!conf.gameConf.marketCards) {

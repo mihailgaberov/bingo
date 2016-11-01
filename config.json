@@ -29,6 +29,7 @@
     "marketCards": true,
     "dauber": true,
     "playingCards": true,
-    "mainGame": true
+    "mainGame": true,
+    "winningDialog": true
   }
 }

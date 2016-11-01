@@ -1,6 +1,7 @@
 /**
  * Created by Mihail on 10/14/2016.
  */
+"use strict";
 
 class Timer {
 	constructor(element, seconds, eventName, isVisible) {
