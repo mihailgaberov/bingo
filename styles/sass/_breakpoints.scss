@@ -3,6 +3,10 @@
   @if $point == xxl {
     @media (min-width: 64em) { @content; }
   }
+    //960px
+  @else if $point == l {
+    @media (min-width: 60em) { @content; }
+  }
     //768px - tablet
   @else if $point == m {
     @media (min-width: 48em) { @content; }

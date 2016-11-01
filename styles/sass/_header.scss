@@ -5,6 +5,10 @@
   font-family: $main-font;
   color: $main-front-color;
 
+  @include breakpointMaxWidth('xs') {
+    background-size: 115px 100px;
+  }
+
   h1 {
     display: none;
     height: 130px;
@@ -13,7 +17,7 @@
     line-height: 130px;
     text-transform: uppercase;
 
-    @include breakpointMinWidth('m') {
+    @include breakpointMinWidth('l') {
       display: block;
     }
 
@@ -23,15 +27,18 @@
   }
 
   #userProfile {
-    font-size: .9em;
 
-      @include breakpointMaxWidth('l') {
+    h2 {
+      font-size: 1.6em;
+    }
+
+      @include breakpointMaxWidth('m') {
       h2 {
-        font-size: .7em;
+        font-size: .9em;
       }
 
       h4 {
-        font-size: .6em;
+        font-size: .8em;
       }
     }
   }
