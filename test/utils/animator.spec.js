@@ -48,4 +48,16 @@ describe('Animator module', () => {
 		expect(Animator.animate).to.have.been.calledTwice;
 		done();
 	});
+
+	it('Should animate rotating of a given element', (done) => {
+		const el = document.createElement('div');
+		el.style.transform = 0;
+
+		Animator.rotateElement(el, 30, Animator.linear);
+
+		setTimeout(() => {
+			expect(el.style.transform).to.be.equal('30');
+		}, 500);
+		done();
+	});
 });

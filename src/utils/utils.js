@@ -51,10 +51,6 @@ const Utils = {
 
 		countInArray(array, what) {
 			return array.filter(item => item == what).length;
-		},
-
-		rotateElement(element, degrees, delta) {
-			element.style.transform = "rotate(" + degrees * delta + "deg)";
 		}
 	};
 

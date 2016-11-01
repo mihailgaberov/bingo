@@ -62,6 +62,10 @@ class Animator {
 			});
 		}
 	}
+
+	static rotateElement(element, degrees, delta) {
+		element.style.transform = "rotate(" + degrees * delta + "deg)";
+	}
 }
 
 export default Animator;

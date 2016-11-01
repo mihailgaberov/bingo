@@ -67,23 +67,23 @@ class Ball {
 						switch (visibleBallNum) {
 							case 1:
 								element.style.left = (-(startPos * delta) + startPos) + "%";
-								Utils.rotateElement(element, 1440, delta);
+								Animator.rotateElement(element, 1440, delta);
 								break;
 							case 2:
 								element.style.left = (-(endPosBall2 * delta) + startPos) + "%";
-								Utils.rotateElement(element, 1440, delta);
+								Animator.rotateElement(element, 1440, delta);
 								break;
 							case 3:
 								element.style.left = (-(endPosBall3 * delta) + startPos) + "%";
-								Utils.rotateElement(element, 1440, delta);
+								Animator.rotateElement(element, 1440, delta);
 								break;
 							case 4:
 								element.style.left = (-(endPosBall4 * delta) + startPos) + "%";
-								Utils.rotateElement(element, 1440, delta);
+								Animator.rotateElement(element, 1440, delta);
 								break;
 							case 5:
 								element.style.left = (-(endPosBall5 * delta) + startPos) + "%";
-								Utils.rotateElement(element, -360, delta);
+								Animator.rotateElement(element, -360, delta);
 								break;
 						}
 					}
