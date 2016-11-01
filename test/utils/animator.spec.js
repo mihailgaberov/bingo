@@ -49,15 +49,13 @@ describe('Animator module', () => {
 		done();
 	});
 
-	it('Should animate rotating of a given element', (done) => {
+	it('Should animate rotating of a given element', () => {
 		const el = document.createElement('div');
 		el.style.transform = 0;
 
-		Animator.rotateElement(el, 30, Animator.linear);
-
+		Animator.rotateElement(el, 30, Animator.linear, 300);
 		setTimeout(() => {
-			expect(el.style.transform).to.be.equal('30');
+			expect(el.style.transform).to.be.equal('rotate(30deg)');
 		}, 500);
-		done();
 	});
 });

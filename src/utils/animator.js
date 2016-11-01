@@ -63,8 +63,15 @@ class Animator {
 		}
 	}
 
-	static rotateElement(element, degrees, delta) {
-		element.style.transform = "rotate(" + degrees * delta + "deg)";
+	static rotateElement(element, degrees, delta, duration) {
+		Animator.animate({
+			delay: 10,
+			duration: duration || 1000,
+			delta: delta || Animator.linear,
+			step: (delta) => {
+				element.style.transform = "rotate(" + degrees * delta + "deg)";
+			}
+		});
 	}
 }
 
