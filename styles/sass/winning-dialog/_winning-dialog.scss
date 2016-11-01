@@ -121,7 +121,8 @@ a[rel="modal:close"] {
 /* Winning Dialog styles */
 #winningDialog {
   width: 500px;
-  height: 405px;
+  //height: 405px;
+  height: auto;
   font-family: $main-font;
 
   header {
@@ -136,16 +137,38 @@ a[rel="modal:close"] {
   }
 
   #content {
-    height: 250px;
+    height: auto;
     color: $winningDialogMainColour;
     font-size: $mainWinningDialogFontSize;
     border-bottom: 1px solid $winningDialogMainColour;
+
+    div:first-child {
+      font-size: $mainWinningDialogFontSize + .4;
+    }
+
+    @include breakpointMaxWidth('xs') {
+      div:nth-child(2) {
+        font-size: .8em;
+      }
+    }
+
+    div:last-child {
+      font-size: $mainWinningDialogFontSize - .7;
+    }
+
+    span {
+      display: flex;
+      img {
+        margin-right: 5px;
+      }
+    }
   }
 
   footer {
     color: $winningDialogMainColour;
     button {
       margin-top: 5px;
+      margin-bottom: 5px;
       width: 100px;
 
       @include breakpointMaxWidth('xs') {
