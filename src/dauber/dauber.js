@@ -118,6 +118,7 @@ class Dauber {
 	}
 
 	animateVisibleBalls() {
+		console.log('>>> animateVisibleBalls called...');
 		ViewManipulator.toggleVisibility(this.arrVisibleBalls[0].elBall, false);
 		this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
 		this.elVisibleBallsContainer.style.left = '0';
@@ -129,7 +130,7 @@ class Dauber {
 			ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 15) + '%';
 		});
 
-		for (let i = 0, len = this.arrVisibleBalls.length - 1; i < len; i++) {
+		for (let i = 0, len = this.arrVisibleBalls.length; i < len; i++) {
 			this.elVisibleBallsContainer.appendChild(this.arrVisibleBalls[i].elBall);
 		}
 
