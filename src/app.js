@@ -58,7 +58,7 @@ class App {
 		this.initPlayingCards(conf, elMarketPlace);
 
 		if (conf.gameConf.winningDialog) {
-			const winningDialog = new WinningDialog('#winningDialog');
+			const winningDialog = new WinningDialog('#winningDialogContainer');
 		}
 
 		// Create the components only if they are allowed in the config

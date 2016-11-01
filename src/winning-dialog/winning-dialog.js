@@ -12,7 +12,7 @@ class WinningDialog {
 			setTimeout(() => {
 				const modal = new VanillaModal();
 				modal.open(elementID);
-			}, 5000);
+			});
 		});
 	}
 }

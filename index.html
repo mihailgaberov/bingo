@@ -187,12 +187,18 @@
 		<!-- Winning modal START-->
 		<div class="modal">
 			<div class="modal-inner">
-				<a rel="modal:close">Close</a>
+				<a rel="modal:close">X</a>
 				<div class="modal-content"></div>
 			</div>
 		</div>
-		<div id="winningDialog" style="display:none">
-			<img src="http://i.imgur.com/AzKAV.jpg" width="239" height="170" alt="Just Can't Reach.">
+		<div id="winningDialogContainer" style="display: none">
+			<section id="winningDialog">
+				<header>The logo here</header>
+				<div id="content">Bingos: <img src="images/small_logo_30x30.png"> x 50 = 50</div>
+				<footer>
+					<button rel="modal:close" class="btn btn-lg center-block">OK</button>
+				</footer>
+			</section>
 		</div>
 		<!-- Winning modal END-->
 		<div id="timerContainer">
