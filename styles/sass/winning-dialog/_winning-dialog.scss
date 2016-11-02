@@ -126,10 +126,33 @@ a[rel="modal:close"] {
   font-family: $main-font;
 
   header {
-    background: url('../../../images/winner.png') no-repeat center;
-    background-size: 70px 100px;
     height: 100px;
     border-bottom: 1px solid $winningDialogMainColour;
+
+    &.winner-one-bingo {
+      background: url('../../../images/winner_one_bingo.png') no-repeat center;
+      background-size: auto 100px;
+    }
+
+    &.winner-two-bingos {
+      background: url('../../../images/winner_two_bingos.png') no-repeat center;
+      background-size: auto 100px;
+    }
+
+    &.winner-more-than-two-bingos {
+      background: url('../../../images/winner_more_than_two_bingos.png') no-repeat center;
+      background-size: auto 100px;
+    }
+
+    &.no-bingo {
+      background: url('../../../images/no_bingo.png') no-repeat center;
+      background-size: auto 100px;
+    }
+
+    &.no-bingo-no-money {
+      background: url('../../../images/no_bingo_no_money.png') no-repeat center;
+      background-size: auto 100px;
+    }
 
     @include breakpointMaxWidth('xs') {
       background-position: left;
