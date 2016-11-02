@@ -153,7 +153,8 @@ a[rel="modal:close"] {
     }
 
     div:last-child {
-      font-size: $mainWinningDialogFontSize - .7;
+      font-size: $mainWinningDialogFontSize + .1;
+      margin-top: 2%;
     }
 
     span {
