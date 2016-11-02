@@ -74,7 +74,8 @@ class Card {
 		Card.markNumber(element);
 		const clickedElementValue = parseInt(element.innerText);
 		if (clickedElementValue && !isNaN(clickedElementValue)) {
-			if (this.arrDrawnNumbers.indexOf(clickedElementValue) !== -1 && !element.classList.contains('drawn')) {
+			/////////if (this.arrDrawnNumbers.indexOf(clickedElementValue) !== -1 && !element.classList.contains('drawn')) {
+			if (!element.classList.contains('drawn')) {
 				this.arrWinningNumbers.push(element.id);
 				Card.markDrawnNumber(element);
 
@@ -89,9 +90,21 @@ class Card {
 					isBingo = true;
 				}
 
+				//////////////////////////////////
+				isBingo = true;
+
 				if (isBingo) {
 					const elTable = element.parentElement.parentElement.parentElement.parentElement;
 					elTable.classList.add('bingo');
+
+					// Dispatch new event when a Bingo is won
+					const event = new CustomEvent(EventsConsts.BINGO, {
+							detail: {
+								time: new Date()
+							}, bubbles: true, cancelable: true
+						}
+					);
+					this.divCard.dispatchEvent(event);
 				}
 			}
 		}

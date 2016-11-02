@@ -8,6 +8,17 @@ import { EventsConsts } from '../events/events-consts';
 
 class WinningDialog {
 	constructor(elementID) {
+		this.bingos = 0;
+		document.addEventListener(EventsConsts.BINGO, () => {
+			this.bingos++;
+			console.log('>>> Bingos: ', this.bingos);
+		});
+
+		document.addEventListener(EventsConsts.START_GAME, () => {
+			this.bingos = 0;
+			console.log('>>> Bingos nulified: ', this.bingos);
+		});
+
 		document.addEventListener(EventsConsts.END_GAME, () => {
 			setTimeout(() => {
 				const modal = new VanillaModal();

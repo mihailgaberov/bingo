@@ -8,7 +8,8 @@ const EventsConsts = {
 	NEW_BALL_DRAWN: 'newBallDrawn',
 	FIFTH_BALL_DRAWN: 'fifthBallDrawn',
 	START_GAME: 'startGame',
-	END_GAME: 'endGame'
+	END_GAME: 'endGame',
+	BINGO: 'bingo'
 };
 
 export { EventsConsts };

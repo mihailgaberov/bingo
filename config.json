@@ -22,9 +22,9 @@
 	"skin": {
       "name": "original"
     },
-    "turnsCount": 1,
+    "turnsCount": 3,
     "freeSpotImgPath": "<img src='../../images/small_logo_30x30.png' />",
-    "drawIntervalSeconds": 1,
+    "drawIntervalSeconds": 2,
     "beforeStartGameSeconds": 1,
     "marketCards": true,
     "dauber": true,
