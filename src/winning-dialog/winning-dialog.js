@@ -9,22 +9,25 @@ import { EventsConsts } from '../events/events-consts';
 
 class WinningDialog {
 	constructor(elementID) {
+		let bingos = 0;
 		this.elementID = elementID;
-		this.bingos = 0;
+		WinningDialog.attachListeners(bingos, elementID);
+	}
+
+	static attachListeners(bingos, elementID) {
 		document.addEventListener(EventsConsts.BINGO, () => {
-			this.bingos++;
-			console.log('>>> Bingos: ', this.bingos);
+			bingos++;
 		});
 
 		document.addEventListener(EventsConsts.START_GAME, () => {
-			this.bingos = 0;
+			bingos = 0;
 		});
 
 		document.addEventListener(EventsConsts.END_GAME, () => {
 			setTimeout(() => {
 				const objWinning = {
 					elementID: elementID,
-					bingos: this.bingos,
+					bingos: bingos,
 					elBingosContainer: document.querySelector('#bingos'),
 					elBingo: '<span><img src="../../images/small_logo_30x30.png" class="img-responsive"> x 50</span>',
 					elPrize: document.querySelector('#prize')
@@ -35,6 +38,7 @@ class WinningDialog {
 	}
 
 	static createDialog(objWinning) {
+
 		const modal = new VanillaModal();
 
 		// Clear the bingos container each time when the dialog is shown

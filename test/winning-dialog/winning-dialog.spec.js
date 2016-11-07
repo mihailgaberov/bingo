@@ -4,18 +4,25 @@
 'use strict';
 
 import assert from 'assert';
-import VanillaModal from 'vanilla-modal';
 import WinningDialog from '../../src/winning-dialog/winning-dialog';
 import { expect } from 'chai';
-//import jsdom from 'mocha-jsdom';
+import sinon from 'sinon';
+import jsdom  from 'mocha-jsdom';
+
 
 describe('WinningDialog module', () => {
 
-	//jsdom();
+	jsdom();
 
-	it('Should get the ID of a DOM element to contain the modal', (done) => {
-		//const wd = new WinningDialog('#id');
-		//expect(wd.elementID).to.be.equal('#id');
-		done();
+	it('Should get the ID of a DOM element to contain the modal', () => {
+		const wd = new WinningDialog('#id');
+		expect(wd.elementID).to.be.equal('#id');
 	});
+
+	it('Should attach the necessary listeners', () => {
+		const spy = sinon.spy(WinningDialog, 'attachListeners');
+		const wd = new WinningDialog('#id');
+		assert(spy.calledOnce);
+	});
+
 });
