@@ -28,9 +28,8 @@ class WinningDialog {
 				const objWinning = {
 					elementID: elementID,
 					bingos: bingos,
-					elBingosContainer: document.querySelector('#bingos'),
-					elBingo: '<span><img src="../../images/small_logo_30x30.png" class="img-responsive"> x 50</span>',
-					elPrize: document.querySelector('#prize')
+					elBingosContainer: null,
+					elPrize: null
 				};
 				WinningDialog.createDialog(objWinning);
 			});
@@ -38,40 +37,63 @@ class WinningDialog {
 	}
 
 	static createDialog(objWinning) {
+		const elDialog = document.querySelector(objWinning.elementID);
+		const elDialogContent = elDialog.querySelector('#content');
+		const elHeader = document.querySelector('header');
 
-		const modal = new VanillaModal();
 
-		// Clear the bingos container each time when the dialog is shown
-		objWinning.elBingosContainer.innerHTML = '';
+		// Clear header classes
+		elHeader.classList = '';
+
+		if (!document.body.contains(document.querySelector('#bingos'))) {
+			objWinning.elBingosContainer = document.createElement('div');
+			objWinning.elBingosContainer.setAttribute('id', 'bingos');
+			objWinning.elBingosContainer.setAttribute('class', 'col-sm-3');
+			elDialogContent.appendChild(objWinning.elBingosContainer);
+		} else {
+			objWinning.elBingosContainer = document.querySelector('#bingos');
+			objWinning.elBingosContainer.innerHTML = '';
+		}
+
+		if (!document.body.contains(document.querySelector('#prize'))) {
+			objWinning.elPrize = document.createElement('div');
+			objWinning.elPrize.setAttribute('id', 'prize');
+			objWinning.elPrize.setAttribute('class', 'col-sm-5');
+			elDialogContent.appendChild(objWinning.elPrize);
+		} else {
+			objWinning.elPrize = document.querySelector('#prize');
+		}
 
 		// Define which header image to show
 		if (objWinning.bingos === 0) {
-			document.querySelector(objWinning.elementID).querySelector('header').classList.add('no-bingo');
+			elHeader.classList.add('no-bingo');
 		}
 
 		if (objWinning.bingos === 0 && ApiController.getUserInfo().balance === 0) {
-			document.querySelector(objWinning.elementID).querySelector('header').classList.add('no-bingo-no-money');
+			elHeader.classList.add('no-bingo-no-money');
 		}
 
 		if (objWinning.bingos === 1) {
-			document.querySelector(objWinning.elementID).querySelector('header').classList.add('winner-one-bingo');
+			elHeader.classList.add('winner-one-bingo');
 		}
 
 		if (objWinning.bingos === 2) {
-			document.querySelector(objWinning.elementID).querySelector('header').classList.add('winner-two-bingos');
+			elHeader.classList.add('winner-two-bingos');
 		}
 
 		if (objWinning.bingos > 2) {
-			document.querySelector(objWinning.elementID).querySelector('header').classList.add('winner-more-than-two-bingos');
+			elHeader.classList.add('winner-more-than-two-bingos');
 		}
-
 
 		objWinning.elPrize.innerHTML = `${objWinning.bingos} x 50 = ${objWinning.bingos * 50}`;
 
+
 		while(objWinning.bingos > 0) {
-			objWinning.elBingosContainer.innerHTML += objWinning.elBingo;
+			objWinning.elBingosContainer.innerHTML += '<span><img src="../../images/small_logo_30x30.png" class="img-responsive"> x 50</span>';
 			objWinning.bingos--;
 		}
+
+		let modal = new VanillaModal();
 		modal.open(objWinning.elementID);
 	}
 }
