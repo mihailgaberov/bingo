@@ -87,7 +87,6 @@ class WinningDialog {
 
 		objWinning.elPrize.innerHTML = `${objWinning.bingos} x 50 = ${objWinning.bingos * 50}`;
 
-
 		while(objWinning.bingos > 0) {
 			objWinning.elBingosContainer.innerHTML += '<span><img src="../../images/small_logo_30x30.png" class="img-responsive"> x 50</span>';
 			objWinning.bingos--;
