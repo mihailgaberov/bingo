@@ -92,7 +92,7 @@ class WinningDialog {
 			objWinning.bingos--;
 		}
 
-		let modal = new VanillaModal();
+		const modal = new VanillaModal();
 		modal.open(objWinning.elementID);
 	}
 }
