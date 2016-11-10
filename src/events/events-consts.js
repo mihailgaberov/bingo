@@ -9,7 +9,8 @@ const EventsConsts = {
 	FIFTH_BALL_DRAWN: 'fifthBallDrawn',
 	START_GAME: 'startGame',
 	END_GAME: 'endGame',
-	BINGO: 'bingo'
+	BINGO: 'bingo',
+	PRIZE_WON: 'prizeWon'
 };
 
 export { EventsConsts };

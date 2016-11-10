@@ -10,6 +10,7 @@ import { EventsConsts } from '../events/events-consts';
 class WinningDialog {
 	constructor(elementID) {
 		let bingos = 0;
+		this.prize = 21;
 		this.elementID = elementID;
 		WinningDialog.attachListeners(bingos, elementID);
 	}
@@ -88,15 +89,24 @@ class WinningDialog {
 
 		elHeader.classList.add(WinningDialog.getHeaderImgClass(objWinning.bingos));
 
-		objWinning.elPrize.innerHTML = `${objWinning.bingos} x 50 = ${objWinning.bingos * 50}`;
+		const prizeSum = objWinning.bingos * 50;
+		objWinning.elPrize.innerHTML = `${objWinning.bingos} x 50 = ${prizeSum}`;
 
 		while(objWinning.bingos > 0) {
 			objWinning.elBingosContainer.innerHTML += '<span><img src="../../images/small_logo_30x30.png" class="img-responsive"> x 50</span>';
 			objWinning.bingos--;
 		}
 
-		const modal = new VanillaModal();
-		modal.open(objWinning.elementID);
+		WinningDialog.openDialog(objWinning.elementID);
+	}
+
+	static openDialog(elementId) {
+		const modal = new VanillaModal({onClose: WinningDialog.onCloseWinningModal});
+		modal.open(elementId);
+	}
+
+	static onCloseWinningModal(e) {
+		console.log('>>> e= ', e);
 	}
 }
 

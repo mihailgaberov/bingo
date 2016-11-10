@@ -12,7 +12,7 @@ import Blower from './blower/blower';
 import Dauber from './dauber/dauber';
 import Timer from './utils/timer';
 import { EventsConsts } from './events/events-consts';
-import WinningDialog from './winning-dialog/winning-dialog';
+import WinningDialog from './winning/winning-dialog';
 import 'es6-promise';
 import 'isomorphic-fetch';
 
