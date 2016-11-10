@@ -36,11 +36,33 @@ class WinningDialog {
 		});
 	}
 
+	static getHeaderImgClass(bingos) {
+		// Define which header image to show
+		if (bingos === 0) {
+			return 'no-bingo';
+		}
+
+		if (bingos === 0 && ApiController.getUserInfo().balance === 0) {
+			return 'no-bingo-no-money';
+		}
+
+		if (bingos === 1) {
+			return 'winner-one-bingo';
+		}
+
+		if (bingos === 2) {
+			return 'winner-two-bingos';
+		}
+
+		if (bingos > 2) {
+			return 'winner-more-than-two-bingos';
+		}
+	}
+
 	static createDialog(objWinning) {
 		const elDialog = document.querySelector(objWinning.elementID);
 		const elDialogContent = elDialog.querySelector('#content');
 		const elHeader = document.querySelector('header');
-
 
 		// Clear header classes
 		elHeader.classList = '';
@@ -64,26 +86,7 @@ class WinningDialog {
 			objWinning.elPrize = document.querySelector('#prize');
 		}
 
-		// Define which header image to show
-		if (objWinning.bingos === 0) {
-			elHeader.classList.add('no-bingo');
-		}
-
-		if (objWinning.bingos === 0 && ApiController.getUserInfo().balance === 0) {
-			elHeader.classList.add('no-bingo-no-money');
-		}
-
-		if (objWinning.bingos === 1) {
-			elHeader.classList.add('winner-one-bingo');
-		}
-
-		if (objWinning.bingos === 2) {
-			elHeader.classList.add('winner-two-bingos');
-		}
-
-		if (objWinning.bingos > 2) {
-			elHeader.classList.add('winner-more-than-two-bingos');
-		}
+		elHeader.classList.add(WinningDialog.getHeaderImgClass(objWinning.bingos));
 
 		objWinning.elPrize.innerHTML = `${objWinning.bingos} x 50 = ${objWinning.bingos * 50}`;
 
