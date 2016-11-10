@@ -11,7 +11,10 @@ class FlyingPrize {
 		this.sum = sum;
 
 		document.addEventListener(EventsConsts.PRIZE_WON, () => {
-			console.log('>>> animate flying the prize= ', this.sum);
+			if (this.sum > 0) {
+				console.log('>>> animate flying the prize= ', this.sum);
+				this.sum = 0;
+			}
 		});
 	}
 }

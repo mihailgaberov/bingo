@@ -92,14 +92,12 @@ class WinningDialog {
 		const prizeSum = objWinning.bingos * 50;
 		objWinning.elPrize.innerHTML = `${objWinning.bingos} x 50 = ${prizeSum}`;
 
-		if (prizeSum > 0) {
-			const flyingPrize = new FlyingPrize(prizeSum);
-		}
-
 		while(objWinning.bingos > 0) {
 			objWinning.elBingosContainer.innerHTML += '<span><img src="../../images/small_logo_30x30.png" class="img-responsive"> x 50</span>';
 			objWinning.bingos--;
 		}
+
+		const flyingPrize = new FlyingPrize(prizeSum);
 
 		WinningDialog.openDialog(objWinning.elementID);
 	}
@@ -110,7 +108,7 @@ class WinningDialog {
 	}
 
 	static onCloseWinningModal() {
-		// Dispatch new event when the game ends
+		// Dispatch new event when the dialog is closed
 		const event = new CustomEvent(EventsConsts.PRIZE_WON, {
 				detail: {
 					time: new Date()
