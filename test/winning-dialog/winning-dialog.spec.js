@@ -32,8 +32,4 @@ describe('WinningDialog module', () => {
 		className = WinningDialog.getHeaderImgClass(0);
 		expect(className).to.be.equal('no-bingo');
 	});
-
-	it('Should create the winning modal', () => {
-
-	});
 });
