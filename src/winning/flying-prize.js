@@ -11,7 +11,7 @@ class FlyingPrize {
 		this.sum = sum;
 
 		document.addEventListener(EventsConsts.PRIZE_WON, () => {
-			console.log('>>> animate flying the prize');
+			console.log('>>> animate flying the prize= ', this.sum);
 		});
 	}
 }

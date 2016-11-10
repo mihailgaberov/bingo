@@ -109,8 +109,15 @@ class WinningDialog {
 		modal.open(elementId);
 	}
 
-	static onCloseWinningModal(e) {
-		console.log('>>> e= ', e);
+	static onCloseWinningModal() {
+		// Dispatch new event when the game ends
+		const event = new CustomEvent(EventsConsts.PRIZE_WON, {
+				detail: {
+					time: new Date()
+				}, bubbles: true, cancelable: true
+			}
+		);
+		document.dispatchEvent(event);
 	}
 }
 
