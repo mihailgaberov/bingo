@@ -6,11 +6,11 @@
 import ApiController from '../api/api-controller';
 import VanillaModal from 'vanilla-modal';
 import { EventsConsts } from '../events/events-consts';
+import FlyingPrize from './flying-prize';
 
 class WinningDialog {
 	constructor(elementID) {
 		let bingos = 0;
-		this.prize = 21;
 		this.elementID = elementID;
 		WinningDialog.attachListeners(bingos, elementID);
 	}
@@ -91,6 +91,10 @@ class WinningDialog {
 
 		const prizeSum = objWinning.bingos * 50;
 		objWinning.elPrize.innerHTML = `${objWinning.bingos} x 50 = ${prizeSum}`;
+
+		if (prizeSum > 0) {
+			const flyingPrize = new FlyingPrize(prizeSum);
+		}
 
 		while(objWinning.bingos > 0) {
 			objWinning.elBingosContainer.innerHTML += '<span><img src="../../images/small_logo_30x30.png" class="img-responsive"> x 50</span>';
