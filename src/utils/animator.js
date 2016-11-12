@@ -39,7 +39,7 @@ class Animator {
 		}, opts.delay || 10);
 	}
 
-	static move(element, toTop, toLeft, delta, duration, units) {
+	static moveVerticalHorizontal(element, toTop, toLeft, delta, duration, units) {
 		if (!isNaN(toTop)) {
 			Animator.animate({
 				delay: 5,
@@ -72,6 +72,20 @@ class Animator {
 				element.style.transform = "rotate(" + degrees * delta + "deg)";
 			}
 		});
+	}
+
+	static moveDiagonally(element, toTop, toLeft, delta, duration, units) {
+		if (!isNaN(toLeft) && !isNaN(toTop)) {
+			Animator.animate({
+				delay: 10,
+				duration: duration || 1000,
+				delta: delta,
+				step: (delta) => {
+					element.style.top = toTop * delta + units;
+					element.style.left = toLeft * delta + units;
+				}
+			});
+		}
 	}
 }
 

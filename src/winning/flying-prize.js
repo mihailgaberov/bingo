@@ -24,7 +24,9 @@ class FlyingPrize {
 		elFlyingPrize.setAttribute('id', 'flyingPrize');
 		elFlyingPrize.innerHTML = sum;
 		document.body.appendChild(elFlyingPrize);
-		//Animator.move(elFlyingPrize, 100, 1000, Animator.linear, 3000, 'px');
+
+		// Animate moving the element to top: 0%, left: 87%
+		Animator.moveDiagonally(elFlyingPrize, 0, 87, Animator.quad, 3000, '%');
 	}
 }
 

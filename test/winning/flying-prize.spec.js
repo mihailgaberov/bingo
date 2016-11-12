@@ -19,4 +19,8 @@ describe('FlyingPrize module', () => {
 		const fp = new FlyingPrize(123);
 		expect(fp.sum).to.be.equal(123);
 	});
+
+	it('Should contain a method for animating the prize', () => {
+		expect(FlyingPrize.animatePrizeFlying).not.to.be.undefined;
+	});
 });

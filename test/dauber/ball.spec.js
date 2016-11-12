@@ -46,7 +46,7 @@ describe('Ball module', () => {
 		done();
 	});
 
-	it('Should have methods move and animate', (done) => {
+	it('Should have methods moveVerticalHorizontal and animate', (done) => {
 		const pb = new PubSub();
 		const ball = new Ball(34, pb, 'original');
 		expect(ball.move).not.to.be.undefined;

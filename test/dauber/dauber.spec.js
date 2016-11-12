@@ -89,7 +89,7 @@ describe('Dauber module', () => {
 		done();
 	});
 
-	it('Should be able to move the balls when 5 are visible and hide the first one', (done) => {
+	it('Should be able to moveVerticalHorizontal the balls when 5 are visible and hide the first one', (done) => {
 		const selector = document.createElement('div');
 		document.body.appendChild(selector);
 

@@ -29,8 +29,8 @@ describe('Animator module', () => {
 		expect(Animator.animate).not.to.be.undefined;
 	});
 
-	it('Should provide move method used in animations', () => {
-		expect(Animator.move).not.to.be.undefined;
+	it('Should provide moveVerticalHorizontal method used in animations', () => {
+		expect(Animator.moveVerticalHorizontal).not.to.be.undefined;
 	});
 
 	it('Should animate moving an element from its current to a given coordinates', (done) => {
@@ -38,7 +38,7 @@ describe('Animator module', () => {
 		el.style.top = '5px';
 		el.style.left = '5px';
 
-		Animator.move(el, 10, 10, Animator.linear, 200, 'px');
+		Animator.moveVerticalHorizontal(el, 10, 10, Animator.linear, 200, 'px');
 
 		setTimeout(() => {
 			expect(el.style.top).to.be.equal('10px');
