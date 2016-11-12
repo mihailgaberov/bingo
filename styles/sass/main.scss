@@ -1,4 +1,6 @@
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+ @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 @import '_fonts';
 @import '_variables';
 @import '_mixins';
@@ -13,7 +15,8 @@
 @import 'dauber/_ball';
 @import 'cards/_card';
 @import 'timer/_timer';
-@import 'winning-dialog/_winning-dialog';
+@import 'winning/_winning-dialog';
+@import 'winning/_flying_prize';
 
 html, body {
   height: 100%;

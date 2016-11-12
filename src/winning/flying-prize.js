@@ -13,7 +13,6 @@ class FlyingPrize {
 
 		document.addEventListener(EventsConsts.PRIZE_WON, () => {
 			if (this.sum > 0) {
-				console.log('>>> animate flying the prize= ', this.sum);
 				FlyingPrize.animatePrizeFlying(this.sum);
 				this.sum = 0;
 			}
@@ -21,11 +20,11 @@ class FlyingPrize {
 	}
 
 	static animatePrizeFlying(sum) {
-		const elPrize = document.createElement('div');
-		elPrize.setAttribute('id', 'flyingPrize');
-		elPrize.innerHTML = sum;
-		document.appendChild(elPrize);
-		Animator.move(elPrize, 500, 600, Animator.quad, 1000, 'px');
+		const elFlyingPrize = document.createElement('div');
+		elFlyingPrize.setAttribute('id', 'flyingPrize');
+		elFlyingPrize.innerHTML = sum;
+		document.body.appendChild(elFlyingPrize);
+		//Animator.move(elFlyingPrize, 100, 1000, Animator.linear, 3000, 'px');
 	}
 }
 
