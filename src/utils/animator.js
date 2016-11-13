@@ -2,6 +2,10 @@
  * Created by Mihail on 10/29/2016.
  */
 
+'use strict';
+
+import { EventsConsts } from '../events/events-consts';
+
 class Animator {
 
 	static bounce(progress) {
@@ -74,18 +78,33 @@ class Animator {
 		});
 	}
 
-	static moveDiagonally(element, toTop, toLeft, delta, duration, units) {
+	static moveDiagonally(element, fromTop, fromLeft, toTop, toLeft, delta, duration, units) {
 		if (!isNaN(toLeft) && !isNaN(toTop)) {
 			Animator.animate({
 				delay: 10,
 				duration: duration || 1000,
 				delta: delta,
 				step: (delta) => {
-					element.style.top = toTop * delta + units;
-					element.style.left = toLeft * delta + units;
+					element.style.top = fromTop + (toTop * delta) + units;
+					element.style.left = fromLeft + (toLeft * delta) + units;
 				}
 			});
+
+			Animator.dispatchEventAfterDuration(duration);
 		}
+	}
+
+	static dispatchEventAfterDuration(duration = 1000) {
+		// Dispatch new event when the animation duration expires
+		setTimeout(() => {
+			const event = new CustomEvent(EventsConsts.FLYING_PRIZE_ANIMATION_ENDS, {
+					detail: {
+						time: new Date()
+					}, bubbles: true, cancelable: true
+				}
+			);
+			document.dispatchEvent(event);
+		}, duration);
 	}
 }
 

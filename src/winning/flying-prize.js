@@ -26,7 +26,12 @@ class FlyingPrize {
 		document.body.appendChild(elFlyingPrize);
 
 		// Animate moving the element to top: 0%, left: 87%
-		Animator.moveDiagonally(elFlyingPrize, 0, 87, Animator.quad, 3000, '%');
+		Animator.moveDiagonally(elFlyingPrize, 45, 45, -45, 42, Animator.quad, 3000, '%');
+
+		document.addEventListener(EventsConsts.FLYING_PRIZE_ANIMATION_ENDS, () => {
+			if (document.body.contains(elFlyingPrize))
+				document.body.removeChild(elFlyingPrize);
+		});
 	}
 }
 
