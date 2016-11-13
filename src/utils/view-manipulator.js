@@ -92,12 +92,16 @@ class ViewManipulator {
 			const elName = elUserProfile.querySelector('h2');
 			const elEmail = elUserProfile.querySelector('div a');
 			elEmail.setAttribute('href', 'mailto:' + ApiController.getUserInfo().email);
-			const elBalance = elUserProfile.querySelector('h4 span');
 
 			elName.innerHTML = ApiController.getUserInfo().name;
 			elEmail.innerHTML = ApiController.getUserInfo().email;
-			const balanceBangup = new Bangup(elBalance, 0, ApiController.getUserInfo().balance);
+			ViewManipulator.updateBalance(0, ApiController.getUserInfo().balance);
 		}
+	}
+
+	static updateBalance(fromSum, toSum) {
+		const elBalance = document.querySelector('#userProfile').querySelector('h4 span');
+		const balanceBangup = new Bangup(elBalance, fromSum, toSum);
 	}
 
 	static toggleMarketCardSelectedState(event) {

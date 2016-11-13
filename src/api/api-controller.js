@@ -137,7 +137,7 @@ class ApiController {
 			return res.json();
 		}).then((returnedValue) => {
 			if (returnedValue) {
-				ViewManipulator.showUserInfo();
+				ViewManipulator.updateBalance(ApiController.getUserInfo().balance, returnedValue.balance);
 			} else {
 				console.log('Show error message for setting new balance failed.');
 			}
