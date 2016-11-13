@@ -125,6 +125,7 @@ class ApiController {
 			method: 'POST',
 			body: JSON.stringify({
 				email: ApiController.getUserInfo().email,
+				isLoggedIn: LocalStorageService.isLoggedIn(),
 				balance: sum
 			}),
 			mode: 'cors',
