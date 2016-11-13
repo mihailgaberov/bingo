@@ -8,6 +8,7 @@
 
 import assert from 'assert';
 import FlyingPrize from '../../src/winning/flying-prize';
+import Animator from '../../src/utils/animator'
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 
@@ -22,5 +23,10 @@ describe('FlyingPrize module', () => {
 
 	it('Should contain a method for animating the prize', () => {
 		expect(FlyingPrize.animatePrizeFlying).not.to.be.undefined;
+	});
+
+	it('Should use Animator method moveDiagonally', () => {
+		FlyingPrize.animatePrizeFlying(123);
+		expect(Animator.moveDiagonally).to.be.calledOnce;
 	});
 });

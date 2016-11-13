@@ -58,4 +58,17 @@ describe('Animator module', () => {
 			expect(el.style.transform).to.be.equal('rotate(30deg)');
 		}, 500);
 	});
+
+	it('Should have method for triggering an event after given duration expires', () => {
+		let catched = false;
+		document.addEventListener('test', () => {
+			catched = true;
+		});
+
+		Animator.dispatchEventAfterDuration('test', 1100);
+
+		setTimeout(() => {
+			expect(catched).to.be.truthy;
+		}, 1100);
+	});
 });

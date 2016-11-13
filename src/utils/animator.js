@@ -90,14 +90,14 @@ class Animator {
 				}
 			});
 
-			Animator.dispatchEventAfterDuration(duration);
+			Animator.dispatchEventAfterDuration(EventsConsts.FLYING_PRIZE_ANIMATION_ENDS, duration);
 		}
 	}
 
-	static dispatchEventAfterDuration(duration = 1000) {
+	static dispatchEventAfterDuration(eventName, duration = 1000) {
 		// Dispatch new event when the animation duration expires
 		setTimeout(() => {
-			const event = new CustomEvent(EventsConsts.FLYING_PRIZE_ANIMATION_ENDS, {
+			const event = new CustomEvent(eventName, {
 					detail: {
 						time: new Date()
 					}, bubbles: true, cancelable: true
@@ -105,6 +105,8 @@ class Animator {
 			);
 			document.dispatchEvent(event);
 		}, duration);
+
+		return false;
 	}
 }
 
