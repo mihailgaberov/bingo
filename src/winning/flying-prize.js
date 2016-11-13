@@ -6,6 +6,7 @@
 
 import { EventsConsts } from '../events/events-consts';
 import Animator from '../utils/animator';
+import ApiController from '../api/api-controller';
 
 class FlyingPrize {
 	constructor(sum) {
@@ -29,8 +30,12 @@ class FlyingPrize {
 		Animator.moveDiagonally(elFlyingPrize, 45, 45, -45, 42, Animator.quad, 3000, '%');
 
 		document.addEventListener(EventsConsts.FLYING_PRIZE_ANIMATION_ENDS, () => {
-			if (document.body.contains(elFlyingPrize))
+			if (document.body.contains(elFlyingPrize)) {
 				document.body.removeChild(elFlyingPrize);
+
+				// Add the new prize sum to the player balance
+				ApiController.setNewBalance(sum);
+			}
 		});
 	}
 }

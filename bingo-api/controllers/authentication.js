@@ -53,5 +53,4 @@ module.exports.login = function (req, res) {
 			res.status(401).json(info);
 		}
 	})(req, res);
-
 };

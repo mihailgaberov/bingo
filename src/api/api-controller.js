@@ -117,6 +117,33 @@ class ApiController {
 	static isLogged() {
 		return LocalStorageService.isLoggedIn();
 	}
+
+	static setNewBalance(sum) {
+		const apiRoute = "http://localhost:8888/bingo-api/setNewBalance";
+
+		fetch(apiRoute, {
+			method: 'POST',
+			body: JSON.stringify({
+				email: ApiController.getUserInfo().email,
+				balance: sum
+			}),
+			mode: 'cors',
+			redirect: 'follow',
+			headers: new Headers({
+				'Content-Type': 'application/json'
+			})
+		}).then((res) => {
+			return res.json();
+		}).then((returnedValue) => {
+			if (returnedValue) {
+				ViewManipulator.showUserInfo();
+			} else {
+				console.log('Show error message for setting new balance failed.');
+			}
+		}).catch(function (err) {
+			console.log('>>> Fetching error: ', err);
+		});
+	}
 }
 
 export default ApiController;
