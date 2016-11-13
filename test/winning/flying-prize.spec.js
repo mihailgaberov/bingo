@@ -1,9 +1,7 @@
 /**
  * Created by Mihail on 11/10/2016.
  */
-/**
- * Created by Mihail on 11/2/2016.
- */
+
 'use strict';
 
 import assert from 'assert';
