@@ -1,6 +1,4 @@
-
-
- @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 @import '_fonts';
 @import '_variables';
 @import '_mixins';
@@ -37,7 +35,7 @@ html, body {
 
   #gameContainer {
     width: 90%;
-    margin: 0 auto;
+    margin: 2% auto 0 auto;
     display: flex;
     align-content: flex-start;
 

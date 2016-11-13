@@ -13,6 +13,7 @@ class MarketCards {
 		document.addEventListener(EventsConsts.END_GAME, () => {
 			setTimeout(() => {
 				ViewManipulator.toggleVisibility(container, true);
+				ViewManipulator.toggleVisibility(document.querySelector('#footer'), true);
 			}, 5000);
 		});
 	}
