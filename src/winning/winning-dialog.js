@@ -71,7 +71,7 @@ class WinningDialog {
 		if (!document.body.contains(document.querySelector('#bingos'))) {
 			objWinning.elBingosContainer = document.createElement('div');
 			objWinning.elBingosContainer.setAttribute('id', 'bingos');
-			objWinning.elBingosContainer.setAttribute('class', 'col-sm-3');
+			objWinning.elBingosContainer.setAttribute('class', 'col-sm-3 col-xs-4');
 			elDialogContent.appendChild(objWinning.elBingosContainer);
 		} else {
 			objWinning.elBingosContainer = document.querySelector('#bingos');
@@ -81,7 +81,7 @@ class WinningDialog {
 		if (!document.body.contains(document.querySelector('#prize'))) {
 			objWinning.elPrize = document.createElement('div');
 			objWinning.elPrize.setAttribute('id', 'prize');
-			objWinning.elPrize.setAttribute('class', 'col-sm-5');
+			objWinning.elPrize.setAttribute('class', 'col-sm-5 col-xs-6');
 			elDialogContent.appendChild(objWinning.elPrize);
 		} else {
 			objWinning.elPrize = document.querySelector('#prize');
