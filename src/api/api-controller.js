@@ -1,12 +1,12 @@
 /**
  * Created by Mihail on 9/17/2016.
  */
-
 'use strict';
 
 import { EventsConsts } from '../events/events-consts';
 import PubSubService from '../events/pubsub-service';
 import LocalStorageService from '../local-storage/local-storage-service';
+import DbService from './db-service';
 import ViewManipulator from '../utils/view-manipulator';
 
 class ApiController {
@@ -111,6 +111,7 @@ class ApiController {
 	}
 
 	static getUserInfo() {
+		DbService.getPlayerBalance();
 		return LocalStorageService.currentUser();
 	}
 
