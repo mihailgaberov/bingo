@@ -8,7 +8,6 @@ import { ApiConsts } from './api-consts';
 
 class DbService {
 	static getPlayerBalance() {
-
 		fetch(ApiConsts.PROFILE, {
 			method: 'GET',
 			mode: 'cors',

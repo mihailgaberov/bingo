@@ -91,11 +91,11 @@ class ViewManipulator {
 		if (elUserProfile) {
 			const elName = elUserProfile.querySelector('h2');
 			const elEmail = elUserProfile.querySelector('div a');
-			elEmail.setAttribute('href', 'mailto:' + ApiController.getUserInfo().email);
-
-			elName.innerHTML = ApiController.getUserInfo().name;
-			elEmail.innerHTML = ApiController.getUserInfo().email;
-			ViewManipulator.updateBalance(0, ApiController.getUserInfo().balance);
+			const objUserInfo = ApiController.getUserInfo();
+			elEmail.setAttribute('href', 'mailto:' + objUserInfo.email);
+			elName.innerHTML = objUserInfo.name;
+			elEmail.innerHTML = objUserInfo.email;
+			ViewManipulator.updateBalance(0, objUserInfo.balance);
 		}
 	}
 
