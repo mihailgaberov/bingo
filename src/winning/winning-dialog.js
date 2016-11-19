@@ -43,9 +43,13 @@ class WinningDialog {
 			return 'no-bingo';
 		}
 
-		if (bingos === 0 && ApiController.getUserInfo().balance === 0) {
-			return 'no-bingo-no-money';
-		}
+		const promiseBalance = ApiController.getPlayerBalancePromise();
+		promiseBalance.then((val) => {
+			if (bingos === 0 && val === 0) {
+				return 'no-bingo-no-money';
+			}
+		});
+
 
 		if (bingos === 1) {
 			return 'winner-one-bingo';
@@ -87,7 +91,7 @@ class WinningDialog {
 			objWinning.elPrize = document.querySelector('#prize');
 		}
 
-		elHeader.classList.add(WinningDialog.getHeaderImgClass(objWinning.bingos));
+		DbService.add(WinningDialog.getHeaderImgClass(objWinning.bingos));
 
 		const prizeSum = objWinning.bingos * 50;
 		objWinning.elPrize.innerHTML = `${objWinning.bingos} x 50 = ${prizeSum}`;

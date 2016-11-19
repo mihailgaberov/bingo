@@ -109,8 +109,7 @@ class ApiController {
 		});
 	}
 
-	static getUserInfo() {
-		DbService.getPlayerBalance();
+	static getProfileInfo() {
 		return LocalStorageService.currentUser();
 	}
 
@@ -122,7 +121,7 @@ class ApiController {
 		fetch(ApiConsts.SET_BALANCE, {
 			method: 'POST',
 			body: JSON.stringify({
-				email: ApiController.getUserInfo().email,
+				email: ApiController.getProfileInfo().email,
 				isLoggedIn: LocalStorageService.isLoggedIn(),
 				balance: sum
 			}),
@@ -136,12 +135,18 @@ class ApiController {
 			return res.json();
 		}).then((returnedValue) => {
 			if (returnedValue) {
-				ViewManipulator.updateBalance(ApiController.getUserInfo().balance, returnedValue.balance);
+				ViewManipulator.updateBalance(ApiController.getProfileInfo().balance, returnedValue.balance);
 			} else {
 				console.log('Show error message for setting new balance failed.');
 			}
 		}).catch(function (err) {
 			console.log('>>> Fetching error: ', err);
+		});
+	}
+
+	static getPlayerBalancePromise() {
+		return DbService.getPlayerBalance().then((val) => {
+			return val;
 		});
 	}
 }

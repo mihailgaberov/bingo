@@ -8,7 +8,7 @@ import { ApiConsts } from './api-consts';
 
 class DbService {
 	static getPlayerBalance() {
-		fetch(ApiConsts.PROFILE, {
+		return fetch(ApiConsts.PROFILE, {
 			method: 'GET',
 			mode: 'cors',
 			redirect: 'follow',
@@ -18,7 +18,7 @@ class DbService {
 		}).then((res) => {
 			return res.json();
 		}).then((returnedValue) => {
-			console.log('>>>>>>>:returnedValue: ', returnedValue);
+			return returnedValue.balance;
 		}).catch(function (err) {
 			console.log('>>> Fetching error: ', err);
 		});

@@ -91,11 +91,15 @@ class ViewManipulator {
 		if (elUserProfile) {
 			const elName = elUserProfile.querySelector('h2');
 			const elEmail = elUserProfile.querySelector('div a');
-			const objUserInfo = ApiController.getUserInfo();
+			const objUserInfo = ApiController.getProfileInfo();
 			elEmail.setAttribute('href', 'mailto:' + objUserInfo.email);
 			elName.innerHTML = objUserInfo.name;
 			elEmail.innerHTML = objUserInfo.email;
-			ViewManipulator.updateBalance(0, objUserInfo.balance);
+
+			const promiseBalance = ApiController.getPlayerBalancePromise();
+			promiseBalance.then((val) => {
+				ViewManipulator.updateBalance(0, val);
+			});
 		}
 	}
 
