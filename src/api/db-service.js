@@ -66,6 +66,28 @@ class DbService {
 			console.log('>>> Fetching error: ', err);
 		});
 	}
+
+	static updateBalance(email, sum) {
+		return fetch(ApiConsts.SET_BALANCE, {
+			method: 'POST',
+			body: JSON.stringify({
+				email: email,
+				balance: sum
+			}),
+			mode: 'cors',
+			redirect: 'follow',
+			headers: new Headers({
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer '+ LocalStorageService.getToken()
+			})
+		}).then((res) => {
+			return res.json();
+		}).then((returnedValue) => {
+			return returnedValue;
+		}).catch(function (err) {
+			console.log('>>> Fetching error: ', err);
+		});
+	}
 }
 
 export default DbService;

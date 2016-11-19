@@ -89,29 +89,13 @@ class ApiController {
 	}
 
 	static setNewBalance(sum) {
-		fetch(ApiConsts.SET_BALANCE, {
-			method: 'POST',
-			body: JSON.stringify({
-				email: ApiController.getProfileInfo().email,
-				isLoggedIn: LocalStorageService.isLoggedIn(),
-				balance: sum
-			}),
-			mode: 'cors',
-			redirect: 'follow',
-			headers: new Headers({
-				'Content-Type': 'application/json',
-				Authorization: 'Bearer '+ LocalStorageService.getToken()
-			})
-		}).then((res) => {
-			return res.json();
-		}).then((returnedValue) => {
-			if (returnedValue) {
-				ViewManipulator.updateBalance(ApiController.getProfileInfo().balance, returnedValue.balance);
+		const promiseSetNewBalance = DbService.updateBalance(ApiController.getProfileInfo().email, sum);
+		promiseSetNewBalance.then((val) => {
+			if (val) {
+				ViewManipulator.updateBalance(ApiController.getProfileInfo().balance, val.balance);
 			} else {
 				console.log('Show error message for setting new balance failed.');
 			}
-		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
 		});
 	}
 
