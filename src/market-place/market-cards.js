@@ -32,6 +32,11 @@ class MarketCards {
 
 		return numberOfCards;
 	}
+
+	buyCards(count, price) {
+		console.log('>>> count: ', count);
+		console.log('>>> [price: ', price);
+	}
 }
 
 export default MarketCards;

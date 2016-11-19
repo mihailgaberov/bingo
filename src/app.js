@@ -18,7 +18,6 @@ import 'isomorphic-fetch';
 import { ApiConsts } from './api/api-consts';
 
 class App {
-
 	constructor(title = 'Bingo game') {
 		this.confUrl = ApiConsts.CONF;
 		this.title = title;
@@ -35,7 +34,6 @@ class App {
 			}).then((config) => {
 			callback(this, config);
 		});
-
 		return callback;
 	}
 
@@ -47,16 +45,17 @@ class App {
 		if (conf.gameConf.playingCards) {
 			this.cardGen = new CardGenerator(conf);
 			const marketCards = new MarketCards(container);
+			const purchasedCardsCount = marketCards.getPurchasedCardsCount();
 			const cardDrawer = new CardDrawer(
-				this.cardGen.generateCards(marketCards.getPurchasedCardsCount()),
+				this.cardGen.generateCards(purchasedCardsCount),
 				document.querySelector('#cardsContainer')
 			);
+			marketCards.buyCards(purchasedCardsCount, conf.gameConf.cardPrice);
 		}
 	}
 
 	start(conf) {
 		const elMarketPlace = document.querySelector('#marketPlace');
-		this.initPlayingCards(conf, elMarketPlace);
 
 		if (conf.gameConf.winningDialog) {
 			const winningDialog = new WinningDialog('#winningDialogContainer');

@@ -30,6 +30,7 @@
     "dauber": true,
     "playingCards": true,
     "mainGame": true,
-    "winningDialog": true
+    "winningDialog": true,
+    "cardPrice": 2
   }
 }
