@@ -129,7 +129,8 @@ class ApiController {
 			mode: 'cors',
 			redirect: 'follow',
 			headers: new Headers({
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer '+ LocalStorageService.getToken()
 			})
 		}).then((res) => {
 			return res.json();

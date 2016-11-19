@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var User = mongoose.model('Users');
 
 module.exports.profileRead = function (req, res) {
-
 	// If no user ID exists in the JWT return a 401
 	if (!req.payload._id) {
 		res.status(401).json({
@@ -22,9 +21,9 @@ module.exports.profileRead = function (req, res) {
 };
 
 module.exports.setNewBalance = function (req, res) {
-	if (!req.body.isLoggedIn) {
+	if (!req.payload._id) {
 		res.status(401).json({
-			"message": "UnauthorizedError: should work only for authenticated users"
+			"message": "UnauthorizedError: unauthorized attempt to set balance"
 		});
 	} else {
 		User.findOne({email: req.body.email}, function (err, user) {

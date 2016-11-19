@@ -15,9 +15,7 @@ var auth = jwt({
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 
-// TODO: make it works with the 'auth'
-//router.post('/setNewBalance', auth, ctrlProfile.setNewBalance);
-router.post('/setNewBalance', ctrlProfile.setNewBalance);
+router.post('/setNewBalance', auth, ctrlProfile.setNewBalance);
 router.get('/profile', auth, ctrlProfile.profileRead);
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
