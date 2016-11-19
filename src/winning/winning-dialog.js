@@ -91,7 +91,7 @@ class WinningDialog {
 			objWinning.elPrize = document.querySelector('#prize');
 		}
 
-		DbService.add(WinningDialog.getHeaderImgClass(objWinning.bingos));
+		elHeader.classList.add(WinningDialog.getHeaderImgClass(objWinning.bingos));
 
 		const prizeSum = objWinning.bingos * 50;
 		objWinning.elPrize.innerHTML = `${objWinning.bingos} x 50 = ${prizeSum}`;

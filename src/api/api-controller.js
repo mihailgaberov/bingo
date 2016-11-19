@@ -30,31 +30,17 @@ class ApiController {
 			return;
 		}
 
-		fetch(ApiConsts.LOGIN, {
-			method: 'POST',
-			body: JSON.stringify({
-				email: elEmail.value,
-				password: elPass.value
-			}),
-			mode: 'cors',
-			redirect: 'follow',
-			headers: new Headers({
-				'Content-Type': 'application/json'
-			})
-		}).then((res) => {
-			return res.json();
-		}).then((returnedValue) => {
-			if (returnedValue.token) {
+		const promiseLogin = DbService.loginPlayer(elEmail.value, elPass.value);
+		promiseLogin.then((val) => {
+			if (val.token) {
 				ViewManipulator.updateViewState(undefined, undefined, true);
-				LocalStorageService.saveToken(returnedValue.token);
+				LocalStorageService.saveToken(val.token);
 				ViewManipulator.showUserInfo();
 			} else {
 				console.log('Show error message for login failed.');
 				ViewManipulator.toggleErrorMessageView(document.querySelector('#alertMsg'),
-					 'Wrong login details.', true);
+					'Wrong login details.', true);
 			}
-		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
 		});
 	}
 
@@ -70,35 +56,20 @@ class ApiController {
 			return;
 		}
 
-		fetch(ApiConsts.REGISTER, {
-			method: 'POST',
-			body: JSON.stringify({
-				name: elName.value,
-				email: elEmail.value,
-				password: elPass.value
-			}),
-			mode: 'cors',
-			redirect: 'follow',
-			headers: new Headers({
-				'Content-Type': 'application/json'
-			})
-		}).then((res) => {
-			return res.json();
-		}).then((returnedValue) => {
-			if (returnedValue) {
-				if (returnedValue.isExisted) {
+		const promiseReg = DbService.registerPlayer(elName.value, elEmail.value, elPass.value);
+		promiseReg.then((val) => {
+			if (val) {
+				if (val.isExisted) {
 					ViewManipulator.toggleErrorMessageView(document.querySelector('#alertMsg'),
 						'User already existed.', true);
 				} else {
-					LocalStorageService.saveToken(returnedValue.token);
+					LocalStorageService.saveToken(val.token);
 					ViewManipulator.updateViewState(undefined, undefined, LocalStorageService.isLoggedIn());
 					ViewManipulator.showUserInfo();
 				}
 			} else {
 				console.log('Show error message for registration failed.');
 			}
-		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
 		});
 	}
 
