@@ -15,11 +15,12 @@ import { EventsConsts } from './events/events-consts';
 import WinningDialog from './winning/winning-dialog';
 import 'es6-promise';
 import 'isomorphic-fetch';
+import { ApiConsts } from './api/api-consts';
 
 class App {
 
 	constructor(title = 'Bingo game') {
-		this.confUrl = 'http://localhost:8000/config.json';
+		this.confUrl = ApiConsts.CONF;
 		this.title = title;
 		this.loadConfigs(App.init);
 	}

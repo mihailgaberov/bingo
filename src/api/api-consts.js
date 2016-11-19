@@ -4,6 +4,7 @@
 "use strict";
 
 const ApiConsts = {
+	CONF: 'http://localhost:8000/config.json',
 	REGISTER: 'http://localhost:8888/bingo-api/register',
 	LOGIN: 'http://localhost:8888/bingo-api/login',
 	PROFILE: 'http://localhost:8888/bingo-api/profile',
