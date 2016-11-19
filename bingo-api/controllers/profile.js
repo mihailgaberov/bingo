@@ -27,7 +27,12 @@ module.exports.setNewBalance = function (req, res) {
 		});
 	} else {
 		User.findOne({email: req.body.email}, function (err, user) {
-			user.setBalance(user.balance + req.body.balance);
+			if (req.body.spending) {
+				user.setBalance(user.balance - req.body.balance);
+			} else {
+				user.setBalance(user.balance + req.body.balance);
+			}
+
 			user.save(function (err, user) {
 				res.status(200).json(user);
 			});

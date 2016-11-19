@@ -5,6 +5,7 @@
 
 import { EventsConsts } from '../events/events-consts';
 import ViewManipulator from '../utils/view-manipulator';
+import ApiController from '../api/api-controller';
 
 class MarketCards {
 	constructor(container) {
@@ -34,8 +35,8 @@ class MarketCards {
 	}
 
 	buyCards(count, price) {
-		console.log('>>> count: ', count);
-		console.log('>>> [price: ', price);
+		const totalSpent = Number(count) * Number(price);
+		ApiController.setNewBalance(totalSpent, true);
 	}
 }
 

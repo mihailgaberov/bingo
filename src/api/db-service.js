@@ -67,12 +67,13 @@ class DbService {
 		});
 	}
 
-	static updateBalance(email, sum) {
+	static updateBalance(email, sum, spending) {
 		return fetch(ApiConsts.SET_BALANCE, {
 			method: 'POST',
 			body: JSON.stringify({
 				email: email,
-				balance: sum
+				balance: sum,
+				spending: spending
 			}),
 			mode: 'cors',
 			redirect: 'follow',

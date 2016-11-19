@@ -88,8 +88,8 @@ class ApiController {
 		return LocalStorageService.isLoggedIn();
 	}
 
-	static setNewBalance(sum) {
-		const promiseSetNewBalance = DbService.updateBalance(ApiController.getProfileInfo().email, sum);
+	static setNewBalance(sum, isSpending = false) {
+		const promiseSetNewBalance = DbService.updateBalance(ApiController.getProfileInfo().email, sum, isSpending);
 		promiseSetNewBalance.then((val) => {
 			if (val) {
 				ViewManipulator.updateBalance(ApiController.getProfileInfo().balance, val.balance);
