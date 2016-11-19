@@ -43,12 +43,9 @@ class WinningDialog {
 			return 'no-bingo';
 		}
 
-		const promiseBalance = ApiController.getPlayerBalancePromise();
-		promiseBalance.then((val) => {
-			if (bingos === 0 && val === 0) {
-				return 'no-bingo-no-money';
-			}
-		});
+		if (bingos === 0 && ApiController.getPlayerBalanceFromStorage() === 0) {
+			return 'no-bingo-no-money';
+		}
 
 
 		if (bingos === 1) {

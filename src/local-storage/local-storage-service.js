@@ -10,6 +10,15 @@ class LocalStorageService {
 		window.localStorage['mean-token'] = token;
 	};
 
+	static saveBalance(balance) {
+		window.localStorage['balance'] = balance;
+	}
+
+	static getBalance() {
+		if (window.localStorage['balance'] !== undefined)
+			return window.localStorage['balance'];
+	}
+
 	static getToken() {
 		if (window.localStorage['mean-token'] !== undefined)
 			return window.localStorage['mean-token'];

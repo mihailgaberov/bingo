@@ -117,8 +117,13 @@ class ApiController {
 
 	static getPlayerBalancePromise() {
 		return DbService.getPlayerBalance().then((val) => {
+			LocalStorageService.saveBalance(val);
 			return val;
 		});
+	}
+
+	static getPlayerBalanceFromStorage() {
+		return LocalStorageService.getBalance();
 	}
 }
 
