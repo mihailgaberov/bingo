@@ -8,6 +8,7 @@ import PubSubService from '../events/pubsub-service';
 import LocalStorageService from '../local-storage/local-storage-service';
 import DbService from './db-service';
 import ViewManipulator from '../utils/view-manipulator';
+import { ApiConsts } from './api-consts';
 
 class ApiController {
 	constructor() {
@@ -20,7 +21,6 @@ class ApiController {
 	}
 
 	static login() {
-		const loginUrl = "http://localhost:8888/bingo-api/login";
 		const elEmail = document.querySelector('#email');
 		const elPass = document.querySelector('#password');
 
@@ -30,7 +30,7 @@ class ApiController {
 			return;
 		}
 
-		fetch(loginUrl, {
+		fetch(ApiConsts.LOGIN, {
 			method: 'POST',
 			body: JSON.stringify({
 				email: elEmail.value,
@@ -59,7 +59,6 @@ class ApiController {
 	}
 
 	static register() {
-		const registerUrl = "http://localhost:8888/bingo-api/register";
 		const elName = document.querySelector('#registerName');
 		const elEmail = document.querySelector('#regEmail');
 		const elPass = document.querySelector('#registerPassword');
@@ -71,7 +70,7 @@ class ApiController {
 			return;
 		}
 
-		fetch(registerUrl, {
+		fetch(ApiConsts.REGISTER, {
 			method: 'POST',
 			body: JSON.stringify({
 				name: elName.value,
@@ -120,9 +119,7 @@ class ApiController {
 	}
 
 	static setNewBalance(sum) {
-		const apiRoute = "http://localhost:8888/bingo-api/setNewBalance";
-
-		fetch(apiRoute, {
+		fetch(ApiConsts.SET_BALANCE, {
 			method: 'POST',
 			body: JSON.stringify({
 				email: ApiController.getUserInfo().email,

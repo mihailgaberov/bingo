@@ -4,11 +4,12 @@
 'use strict';
 
 import LocalStorageService from '../local-storage/local-storage-service';
+import { ApiConsts } from './api-consts';
 
 class DbService {
 	static getPlayerBalance() {
 
-		fetch('http://localhost:8888/bingo-api/profile', {
+		fetch(ApiConsts.PROFILE, {
 			method: 'GET',
 			mode: 'cors',
 			redirect: 'follow',
@@ -16,7 +17,6 @@ class DbService {
 				Authorization: 'Bearer '+ LocalStorageService.getToken()
 			}
 		}).then((res) => {
-			console.log('>>>>>>>:::: ', res.json());
 			return res.json();
 		}).then((returnedValue) => {
 			console.log('>>>>>>>:returnedValue: ', returnedValue);
