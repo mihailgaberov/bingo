@@ -36,8 +36,8 @@ class Bangup {
 		let progress = timestamp - this.startTime;
 		this.container.innerHTML = Math.round(Bangup.easeOutExpo(progress, this.fromSum, this.toSum - this.fromSum, this.duration));
 
-		// Continue if the duration is not elapsed
-		if (progress < this.duration) {
+		// Continue until the end sum is reached
+		if (Number(this.container.innerHTML) !== this.toSum) {
 			window.requestAnimationFrame(this.pileNumbers.bind(this));
 		}
 	}
