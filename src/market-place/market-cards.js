@@ -34,6 +34,18 @@ class MarketCards {
 		return numberOfCards;
 	}
 
+	static setCardPrices(price) {
+		const arrPriceElements = document.querySelectorAll('.cards');
+
+		let len = arrPriceElements.length - 1;
+
+		while (len >= 0) {
+			const howManyCards = arrPriceElements[len].querySelector('input[type=radio]').value;
+			arrPriceElements[len].querySelector('.price').innerHTML = parseInt(price * howManyCards);
+			len--;
+		}
+	}
+
 	static buyCards(count, price) {
 		const totalSpent = Number(count) * Number(price);
 		ApiController.setNewBalance(totalSpent, true);

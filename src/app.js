@@ -18,7 +18,7 @@ import 'isomorphic-fetch';
 import { ApiConsts } from './api/api-consts';
 
 class App {
-	constructor(title = 'Bingo game') {
+	constructor(title = 'Bingo Bigul') {
 		this.confUrl = ApiConsts.CONF;
 		this.title = title;
 		this.loadConfigs(App.init);
@@ -65,6 +65,8 @@ class App {
 		if (!conf.gameConf.marketCards) {
 			ViewManipulator.toggleVisibility(elMarketPlace, false);
 		}
+		MarketCards.setCardPrices(conf.gameConf.cardPrice);
+
 
 		if (conf.gameConf.mainGame) {
 			const timer = new Timer(
