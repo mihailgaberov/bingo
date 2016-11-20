@@ -41,7 +41,7 @@ class MarketCards {
 
 		while (len >= 0) {
 			const howManyCards = arrPriceElements[len].querySelector('input[type=radio]').value;
-			arrPriceElements[len].querySelector('.price').innerHTML = parseInt(price * howManyCards);
+			arrPriceElements[len].querySelector('.price').innerHTML = `<i class="price-icon"></i>${parseInt(price * howManyCards)}`;
 			len--;
 		}
 	}

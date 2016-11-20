@@ -36,8 +36,18 @@
           }
 
           .price {
+            width: 60px;
+            float: right;
             font-size: .5em;
             text-align: right;
+
+            .price-icon {
+              background: url('../../../images/market/coin_25x25.png') no-repeat;
+              background-size: 25px;
+              width: 25px;
+              height: 25px;
+              display: inline-block;
+            }
           }
         }
       }
