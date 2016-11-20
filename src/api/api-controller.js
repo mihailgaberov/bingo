@@ -8,7 +8,6 @@ import PubSubService from '../events/pubsub-service';
 import LocalStorageService from '../local-storage/local-storage-service';
 import DbService from './db-service';
 import ViewManipulator from '../utils/view-manipulator';
-import { ApiConsts } from './api-consts';
 
 class ApiController {
 	constructor() {
@@ -88,11 +87,12 @@ class ApiController {
 		return LocalStorageService.isLoggedIn();
 	}
 
-	static setNewBalance(sum, isSpending = false) {
+	static setNewBalance(sum, isSpending = true) {
 		const promiseSetNewBalance = DbService.updateBalance(ApiController.getProfileInfo().email, sum, isSpending);
+
 		promiseSetNewBalance.then((val) => {
 			if (val) {
-				ViewManipulator.updateBalance(ApiController.getProfileInfo().balance, val.balance);
+				ViewManipulator.updateBalance(val.balance - sum, val.balance);
 			} else {
 				console.log('Show error message for setting new balance failed.');
 			}

@@ -34,7 +34,7 @@ class FlyingPrize {
 				document.body.removeChild(elFlyingPrize);
 
 				// Add the new prize sum to the player balance
-				ApiController.setNewBalance(sum);
+				ApiController.setNewBalance(sum, false);
 			}
 		});
 	}

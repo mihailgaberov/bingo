@@ -72,7 +72,7 @@ class DbService {
 			method: 'POST',
 			body: JSON.stringify({
 				email: email,
-				balance: sum,
+				newSum: sum,
 				spending: spending
 			}),
 			mode: 'cors',

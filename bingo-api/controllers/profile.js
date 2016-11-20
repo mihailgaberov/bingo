@@ -28,9 +28,9 @@ module.exports.setNewBalance = function (req, res) {
 	} else {
 		User.findOne({email: req.body.email}, function (err, user) {
 			if (req.body.spending) {
-				user.setBalance(user.balance - req.body.balance);
+				user.setBalance(user.balance - req.body.newSum);
 			} else {
-				user.setBalance(user.balance + req.body.balance);
+				user.setBalance(user.balance + req.body.newSum);
 			}
 
 			user.save(function (err, user) {

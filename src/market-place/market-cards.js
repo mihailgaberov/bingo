@@ -34,7 +34,7 @@ class MarketCards {
 		return numberOfCards;
 	}
 
-	buyCards(count, price) {
+	static buyCards(count, price) {
 		const totalSpent = Number(count) * Number(price);
 		ApiController.setNewBalance(totalSpent, true);
 	}

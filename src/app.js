@@ -50,7 +50,7 @@ class App {
 				this.cardGen.generateCards(purchasedCardsCount),
 				document.querySelector('#cardsContainer')
 			);
-			marketCards.buyCards(purchasedCardsCount, conf.gameConf.cardPrice);
+			MarketCards.buyCards(purchasedCardsCount, conf.gameConf.cardPrice);
 		}
 	}
 
