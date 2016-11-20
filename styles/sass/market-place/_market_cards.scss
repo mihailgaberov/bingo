@@ -31,7 +31,13 @@
           }
 
           img {
+            height: 118px;
             margin: 0 auto;
+          }
+
+          .price {
+            font-size: .5em;
+            text-align: right;
           }
         }
       }
