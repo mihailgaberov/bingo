@@ -17,6 +17,10 @@ class WinningPatternsAnimationModule {
 			ViewManipulator.toggleVisibility(elem.parentElement.parentElement, true);
 		});
 
+		document.addEventListener(EventsConsts.END_GAME, () => {
+			ViewManipulator.toggleVisibility(elem.parentElement.parentElement, false);
+		});
+
 		// Create the DOM element
 		this.createDomElement();
 	}
