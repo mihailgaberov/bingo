@@ -16,6 +16,7 @@ import WinningDialog from './winning/winning-dialog';
 import 'es6-promise';
 import 'isomorphic-fetch';
 import { ApiConsts } from './api/api-consts';
+import WinningPatternsAnimationModule from './winning/winning-patterns-animation-module';
 
 class App {
 	constructor(title = 'Bingo Bigul') {
@@ -57,16 +58,23 @@ class App {
 	start(conf) {
 		const elMarketPlace = document.querySelector('#marketPlace');
 
+		// Create the components only if they are allowed in the config
 		if (conf.gameConf.winningDialog) {
 			const winningDialog = new WinningDialog('#winningDialogContainer');
 		}
 
-		// Create the components only if they are allowed in the config
 		if (!conf.gameConf.marketCards) {
 			ViewManipulator.toggleVisibility(elMarketPlace, false);
 		}
 		MarketCards.setCardPrices(conf.gameConf.cardPrice);
 
+		let elWinningPatternsAnimModule = null;
+		if (conf.gameConf.winningPatternsAnimationModule) {
+			elWinningPatternsAnimModule = document.querySelector('#winningPatternsAnimationModule');
+			const horPattern = new WinningPatternsAnimationModule(elWinningPatternsAnimModule.querySelector('#horizontal'), 5, 5, 'horizontal');
+			const verPattern = new WinningPatternsAnimationModule(elWinningPatternsAnimModule.querySelector('#vertical'), 5, 5, 'vertical');
+			const diagPattern = new WinningPatternsAnimationModule(elWinningPatternsAnimModule.querySelector('#diagonal'), 5, 5, 'diagonal');
+		}
 
 		if (conf.gameConf.mainGame) {
 			const timer = new Timer(

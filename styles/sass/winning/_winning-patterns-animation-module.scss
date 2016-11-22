@@ -1,0 +1,57 @@
+#winningPatternsAnimationModule {
+  #container {
+    width: 330px;
+    height: 278px;
+    border: 1px solid black;
+    text-align: center;
+
+    #horizontal {
+      display: inline-block;
+      width: 48%;
+      height: 48%;
+      border: 1px solid orange;
+
+      table {
+        width: 100%;
+        height: 100%;
+        th, td {
+          border: 1px solid black;
+        }
+      }
+    }
+
+    #vertical {
+      display: inline-block;
+      width: 48%;
+      height: 48%;
+      border: 1px solid green;
+
+      table {
+        width: 100%;
+        height: 100%;
+        th, td {
+          border: 1px solid black;
+        }
+      }
+    }
+
+    #diagonal {
+      display: inline-block;
+      width: 48%;
+      height: 48%;
+      border: 1px solid pink;
+
+      table {
+        width: 100%;
+        height: 100%;
+        th, td {
+          border: 1px solid black;
+        }
+      }
+    }
+
+    .highlighted {
+      background-color: darkred;
+    }
+  }
+}

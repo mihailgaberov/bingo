@@ -22,7 +22,7 @@
 	"skin": {
       "name": "original"
     },
-    "turnsCount": 3,
+    "turnsCount": 33,
     "freeSpotImgPath": "<img src='../../images/small_logo_30x30.png' />",
     "drawIntervalSeconds": 2,
     "beforeStartGameSeconds": 1,
@@ -31,6 +31,7 @@
     "playingCards": true,
     "mainGame": true,
     "winningDialog": true,
-    "cardPrice": 2
+    "cardPrice": 2,
+    "winningPatternsAnimationModule": true
   }
 }

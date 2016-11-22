@@ -14,7 +14,8 @@
 @import 'cards/_card';
 @import 'timer/_timer';
 @import 'winning/_winning-dialog';
-@import 'winning/_flying_prize';
+@import 'winning/_flying-prize';
+@import 'winning/_winning-patterns-animation-module';
 
 html, body {
   height: 100%;
