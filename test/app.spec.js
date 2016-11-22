@@ -17,7 +17,7 @@ describe('Bingo App', () => {
 
 	it('Should set the title of the application', () => {
 		expect(appBingo.confUrl).to.be.a('string');
-		expect(appBingo.title).to.equal('Bingo game');
+		expect(appBingo.title).to.equal('Bingo Bigul');
 	});
 
 	it("Should call the callback when get the configs", function () {
