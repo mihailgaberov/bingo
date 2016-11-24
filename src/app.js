@@ -19,9 +19,8 @@ import { ApiConsts } from './api/api-consts';
 import WinPatternsAnimModule from './winning/win-patterns-anim-module';
 
 class App {
-	constructor(title = 'Bingo Bigul') {
+	constructor() {
 		this.confUrl = ApiConsts.CONF;
-		this.title = title;
 		this.loadConfigs(App.init);
 	}
 
@@ -56,6 +55,8 @@ class App {
 	}
 
 	start(conf) {
+		this.title = conf.gameConf.appTitle;
+		document.querySelector('title').innerText = conf.gameConf.appTitle;
 		const elMarketPlace = document.querySelector('#marketPlace');
 
 		// Create the components only if they are allowed in the config
