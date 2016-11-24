@@ -32,6 +32,6 @@
     "mainGame": true,
     "winningDialog": true,
     "cardPrice": 2,
-    "winningPatternsAnimationModule": true
+    "winPatternsAnimModule": true
   }
 }

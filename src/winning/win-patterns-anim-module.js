@@ -6,7 +6,7 @@
 import ViewManipulator from '../utils/view-manipulator';
 import { EventsConsts } from '../events/events-consts';
 
-class WinningPatternsAnimationModule {
+class WinPatternsAnimModule {
 	constructor(elem, rows, cols, pattern) {
 		this.elem = elem;
 		this.rows = rows;
@@ -160,4 +160,4 @@ class WinningPatternsAnimationModule {
 	}
 }
 
-export default WinningPatternsAnimationModule;
+export default WinPatternsAnimModule;

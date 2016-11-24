@@ -1,14 +1,12 @@
-#winningPatternsAnimationModule {
+#winPatternsAnimModule {
   border: 1px solid yellow;
-  order: 3;
   height: 278px;
-  width: 330px;
 
   #container {
+    width: 330px;
     height: 100%;
     border: 1px solid black;
     text-align: center;
-
 
     #horizontal {
       display: inline-block;

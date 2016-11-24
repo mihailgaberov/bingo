@@ -16,7 +16,7 @@ import WinningDialog from './winning/winning-dialog';
 import 'es6-promise';
 import 'isomorphic-fetch';
 import { ApiConsts } from './api/api-consts';
-import WinningPatternsAnimationModule from './winning/winning-patterns-animation-module';
+import WinPatternsAnimModule from './winning/win-patterns-anim-module';
 
 class App {
 	constructor(title = 'Bingo Bigul') {
@@ -68,12 +68,12 @@ class App {
 		}
 		MarketCards.setCardPrices(conf.gameConf.cardPrice);
 
-		let elWinningPatternsAnimModule = null;
-		if (conf.gameConf.winningPatternsAnimationModule) {
-			elWinningPatternsAnimModule = document.querySelector('#winningPatternsAnimationModule');
-			const horPattern = new WinningPatternsAnimationModule(elWinningPatternsAnimModule.querySelector('#horizontal'), 5, 5, 'horizontal');
-			const verPattern = new WinningPatternsAnimationModule(elWinningPatternsAnimModule.querySelector('#vertical'), 5, 5, 'vertical');
-			const diagPattern = new WinningPatternsAnimationModule(elWinningPatternsAnimModule.querySelector('#diagonal'), 5, 5, 'diagonal');
+		let elWinPatternsAnimModule = null;
+		if (conf.gameConf.winPatternsAnimModule) {
+			elWinPatternsAnimModule = document.querySelector('#winPatternsAnimModule');
+			const horPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#horizontal'), 5, 5, 'horizontal');
+			const verPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#vertical'), 5, 5, 'vertical');
+			const diagPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#diagonal'), 5, 5, 'diagonal');
 		}
 
 		if (conf.gameConf.mainGame) {
