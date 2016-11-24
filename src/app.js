@@ -49,7 +49,7 @@ class App {
 			const purchasedCardsCount = marketCards.getPurchasedCardsCount();
 			const cardDrawer = new CardDrawer(
 				this.cardGen.generateCards(purchasedCardsCount),
-				document.querySelector('#cardsContainer')
+				document.querySelector('#leftGameScreen')
 			);
 			MarketCards.buyCards(purchasedCardsCount, conf.gameConf.cardPrice);
 		}

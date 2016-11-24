@@ -208,19 +208,21 @@
 		<div id="timerContainer">
 			<p class="pulsate inner-shadow"></p>
 		</div>
-		<section id="blower">
-			<canvas id="blower-balloon" class="img-responsive"></canvas>
-			<div id="tube" class="img-responsive"></div>
+		<section id="rightGameScreen">
+			<section id="blower">
+				<canvas id="blower-balloon" class="img-responsive"></canvas>
+				<div id="tube" class="img-responsive"></div>
+			</section>
+			<section id="winPatternsAnimModule" style="display: none;">
+				<div id="container">
+					<div id="horizontal"></div>
+					<div id="vertical"></div>
+					<div id="diagonal"></div>
+					<div id="empty"></div>
+				</div>
+			</section>
 		</section>
-		<section id="winPatternsAnimModule" style="display: none;">
-			<div id="container">
-				<div id="horizontal"></div>
-				<div id="vertical"></div>
-				<div id="diagonal"></div>
-				<div id="empty"></div>
-			</div>
-		</section>
-		<section id="cardsContainer" class="container-fluid"></section>
+		<section id="leftGameScreen" class="container-fluid"></section>
 	</div>
 	<section id="footer">
 		<div class="container-fluid text-center">

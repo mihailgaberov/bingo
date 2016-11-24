@@ -44,11 +44,15 @@ html, body {
       flex-wrap: wrap-reverse;
     }
 
-    #cardsContainer {
+    #leftGameScreen {
       order: 1;
       padding: 0;
       margin: 0;
       list-style: none;
+    }
+
+    #rightGameScreen {
+      order: 2;
     }
   }
 }
