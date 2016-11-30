@@ -3,13 +3,6 @@
   "version": "0.0.1",
   "description": "A Bingo game developed with ES6 in TDD manner.",
   "main": "src/app.js",
-  "babel": {
-    "presets": [
-      "es2015",
-      "react",
-      "stage-0"
-    ]
-  },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register"
   },
