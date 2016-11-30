@@ -92,5 +92,5 @@ ReactDOM.render(
 			Anything goes here, see: <Button>A button</Button>
 		</Dialog></div>
 	</div>,
-	document.getElementById('pad')
+	document.getElementById('discoverer')
 );

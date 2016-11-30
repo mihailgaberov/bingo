@@ -5,7 +5,6 @@
 
 import Card from './card';
 import { EventsConsts } from '../events/events-consts';
-import { Utils } from '../utils/utils';
 import ViewManipulator from '../utils/view-manipulator';
 
 class CardDrawer {

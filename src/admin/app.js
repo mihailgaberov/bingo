@@ -15,7 +15,7 @@ CRUDStore.init(schema);
 ReactDOM.render(
 	<div>
 		<div className="app-header">
-			<Logo/> Welcome to Whinepad!
+			<Logo/> Bingo Bigul Back Office
 		</div>
 		<BackOffice />
 	</div>,
