@@ -1,0 +1,42 @@
+#main-table {
+  input {
+    font: 16px Arial;
+  }
+
+  table {
+    border: 1px solid black;
+    margin: 20px;
+
+    th {
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    td {
+      border-top: 1px solid black;
+      cursor: cell;
+      padding: 5px;
+    }
+  }
+
+  .toolbar {
+    margin-left: 20px;
+
+    a, button {
+      background: #3498db linear-gradient(to bottom, #3498db, #2980b9);
+      border-radius: 28px;
+      box-shadow: 0 1px 3px #666666;
+      color: #ffffff;
+      font-size: 14px;
+      padding: 10px 20px 10px 20px;
+      text-decoration: none;
+      border: 0;
+      margin-right: 5px;
+    }
+
+    a:hover, button:hover {
+      background: #3cb0fd linear-gradient(to bottom, #3cb0fd, #3498db);
+      text-decoration: none;
+    }
+  }
+}

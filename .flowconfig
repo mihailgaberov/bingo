@@ -1,0 +1,17 @@
+[ignore]
+.*/react/node_modules/.*
+.*/fbemitter/node_modules/.*
+
+[include]
+node_modules/classnames
+node_modules/fbemitter
+node_modules/immutable
+node_modules/invariant
+node_modules/react
+node_modules/react-addons-test-utils
+node_modules/react-dom
+
+[libs]
+
+[options]
+esproposal.class_static_fields=enable

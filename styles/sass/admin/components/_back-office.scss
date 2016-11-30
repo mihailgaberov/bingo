@@ -1,0 +1,23 @@
+#backOffice {
+  .toolbar {
+    margin: 40px;
+  }
+
+  .toolbar-add {
+    float: left;
+  }
+
+  .toolbar-search {
+    float: right;
+  }
+
+  .toolbar-add-btn {
+    font-size: 32px;
+  }
+
+  .back-office-datagrid {
+    clear: both;
+    margin: 40px;
+    padding-top: 20px;
+  }
+}
