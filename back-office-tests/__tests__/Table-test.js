@@ -6,7 +6,7 @@ jest.autoMockOff();
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
-const Excel = require('../../src/admin/components/Table').default;
+const Table = require('../../src/admin/components/Table').default;
 const schema = require('../../src/admin/schema').default;
 const Store = require('../../src/admin/flux/CRUDStore').default;
 
@@ -16,7 +16,7 @@ describe('Editing data', () => {
 
 	it('saves new data', () => {
 		const table = TestUtils.renderIntoDocument(
-			<Excel />
+			<Table />
 		);
 		const newname = '$2.99 chuck';
 		const cell = TestUtils.scryRenderedDOMComponentsWithTag(table, 'td')[0];
@@ -32,14 +32,14 @@ describe('Editing data', () => {
 
 	it('deletes data', () => {
 		const table = TestUtils.renderIntoDocument(
-			<Excel />
+			<Table />
 		);
 
 		TestUtils.Simulate.click( // x icon
-			TestUtils.findRenderedDOMComponentWithClass(table, 'ActionsDelete')
+			TestUtils.findRenderedDOMComponentWithClass(table, 'actions-delete')
 		);
 		TestUtils.Simulate.click( // confirmation dialog
-			TestUtils.findRenderedDOMComponentWithClass(table, 'Button')
+			TestUtils.findRenderedDOMComponentWithClass(table, 'button')
 		);
 
 		expect(TestUtils.scryRenderedDOMComponentsWithTag(table, 'td').length).toBe(0);

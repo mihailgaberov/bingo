@@ -18,7 +18,7 @@ describe('renders with action buttons', () => {
 			<Dialog>Civilized dialog</Dialog>
 		);
 		const cancel = TestUtils
-			.findRenderedDOMComponentWithClass(dialog, 'DialogDismiss');
+			.findRenderedDOMComponentWithClass(dialog, 'dialog-dismiss');
 		expect(cancel.nodeName).toBe('SPAN');
 		const ok = TestUtils
 			.findRenderedDOMComponentWithTag(dialog, 'button');
@@ -30,7 +30,7 @@ describe('renders with action buttons', () => {
 			<Dialog hasCancel={false} confirmLabel="confirm">Civilized dialog</Dialog>
 		);
 		const cancels = TestUtils
-			.scryRenderedDOMComponentsWithClass(dialog, 'DialogDismiss');
+			.scryRenderedDOMComponentsWithClass(dialog, 'dialog-dismiss');
 		expect(cancels.length).toBe(0);
 		let ok = TestUtils
 			.findRenderedDOMComponentWithTag(dialog, 'button');
@@ -41,11 +41,11 @@ describe('renders with action buttons', () => {
 		const dialog = TestUtils.renderIntoDocument(
 			<Dialog modal={true}>Civilized dialog</Dialog>
 		);
-		expect(Array.from(document.body.classList)).toContain('DialogModalOpen');
+		expect(Array.from(document.body.classList)).toContain('dialog-modal-open');
 
 		// removing the dialog
 		ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(dialog).parentNode);
-		expect(Array.from(document.body.classList)).not.toContain('DialogModalOpen');
+		expect(Array.from(document.body.classList)).not.toContain('dialog-modal-open');
 	});
 
 	it('has head and body', () => {
@@ -53,8 +53,8 @@ describe('renders with action buttons', () => {
 			<Dialog header="head">Civilized dialog</Dialog>
 		);
 		let node = ReactDOM.findDOMNode(dialog);
-		expect(node.getElementsByClassName('DialogHeader')[0].innerHTML).toBe('head');
-		expect(node.querySelector('.DialogBody').textContent).toBe('Civilized dialog');
+		expect(node.getElementsByClassName('dialog-header')[0].innerHTML).toBe('head');
+		expect(node.querySelector('.dialog-body').textContent).toBe('Civilized dialog');
 	});
 
 	it('sends correct actions', () => {

@@ -45,7 +45,7 @@ class Dialog extends Component {
 }
 
 Dialog.propTypes = {
-	header: PropTypes.string.isRequired,
+	header: PropTypes.string,
 	confirmLabel: PropTypes.string,
 	modal: PropTypes.bool,
 	onAction: PropTypes.func,
