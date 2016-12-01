@@ -7,7 +7,9 @@
     "test": "mocha --compilers js:babel-core/register"
   },
   "jest": {
-    "testPathDirs": ["back-office-tests"],
+    "testPathDirs": [
+      "back-office-tests"
+    ],
     "transform": {
       ".*": "node_modules/babel-jest"
     },
@@ -53,6 +55,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^3.0.1",
     "gulp-istanbul": "^1.1.1",
+    "gulp-jest": "^0.6.0",
     "gulp-mocha": "^3.0.1",
     "gulp-postcss": "^6.2.0",
     "gulp-rename": "^1.2.2",

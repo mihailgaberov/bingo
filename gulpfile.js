@@ -17,6 +17,7 @@ const babel = require('babel-core/register');
 const isparta = require('isparta');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
+const jest = require('gulp-jest');
 
 const paths = {
 	html: 'index.html',
@@ -26,8 +27,8 @@ const paths = {
 	backOfficeScripts: './src/admin/**/*.js',
 	backOfficeSass: './styles/sass/admin/**/*.scss',
 	buildSass: './build/styles',
-	buildScripts: './build/js'
-
+	buildScripts: './build/js',
+	backOfficeTests: './back-office-tests/__tests__'
 };
 
 function compile() {
@@ -110,6 +111,17 @@ gulp.task('sassBackOffice', () => {
 		.pipe(gulp.dest(paths.buildSass));
 });
 
+gulp.task('jest', function () {
+	return gulp.src(paths.backOfficeTests).pipe(jest({
+		config: {
+			"preprocessorIgnorePatterns": [
+				"<rootDir>/build/", "<rootDir>/node_modules/"
+			],
+			"automock": false
+		}
+	}));
+});
+
 gulp.task('pre-test', () => {
 	gulp.src(paths.scripts)
 		.pipe(istanbul({
@@ -155,6 +167,7 @@ gulp.task('default', ['clean',
 						'scriptsBackOffice',
 						'scriptsDiscoverer',
 						'sassBackOffice',
+						'jest',
 						'test',
 						'watch',
 						'webserver']);
@@ -164,5 +177,6 @@ gulp.task('watch', () => {
 	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
 	gulp.watch(paths.scripts, ['scripts']);
 	gulp.watch(paths.sass, ['sass']);
+	gulp.watch(paths.backOfficeTests, ['jest']);
 	gulp.watch(paths.tests, ['test']);
 });
