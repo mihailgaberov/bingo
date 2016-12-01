@@ -36,7 +36,7 @@ class FormInput extends Component {
 }
 
 FormInput.propTypes = {
-	type: PropTypes.oneOf(['year', 'suggest', 'rating', 'text', 'input']),
+	type: PropTypes.oneOf(['year', 'text', 'input']),
 	id: PropTypes.string,
 	options: PropTypes.array,
 	defaultValue: PropTypes.any
