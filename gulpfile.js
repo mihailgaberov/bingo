@@ -178,8 +178,14 @@ gulp.task('backOffice', ['clean',
 	'scriptsDiscoverer',
 	'sassBackOffice',
 	'jest',
-	'watch',
+	'watchBackOffice',
 	'webserver']);
+
+gulp.task('watchBackOffice', () => {
+	gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
+	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
+	gulp.watch([ jestConfig.rootDir + "/**/*.js" ], [ 'jest' ]);
+});
 
 gulp.task('watch', () => {
 	gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);

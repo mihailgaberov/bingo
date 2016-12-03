@@ -5,12 +5,17 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import CRUDStore from './flux/CRUDStore';
 import Button from './components/Button';
 import Logo from './components/Logo';
 import FormInput from './components/FormInput';
 import Form from './components/Form';
 import Actions from './components/Actions';
 import Dialog from './components/Dialog';
+import schema from './schema';
+
+CRUDStore.init(schema);
+
 
 ReactDOM.render(
 	<div style={ {padding: '20px'} }>
@@ -49,18 +54,18 @@ ReactDOM.render(
 		<h2>Form</h2>
 		<Form
 			fields={[
-				{label: 'Rating', type: 'rating', id: 'rateme'},
-				{label: 'Greetings', id: 'freetext'},
+				{label: 'Comments', type: 'text', id: 'comments'},
+				{label: 'Name', id: 'name'},
 			]}
-			initialData={{rateme: 4, freetext: 'Hello'}} />
+			initialData={{comments: 'Bla Bla Bla', name: 'Mihail Gaberov'}} />
 
 		<h2>Form readonly</h2>
 		<Form
 			fields={[
-				{label: 'Rating', type: 'rating', id: 'rateme'},
-				{label: 'Greetings', id: 'freetext'},
+				{label: 'Name', id: 'name'},
+				{label: 'Email', id: 'email', type: 'email'},
 			]}
-			initialData={{rateme: 4, freetext: 'Hello'}}
+			initialData={{name: 'Mihail Gaberov', email: 'me@mihail-gaberov.eu'}}
 			readonly={true} />
 
 		<h2>Actions</h2>

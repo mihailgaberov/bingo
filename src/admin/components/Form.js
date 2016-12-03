@@ -8,7 +8,6 @@
 import CRUDStore from '../flux/CRUDStore';
 import FormInput from './FormInput';
 import React, {Component} from 'react';
-
 import type {FormInputField, FormInputFieldValue} from './FormInput';
 
 type Props = {
@@ -24,6 +23,7 @@ class Form extends Component {
 	constructor(props: Props) {
 		super(props);
 		this.fields = CRUDStore.getSchema();
+
 		if ('recordId' in this.props) {
 			this.initialData = CRUDStore.getRecord(this.props.recordId);
 		}

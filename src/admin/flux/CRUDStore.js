@@ -16,9 +16,11 @@ const CRUDStore = {
 
 	init(initialSchema: Array<Object>) {
 		schema = initialSchema;
+
 		const storage = 'localStorage' in window
 			? localStorage.getItem('data')
 			: null;
+
 		if (!storage) {
 			let initialRecord = {};
 			schema.forEach(item => initialRecord[item.id] = item.sample);
