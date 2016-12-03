@@ -9,6 +9,10 @@
 
   .toolbar-search {
     float: right;
+    input {
+      font-size: 14px;
+      padding: 10px;
+    }
   }
 
   .toolbar-add-btn {
