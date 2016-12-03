@@ -6,7 +6,7 @@ this was each cell is 50px,
   padding: 10px;
   width: auto;
   margin: .2em;
-  font-family: $main-font;
+  font-family: $mainFont;
   font-weight: bold;
   font-size: 2em;
   position: relative;
@@ -22,7 +22,7 @@ this was each cell is 50px,
 
   table {
     width: 100%;
-    background-color: $main-wheat-color;
+    background-color: $mainWheatColor;
     color: black;
     box-shadow: 0 0 7px rgba(0,0,0,0.9);
 

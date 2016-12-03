@@ -1,5 +1,4 @@
 .button {
-  background-color: #6f001b;
   border-radius: 28px;
   border: 0;
   box-shadow: 0 1px 1px #d9d9d9;
@@ -12,6 +11,13 @@
   text-decoration: none;
   transition-duration: 0.1s;
   transition-property: transform;
+
+  /*background: $fifthColColour;
+  background: -webkit-linear-gradient($fifthColColour , purple); !* For Safari 5.1 to 6.0 *!
+  background: -o-linear-gradient($fifthColColour, purple); !* For Opera 11.1 to 12.0 *!
+  background: -moz-linear-gradient($fifthColColour, purple); !* For Firefox 3.6 to 15 *!
+  background: linear-gradient($fifthColColour, purple); !* Standard syntax *!*/
+  @include lineaVerticalGradient($fifthColColour, purple);
 
   &:hover {
     transform: scale(1.1);

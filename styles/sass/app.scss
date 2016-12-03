@@ -1,5 +1,5 @@
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
-@import 'admin/app';
+@import 'admin/back-office-app';
 @import '_fonts';
 @import '_variables';
 @import '_mixins';
@@ -33,7 +33,7 @@ html, body {
 }
 
 #gameWrapper {
-  color: $main-front-color;
+  color: $mainFrontColor;
 
   #gameContainer {
     width: 90%;

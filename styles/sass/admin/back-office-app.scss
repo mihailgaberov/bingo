@@ -1,0 +1,26 @@
+@import "../fonts";
+@import "../variables";
+@import "../mixins";
+@import "components/actions";
+@import "components/button";
+@import "components/dialog";
+@import "components/form";
+@import "components/logo";
+@import "components/table";
+@import "components/back-office";
+
+html, body {
+  background: white;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: $mainFont;
+}
+
+.app-header {
+  background-color: $fifthColColour;
+  padding: 10px 5px;
+  color: $mainWheatColor;
+  font-size: 1.6em;
+}

@@ -19,5 +19,5 @@ ReactDOM.render(
 		</div>
 		<BackOffice />
 	</div>,
-	document.getElementById('backOffice')
+	document.getElementById('backOfficeApp')
 );
