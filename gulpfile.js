@@ -17,7 +17,9 @@ const babel = require('babel-core/register');
 const isparta = require('isparta');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
-const jest = require('gulp-jest');
+const jest = require('jest-cli');
+
+
 
 const paths = {
 	html: 'index.html',
@@ -111,15 +113,14 @@ gulp.task('sassBackOffice', () => {
 		.pipe(gulp.dest(paths.buildSass));
 });
 
-gulp.task('jest', function () {
-	return gulp.src(paths.backOfficeTests).pipe(jest({
-		config: {
-			"preprocessorIgnorePatterns": [
-				"<rootDir>/build/", "<rootDir>/node_modules/"
-			],
-			"automock": false
-		}
-	}));
+
+const jestConfig = {
+	rootDir: paths.backOfficeTests
+};
+gulp.task('jest', function(done) {
+	jest.runCLI({ config : jestConfig }, ".", function() {
+		done();
+	});
 });
 
 gulp.task('pre-test', () => {
@@ -177,6 +178,6 @@ gulp.task('watch', () => {
 	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
 	gulp.watch(paths.scripts, ['scripts']);
 	gulp.watch(paths.sass, ['sass']);
-	gulp.watch(paths.backOfficeTests, ['jest']);
 	gulp.watch(paths.tests, ['test']);
+	gulp.watch([ jestConfig.rootDir + "/**/*.js" ], [ 'jest' ]);
 });

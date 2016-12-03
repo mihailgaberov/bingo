@@ -10,6 +10,9 @@
     "testPathDirs": [
       "back-office-tests"
     ],
+    "transform": {
+      ".*": "node_modules/babel-jest"
+    },
     "automock": true,
     "unmockedModulePathPatterns": [
       "node_modules/react",
@@ -53,7 +56,6 @@
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^3.0.1",
     "gulp-istanbul": "^1.1.1",
-    "gulp-jest": "^0.6.0",
     "gulp-mocha": "^3.0.1",
     "gulp-postcss": "^6.2.0",
     "gulp-rename": "^1.2.2",
@@ -63,6 +65,7 @@
     "immutable": "^3.8.1",
     "invariant": "^2.2.2",
     "isparta": "^4.0.0",
+    "jest-cli": "^17.0.3",
     "jsdom": "^9.5.0",
     "mocha": "^3.0.2",
     "mocha-jsdom": "^1.1.0",
