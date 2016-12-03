@@ -52,21 +52,10 @@ ReactDOM.render(
 		</tbody></table>
 
 		<h2>Form</h2>
-		<Form
-			fields={[
-				{label: 'Comments', type: 'text', id: 'comments'},
-				{label: 'Name', id: 'name'},
-			]}
-			initialData={{comments: 'Bla Bla Bla', name: 'Mihail Gaberov'}} />
+		<Form />
 
 		<h2>Form readonly</h2>
-		<Form
-			fields={[
-				{label: 'Name', id: 'name'},
-				{label: 'Email', id: 'email', type: 'email'},
-			]}
-			initialData={{name: 'Mihail Gaberov', email: 'me@mihail-gaberov.eu'}}
-			readonly={true} />
+		<Form readonly={true} recordId={0} />
 
 		<h2>Actions</h2>
 		<div><Actions onAction={type => alert(type)}/></div>
