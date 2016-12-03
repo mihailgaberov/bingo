@@ -57,7 +57,7 @@ function compileBackOffice() {
 			console.error(err);
 			this.emit('end');
 		})
-		.pipe(source('back-office-tests.js'))
+		.pipe(source('back-office.js'))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sourcemaps.write('./'))
@@ -73,7 +73,7 @@ function compileDiscoverer() {
 			console.error(err);
 			this.emit('end');
 		})
-		.pipe(source('back-office-tests-discoverer.js'))
+		.pipe(source('back-office-discoverer.js'))
 		.pipe(buffer())
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sourcemaps.write('./'))
@@ -108,7 +108,7 @@ gulp.task('sassBackOffice', () => {
 	gulp.src(paths.backOfficeSass)
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sass().on('error', sass.logError))
-		.pipe(concat('back-office-tests.css'))
+		.pipe(concat('back-office.css'))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(paths.buildSass));
 });
