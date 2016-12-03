@@ -41,17 +41,6 @@ ReactDOM.render(
 			<td><FormInput type="year" /></td>
 		</tr>
 		<tr>
-			<td>Rating</td>
-			<td><FormInput type="rating" defaultValue={4} /></td>
-		</tr>
-		<tr>
-			<td>Suggest</td>
-			<td><FormInput
-				type="suggest"
-				options={['red', 'green', 'blue']}
-				defaultValue="green" /></td>
-		</tr>
-		<tr>
 			<td>Vanilla textarea</td>
 			<td><FormInput type="text" /></td>
 		</tr>

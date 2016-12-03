@@ -49,7 +49,7 @@ function compile() {
 }
 
 function compileBackOffice() {
-	const bundler = watchify(browserify('./src/admin/app.js', {debug: true})
+	const bundler = watchify(browserify('./src/admin/back-office-app.js', {debug: true})
 		.transform('babelify', {presets: ['react', 'es2015', 'stage-0']}));
 
 	bundler.bundle()
