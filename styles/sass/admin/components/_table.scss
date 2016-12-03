@@ -1,11 +1,10 @@
 #main-table {
-  input {
-    font: 16px Arial;
-  }
-
   table {
-    border: 1px solid black;
-    margin: 20px;
+    width: 100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
 
     th {
       cursor: pointer;
@@ -13,9 +12,9 @@
     }
 
     td {
-      border-top: 1px solid black;
       cursor: cell;
       padding: 5px;
+      background-color: $backOfficeTableBackgroundColour;
     }
   }
 

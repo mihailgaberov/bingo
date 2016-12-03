@@ -10,7 +10,7 @@
 @import "components/back-office";
 
 html, body {
-  background: white;
+  background: $backOfficeBackgroundColour;
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -21,6 +21,6 @@ html, body {
 .app-header {
   background-color: $fifthColColour;
   padding: 10px 5px;
-  color: $mainWheatColor;
+  color: $mainWheatColour;
   font-size: 1.6em;
 }

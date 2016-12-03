@@ -8,7 +8,7 @@
   text-align: center;
 
   .inner-shadow {
-    color: $mainFrontColor;
+    color: $mainFrontColour;
     font-size: 10em;
     font-weight: bold;
     @include win-color-effect();
@@ -24,7 +24,7 @@
     font-size: 1.5em;
     font-family: "Goudy Bookletter 1911", sans-serif;
     font-weight: bold;
-    color: $mainFrontColor;
+    color: $mainFrontColour;
   }
 
   @-webkit-keyframes pulsate {
