@@ -173,6 +173,14 @@ gulp.task('default', ['clean',
 						'watch',
 						'webserver']);
 
+gulp.task('backOffice', ['clean',
+	'scriptsBackOffice',
+	'scriptsDiscoverer',
+	'sassBackOffice',
+	'jest',
+	'watch',
+	'webserver']);
+
 gulp.task('watch', () => {
 	gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
 	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
