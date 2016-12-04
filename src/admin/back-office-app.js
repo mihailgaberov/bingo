@@ -8,16 +8,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Logo from './components/Logo';
 import BackOffice from './components/BackOffice';
-import schema from './schema';
+import ApiCtrl from '../api/api-controller';
 
-CRUDStore.init(schema);
+ApiCtrl.getPlayersDataPromise().then((data) => {
+	CRUDStore.init(data);
 
-ReactDOM.render(
-	<div>
-		<div className="app-header">
-			<Logo/> Bingo Bigul Back Office
-		</div>
-		<BackOffice />
-	</div>,
-	document.getElementById('backOfficeApp')
-);
+	// Start the app when the data is fetched from the database
+	startApp();
+});
+
+const startApp = () => {
+	ReactDOM.render(
+		<div>
+			<div className="app-header">
+				<Logo/> Bingo Bigul Back Office
+			</div>
+			<BackOffice />
+		</div>,
+		document.getElementById('backOfficeApp')
+	);
+};

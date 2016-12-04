@@ -32,7 +32,7 @@ type State = {
 	dialog: ?DialogState
 };
 
-class Excel extends Component {
+class Table extends Component {
 	state: State;
 	schema: Array<Object>;
 	constructor() {
@@ -241,4 +241,4 @@ class Excel extends Component {
 	}
 }
 
-export default Excel
+export default Table

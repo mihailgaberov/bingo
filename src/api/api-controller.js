@@ -109,6 +109,12 @@ class ApiController {
 	static getPlayerBalanceFromStorage() {
 		return LocalStorageService.getBalance();
 	}
+
+	static getPlayersDataPromise() {
+		return DbService.getAllPlayersData().then((val) => {
+			return val;
+		});
+	}
 }
 
 export default ApiController;

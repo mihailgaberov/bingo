@@ -7,32 +7,19 @@
 
 import { EventEmitter } from 'fbemitter';
 import { List } from 'immutable';
-import DbService from '../../api/db-service';
+import schema from '../schema';
 
 let data: List<Object>;
-let schema;
 const emitter = new EventEmitter();
 
 const CRUDStore = {
-
-	init(initialSchema: Array<Object>) {
-		schema = initialSchema;
-
-		const dbData = DbService.getAllPlayersData();
-		dbData.then((d) => {
-			console.log('dfdddddd: ', d);
-		});
-
-		const storage = 'localStorage' in window
-			? localStorage.getItem('data')
-			: null;
-
+	init(storage) {
 		if (!storage) {
 			let initialRecord = {};
 			schema.forEach(item => initialRecord[item.id] = item.sample);
 			data = List([initialRecord]);
 		} else {
-			data = List(JSON.parse(storage));
+			data = List(storage);
 		}
 	},
 
@@ -57,7 +44,9 @@ const CRUDStore = {
 	},
 
 	getCount(): number {
-		return data.count();
+		setTimeout(() => {
+			return data.count();
+		}, 253);
 	},
 
 	getRecord(recordId: number): ?Object {

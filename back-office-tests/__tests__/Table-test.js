@@ -14,11 +14,12 @@ Store.init(schema);
 
 describe('Editing data', () => {
 
-	it('saves new data', () => {
+	it('Saves new data', () => {
 		const table = TestUtils.renderIntoDocument(
 			<Table />
 		);
-		const newname = '$2.99 chuck';
+		const newname = 'Name';
+
 		const cell = TestUtils.scryRenderedDOMComponentsWithTag(table, 'td')[0];
 		cell.dataset = { // hack around the DOM support in Jest
 			row: cell.getAttribute('data-row'),
@@ -30,7 +31,7 @@ describe('Editing data', () => {
 		expect(cell.textContent).toBe(newname);
 	});
 
-	it('deletes data', () => {
+	it('Deletes data', () => {
 		const table = TestUtils.renderIntoDocument(
 			<Table />
 		);
