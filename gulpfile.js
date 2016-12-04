@@ -87,7 +87,7 @@ gulp.task('scriptsDiscoverer', () => compileDiscoverer());
 gulp.task('clean', () => del(['build']));
 
 gulp.task('sass', () => {
-	gulp.src(paths.sass)
+	gulp.src([paths.sass, '!./styles/sass/admin/**/*.scss'])
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(concat('all.css'))
