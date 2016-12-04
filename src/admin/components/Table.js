@@ -155,8 +155,8 @@ class Table extends Component {
 		return (
 			<Dialog
 				modal={true}
-				header={readonly ? 'Item info' : 'Edit item'}
-				confirmLabel={readonly ? 'ok' : 'Save'}
+				header={readonly ? 'Player Info' : 'Edit Player Data'}
+				confirmLabel={readonly ? 'OK' : 'Save'}
 				hasCancel={!readonly}
 				onAction={this._saveDataDialog.bind(this)}
 			>

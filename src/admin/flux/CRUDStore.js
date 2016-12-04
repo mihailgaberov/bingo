@@ -45,9 +45,7 @@ const CRUDStore = {
 	},
 
 	getCount(): number {
-		setTimeout(() => {
-			return data.count();
-		}, 253);
+		return data.count();
 	},
 
 	getRecord(recordId: number): ?Object {
