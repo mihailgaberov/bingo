@@ -136,15 +136,15 @@ class Table extends Component {
 		const index = this.state.dialog && this.state.dialog.idx;
 		invariant(typeof index === 'number', 'Unexpected dialog state');
 		const first = this.state.data.get(index);
-		const nameguess = first[Object.keys(first)[0]];
+		const nameGuess = first[Object.keys(first)[6]];
 		return (
 			<Dialog
 				modal={true}
-				header="Confirm deletion"
+				header="Confirm"
 				confirmLabel="Delete"
 				onAction={this._deleteConfirmationClick.bind(this)}
 			>
-				{`Are you sure you want to delete "${nameguess}"?`}
+				{`Are you sure you want to delete "${nameGuess}"?`}
 			</Dialog>
 		);
 	}
