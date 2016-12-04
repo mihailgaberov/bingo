@@ -7,6 +7,7 @@
 
 import { EventEmitter } from 'fbemitter';
 import { List } from 'immutable';
+import DbService from '../../api/db-service';
 
 let data: List<Object>;
 let schema;
@@ -16,6 +17,11 @@ const CRUDStore = {
 
 	init(initialSchema: Array<Object>) {
 		schema = initialSchema;
+
+		const dbData = DbService.getAllPlayersData();
+		dbData.then((d) => {
+			console.log('dfdddddd: ', d);
+		});
 
 		const storage = 'localStorage' in window
 			? localStorage.getItem('data')

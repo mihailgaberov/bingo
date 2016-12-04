@@ -89,6 +89,20 @@ class DbService {
 			console.log('>>> Fetching error: ', err);
 		});
 	}
+
+	static getAllPlayersData() {
+		return fetch(ApiConsts.GET_PLAYERS_DATA, {
+			method: 'GET',
+			mode: 'cors',
+			redirect: 'follow',
+		}).then((res) => {
+			return res.json();
+		}).then((returnedValue) => {
+			return returnedValue;
+		}).catch(function (err) {
+			console.log('>>> Fetching error: ', err);
+		});
+	}
 }
 
 export default DbService;

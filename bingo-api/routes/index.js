@@ -13,7 +13,7 @@ var auth = jwt({
 
 // Back office app
 var ctrlBackOffice = require('../controllers/back-office');
-router.get('/getAllUsers', ctrlBackOffice.getAllUsers);
+router.get('/getPlayersData', ctrlBackOffice.getAllUsers);
 
 // Main app
 var ctrlProfile = require('../controllers/profile');

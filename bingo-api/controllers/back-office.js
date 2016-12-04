@@ -13,4 +13,3 @@ module.exports.getAllUsers = function (req, res) {
 			res.status(200).json(allUsers);
 		});
 };
-
