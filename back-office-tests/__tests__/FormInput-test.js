@@ -11,32 +11,27 @@ import TestUtils from 'react-addons-test-utils';
 
 const FormInput = require('../../src/admin/components/FormInput').default;
 
-describe('factory works', () => {
-	it('renders correct input node', () => {
+describe('FormInput module', () => {
+	it('Renders correct input node', () => {
 		expect(
 			TestUtils.findRenderedDOMComponentWithTag(
-				TestUtils.renderIntoDocument(<FormInput />),
-				'input',
-			).type
-		).toBe('text');
+				TestUtils.renderIntoDocument(<FormInput />), 'input',).type).toBe('text');
 
 		expect(
 			TestUtils.findRenderedDOMComponentWithTag(
-				TestUtils.renderIntoDocument(<FormInput type="year" />),
-				'input',
-			).type
-		).toBe('number');
+				TestUtils.renderIntoDocument(<FormInput type="number"/>), 'input',).type).toBe('number');
 
 		expect(
 			TestUtils.findRenderedDOMComponentWithTag(
-				TestUtils.renderIntoDocument(<FormInput type="text" />),
-				'textarea',
-			).nodeName
-		).toBe('TEXTAREA');
+				TestUtils.renderIntoDocument(<FormInput type="text"/>), 'textarea',).nodeName).toBe('TEXTAREA');
+
+		expect(
+			TestUtils.findRenderedDOMComponentWithTag(
+				TestUtils.renderIntoDocument(<FormInput type="email"/>), 'input',).type).toBe('email');
 	});
 
-	it('returns input value', () => {
-		let input = TestUtils.renderIntoDocument(<FormInput type="year" />);
-		expect(input.getValue()).toBe(String(new Date().getFullYear()));
+	it('Returns default input value', () => {
+		let input = TestUtils.renderIntoDocument(<FormInput type="number"/>);
+		expect(input.getValue()).toBe(String(50));
 	});
 });

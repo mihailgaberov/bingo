@@ -20,10 +20,6 @@ class FormInput extends Component {
 
 	props: FormInputField;
 
-	/*static defaultProps = {
-		type: 'input',
-	};*/
-
 	getValue(): FormInputFieldValue {
 		return 'value' in this.refs.input
 			? this.refs.input.value
