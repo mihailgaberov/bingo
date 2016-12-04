@@ -40,7 +40,10 @@ class Form extends Component {
 	render() {
 		return (
 			<form id="form">{this.fields.map((field: FormInputField) => {
-				const prefilled: FormInputFieldValue = (this.initialData && this.initialData[field.id]) || '';
+				let prefilled: FormInputFieldValue = '';
+				if (this.initialData) {
+					prefilled = this.initialData[field.id];
+				}
 
 				if (!this.props.readonly) {
 					return (

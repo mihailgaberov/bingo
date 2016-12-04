@@ -38,7 +38,7 @@ class FormInput extends Component {
 					<input
 						{...common}
 						type="number"
-						defaultValue={parseInt(this.props.defaultValue, 10)} />
+						defaultValue={parseInt(this.props.defaultValue, 10) || 0} />
 				);
 			case 'email':
 				return (

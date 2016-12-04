@@ -32,6 +32,6 @@ describe('FormInput module', () => {
 
 	it('Returns default input value', () => {
 		let input = TestUtils.renderIntoDocument(<FormInput type="number"/>);
-		expect(input.getValue()).toBe(String(50));
+		expect(input.getValue()).toBe(String(0));
 	});
 });
