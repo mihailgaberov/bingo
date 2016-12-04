@@ -8,7 +8,11 @@ const ApiConsts = {
 	REGISTER: 'http://localhost:8888/bingo-api/register',
 	LOGIN: 'http://localhost:8888/bingo-api/login',
 	PROFILE: 'http://localhost:8888/bingo-api/profile',
-	SET_BALANCE: 'http://localhost:8888/bingo-api/setNewBalance'
+	SET_BALANCE: 'http://localhost:8888/bingo-api/setNewBalance',
+	GET_ALL_USERS: 'http://localhost:8888/bingo-api/getAllUsers',
+	CREATE_USER: 'http://localhost:8888/bingo-api/createUser',
+	UPDATE_USER: 'http://localhost:8888/bingo-api/updateUser',
+	DELETE_USER: 'http://localhost:8888/bingo-api/deleteUser'
 };
 
 export { ApiConsts };

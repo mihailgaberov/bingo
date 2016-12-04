@@ -20,6 +20,7 @@ module.exports.register = function (req, res) {
 			});
 		} else {
 			user.setBalance(50);
+			user.setWins(0);
 			user.setPassword(req.body.password);
 			user.save(function (err) {
 				var token;

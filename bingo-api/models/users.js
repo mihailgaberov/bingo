@@ -21,6 +21,10 @@ var userSchema = new mongoose.Schema({
 	balance: {
 		type: Number,
 		required: true
+	},
+	wins: {
+		type: Number,
+		required: true
 	}
 });
 
@@ -47,8 +51,13 @@ userSchema.methods.generateJwt = function() {
 		email: this.email,
 		name: this.name,
 		balance: this.balance,
+		wins: this.wins,
 		exp: parseInt(expiry.getTime() / 1000)
 	},  process.env.DB_SECRET);
+};
+
+userSchema.methods.setWins = function(amount) {
+	this.wins = amount;
 };
 
 mongoose.model('Users', userSchema);
