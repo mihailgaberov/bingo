@@ -35,6 +35,7 @@ const CRUDStore = {
 		data = newData;
 		if (commit && 'localStorage' in window) {
 			localStorage.setItem('data', JSON.stringify(newData));
+			// TODO: add/update record to the DB
 		}
 		emitter.emit('change');
 	},

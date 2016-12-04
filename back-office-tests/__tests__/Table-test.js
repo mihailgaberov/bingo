@@ -7,10 +7,9 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 const Table = require('../../src/admin/components/Table').default;
-const schema = require('../../src/admin/schema').default;
+const data = require('../../src/admin/dummy-data').default;
 const Store = require('../../src/admin/flux/CRUDStore').default;
-
-Store.init(schema);
+Store.init(data);
 
 describe('Editing data', () => {
 
@@ -18,7 +17,7 @@ describe('Editing data', () => {
 		const table = TestUtils.renderIntoDocument(
 			<Table />
 		);
-		const newname = 'Name';
+		const newname = 'Mihail Gaberov';
 
 		const cell = TestUtils.scryRenderedDOMComponentsWithTag(table, 'td')[0];
 		cell.dataset = { // hack around the DOM support in Jest
