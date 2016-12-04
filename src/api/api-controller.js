@@ -115,6 +115,12 @@ class ApiController {
 			return val;
 		});
 	}
+
+	static createPlayerPromise(name, email, pass, balance, wins) {
+		return DbService.createPlayer(name, email, pass, balance, wins).then((val) => {
+			return val;
+		});
+	}
 }
 
 export default ApiController;

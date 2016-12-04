@@ -103,6 +103,30 @@ class DbService {
 			console.log('>>> Fetching error: ', err);
 		});
 	}
+
+	static createPlayer(name, email, pass, balance, wins) {
+		return fetch(ApiConsts.REGISTER, {
+			method: 'POST',
+			body: JSON.stringify({
+				name: name,
+				email: email,
+				password: pass,
+				balance: balance,
+				wins: wins
+			}),
+			mode: 'cors',
+			redirect: 'follow',
+			headers: new Headers({
+				'Content-Type': 'application/json'
+			})
+		}).then((res) => {
+			return res.json();
+		}).then((returnedValue) => {
+			return returnedValue;
+		}).catch(function (err) {
+			console.log('>>> Fetching error: ', err);
+		});
+	}
 }
 
 export default DbService;

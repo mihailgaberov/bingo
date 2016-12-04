@@ -6,10 +6,36 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('Users');
 
-module.exports.getAllUsers = function (req, res) {
+module.exports.getPlayersData = function (req, res) {
 	User
 		.find()
 		.exec(function (err, allUsers) {
 			res.status(200).json(allUsers);
 		});
+};
+
+module.exports.createPlayer = function (req, res) {
+	var user = new User();
+
+	user.name = req.body.name;
+	user.email = req.body.email;
+
+	// Check for existence
+	User.count({email: user.email}, function (err, count) {
+		if (count > 0) {
+			res.status(200);
+			res.json({
+				'isExisted': true
+			});
+		} else {
+			user.setBalance(req.body.balance);
+			user.setWins(req.body.wins);
+			user.setPassword(req.body.password);
+			user.save(function (err) {
+				var token = user.generateJwt();
+				res.status(200);
+				res.json(user);
+			});
+		}
+	});
 };
