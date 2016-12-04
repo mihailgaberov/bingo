@@ -1,31 +1,55 @@
-/**
+	/**
  * Created by Mihail on 11/30/2016.
  */
 'use strict';
+/* @flow */
 
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+
+type FormInputFieldType = 'number' | 'email' | 'text' | 'input';
+export type FormInputFieldValue = string | number;
+export type FormInputField = {
+	type: FormInputFieldType,
+	defaultValue?: FormInputFieldValue,
+	id?: string,
+	options?: Array<string>,
+	label?: string,
+};
 
 class FormInput extends Component {
 
-	getValue() {
+	props: FormInputField;
+
+	/*static defaultProps = {
+		type: 'input',
+	};*/
+
+	getValue(): FormInputFieldValue {
 		return 'value' in this.refs.input
 			? this.refs.input.value
 			: this.refs.input.getValue();
 	}
 
 	render() {
-		const common = {
+		const common: Object = {
 			id: this.props.id,
 			ref: 'input',
 			defaultValue: this.props.defaultValue,
 		};
 		switch (this.props.type) {
-			case 'year':
+			case 'number':
 				return (
 					<input
 						{...common}
 						type="number"
-						defaultValue={this.props.defaultValue || new Date().getFullYear()} />
+						defaultValue={parseInt(this.props.defaultValue, 10) || 50} />
+				);
+			case 'email':
+				return (
+					<input
+						{...common}
+						type="email"
+						defaultValue={this.props.defaultValue || 'me@mihail-gaberov.eu'} />
 				);
 			case 'text':
 				return <textarea {...common} />;
@@ -34,12 +58,5 @@ class FormInput extends Component {
 		}
 	}
 }
-
-FormInput.propTypes = {
-	type: PropTypes.oneOf(['email', 'year', 'text', 'input']),
-	id: PropTypes.string,
-	options: PropTypes.array,
-	defaultValue: PropTypes.any
-};
 
 export default FormInput

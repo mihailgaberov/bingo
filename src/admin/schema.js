@@ -8,7 +8,7 @@ export default [
 		id: 'name',
 		label: 'Name',
 		show: true,
-		sample: '$2 chuck',
+		sample: 'Mihail Gaberov',
 		align: 'left'
 	},
 	{
@@ -19,16 +19,17 @@ export default [
 		sample: 'me@mihail-gaberov.eu'
 	},
 	{
-		id: 'year',
-		label: 'Year',
-		type: 'year',
+		id: 'balance',
+		label: 'Balance',
+		type: 'number',
 		show: true,
-		sample: 2015
+		sample: '50'
 	},
 	{
-		id: 'comments',
-		label: 'Comments',
-		type: 'text',
-		sample: 'Nice for the price'
-	},
+		id: 'wins',
+		label: 'Wins',
+		type: 'number',
+		show: true,
+		sample: '7'
+	}
 ]
