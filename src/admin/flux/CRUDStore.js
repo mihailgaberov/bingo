@@ -38,18 +38,31 @@ const CRUDStore = {
 										newRecord.email,
 										newRecord.password,
 										newRecord.balance,
-										newRecord.wins).then((d) => {
-				console.log('Added successfully: ', d);
+										newRecord.wins).then((e) => {
+				console.log(e);
+				if (e.isExisted){
+					console.log('>>> Existing user - show dialog message.');
+					return false;
+				}
+
+				if (!e.token) {
+					console.log('>>> Creating failed.');
+					return false;
+				}
+
+				// data.unshift(newRecord);
+				CRUDStore.setData(CRUDStore.getData().unshift(newRecord));
+				emitter.emit('change');
+
 			});
 		}
-		emitter.emit('change');
 	},
 
 	setData(newData: List<Object>, commit: boolean = true) {
 		data = newData;
-		if (commit && 'localStorage' in window) {
+		/*if (commit && 'localStorage' in window) {
 			localStorage.setItem('data', JSON.stringify(newData));
-		}
+		}*/
 		emitter.emit('change');
 	},
 
