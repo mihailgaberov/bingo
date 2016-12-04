@@ -9,5 +9,10 @@
   .form-row {
     padding-left: 20px;
     text-align: left;
+
+    input {
+      font-size: $backOfficeInputsFontSize;
+      padding: 10px;
+    }
   }
 }

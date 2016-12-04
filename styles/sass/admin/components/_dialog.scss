@@ -2,9 +2,9 @@
   border: 1px solid lightgray;
 
   .dialog-header {
-    background-color: #6F001B;
-    color: #F0F0F0;
-    font-family: Norican, cursive;
+    background-color: $backOfficeHeaderColour;
+    color: $mainWheatColour;
+    font-family: $mainFontFamily;
     font-size: 42px;
     margin: 0;
     padding: 10px 10px 10px 20px;

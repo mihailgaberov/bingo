@@ -10,7 +10,7 @@
   .toolbar-search {
     float: right;
     input {
-      font-size: 14px;
+      font-size: $backOfficeInputsFontSize;
       padding: 10px;
     }
   }
