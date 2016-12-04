@@ -19,6 +19,11 @@ export default [
 		sample: 'me@mihail-gaberov.eu'
 	},
 	{
+		id: 'password',
+		label: 'Password',
+		show: false
+	},
+	{
 		id: 'balance',
 		label: 'Balance',
 		type: 'number',

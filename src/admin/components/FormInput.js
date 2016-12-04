@@ -45,7 +45,7 @@ class FormInput extends Component {
 					<input
 						{...common}
 						type="email"
-						defaultValue={this.props.defaultValue || 'me@mihail-gaberov.eu'} />
+						defaultValue={this.props.defaultValue} />
 				);
 			case 'text':
 				return <textarea {...common} />;

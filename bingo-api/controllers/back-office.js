@@ -3,6 +3,7 @@
  */
 "use strict";
 
+var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('Users');
 
@@ -34,7 +35,9 @@ module.exports.createPlayer = function (req, res) {
 			user.save(function (err) {
 				var token = user.generateJwt();
 				res.status(200);
-				res.json(user);
+				res.json({
+					'token': token
+				});
 			});
 		}
 	});

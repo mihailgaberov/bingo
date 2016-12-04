@@ -105,7 +105,7 @@ class DbService {
 	}
 
 	static createPlayer(name, email, pass, balance, wins) {
-		return fetch(ApiConsts.REGISTER, {
+		return fetch(ApiConsts.CREATE_PLAYER, {
 			method: 'POST',
 			body: JSON.stringify({
 				name: name,

@@ -77,7 +77,7 @@ class BackOffice extends Component {
 				{this.state.addnew
 					? <Dialog
 					modal={true}
-					header="Add new item"
+					header="Add New Player"
 					confirmLabel="Add"
 					onAction={this._addNew.bind(this)}
 				>

@@ -8,6 +8,7 @@
 import { EventEmitter } from 'fbemitter';
 import { List } from 'immutable';
 import schema from '../schema';
+import ApiCtrl from '../../api/api-controller';
 
 let data: List<Object>;
 const emitter = new EventEmitter();
@@ -31,11 +32,23 @@ const CRUDStore = {
 		return schema;
 	},
 
+	addRecord(newRecord: Object, commit: boolean = true) {
+		if (commit) {
+			ApiCtrl.createPlayerPromise(newRecord.name,
+										newRecord.email,
+										newRecord.password,
+										newRecord.balance,
+										newRecord.wins).then((d) => {
+				console.log('Added successfully: ', d);
+			});
+		}
+		emitter.emit('change');
+	},
+
 	setData(newData: List<Object>, commit: boolean = true) {
 		data = newData;
 		if (commit && 'localStorage' in window) {
 			localStorage.setItem('data', JSON.stringify(newData));
-			// TODO: add/update record to the DB
 		}
 		emitter.emit('change');
 	},

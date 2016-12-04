@@ -10,7 +10,7 @@ import {List} from 'immutable';
 
 const CRUDActions = {
 	create(newRecord: Object) {
-		CRUDStore.setData(CRUDStore.getData().unshift(newRecord));
+		CRUDStore.addRecord(newRecord);
 	},
 
 	delete(recordId: number) {
