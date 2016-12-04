@@ -204,8 +204,10 @@ class Table extends Component {
 								if (!schema || !schema.show) {
 									return null;
 								}
+
 								const edit = this.state.edit;
-								let content = row[cell];
+								let content = row[schema.id];
+
 								if (edit && edit.row === rowidx && edit.key === schema.id) {
 									content = (
 										<form onSubmit={this._save.bind(this)}>
