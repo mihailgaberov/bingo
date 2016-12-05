@@ -11,10 +11,12 @@ import Dialog from './Dialog';
 import Table from './Table';
 import Form from './Form';
 import React, {Component} from 'react';
+import EventsConsts from './EventsConsts';
 
 type State = {
 	addnew: boolean,
 	count: number,
+	errorUserExists: boolean
 };
 
 class BackOffice extends Component {
@@ -25,22 +27,33 @@ class BackOffice extends Component {
 		super();
 		this.state = {
 			addnew: false,
+			isError: false,
 			count: CRUDStore.getCount(),
 		};
 
-		CRUDStore.addListener('change', () => {
+		CRUDStore.addListener(EventsConsts.CHANGE, () => {
 			this.setState({
 				count: CRUDStore.getCount(),
 			})
 		});
+
+		CRUDStore.addListener(EventsConsts.USER_EXISTS, () => {
+			this.setState({errorUserExists: true});
+		});
 	}
 
 	shouldComponentUpdate(newProps: Object, newState: State): boolean {
-		return newState.addnew !== this.state.addnew || newState.count !== this.state.count;
+		return  newState.addnew !== this.state.addnew ||
+				newState.count !== this.state.count ||
+				newState.errorUserExists !== this.state.errorUserExists;
 	}
 
 	_addNewDialog() {
 		this.setState({addnew: true});
+	}
+
+	_closeErrorDialog() {
+		this.setState({errorUserExists: false});
 	}
 
 	_addNew(action: string) {
@@ -84,6 +97,17 @@ class BackOffice extends Component {
 					<Form ref="form"/>
 				</Dialog>
 					: null}
+
+				{this.state.errorUserExists ?
+					<Dialog
+						modal={true}
+						header="Error"
+						confirmLabel="OK"
+						hasCancel={false}
+						onAction={this._closeErrorDialog.bind(this)}>
+							User already exists!
+					</Dialog>
+				: null}
 			</div>
 		);
 	}

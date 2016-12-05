@@ -2,13 +2,13 @@
  * Created by Mihail on 11/30/2016.
  */
 'use strict';
-
 /* @flow */
 
 import { EventEmitter } from 'fbemitter';
 import { List } from 'immutable';
 import schema from '../schema';
 import ApiCtrl from '../../api/api-controller';
+import EventsConsts from '../components/EventsConsts';
 
 let data: List<Object>;
 const emitter = new EventEmitter();
@@ -39,19 +39,17 @@ const CRUDStore = {
 										newRecord.password,
 										newRecord.balance,
 										newRecord.wins).then((e) => {
-				console.log(e);
 				if (e.isExisted){
-					console.log('>>> Error: Existing user - show error dialog message.');
+					emitter.emit(EventsConsts.USER_EXISTS);
 					return false;
 				}
 
 				if (!e.token) {
-					console.log('>>> Error: Creating failed.');
 					return false;
 				}
 
 				CRUDStore.setData(CRUDStore.getData().unshift(newRecord));
-				emitter.emit('change');
+				emitter.emit(EventsConsts.CHANGE);
 
 			});
 		}
@@ -62,7 +60,7 @@ const CRUDStore = {
 		/*if (commit && 'localStorage' in window) {
 			localStorage.setItem('data', JSON.stringify(newData));
 		}*/
-		emitter.emit('change');
+		emitter.emit(EventsConsts.CHANGE);
 	},
 
 	addListener(eventType: string, fn: Function) {

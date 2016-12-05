@@ -13,6 +13,7 @@ import FormInput from './FormInput';
 import React, {Component} from 'react';
 import classNames from 'classnames';
 import invariant from 'invariant';
+import EventsConsts from './EventsConsts';
 
 type EditState = {
 	row: number,
@@ -45,7 +46,7 @@ class Table extends Component {
 			dialog: null, // {type, idx}
 		};
 		this.schema = CRUDStore.getSchema();
-		CRUDStore.addListener('change', () => {
+		CRUDStore.addListener(EventsConsts.CHANGE, () => {
 			this.setState({
 				data: CRUDStore.getData(),
 			})
