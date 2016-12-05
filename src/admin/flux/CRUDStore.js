@@ -41,16 +41,15 @@ const CRUDStore = {
 										newRecord.wins).then((e) => {
 				console.log(e);
 				if (e.isExisted){
-					console.log('>>> Existing user - show dialog message.');
+					console.log('>>> Error: Existing user - show error dialog message.');
 					return false;
 				}
 
 				if (!e.token) {
-					console.log('>>> Creating failed.');
+					console.log('>>> Error: Creating failed.');
 					return false;
 				}
 
-				// data.unshift(newRecord);
 				CRUDStore.setData(CRUDStore.getData().unshift(newRecord));
 				emitter.emit('change');
 
