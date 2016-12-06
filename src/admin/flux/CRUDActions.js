@@ -15,8 +15,7 @@ const CRUDActions = {
 
 	delete(recordId: number) {
 		let data: List<Object> = CRUDStore.getData();
-		CRUDStore.deleteRecord(CRUDStore.getData().get(recordId)._id);
-		CRUDStore.setData(data.remove(recordId));
+		CRUDStore.deleteRecord(data.get(recordId), recordId);
 	},
 
 	updateRecord(recordId: number, newRecord: Object) {

@@ -16,7 +16,8 @@ import EventsConsts from './EventsConsts';
 type State = {
 	addnew: boolean,
 	count: number,
-	errorUserExists: boolean
+	errorUserExists: boolean,
+	errorDeletion: boolean
 };
 
 class BackOffice extends Component {
@@ -27,7 +28,8 @@ class BackOffice extends Component {
 		super();
 		this.state = {
 			addnew: false,
-			isError: false,
+			errorUserExists: false,
+			errorDeletion: false,
 			count: CRUDStore.getCount(),
 		};
 
@@ -40,12 +42,17 @@ class BackOffice extends Component {
 		CRUDStore.addListener(EventsConsts.USER_EXISTS, () => {
 			this.setState({errorUserExists: true});
 		});
+
+		CRUDStore.addListener(EventsConsts.DELETE_ERROR, () => {
+			this.setState({errorDeletion: true});
+		});
 	}
 
 	shouldComponentUpdate(newProps: Object, newState: State): boolean {
 		return  newState.addnew !== this.state.addnew ||
 				newState.count !== this.state.count ||
-				newState.errorUserExists !== this.state.errorUserExists;
+				newState.errorUserExists !== this.state.errorUserExists ||
+				newState.errorDeletion !== this.state.errorDeletion;
 	}
 
 	_addNewDialog() {
@@ -53,7 +60,11 @@ class BackOffice extends Component {
 	}
 
 	_closeErrorDialog() {
-		this.setState({errorUserExists: false});
+		if (this.state.errorUserExists)
+			this.setState({errorUserExists: false});
+
+		if (this.state.errorDeletion)
+			this.setState({errorDeletion: false});
 	}
 
 	_addNew(action: string) {
@@ -108,6 +119,17 @@ class BackOffice extends Component {
 							User already exists!
 					</Dialog>
 				: null}
+
+				{this.state.errorDeletion ?
+					<Dialog
+						modal={true}
+						header="Error"
+						confirmLabel="OK"
+						hasCancel={false}
+						onAction={this._closeErrorDialog.bind(this)}>
+							Deleting player failed. Please try again later.
+					</Dialog>
+					: null}
 			</div>
 		);
 	}

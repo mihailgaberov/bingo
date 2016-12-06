@@ -72,11 +72,16 @@ const CRUDStore = {
 		}
 	},
 
-	deleteRecord(id) {
-		if (id) {
-			ApiCtrl.deletePlayerPromise(id);
+	deleteRecord(objRecord, recordId) {
+		if (objRecord._id) {
+			ApiCtrl.deletePlayerPromise(objRecord._id).then((e) => {
+				if (e.ok) {
+					CRUDStore.setData(CRUDStore.getData().remove(recordId));
+					emitter.emit(EventsConsts.CHANGE);
+				}
+			});
 		} else {
-			console.log('Deletion error - invalid player id  - show error dialog.');
+			emitter.emit(EventsConsts.DELETE_ERROR);
 		}
 	}
 };
