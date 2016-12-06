@@ -17,6 +17,7 @@ var ctrlBackOffice = require('../controllers/back-office');
 router.get('/getPlayersData', ctrlBackOffice.getPlayersData);
 router.post('/createPlayer', ctrlBackOffice.createPlayer);
 router.post('/deletePlayer', ctrlBackOffice.deletePlayer);
+router.post('/updatePlayerData', ctrlBackOffice.updatePlayerData);
 
 // Main app
 var ctrlProfile = require('../controllers/profile');

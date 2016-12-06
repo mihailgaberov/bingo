@@ -55,3 +55,22 @@ module.exports.deletePlayer = function (req, res) {
 			});
 	}
 };
+
+module.exports.updatePlayerData = function (req, res) {
+	if (!req.body._id) {
+		res.status(401).json({
+			"message": "UnauthorizedError: unauthorized attempt to update player data"
+		});
+	} else {
+		User.findOne({_id: req.body._id}, function (err, user) {
+			user.name = req.body.name;
+			user.email = req.body.email;
+			user.setBalance(req.body.balance);
+			user.setWins(req.body.wins);
+			user.setPassword(req.body.password);
+			user.save(function (err, user) {
+				res.status(200).json(user);
+			});
+		});
+	}
+};

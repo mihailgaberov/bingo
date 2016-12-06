@@ -11,7 +11,7 @@ const ApiConsts = {
 	SET_BALANCE: 'http://localhost:8888/bingo-api/setNewBalance',
 	GET_PLAYERS_DATA: 'http://localhost:8888/bingo-api/getPlayersData',
 	CREATE_PLAYER: 'http://localhost:8888/bingo-api/createPlayer',
-	UPDATE_PLAYER_DATA: 'http://localhost:8888/bingo-api/updatePlayer',
+	UPDATE_PLAYER_DATA: 'http://localhost:8888/bingo-api/updatePlayerData',
 	DELETE_PLAYER: 'http://localhost:8888/bingo-api/deletePlayer'
 };
 
