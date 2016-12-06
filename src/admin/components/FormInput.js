@@ -41,11 +41,20 @@ class FormInput extends Component {
 						defaultValue={parseInt(this.props.defaultValue, 10) || 0} />
 				);
 			case 'email':
+				if (!this.props.readonly) {
+					return (
+						<input
+							{...common}
+							type="email"
+							defaultValue={this.props.defaultValue} />
+					);
+				}
 				return (
-					<input
-						{...common}
-						type="email"
-						defaultValue={this.props.defaultValue} />
+					<div className="form-row" key={'email'}>
+						{
+							<div>{this.props.defaultValue}</div>
+						}
+					</div>
 				);
 			case 'text':
 				return <textarea {...common} />;

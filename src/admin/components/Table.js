@@ -164,7 +164,8 @@ class Table extends Component {
 				<Form
 					ref="form"
 					recordId={index}
-					readonly={!!readonly} />
+					readonly={!!readonly}
+					readOnlyEmail={true} />
 			</Dialog>
 		);
 	}

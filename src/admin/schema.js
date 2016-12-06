@@ -5,18 +5,18 @@
 
 export default [
 	{
-		id: 'name',
-		label: 'Name',
-		show: true,
-		sample: 'Mihail Gaberov',
-		align: 'left'
-	},
-	{
 		id: 'email',
 		label: 'Email',
 		type: 'email',
 		show: true,
 		sample: 'me@mihail-gaberov.eu'
+	},
+	{
+		id: 'name',
+		label: 'Name',
+		show: true,
+		sample: 'Mihail Gaberov',
+		align: 'left'
 	},
 	{
 		id: 'password',
