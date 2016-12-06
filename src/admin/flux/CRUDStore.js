@@ -76,8 +76,7 @@ const CRUDStore = {
 		if (id) {
 			ApiCtrl.deletePlayerPromise(id);
 		} else {
-			// TODO: show error dialog
-			console.log('Deletion error - invalid player id.');
+			console.log('Deletion error - invalid player id  - show error dialog.');
 		}
 	}
 };
