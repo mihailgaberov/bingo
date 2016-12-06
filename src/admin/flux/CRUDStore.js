@@ -80,8 +80,17 @@ const CRUDStore = {
 	},
 
 	updateRecord(objRecord, recordId) {
-		if (objRecord.email) {
-			ApiCtrl.updatePlayerDataPromise(objRecord).then((newRecord) => {
+		let objUpdated = {};
+		if (objRecord._id) {
+			objUpdated.email = objRecord.email;
+			objUpdated.name = objRecord.name;
+			objUpdated.balance = objRecord.balance;
+			objUpdated.wins = objRecord.wins;
+		} else {
+			objUpdated = objRecord;
+		}
+		if (objUpdated.email) {
+			ApiCtrl.updatePlayerDataPromise(objUpdated).then((newRecord) => {
 				if (newRecord) {
 					CRUDStore.setData(CRUDStore.getData().set(recordId, newRecord));
 					emitter.emit(EventsConsts.CHANGE);

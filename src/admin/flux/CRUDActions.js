@@ -25,7 +25,7 @@ const CRUDActions = {
 	updateField(recordId: number, key: string, value: string|number) {
 		let record = CRUDStore.getData().get(recordId);
 		record[key] = value;
-		CRUDStore.setData(CRUDStore.getData().set(recordId, record));
+		CRUDStore.updateRecord(record, recordId);
 	},
 
 	_preSearchData: null,
