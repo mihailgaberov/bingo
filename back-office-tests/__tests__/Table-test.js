@@ -9,6 +9,7 @@ import TestUtils from 'react-addons-test-utils';
 const Table = require('../../src/admin/components/Table').default;
 const data = require('../../src/admin/dummy-data').default;
 const Store = require('../../src/admin/flux/CRUDStore').default;
+const fetch = require('isomorphic-fetch').default;
 Store.init(data);
 
 describe('Editing data', () => {
@@ -19,7 +20,7 @@ describe('Editing data', () => {
 		);
 		const newname = 'Mihail Gaberov';
 
-		const cell = TestUtils.scryRenderedDOMComponentsWithTag(table, 'td')[0];
+		const cell = TestUtils.scryRenderedDOMComponentsWithTag(table, 'td')[1];
 		cell.dataset = { // hack around the DOM support in Jest
 			row: cell.getAttribute('data-row'),
 			key: cell.getAttribute('data-key'),
@@ -42,7 +43,7 @@ describe('Editing data', () => {
 			TestUtils.findRenderedDOMComponentWithClass(table, 'button')
 		);
 
-		expect(TestUtils.scryRenderedDOMComponentsWithTag(table, 'td').length).toBe(0);
+		expect(TestUtils.scryRenderedDOMComponentsWithTag(table, 'td').length).toBe(4);
 
 	});
 
