@@ -73,8 +73,8 @@ const CRUDStore = {
 	},
 
 	deleteRecord(objRecord, recordId) {
-		if (objRecord._id) {
-			ApiCtrl.deletePlayerPromise(objRecord._id).then((e) => {
+		if (objRecord.email) {
+			ApiCtrl.deletePlayerPromise(objRecord.email).then((e) => {
 				if (e.ok) {
 					CRUDStore.setData(CRUDStore.getData().remove(recordId));
 					emitter.emit(EventsConsts.CHANGE);

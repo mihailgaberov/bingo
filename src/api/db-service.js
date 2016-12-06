@@ -128,11 +128,11 @@ class DbService {
 		});
 	}
 
-	static deletePlayer(playerId) {
+	static deletePlayer(playerEmail) {
 		return fetch(ApiConsts.DELETE_PLAYER, {
 			method: 'POST',
 			body: JSON.stringify({
-				playerId: playerId
+				email: playerEmail
 			}),
 			mode: 'cors',
 			redirect: 'follow',

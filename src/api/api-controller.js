@@ -122,8 +122,8 @@ class ApiController {
 		});
 	}
 
-	static deletePlayerPromise(id) {
-		return DbService.deletePlayer(id).then((val) => {
+	static deletePlayerPromise(playerEmail) {
+		return DbService.deletePlayer(playerEmail).then((val) => {
 			return val;
 		});
 	}

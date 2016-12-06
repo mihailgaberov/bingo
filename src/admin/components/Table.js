@@ -137,7 +137,7 @@ class Table extends Component {
 		const index = this.state.dialog && this.state.dialog.idx;
 		invariant(typeof index === 'number', 'Unexpected dialog state');
 		const first = this.state.data.get(index);
-		const nameGuess = first[Object.keys(first)[6]];
+		const nameGuess = first.name;
 		return (
 			<Dialog
 				modal={true}
