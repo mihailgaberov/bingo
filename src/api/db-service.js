@@ -147,6 +147,26 @@ class DbService {
 			console.log('>>> Fetching error: ', err);
 		});
 	}
+
+	static updatePlayerData(objPlayerData) {
+		return fetch(ApiConsts.UPDATE_PLAYER_DATA, {
+			method: 'POST',
+			body: JSON.stringify({
+				objPlayerData: objPlayerData
+			}),
+			mode: 'cors',
+			redirect: 'follow',
+			headers: new Headers({
+				'Content-Type': 'application/json'
+			})
+		}).then((res) => {
+			return res.json();
+		}).then((returnedValue) => {
+			return returnedValue;
+		}).catch(function (err) {
+			console.log('>>> Fetching error: ', err);
+		});
+	}
 }
 
 export default DbService;

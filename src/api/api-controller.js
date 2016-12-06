@@ -127,6 +127,12 @@ class ApiController {
 			return val;
 		});
 	}
+
+	static updatePlayerDataPromise(objPlayerData) {
+		return DbService.updatePlayerData(objPlayerData).then((val) => {
+			return val;
+		});
+	}
 }
 
 export default ApiController;

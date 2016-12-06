@@ -19,7 +19,7 @@ const CRUDActions = {
 	},
 
 	updateRecord(recordId: number, newRecord: Object) {
-		CRUDStore.setData(CRUDStore.getData().set(recordId, newRecord));
+		CRUDStore.updateRecord(newRecord, recordId);
 	},
 
 	updateField(recordId: number, key: string, value: string|number) {

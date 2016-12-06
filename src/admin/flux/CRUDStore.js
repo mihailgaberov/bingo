@@ -83,6 +83,19 @@ const CRUDStore = {
 		} else {
 			emitter.emit(EventsConsts.DELETE_ERROR);
 		}
+	},
+
+	updateRecord(objRecord, recordId) {
+		if (objRecord.email) {
+			ApiCtrl.updatePlayerDataPromise(objRecord).then((newRecord) => {
+				if (newRecord) {
+					CRUDStore.setData(CRUDStore.getData().set(recordId, newRecord));
+					emitter.emit(EventsConsts.CHANGE);
+				}
+			});
+		} else {
+			emitter.emit(EventsConsts.UPDATE_ERROR);
+		}
 	}
 };
 
