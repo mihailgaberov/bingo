@@ -116,8 +116,8 @@ class ApiController {
 		});
 	}
 
-	static createPlayerPromise(name, email, pass, balance, wins) {
-		return DbService.createPlayer(name, email, pass, balance, wins).then((val) => {
+	static createPlayerPromise(objPlayerData) {
+		return DbService.createPlayer(objPlayerData).then((val) => {
 			return val;
 		});
 	}

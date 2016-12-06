@@ -104,15 +104,11 @@ class DbService {
 		});
 	}
 
-	static createPlayer(name, email, pass, balance, wins) {
+	static createPlayer(objPlayerData) {
 		return fetch(ApiConsts.CREATE_PLAYER, {
 			method: 'POST',
 			body: JSON.stringify({
-				name: name,
-				email: email,
-				password: pass,
-				balance: balance,
-				wins: wins
+				objPlayerData: objPlayerData
 			}),
 			mode: 'cors',
 			redirect: 'follow',

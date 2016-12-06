@@ -17,8 +17,8 @@ module.exports.getPlayersData = function (req, res) {
 module.exports.createPlayer = function (req, res) {
 	var user = new User();
 
-	user.name = req.body.name;
-	user.email = req.body.email;
+	user.name = req.body.objPlayerData.name;
+	user.email = req.body.objPlayerData.email;
 
 	// Check for existence
 	User.count({email: user.email}, function (err, count) {
@@ -28,9 +28,9 @@ module.exports.createPlayer = function (req, res) {
 				'isExisted': true
 			});
 		} else {
-			user.setBalance(req.body.balance);
-			user.setWins(req.body.wins);
-			user.setPassword(req.body.password);
+			user.setBalance(req.body.objPlayerData.balance);
+			user.setWins(req.body.objPlayerData.wins);
+			user.setPassword(req.body.objPlayerData.password);
 			user.save(function (err) {
 				var token = user.generateJwt();
 				res.status(200);

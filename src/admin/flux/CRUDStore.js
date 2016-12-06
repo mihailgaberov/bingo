@@ -49,27 +49,21 @@ const CRUDStore = {
 		return data.get(recordId);
 	},
 
-	addRecord(newRecord: Object, commit: boolean = true) {
-		if (commit) {
-			ApiCtrl.createPlayerPromise(newRecord.name,
-				newRecord.email,
-				newRecord.password,
-				newRecord.balance,
-				newRecord.wins).then((e) => {
-				if (e.isExisted){
-					emitter.emit(EventsConsts.USER_EXISTS);
-					return false;
-				}
+	addRecord(objRecord: Object) {
+		ApiCtrl.createPlayerPromise(objRecord).then((e) => {
+			if (e.isExisted) {
+				emitter.emit(EventsConsts.USER_EXISTS);
+				return false;
+			}
 
-				if (!e.token) {
-					return false;
-				}
+			if (!e.token) {
+				return false;
+			}
 
-				CRUDStore.setData(CRUDStore.getData().unshift(newRecord));
-				emitter.emit(EventsConsts.CHANGE);
+			CRUDStore.setData(CRUDStore.getData().unshift(objRecord));
+			emitter.emit(EventsConsts.CHANGE);
 
-			});
-		}
+		});
 	},
 
 	deleteRecord(objRecord, recordId) {
