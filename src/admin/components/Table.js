@@ -210,7 +210,7 @@ class Table extends Component {
 								const edit = this.state.edit;
 								let content = row[schema.id];
 
-								if (edit && edit.row === rowidx && edit.key === schema.id) {
+								if (edit && edit.row === rowidx && edit.key === schema.id && schema.editable) {
 									content = (
 										<form onSubmit={this._save.bind(this)}>
 											<FormInput ref="input" {...schema} defaultValue={content} />
