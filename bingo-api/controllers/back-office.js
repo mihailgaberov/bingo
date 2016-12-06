@@ -43,13 +43,13 @@ module.exports.createPlayer = function (req, res) {
 };
 
 module.exports.deletePlayer = function (req, res) {
-	if (!req.body._id) {
+	if (!req.body.playerId) {
 		res.status(401).json({
 			"message": "Non existing user"
 		});
 	} else {
 		User
-			.remove({"_id": req.body._id})
+			.remove({"_id": req.body.playerId})
 			.exec(function (err, data) {
 				res.status(200).json(data);
 			});

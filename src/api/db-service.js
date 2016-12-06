@@ -127,6 +127,26 @@ class DbService {
 			console.log('>>> Fetching error: ', err);
 		});
 	}
+
+	static deletePlayer(playerId) {
+		return fetch(ApiConsts.DELETE_PLAYER, {
+			method: 'POST',
+			body: JSON.stringify({
+				playerId: playerId
+			}),
+			mode: 'cors',
+			redirect: 'follow',
+			headers: new Headers({
+				'Content-Type': 'application/json'
+			})
+		}).then((res) => {
+			return res.json();
+		}).then((returnedValue) => {
+			return returnedValue;
+		}).catch(function (err) {
+			console.log('>>> Fetching error: ', err);
+		});
+	}
 }
 
 export default DbService;

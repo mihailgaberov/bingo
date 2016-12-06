@@ -32,13 +32,30 @@ const CRUDStore = {
 		return schema;
 	},
 
+	setData(newData: List<Object>, commit: boolean = true) {
+		data = newData;
+		emitter.emit(EventsConsts.CHANGE);
+	},
+
+	addListener(eventType: string, fn: Function) {
+		emitter.addListener(eventType, fn);
+	},
+
+	getCount(): number {
+		return data.count();
+	},
+
+	getRecord(recordId: number): ?Object {
+		return data.get(recordId);
+	},
+
 	addRecord(newRecord: Object, commit: boolean = true) {
 		if (commit) {
 			ApiCtrl.createPlayerPromise(newRecord.name,
-										newRecord.email,
-										newRecord.password,
-										newRecord.balance,
-										newRecord.wins).then((e) => {
+				newRecord.email,
+				newRecord.password,
+				newRecord.balance,
+				newRecord.wins).then((e) => {
 				if (e.isExisted){
 					emitter.emit(EventsConsts.USER_EXISTS);
 					return false;
@@ -55,26 +72,14 @@ const CRUDStore = {
 		}
 	},
 
-	setData(newData: List<Object>, commit: boolean = true) {
-		data = newData;
-		/*if (commit && 'localStorage' in window) {
-			localStorage.setItem('data', JSON.stringify(newData));
-		}*/
-		emitter.emit(EventsConsts.CHANGE);
-	},
-
-	addListener(eventType: string, fn: Function) {
-		emitter.addListener(eventType, fn);
-	},
-
-	getCount(): number {
-		return data.count();
-	},
-
-	getRecord(recordId: number): ?Object {
-		return data.get(recordId);
-	},
-
+	deleteRecord(id) {
+		if (id) {
+			ApiCtrl.deletePlayerPromise(id);
+		} else {
+			// TODO: show error dialog
+			console.log('Deletion error - invalid player id.');
+		}
+	}
 };
 
 export default CRUDStore

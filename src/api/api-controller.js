@@ -121,6 +121,12 @@ class ApiController {
 			return val;
 		});
 	}
+
+	static deletePlayerPromise(id) {
+		return DbService.deletePlayer(id).then((val) => {
+			return val;
+		});
+	}
 }
 
 export default ApiController;
