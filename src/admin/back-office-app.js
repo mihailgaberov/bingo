@@ -7,6 +7,7 @@ import CRUDStore from './flux/CRUDStore';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Logo from './components/Logo';
+import Logout from './components/Logout';
 import BackOffice from './components/BackOffice';
 import ApiCtrl from '../api/api-controller';
 
@@ -21,7 +22,8 @@ const startApp = () => {
 	ReactDOM.render(
 		<div>
 			<div className="app-header">
-				<Logo/> Bingo Bigul Back Office
+				<Logo /> Bingo Bigul Back Office
+				<Logout />
 			</div>
 			<BackOffice />
 		</div>,
