@@ -8,8 +8,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import EventsConsts from './components/EventsConsts';
 import Logo from './components/Logo';
+import Login from './components/Login';
 import Logout from './components/Logout';
 import BackOffice from './components/BackOffice';
+import Form from './components/Form';
 import ApiCtrl from '../api/api-controller';
 
 ApiCtrl.getPlayersDataPromise().then((data) => {
@@ -20,18 +22,47 @@ ApiCtrl.getPlayersDataPromise().then((data) => {
 });
 
 const startApp = () => {
-
 	Logout.addListener(EventsConsts.LOGOUT, () => {
-		console.log(' catch Log me out!');
+		console.log('>>>> catch Log me out!');
+	});
+
+	Login.addListener(EventsConsts.LOGIN, () => {
+		console.log('>>>> catch Log me in!');
 	});
 
 	ReactDOM.render(
 		<div>
-			<div className="app-header">
-				<Logo /> Bingo Bigul Back Office
-				<Logout />
+			<div className="main" style={{display: 'none'}}>
+				<div className="app-header">
+					<Logo /> Bingo Bigul Back Office
+					<Logout />
+				</div>
+				<BackOffice />
 			</div>
-			<BackOffice />
+			<div className="login-form" style={{display: 'block'}}>
+				<h3>Bingo Bigul Back Office Login</h3>
+				<Form fields={
+					[
+						{
+							id: 'email',
+							label: 'Email',
+							type: 'email',
+							show: true,
+							sample: 'me@mihail-gaberov.eu',
+							editable: true
+						},
+						{
+							id: 'password',
+							label: 'Password',
+							type: 'password',
+							show: true,
+							editable: true
+						}
+					]
+				}
+				/>
+				<Login />
+			</div>
 		</div>,
 		document.getElementById('backOfficeApp')
 	);

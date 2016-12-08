@@ -22,7 +22,11 @@ class Form extends Component {
 
 	constructor(props: Props) {
 		super(props);
-		this.fields = CRUDStore.getSchema();
+		if (!this.props.fields) {
+			this.fields = CRUDStore.getSchema();
+		} else {
+			this.fields = this.props.fields;
+		}
 
 		if ('recordId' in this.props) {
 			this.initialData = CRUDStore.getRecord(this.props.recordId);

@@ -10,26 +10,26 @@ import Button from './Button';
 
 const emitter = new EventEmitter();
 
-class Logout extends React.Component {
+class Login extends React.Component {
 	constructor() {
 		super();
-		Logout.logout = Logout.logout.bind(this);
+		Login.login = Login.login.bind(this);
 	}
 
 	static addListener(eventType: string, fn: Function) {
 		emitter.addListener(eventType, fn);
 	}
 
-	static logout() {
-		emitter.emit(EventsConsts.LOGOUT);
+	static login() {
+		emitter.emit(EventsConsts.LOGIN);
 	}
 
 	render() {
-		return <div className="logout-module">
-			<Button onClick={Logout.logout}>
-				Logout
+		return <div>
+			<Button onClick={Login.login}>
+				Login
 			</Button>
 		</div>
 	}
 }
-export default Logout
+export default Login

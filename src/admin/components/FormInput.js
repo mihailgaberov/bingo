@@ -40,6 +40,12 @@ class FormInput extends Component {
 						type="number"
 						defaultValue={parseInt(this.props.defaultValue, 10) || 0} />
 				);
+			case 'password':
+				return (
+					<input
+						{...common}
+						type="password" />
+				);
 			case 'email':
 				if (!this.props.readonly) {
 					return (
