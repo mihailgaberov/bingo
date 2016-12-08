@@ -6,6 +6,7 @@
 import CRUDStore from './flux/CRUDStore';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import EventsConsts from './components/EventsConsts';
 import Logo from './components/Logo';
 import Logout from './components/Logout';
 import BackOffice from './components/BackOffice';
@@ -19,6 +20,11 @@ ApiCtrl.getPlayersDataPromise().then((data) => {
 });
 
 const startApp = () => {
+
+	Logout.addListener(EventsConsts.LOGOUT, () => {
+		console.log(' catch Log me out!');
+	});
+
 	ReactDOM.render(
 		<div>
 			<div className="app-header">

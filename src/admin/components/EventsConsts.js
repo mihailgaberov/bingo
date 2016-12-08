@@ -7,7 +7,8 @@ const EventsConsts = {
 	'USER_EXISTS': 'userExists',
 	'CHANGE': 'change',
 	'DELETE_ERROR': 'deleteError',
-	'UPDATE_ERROR': 'updateError'
+	'UPDATE_ERROR': 'updateError',
+	'LOGOUT': 'logout'
 };
 
 export default EventsConsts
