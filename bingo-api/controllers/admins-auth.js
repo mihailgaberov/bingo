@@ -32,7 +32,6 @@ module.exports.register = function (req, res) {
 };
 
 module.exports.login = function (req, res) {
-
 	passport.authenticate('local', function (err, admin, info) {
 		var token;
 
