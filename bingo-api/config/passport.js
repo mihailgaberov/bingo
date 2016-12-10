@@ -5,6 +5,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('Users');
+var Admin = mongoose.model('Admins');
 
 passport.use(new LocalStrategy({
 		usernameField: 'email'
@@ -26,6 +27,30 @@ passport.use(new LocalStrategy({
 			}
 
 			return done(null, user);
+		});
+	}
+));
+
+passport.use(new LocalStrategy({
+		usernameField: 'email'
+	},
+	function(username, password, done) {
+		User.findOne({ email: username }, function (err, admin) {
+			if (err) { return done(err); }
+
+			if (!admin) {
+				return done(null, false, {
+					message: 'Admin not found'
+				});
+			}
+
+			if (!admin.validPassword(password)) {
+				return done(null, false, {
+					message: 'Password is wrong'
+				});
+			}
+
+			return done(null, admin);
 		});
 	}
 ));

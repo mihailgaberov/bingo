@@ -38,3 +38,4 @@ process.on('SIGINT', function() {
 });
 
 require('./users');
+require('./admins');
