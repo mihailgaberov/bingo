@@ -4,11 +4,10 @@
 'use strict';
 
 import React from 'react';
-import EventsConsts from './EventsConsts';
-import { EventEmitter } from 'fbemitter';
 import Button from './Button';
-
-const emitter = new EventEmitter();
+import SchemaEmail from '../schema-email';
+import Form from './Form';
+import CRUDStore from '../flux/CRUDStore';
 
 class Login extends React.Component {
 	constructor() {
@@ -16,16 +15,14 @@ class Login extends React.Component {
 		Login.login = Login.login.bind(this);
 	}
 
-	static addListener(eventType: string, fn: Function) {
-		emitter.addListener(eventType, fn);
-	}
-
 	static login() {
-		emitter.emit(EventsConsts.LOGIN);
+		console.log('>>>> login: ', this.refs.loginForm.getData());
+		CRUDStore.checkLogin(this.refs.loginForm.getData());
 	}
 
 	render() {
 		return <div>
+			<Form fields={SchemaEmail} ref="loginForm" />
 			<Button onClick={Login.login}>
 				Login
 			</Button>

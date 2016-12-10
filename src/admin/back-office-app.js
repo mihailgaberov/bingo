@@ -11,9 +11,8 @@ import Logo from './components/Logo';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import BackOffice from './components/BackOffice';
-import Form from './components/Form';
 import ApiCtrl from '../api/api-controller';
-import SchemaEmail from './schema-email';
+
 
 ApiCtrl.getPlayersDataPromise().then((data) => {
 	CRUDStore.init(data);
@@ -23,27 +22,28 @@ ApiCtrl.getPlayersDataPromise().then((data) => {
 });
 
 const startApp = () => {
+	let isLogged = false;
 	Logout.addListener(EventsConsts.LOGOUT, () => {
 		console.log('>>>> catch Log me out!');
+		isLogged = false;
 	});
 
-	Login.addListener(EventsConsts.LOGIN, () => {
+	CRUDStore.addListener(EventsConsts.LOGIN_SUCCESS, () => {
 		console.log('>>>> catch Log me in!');
+		isLogged = true;
 	});
 
 	ReactDOM.render(
 		<div>
-			<div className="main" style={{display: 'none'}}>
+			<div className="main" style={{display: isLogged ? 'block' : 'none'}}>
 				<div className="app-header">
 					<Logo /> Bingo Bigul Back Office
 					<Logout />
 				</div>
 				<BackOffice />
 			</div>
-			<div className="login-form" style={{display: 'block'}}>
+			<div className="login-form" style={{display: isLogged ? 'none' : 'block'}}>
 				<h3>Bingo Bigul Back Office Login</h3>
-				<Form fields={SchemaEmail}
-				/>
 				<Login />
 			</div>
 		</div>,

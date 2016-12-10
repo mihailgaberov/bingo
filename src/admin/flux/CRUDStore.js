@@ -99,6 +99,14 @@ const CRUDStore = {
 		} else {
 			emitter.emit(EventsConsts.UPDATE_ERROR);
 		}
+	},
+
+	checkLogin(objCredentials) {
+		if (!objCredentials.email || !objCredentials.password) {
+			return false;
+		}
+
+		emitter.emit(EventsConsts.LOGIN_SUCCESS);
 	}
 };
 

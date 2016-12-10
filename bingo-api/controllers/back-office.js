@@ -63,14 +63,16 @@ module.exports.updatePlayerData = function (req, res) {
 		});
 	} else {
 		User.findOne({email: req.body.objPlayerData.email}, function (err, user) {
-			user.name = req.body.objPlayerData.name;
-			user.email = req.body.objPlayerData.email;
-			user.setBalance(req.body.objPlayerData.balance);
-			user.setWins(req.body.objPlayerData.wins);
+			if (req.body.objPlayerData) {
+				user.name = req.body.objPlayerData.name;
+				user.email = req.body.objPlayerData.email;
+				user.setBalance(req.body.objPlayerData.balance);
+				user.setWins(req.body.objPlayerData.wins);
 
-			if (req.body.objPlayerData.password)
-				user.setPassword(req.body.objPlayerData.password);
+				if (req.body.objPlayerData.password)
+					user.setPassword(req.body.objPlayerData.password);
 
+			}
 			user.save(function (err, user) {
 				res.status(200).json(user);
 			});
