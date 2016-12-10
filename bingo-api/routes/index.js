@@ -21,7 +21,7 @@ router.post('/updatePlayerData', ctrlBackOffice.updatePlayerData);
 
 // Main app
 var ctrlProfile = require('../controllers/profile');
-var ctrlAuth = require('../controllers/authentication');
+var ctrlAuth = require('../controllers/users-auth');
 router.post('/setNewBalance', auth, ctrlProfile.setNewBalance);
 router.get('/profile', auth, ctrlProfile.profileRead);
 router.post('/register', ctrlAuth.register);

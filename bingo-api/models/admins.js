@@ -1,9 +1,6 @@
 /**
  * Created by Mihail on 12/10/2016.
  */
-/**
- * Created by Mihail on 9/14/2016.
- */
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
