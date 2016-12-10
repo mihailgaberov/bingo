@@ -13,6 +13,7 @@ import Logout from './components/Logout';
 import BackOffice from './components/BackOffice';
 import Form from './components/Form';
 import ApiCtrl from '../api/api-controller';
+import SchemaEmail from './schema-email';
 
 ApiCtrl.getPlayersDataPromise().then((data) => {
 	CRUDStore.init(data);
@@ -41,25 +42,7 @@ const startApp = () => {
 			</div>
 			<div className="login-form" style={{display: 'block'}}>
 				<h3>Bingo Bigul Back Office Login</h3>
-				<Form fields={
-					[
-						{
-							id: 'email',
-							label: 'Email',
-							type: 'email',
-							show: true,
-							sample: 'me@mihail-gaberov.eu',
-							editable: true
-						},
-						{
-							id: 'password',
-							label: 'Password',
-							type: 'password',
-							show: true,
-							editable: true
-						}
-					]
-				}
+				<Form fields={SchemaEmail}
 				/>
 				<Login />
 			</div>
