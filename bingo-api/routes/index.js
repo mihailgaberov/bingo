@@ -20,7 +20,7 @@ router.post('/createPlayer', ctrlBackOffice.createPlayer);
 router.post('/deletePlayer', ctrlBackOffice.deletePlayer);
 router.post('/updatePlayerData', ctrlBackOffice.updatePlayerData);
 router.post('/registerAdmin', ctrlAdminsAuth.register);
-router.post('/loginAdmin', ctrlAdminsAuth.login);
+router.post('/loginAdmin', ctrlAdminsAuth.loginAdmin);
 
 // Main app
 var ctrlProfile = require('../controllers/profile');

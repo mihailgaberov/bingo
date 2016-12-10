@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('Users');
 var Admin = mongoose.model('Admins');
 
-passport.use(new LocalStrategy({
+passport.use('userLogin', new LocalStrategy({
 		usernameField: 'email'
 	},
 	function(username, password, done) {
@@ -31,7 +31,7 @@ passport.use(new LocalStrategy({
 	}
 ));
 
-passport.use(new LocalStrategy({
+passport.use('adminLogin', new LocalStrategy({
 		usernameField: 'email'
 	},
 	function(username, password, done) {

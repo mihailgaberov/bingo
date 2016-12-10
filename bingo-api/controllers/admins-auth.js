@@ -31,8 +31,8 @@ module.exports.register = function (req, res) {
 	});
 };
 
-module.exports.login = function (req, res) {
-	passport.authenticate('local', function (err, admin, info) {
+module.exports.loginAdmin = function (req, res) {
+	passport.authenticate('adminLogin', function (err, admin, info) {
 		var token;
 
 		if (err) {
