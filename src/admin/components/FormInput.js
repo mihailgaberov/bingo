@@ -47,7 +47,7 @@ class FormInput extends Component {
 						type="password" />
 				);
 			case 'email':
-				if (!this.props.readonly) {
+				if (!this.props.readOnlyEmail) {
 					return (
 						<input
 							{...common}
