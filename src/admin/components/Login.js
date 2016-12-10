@@ -54,6 +54,9 @@ class Login extends React.Component {
 			<Button onClick={Login.login}>
 				Login
 			</Button>
+			<footer>
+				© 2016 Copyrights <a href="mailto: me@mihail-gaberov.eu">Mihail Gaberov</a>.
+			</footer>
 		</div>
 	}
 }
