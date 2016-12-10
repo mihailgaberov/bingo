@@ -53,7 +53,7 @@ class Form extends Component {
 					return (
 						<div className="form-row" key={field.id}>
 							<label className="form-label" htmlFor={field.id}>{field.label}:</label>
-							<FormInput {...field} ref={field.id} defaultValue={prefilled} readonly={this.props.readOnlyEmail}/>
+							<FormInput {...field} ref={field.id} defaultValue={prefilled} readOnlyEmail={this.props.readOnlyEmail}/>
 						</div>
 					);
 				}

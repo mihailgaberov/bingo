@@ -32,6 +32,7 @@ class FormInput extends Component {
 			ref: 'input',
 			defaultValue: this.props.defaultValue,
 		};
+
 		switch (this.props.type) {
 			case 'number':
 				return (
@@ -56,11 +57,11 @@ class FormInput extends Component {
 					);
 				}
 				return (
-					<div className="form-row" key={'email'}>
-						{
-							<div>{this.props.defaultValue}</div>
-						}
-					</div>
+					<input
+						{...common}
+						type="email"
+						readOnly="true"
+						defaultValue={this.props.defaultValue} />
 				);
 			case 'text':
 				return <textarea {...common} />;
