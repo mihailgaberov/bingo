@@ -133,6 +133,12 @@ class ApiController {
 			return val;
 		});
 	}
+
+	static loginAdminPromise(objCredentials) {
+		return DbService.loginAdmin(objCredentials).then((val) => {
+			return val;
+		});
+	}
 }
 
 export default ApiController;

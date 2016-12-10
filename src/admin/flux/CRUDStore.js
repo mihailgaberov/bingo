@@ -4,8 +4,8 @@
 'use strict';
 /* @flow */
 
-import { EventEmitter } from 'fbemitter';
-import { List } from 'immutable';
+import {EventEmitter} from 'fbemitter';
+import {List} from 'immutable';
 import schema from '../schema';
 import ApiCtrl from '../../api/api-controller';
 import EventsConsts from '../components/EventsConsts';
@@ -103,10 +103,40 @@ const CRUDStore = {
 
 	checkLogin(objCredentials) {
 		if (!objCredentials.email || !objCredentials.password) {
+			emitter.emit(EventsConsts.LOGIN_FAILED);
 			return false;
 		}
 
-		emitter.emit(EventsConsts.LOGIN_SUCCESS);
+		ApiCtrl.loginAdminPromise(objCredentials).then((data) => {
+			if (data.token) {
+				emitter.emit(EventsConsts.LOGIN_SUCCESS);
+
+				// Save the credentials to local storage
+				localStorage.setItem('admin', data.token);
+			} else {
+				emitter.emit(EventsConsts.LOGIN_FAILED);
+			}
+		});
+	},
+
+	isLoggedIn() {
+		let token = localStorage.getItem('admin');
+		let payload = null;
+
+		if (token !== 'null') {
+			payload = token.split('.')[1];
+			payload = window.atob(payload);
+			payload = JSON.parse(payload);
+
+			return payload.exp > Date.now() / 1000;
+		} else {
+			return false;
+		}
+	},
+
+	logout() {
+		localStorage.setItem('admin', null);
+		emitter.emit(EventsConsts.LOGOUT);
 	}
 };
 

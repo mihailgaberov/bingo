@@ -4,28 +4,41 @@
 'use strict';
 
 import React from 'react';
-import EventsConsts from './EventsConsts';
-import { EventEmitter } from 'fbemitter';
 import Button from './Button';
+import EventsConsts from '../components/EventsConsts';
+import CRUDStore from '../flux/CRUDStore';
 
-const emitter = new EventEmitter();
+type State = {
+	isLogged: boolean
+}
 
 class Logout extends React.Component {
+
+	state: State;
+
 	constructor() {
 		super();
 		Logout.logout = Logout.logout.bind(this);
-	}
 
-	static addListener(eventType: string, fn: Function) {
-		emitter.addListener(eventType, fn);
+		this.state = {
+			isLogged: CRUDStore.isLoggedIn()
+		};
+
+		CRUDStore.addListener(EventsConsts.LOGIN_SUCCESS, () => {
+			this.setState({isLogged: true});
+		});
+
+		CRUDStore.addListener(EventsConsts.LOGOUT, () => {
+			this.setState({isLogged: false});
+		});
 	}
 
 	static logout() {
-		emitter.emit(EventsConsts.LOGOUT);
+		CRUDStore.logout();
 	}
 
 	render() {
-		return <div className="logout-module">
+		return <div className="logout-module" style={{display: this.state.isLogged ? 'block' : 'none'}}>
 			<Button onClick={Logout.logout}>
 				Logout
 			</Button>

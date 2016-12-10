@@ -18,7 +18,8 @@ type State = {
 	count: number,
 	errorUserExists: boolean,
 	errorDeletion: boolean,
-	errorUpdating: boolean
+	errorUpdating: boolean,
+	isLogged: boolean
 };
 
 class BackOffice extends Component {
@@ -33,6 +34,7 @@ class BackOffice extends Component {
 			errorDeletion: false,
 			errorUpdating: false,
 			count: CRUDStore.getCount(),
+			isLogged: CRUDStore.isLoggedIn()
 		};
 
 		CRUDStore.addListener(EventsConsts.CHANGE, () => {
@@ -52,6 +54,14 @@ class BackOffice extends Component {
 		CRUDStore.addListener(EventsConsts.UPDATE_ERROR, () => {
 			this.setState({errorUpdating: true});
 		});
+
+		CRUDStore.addListener(EventsConsts.LOGIN_SUCCESS, () => {
+			this.setState({isLogged: true});
+		});
+
+		CRUDStore.addListener(EventsConsts.LOGOUT, () => {
+			this.setState({isLogged: false});
+		});
 	}
 
 	shouldComponentUpdate(newProps: Object, newState: State): boolean {
@@ -59,7 +69,8 @@ class BackOffice extends Component {
 				newState.count !== this.state.count ||
 				newState.errorUserExists !== this.state.errorUserExists ||
 				newState.errorDeletion !== this.state.errorDeletion ||
-				newState.errorUpdating !== this.state.errorUpdating;
+				newState.errorUpdating !== this.state.errorUpdating ||
+				newState.isLogged !== this.state.isLogged;
 	}
 
 	_addNewDialog() {
@@ -86,7 +97,7 @@ class BackOffice extends Component {
 
 	render() {
 		return (
-			<div id="backOffice">
+			<div id="backOffice" style={{display: this.state.isLogged ? 'block' : 'none'}}>
 				<div className="toolbar">
 					<div className="toolbar-add">
 						<Button

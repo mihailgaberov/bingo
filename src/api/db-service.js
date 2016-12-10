@@ -163,6 +163,27 @@ class DbService {
 			console.log('>>> Fetching error: ', err);
 		});
 	}
+
+	static loginAdmin(objCredentials) {
+		return fetch(ApiConsts.LOGIN_ADMIN, {
+			method: 'POST',
+			body: JSON.stringify({
+				email: objCredentials.email,
+				password: objCredentials.password
+			}),
+			mode: 'cors',
+			redirect: 'follow',
+			headers: new Headers({
+				'Content-Type': 'application/json'
+			})
+		}).then((res) => {
+			return res.json();
+		}).then((returnedValue) => {
+			return returnedValue;
+		}).catch(function (err) {
+			console.log('>>> Fetching error: ', err);
+		});
+	}
 }
 
 export default DbService;
