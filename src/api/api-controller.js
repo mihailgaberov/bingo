@@ -36,7 +36,6 @@ class ApiController {
 				LocalStorageService.saveToken(val.token);
 				ViewManipulator.showUserInfo();
 			} else {
-				console.log('Show error message for login failed.');
 				ViewManipulator.toggleErrorMessageView(document.querySelector('#alertMsg'),
 					'Wrong login details.', true);
 			}

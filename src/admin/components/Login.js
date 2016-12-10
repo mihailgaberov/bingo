@@ -9,6 +9,7 @@ import EventsConsts from '../components/EventsConsts';
 import SchemaEmail from '../schema-email';
 import Form from './Form';
 import CRUDStore from '../flux/CRUDStore';
+import ViewManipulator from '../../utils/view-manipulator';
 
 type State = {
 	isLogged: boolean,
@@ -27,11 +28,14 @@ class Login extends React.Component {
 
 		CRUDStore.addListener(EventsConsts.LOGIN_SUCCESS, () => {
 			this.setState({isLogged: true});
+			ViewManipulator.toggleErrorMessageView(document.querySelector('#errorMsg'),
+				'Wrong login details.', false);
 		});
 
 		CRUDStore.addListener(EventsConsts.LOGIN_FAILED, () => {
 			this.setState({isLogged: false});
-			// TODO: Show error message
+			ViewManipulator.toggleErrorMessageView(document.querySelector('#errorMsg'),
+				'Wrong login details.', true);
 		});
 
 		CRUDStore.addListener(EventsConsts.LOGOUT, () => {
