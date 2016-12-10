@@ -25,3 +25,26 @@ html, body {
   color: $mainWheatColour;
   font-size: 1.6em;
 }
+
+.login-form {
+  width: 300px;
+  margin: 100px auto;
+  text-align: center;
+
+  button {
+    float: right;
+    margin-top: 21px;
+  }
+
+  input {
+    width: 257px;
+  }
+}
+
+footer {
+  width: 300px;
+  margin: 0 auto;
+  font-size: 10px;
+  text-align: center;
+  color: lightslategray;
+}
