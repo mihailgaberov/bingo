@@ -24,6 +24,11 @@ class LocalStorageService {
 			return window.localStorage['mean-token'];
 	};
 
+	static getAdminToken() {
+		if (window.localStorage['admin-token'] !== undefined)
+			return window.localStorage['admin-token'];
+	};
+
 	static logout() {
 		window.localStorage.removeItem('mean-token');
 	};

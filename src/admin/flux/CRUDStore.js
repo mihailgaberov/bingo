@@ -112,7 +112,7 @@ const CRUDStore = {
 				emitter.emit(EventsConsts.LOGIN_SUCCESS);
 
 				// Save the credentials to local storage
-				localStorage.setItem('admin', data.token);
+				localStorage.setItem('admin-token', data.token);
 			} else {
 				emitter.emit(EventsConsts.LOGIN_FAILED);
 			}
@@ -120,10 +120,12 @@ const CRUDStore = {
 	},
 
 	isLoggedIn() {
-		let token = localStorage.getItem('admin');
+		let token = null;
 		let payload = null;
 
-		if (token !== 'null') {
+		token = localStorage.getItem('admin-token');
+
+		if (token !== null) {
 			payload = token.split('.')[1];
 			payload = window.atob(payload);
 			payload = JSON.parse(payload);
@@ -135,7 +137,7 @@ const CRUDStore = {
 	},
 
 	logout() {
-		localStorage.setItem('admin', null);
+		localStorage.setItem('admin-token', null);
 		emitter.emit(EventsConsts.LOGOUT);
 	}
 };

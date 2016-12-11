@@ -95,6 +95,10 @@ class DbService {
 			method: 'GET',
 			mode: 'cors',
 			redirect: 'follow',
+			headers: new Headers({
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer '+ LocalStorageService.getAdminToken()
+			})
 		}).then((res) => {
 			return res.json();
 		}).then((returnedValue) => {
@@ -113,7 +117,8 @@ class DbService {
 			mode: 'cors',
 			redirect: 'follow',
 			headers: new Headers({
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer '+ LocalStorageService.getAdminToken()
 			})
 		}).then((res) => {
 			return res.json();
@@ -133,7 +138,8 @@ class DbService {
 			mode: 'cors',
 			redirect: 'follow',
 			headers: new Headers({
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer '+ LocalStorageService.getAdminToken()
 			})
 		}).then((res) => {
 			return res.json();
@@ -153,7 +159,8 @@ class DbService {
 			mode: 'cors',
 			redirect: 'follow',
 			headers: new Headers({
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer '+ LocalStorageService.getAdminToken()
 			})
 		}).then((res) => {
 			return res.json();

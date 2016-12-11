@@ -12,15 +12,15 @@ var auth = jwt({
 });
 
 // Back office app
-// TODO: add auth check for logged admins in order to be able to execute these operations
 var ctrlBackOffice = require('../controllers/back-office');
 var ctrlAdminsAuth = require('../controllers/admins-auth');
-router.get('/getPlayersData', ctrlBackOffice.getPlayersData);
-router.post('/createPlayer', ctrlBackOffice.createPlayer);
-router.post('/deletePlayer', ctrlBackOffice.deletePlayer);
-router.post('/updatePlayerData', ctrlBackOffice.updatePlayerData);
-router.post('/registerAdmin', ctrlAdminsAuth.register);
+router.get('/getPlayersData', auth, ctrlBackOffice.getPlayersData);
+router.post('/createPlayer', auth, ctrlBackOffice.createPlayer);
+router.post('/deletePlayer', auth, ctrlBackOffice.deletePlayer);
+router.post('/updatePlayerData', auth, ctrlBackOffice.updatePlayerData);
 router.post('/loginAdmin', ctrlAdminsAuth.loginAdmin);
+// Disabled for security reasons - for the moment the admins will be added only manually
+// router.post('/registerAdmin', ctrlAdminsAuth.register);
 
 // Main app
 var ctrlProfile = require('../controllers/profile');
