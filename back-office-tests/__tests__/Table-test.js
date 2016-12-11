@@ -14,7 +14,33 @@ Store.init(data);
 
 describe('Editing data', () => {
 
+	// Storage Mock
+	function storageMock() {
+		let storage = {};
+
+		return {
+			setItem: function(key, value) {
+				storage[key] = value || '';
+			},
+			getItem: function(key) {
+				return storage[key] || null;
+			},
+			removeItem: function(key) {
+				delete storage[key];
+			},
+			get length() {
+				return Object.keys(storage).length;
+			},
+			key: function(i) {
+				let keys = Object.keys(storage);
+				return keys[i] || null;
+			}
+		};
+	}
+
 	it('Saves new data', () => {
+		const window = document.defaultView;
+		window.localStorage = storageMock();
 		const table = TestUtils.renderIntoDocument(
 			<Table />
 		);
