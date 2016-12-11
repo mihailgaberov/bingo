@@ -7,7 +7,7 @@
   order: 2;
 
   #tube {
-    background: url("../../../images/blower_with_rounded_tube_bgr.png") 0 0;
+    background: url("../../../images/blower_with_tube_transparent.png") 0 0;
     position: relative;
     width: 260px;
     height: 75px;
@@ -29,7 +29,7 @@
   }
 
   canvas {
-    background: url("../../../images/blower_with_rounded_tube_bgr.png") -122px -70px;
+    background: url("../../../images/blower_with_tube_transparent.png") -122px -70px;
     display: none;
     border: 3px solid rgba(0, 0, 0, 0.5);
     border-top: none;
