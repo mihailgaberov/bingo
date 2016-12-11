@@ -55,7 +55,7 @@ class Login extends React.Component {
 				Login
 			</Button>
 			<footer>
-				© 2016 Copyrights <a href="mailto: me@mihail-gaberov.eu">Mihail Gaberov</a>.
+				<span>© 2016 Copyrights <a href="mailto: me@mihail-gaberov.eu">Mihail Gaberov</a>.</span>
 			</footer>
 		</div>
 	}
