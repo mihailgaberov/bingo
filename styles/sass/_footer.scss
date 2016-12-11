@@ -1,5 +1,11 @@
 #footer {
   .main-btn {
-    width: 49.5%;
+    background-color: $mainHeaderColour;
+    display: block;
+    margin: 0 auto;
+  }
+
+  #startBtn {
+    margin-bottom: 10px;
   }
 }

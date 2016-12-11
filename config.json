@@ -23,7 +23,7 @@
       "name": "original"
     },
     "appTitle": "Welcome To Bingo Bigul",
-    "turnsCount": 24,
+    "turnsCount": 2,
     "freeSpotImgPath": "<img src='../../images/small_logo_30x30.png' />",
     "drawIntervalSeconds": 2,
     "beforeStartGameSeconds": 3,
