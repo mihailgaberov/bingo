@@ -6,15 +6,10 @@
 
   .container-fluid {
     .col-sm-3 {
-      border: 5px solid white;
-      margin: 1px;
-
-      @include breakpointMinWidth('l') {
-        width: 24%;
-      }
-
-      @include breakpointMaxWidth('l') {
-        margin: 0;
+      border-top: 5px solid white;
+      border-left: 5px solid white;
+      &:nth-child(4) {
+        border-right: 5px solid white;
       }
 
       &:hover {
@@ -58,6 +53,12 @@
             }
           }
         }
+      }
+    }
+
+    &:last-child {
+      .col-sm-3 {
+        border-bottom: 5px solid white;
       }
     }
   }
