@@ -181,6 +181,13 @@ gulp.task('backOffice', ['clean',
 	'watchBackOffice',
 	'webserver']);
 
+gulp.task('bingoGame', ['clean',
+	'scripts',
+	'sass',
+	'test',
+	'watch',
+	'webserver']);
+
 gulp.task('watchBackOffice', () => {
 	gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
 	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
