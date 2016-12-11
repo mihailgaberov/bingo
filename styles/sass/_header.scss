@@ -1,9 +1,8 @@
 #header {
   height: 130px;
-  border-bottom: 1px solid $mainFrontColour;
-  background: url('../../images/logo.png') no-repeat 1% 60%;
   font-family: $mainFontFamily;
   color: $mainFrontColour;
+  background: #1a0850 url('../../images/logo.png') no-repeat 1% 60%;
 
   @include breakpointMaxWidth('xs') {
     background-size: 115px 100px;

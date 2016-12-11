@@ -120,10 +120,9 @@ const CRUDStore = {
 	},
 
 	isLoggedIn() {
-		let token = null;
 		let payload = null;
 
-		token = localStorage.getItem('admin-token');
+		let token = localStorage.getItem('admin-token');
 
 		if (token !== null) {
 			payload = token.split('.')[1];
@@ -137,7 +136,7 @@ const CRUDStore = {
 	},
 
 	logout() {
-		localStorage.setItem('admin-token', null);
+		localStorage.removeItem('admin-token');
 		emitter.emit(EventsConsts.LOGOUT);
 	}
 };

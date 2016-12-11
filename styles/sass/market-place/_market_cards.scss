@@ -6,8 +6,16 @@
 
   .container-fluid {
     .col-sm-3 {
-      border: 1px solid white;
-      height: 236px;
+      border: 5px solid white;
+      margin: 1px;
+
+      @include breakpointMinWidth('l') {
+        width: 24%;
+      }
+
+      @include breakpointMaxWidth('l') {
+        margin: 0;
+      }
 
       &:hover {
         @include selected-state(#555ce1);
@@ -31,7 +39,7 @@
           }
 
           img {
-            height: 118px;
+            height: 150px;
             margin: 0 auto;
           }
 
