@@ -88,10 +88,13 @@ class App {
 			if (startBtn) {
 				startBtn.addEventListener('click', (e) => {
 					console.log('>>> Start Game!');
-					ViewManipulator.toggleVisibility(elMarketPlace, false);
-					ViewManipulator.toggleVisibility(document.querySelector('#footer'), false);
 					this.initPlayingCards(conf, elMarketPlace);
-					timer.pulsate();
+
+					document.addEventListener(EventsConsts.ENOUGH_BALANCE, () => {
+						ViewManipulator.toggleVisibility(elMarketPlace, false);
+						ViewManipulator.toggleVisibility(document.querySelector('#footer'), false);
+						timer.pulsate();
+					});
 				});
 			}
 		}

@@ -11,7 +11,9 @@ const EventsConsts = {
 	END_GAME: 'endGame',
 	BINGO: 'bingo',
 	PRIZE_WON: 'prizeWon',
-	FLYING_PRIZE_ANIMATION_ENDS: 'flyingPrizeAnimationEnds'
+	FLYING_PRIZE_ANIMATION_ENDS: 'flyingPrizeAnimationEnds',
+	ENOUGH_BALANCE: 'enoughBalance',
+	NOT_ENOUGH_BALANCE: 'notEnoughBalance'
 };
 
 export { EventsConsts };

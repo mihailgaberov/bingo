@@ -21,6 +21,7 @@ class WinningDialog {
 		});
 
 		document.addEventListener(EventsConsts.START_GAME, () => {
+			console.log('>> start_game');
 			bingos = 0;
 		});
 
@@ -34,7 +35,25 @@ class WinningDialog {
 				};
 				WinningDialog.createDialog(objWinning);
 			});
+			console.log('>>> end_game');
 		});
+
+		document.addEventListener(EventsConsts.NOT_ENOUGH_BALANCE, () => {
+			const objWinning = {
+				elementID: elementID,
+				text: 'Not enough money. Please deposit.'
+			};
+			WinningDialog.createMsgDialog(objWinning);
+		});
+	}
+
+	static createMsgDialog(objWinning) {
+		const elDialog = document.querySelector(objWinning.elementID);
+		const elHeader = document.querySelector('header');
+		elHeader.classList.add('no-bingo-no-money');
+		const elDialogContent = elDialog.querySelector('#content');
+		elDialogContent.innerHTML = objWinning.text;
+		WinningDialog.openDialog(objWinning.elementID);
 	}
 
 	static getHeaderImgClass(bingos) {

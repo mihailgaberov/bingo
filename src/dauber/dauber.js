@@ -24,6 +24,7 @@ class Dauber {
 					ViewManipulator.toggleVisibility(this.element.parentElement, false);
 
 					// Clear all game elements values
+					this.drawTimeout = null;
 					this.arrDrawnNums = [];
 					this.arrDrawnNums.length = 0;
 					this.arrVisibleBalls = [];
@@ -99,6 +100,8 @@ class Dauber {
 		);
 		this.element.dispatchEvent(event);
 		clearInterval(this.drawTimeout);
+
+		console.log('>>> dispatchEvent END_GAME from dauber');
 	}
 
 	drawNewNumber() {

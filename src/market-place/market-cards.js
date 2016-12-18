@@ -48,7 +48,30 @@ class MarketCards {
 
 	static buyCards(count, price) {
 		const totalSpent = Number(count) * Number(price);
-		ApiController.setNewBalance(totalSpent, true);
+
+		const promiseBalance = ApiController.getPlayerBalancePromise();
+		promiseBalance.then((val) => {
+			// Calculate if the user has enough money to buy the selected cards in order to start the game
+			if (Number(val) >= 0) {
+				ApiController.setNewBalance(totalSpent, true);
+				const event = new CustomEvent(EventsConsts.ENOUGH_BALANCE, {
+						detail: {
+							time: new Date()
+						}, bubbles: true, cancelable: true
+					}
+				);
+				document.dispatchEvent(event);
+			} else {
+				// Dispatch new event for showing the not enough money dialog
+				const event = new CustomEvent(EventsConsts.NOT_ENOUGH_BALANCE, {
+						detail: {
+							time: new Date()
+						}, bubbles: true, cancelable: true
+					}
+				);
+				document.dispatchEvent(event);
+			}
+		});
 	}
 }
 
