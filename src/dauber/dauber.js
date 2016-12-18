@@ -14,17 +14,22 @@ import Animator from '../utils/animator';
 class Dauber {
 	constructor(conf = null, element) {
 		if (conf !== null) {
+			this.gameStarted = false;
 			document.addEventListener(EventsConsts.START_GAME, () => {
 				const drawBallTime = conf.gameConf.drawIntervalSeconds * 1000;
 				this.startDrawing(drawBallTime);
+				this.gameStarted = true;
 			});
 
 			document.addEventListener(EventsConsts.END_GAME, () => {
+				window.clearInterval(this.drawTimeout);
+				this.drawTimeout = null;
+				document.removeEventListener(EventsConsts.END_GAME, this.endGame);
+
 				setTimeout(() => {
 					ViewManipulator.toggleVisibility(this.element.parentElement, false);
 
 					// Clear all game elements values
-					this.drawTimeout = null;
 					this.arrDrawnNums = [];
 					this.arrDrawnNums.length = 0;
 					this.arrVisibleBalls = [];
@@ -58,7 +63,7 @@ class Dauber {
 
 	startDrawing(intervalinMs = 7000) {
 		ViewManipulator.toggleVisibility(this.element.parentElement, true);
-		this.drawTimeout = setInterval(() => {
+		this.drawTimeout = window.setInterval(() => {
 			const drawnNum = this.drawNewNumber();
 			let ball = new Ball(drawnNum, this.pubsub, this.conf.gameConf.skin);
 			ball.draw(this.element, ++this.visibleBallNum, this.isSecondPhase);
@@ -85,23 +90,23 @@ class Dauber {
 
 			if (this.arrDrawnNums.length >= this.conf.gameConf.turnsCount) {
 				// End Game
-				this.stopDrawing();
+				this.endGame();
 			}
 		}, intervalinMs);
 	}
 
-	stopDrawing() {
-		// Dispatch new event when the game ends
-		const event = new CustomEvent(EventsConsts.END_GAME, {
-				detail: {
-					time: new Date()
-				}, bubbles: true, cancelable: true
-			}
-		);
-		this.element.dispatchEvent(event);
-		clearInterval(this.drawTimeout);
-
-		console.log('>>> dispatchEvent END_GAME from dauber');
+	endGame() {
+		if (this.gameStarted) {
+			// Dispatch new event when the game ends
+			const event = new CustomEvent(EventsConsts.END_GAME, {
+					detail: {
+						time: new Date()
+					}, bubbles: true, cancelable: true
+				}
+			);
+			this.element.dispatchEvent(event);
+			this.gameStarted = false;
+		}
 	}
 
 	drawNewNumber() {

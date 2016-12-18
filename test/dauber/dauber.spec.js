@@ -54,7 +54,7 @@ describe('Dauber module', () => {
 	it('Should be able to stop the drawing of numbers/balls', (done) => {
 		const selector = document.createElement('section');
 		const dauber = new Dauber(conf, selector);
-		expect(dauber.stopDrawing).not.to.be.undefined;
+		expect(dauber.endGame).not.to.be.undefined;
 		done();
 	});
 
@@ -82,7 +82,7 @@ describe('Dauber module', () => {
 		const intervalInMs = 2000;
 		dauber.startDrawing(intervalInMs);
 		setTimeout(() => {
-			dauber.stopDrawing();
+			dauber.endGame();
 		}, 6000);
 
 		expect(dauber.drawBall).to.be.calledTwice;
