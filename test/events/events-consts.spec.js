@@ -22,4 +22,24 @@ describe('Bingo Events Constants', () => {
 	it('Should contain END_GAME constant', () => {
 		expect(EventsConsts.END_GAME).to.be.equal('endGame');
 	});
+
+	it('Should contain BINGO constant', () => {
+		expect(EventsConsts.BINGO).to.be.equal('bingo');
+	});
+
+	it('Should contain PRIZE_WON constant', () => {
+		expect(EventsConsts.PRIZE_WON).to.be.equal('prizeWon');
+	});
+
+	it('Should contain FLYING_PRIZE_ANIMATION_ENDS constant', () => {
+		expect(EventsConsts.FLYING_PRIZE_ANIMATION_ENDS).to.be.equal('flyingPrizeAnimationEnds');
+	});
+
+	it('Should contain ENOUGH_BALANCE constant', () => {
+		expect(EventsConsts.ENOUGH_BALANCE).to.be.equal('enoughBalance');
+	});
+
+	it('Should contain NOT_ENOUGH_BALANCE constant', () => {
+		expect(EventsConsts.NOT_ENOUGH_BALANCE).to.be.equal('notEnoughBalance');
+	});
 });
