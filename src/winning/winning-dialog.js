@@ -21,7 +21,6 @@ class WinningDialog {
 		});
 
 		document.addEventListener(EventsConsts.START_GAME, () => {
-			console.log('>> start_game');
 			bingos = 0;
 		});
 
@@ -31,11 +30,11 @@ class WinningDialog {
 					elementID: elementID,
 					bingos: bingos,
 					elBingosContainer: null,
-					elPrize: null
+					elPrize: null,
+					text: 'Bingos:'
 				};
 				WinningDialog.createDialog(objWinning);
 			});
-			console.log('>>> end_game');
 		});
 
 		document.addEventListener(EventsConsts.NOT_ENOUGH_BALANCE, () => {
@@ -45,15 +44,6 @@ class WinningDialog {
 			};
 			WinningDialog.createMsgDialog(objWinning);
 		});
-	}
-
-	static createMsgDialog(objWinning) {
-		const elDialog = document.querySelector(objWinning.elementID);
-		const elHeader = document.querySelector('header');
-		elHeader.classList.add('no-bingo-no-money');
-		const elDialogContent = elDialog.querySelector('#content');
-		elDialogContent.innerHTML = objWinning.text;
-		WinningDialog.openDialog(objWinning.elementID);
 	}
 
 	static getHeaderImgClass(bingos) {
@@ -80,6 +70,15 @@ class WinningDialog {
 		}
 	}
 
+	static createMsgDialog(objWinning) {
+		const elDialog = document.querySelector(objWinning.elementID);
+		const elHeader = document.querySelector('header');
+		elHeader.classList.add('no-bingo-no-money');
+		const elDialogContent = elDialog.querySelector('#content');
+		elDialogContent.innerHTML = objWinning.text;
+		WinningDialog.openDialog(objWinning.elementID);
+	}
+
 	static createDialog(objWinning) {
 		const elDialog = document.querySelector(objWinning.elementID);
 		const elDialogContent = elDialog.querySelector('#content');
@@ -89,6 +88,7 @@ class WinningDialog {
 		elHeader.classList = '';
 
 		if (!document.body.contains(document.querySelector('#bingos'))) {
+			elDialogContent.innerHTML = `<div class="col-sm-4 col-xs-4">${objWinning.text}</div>`;
 			objWinning.elBingosContainer = document.createElement('div');
 			objWinning.elBingosContainer.setAttribute('id', 'bingos');
 			objWinning.elBingosContainer.setAttribute('class', 'col-sm-3 col-xs-4');
