@@ -84,17 +84,17 @@ class App {
 				EventsConsts.START_GAME, true
 			);
 
+			document.addEventListener(EventsConsts.ENOUGH_BALANCE, () => {
+				ViewManipulator.toggleVisibility(elMarketPlace, false);
+				ViewManipulator.toggleVisibility(document.querySelector('#footer'), false);
+				timer.pulsate();
+			});
+
 			const startBtn = document.querySelector('#startBtn');
 			if (startBtn) {
 				startBtn.addEventListener('click', (e) => {
-					console.log('>>> Start Game!');
+					console.log('>>> Start button clicked!');
 					this.initPlayingCards(conf, elMarketPlace);
-
-					document.addEventListener(EventsConsts.ENOUGH_BALANCE, () => {
-						ViewManipulator.toggleVisibility(elMarketPlace, false);
-						ViewManipulator.toggleVisibility(document.querySelector('#footer'), false);
-						timer.pulsate();
-					});
 				});
 			}
 		}

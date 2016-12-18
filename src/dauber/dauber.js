@@ -22,7 +22,7 @@ class Dauber {
 			});
 
 			document.addEventListener(EventsConsts.END_GAME, () => {
-				window.clearInterval(this.drawTimeout);
+				clearInterval(this.drawTimeout);
 				this.drawTimeout = null;
 				document.removeEventListener(EventsConsts.END_GAME, this.endGame);
 
@@ -49,10 +49,7 @@ class Dauber {
 			this.arrVisibleBalls = [];
 			this.isSecondPhase = false;
 			this.pubsub = new PubSubService();
-			this.pubsub.subscribe(EventsConsts.FIFTH_BALL_DRAWN, () => {
-				this.animateVisibleBalls();
-			});
-
+			this.pubsub.subscribe(EventsConsts.FIFTH_BALL_DRAWN, () => { this.animateVisibleBalls() });
 			this.elVisibleBallsContainer = document.createElement('div');
 			this.elVisibleBallsContainer.setAttribute('id', 'elVisibleBallsContainer');
 			this.element.appendChild(this.elVisibleBallsContainer);
@@ -61,37 +58,41 @@ class Dauber {
 		}
 	}
 
+	doDraw() {
+		const drawnNum = this.drawNewNumber();
+		let ball = new Ball(drawnNum, this.pubsub, this.conf.gameConf.skin);
+		ball.draw(this.element, ++this.visibleBallNum, this.isSecondPhase);
+		this.arrVisibleBalls.push(ball);
+
+		// Dispatch new event with the drawn number
+		const event = new CustomEvent(EventsConsts.NEW_BALL_DRAWN, {
+				detail: {
+					drawnNumber: drawnNum,
+					time: new Date()
+				}, bubbles: true, cancelable: true
+			}
+		);
+		this.element.dispatchEvent(event);
+
+		if (this.visibleBallNum === 5) {
+			this.visibleBallNum = 0;
+			this.isSecondPhase = true;
+		}
+
+		// Set default value for turns count if no configured
+		if (this.conf.gameConf.turnsCount === undefined)
+			this.conf.gameConf.turnsCount = 23;
+
+		if (this.arrDrawnNums.length >= this.conf.gameConf.turnsCount) {
+			// End Game
+			this.endGame();
+		}
+	}
+
 	startDrawing(intervalinMs = 7000) {
 		ViewManipulator.toggleVisibility(this.element.parentElement, true);
-		this.drawTimeout = window.setInterval(() => {
-			const drawnNum = this.drawNewNumber();
-			let ball = new Ball(drawnNum, this.pubsub, this.conf.gameConf.skin);
-			ball.draw(this.element, ++this.visibleBallNum, this.isSecondPhase);
-			this.arrVisibleBalls.push(ball);
-
-			// Dispatch new event with the drawn number
-			const event = new CustomEvent(EventsConsts.NEW_BALL_DRAWN, {
-					detail: {
-						drawnNumber: drawnNum,
-						time: new Date()
-					}, bubbles: true, cancelable: true
-				}
-			);
-			this.element.dispatchEvent(event);
-
-			if (this.visibleBallNum === 5) {
-				this.visibleBallNum = 0;
-				this.isSecondPhase = true;
-			}
-
-			// Set default value for turns count if no configured
-			if (this.conf.gameConf.turnsCount === undefined)
-				this.conf.gameConf.turnsCount = 23;
-
-			if (this.arrDrawnNums.length >= this.conf.gameConf.turnsCount) {
-				// End Game
-				this.endGame();
-			}
+		this.drawTimeout = setInterval(() => {
+			this.doDraw();
 		}, intervalinMs);
 	}
 
@@ -126,23 +127,25 @@ class Dauber {
 	}
 
 	animateVisibleBalls() {
-		ViewManipulator.toggleVisibility(this.arrVisibleBalls[0].elBall, false);
-		this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
-		this.elVisibleBallsContainer.style.left = '0';
-		if (this.elVisibleBallsContainer.lastChild) {
-			this.elVisibleBallsContainer.removeChild(this.elVisibleBallsContainer.lastChild);
+		if (this.arrVisibleBalls.length > 0) {
+			ViewManipulator.toggleVisibility(this.arrVisibleBalls[0].elBall, false);
+			this.arrVisibleBalls.shift();   // remove the first drawn ball from the array
+			this.elVisibleBallsContainer.style.left = '0';
+			if (this.elVisibleBallsContainer.lastChild) {
+				this.elVisibleBallsContainer.removeChild(this.elVisibleBallsContainer.lastChild);
+			}
+
+			this.arrVisibleBalls.forEach((ball) => {
+				ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 15) + '%';
+				Animator.rotateElement(ball.elBall, 360, Animator.linear, 500);
+			});
+
+			for (let i = 0, len = this.arrVisibleBalls.length; i < len; i++) {
+				this.elVisibleBallsContainer.appendChild(this.arrVisibleBalls[i].elBall);
+			}
+
+			Animator.moveVerticalHorizontal(this.elVisibleBallsContainer, 0, -15, Animator.quad, 500, '%');
 		}
-
-		this.arrVisibleBalls.forEach((ball) => {
-			ball.elBall.style.left = (parseInt(ball.elBall.style.left) - 15) + '%';
-			Animator.rotateElement(ball.elBall, 360, Animator.linear, 500);
-		});
-
-		for (let i = 0, len = this.arrVisibleBalls.length; i < len; i++) {
-			this.elVisibleBallsContainer.appendChild(this.arrVisibleBalls[i].elBall);
-		}
-
-		Animator.moveVerticalHorizontal(this.elVisibleBallsContainer, 0, -15, Animator.quad, 500, '%');
 	}
 }
 
