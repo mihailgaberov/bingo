@@ -3,14 +3,14 @@
  */
 jest
 	.dontMock('../../src/admin/components/Actions')
-	.dontMock('../../Wrap')
+	.dontMock('../Wrap')
 ;
 
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 
 const Actions = require('../../src/admin/components/Actions').default;
-const Wrap = require('../../Wrap').default;
+const Wrap = require('../Wrap').default;
 
 describe('Click some actions', () => {
 	it('calls you back', () => {
