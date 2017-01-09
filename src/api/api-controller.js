@@ -144,7 +144,7 @@ class ApiController {
 
 		setWinsPromises.then((val) => {
 			if (val) {
-				console.log('bingos wins: ', wins);
+				console.log('bingos won: ', wins);
 			} else {
 				console.log('Setting new wins count failed.');
 			}
