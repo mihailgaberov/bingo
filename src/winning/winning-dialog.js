@@ -33,6 +33,7 @@ class WinningDialog {
 					elPrize: null,
 					text: 'Bingos:'
 				};
+				ApiController.setBingoWins(bingos);
 				WinningDialog.createDialog(objWinning);
 			});
 		});
