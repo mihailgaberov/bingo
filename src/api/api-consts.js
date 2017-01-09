@@ -13,7 +13,8 @@ const ApiConsts = {
 	CREATE_PLAYER: 'http://localhost:8888/bingo-api/createPlayer',
 	UPDATE_PLAYER_DATA: 'http://localhost:8888/bingo-api/updatePlayerData',
 	DELETE_PLAYER: 'http://localhost:8888/bingo-api/deletePlayer',
-	LOGIN_ADMIN: 'http://localhost:8888/bingo-api/loginAdmin'
+	LOGIN_ADMIN: 'http://localhost:8888/bingo-api/loginAdmin',
+	SET_WINS: 'http://localhost:8888/bingo-api/setWins'
 };
 
 export { ApiConsts };

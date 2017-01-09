@@ -139,8 +139,11 @@ class ApiController {
 		});
 	}
 
-	static setBingoWins(count) {
-
+	static setBingoWins(wins) {
+		return DbService.setWins(wins).then((val) => {
+			console.log('>>>> val: ', val);
+			return val;
+		});
 	}
 }
 
