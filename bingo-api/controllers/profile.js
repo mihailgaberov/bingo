@@ -39,3 +39,19 @@ module.exports.setNewBalance = function (req, res) {
 		});
 	}
 };
+
+module.exports.setNewWins = function (req, res) {
+	if (!req.payload._id) {
+		res.status(401).json({
+			"message": "UnauthorizedError: unauthorized attempt to set wins"
+		});
+	} else {
+		User.findOne({email: req.body.email}, function (err, user) {
+			user.setWins(req.body.wins);
+
+			user.save(function (err, user) {
+				res.status(200).json(user);
+			});
+		});
+	}
+};

@@ -138,6 +138,10 @@ class ApiController {
 			return val;
 		});
 	}
+
+	static setBingoWins(count) {
+
+	}
 }
 
 export default ApiController;
