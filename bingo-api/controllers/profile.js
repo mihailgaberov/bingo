@@ -47,7 +47,7 @@ module.exports.setNewWins = function (req, res) {
 		});
 	} else {
 		User.findOne({email: req.body.email}, function (err, user) {
-			user.setWins(req.body.wins);
+			user.setWins(user.wins + req.body.wins);
 
 			user.save(function (err, user) {
 				res.status(200).json(user);
