@@ -40,7 +40,7 @@ module.exports.setNewBalance = function (req, res) {
 	}
 };
 
-module.exports.setNewWins = function (req, res) {
+module.exports.setWins = function (req, res) {
 	if (!req.payload._id) {
 		res.status(401).json({
 			"message": "UnauthorizedError: unauthorized attempt to set wins"

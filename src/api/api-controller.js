@@ -140,9 +140,14 @@ class ApiController {
 	}
 
 	static setBingoWins(wins) {
-		return DbService.setWins(wins).then((val) => {
-			console.log('>>>> val: ', val);
-			return val;
+		const setWinsPromises = DbService.setWins(ApiController.getProfileInfo().email, wins);
+
+		setWinsPromises.then((val) => {
+			if (val) {
+				console.log('bingos wins: ', wins);
+			} else {
+				console.log('Setting new wins count failed.');
+			}
 		});
 	}
 }

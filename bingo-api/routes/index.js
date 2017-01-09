@@ -29,6 +29,6 @@ router.post('/setNewBalance', auth, ctrlProfile.setNewBalance);
 router.get('/profile', auth, ctrlProfile.profileRead);
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
-router.post('/setWins', ctrlProfile.setNewWins);
+router.post('/setWins', auth, ctrlProfile.setWins);
 
 module.exports = router;

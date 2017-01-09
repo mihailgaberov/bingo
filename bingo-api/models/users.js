@@ -60,8 +60,4 @@ userSchema.methods.generateJwt = function() {
 	},  process.env.DB_SECRET);
 };
 
-userSchema.methods.setWins = function(amount) {
-	this.wins = amount;
-};
-
 mongoose.model('Users', userSchema);

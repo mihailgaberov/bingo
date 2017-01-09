@@ -197,7 +197,7 @@ class DbService {
 			method: 'POST',
 			body: JSON.stringify({
 				email: email,
-				count: wins
+				wins: wins
 			}),
 			mode: 'cors',
 			redirect: 'follow',
