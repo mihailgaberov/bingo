@@ -19,8 +19,11 @@ class MarketCards {
 		});
 	}
 
-	getPurchasedCardsCount() {
-		const arrRadioButtons = this.container.querySelectorAll('input[type=radio]');
+	getRadioButtonsArray() {
+		return this.container.querySelectorAll('input[type=radio]');
+	}
+
+	static getPurchasedCardsCount(arrRadioButtons) {
 		let numberOfCards = 0;
 		let len = arrRadioButtons.length - 1;
 

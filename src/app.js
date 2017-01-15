@@ -45,7 +45,7 @@ class App {
 		if (conf.gameConf.playingCards) {
 			this.cardGen = new CardGenerator(conf);
 			const marketCards = new MarketCards(container);
-			const purchasedCardsCount = marketCards.getPurchasedCardsCount();
+			const purchasedCardsCount = MarketCards.getPurchasedCardsCount(marketCards.getRadioButtonsArray());
 			const cardDrawer = new CardDrawer(
 				this.cardGen.generateCards(purchasedCardsCount),
 				document.querySelector('#leftGameScreen')
