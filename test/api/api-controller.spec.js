@@ -4,8 +4,6 @@
 
 'use strict';
 
-import assert from 'assert';
-import LocalStorageService from '../../src/local-storage/local-storage-service';
 import ApiController from '../../src/api/api-controller';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';

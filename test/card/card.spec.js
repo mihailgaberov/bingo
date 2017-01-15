@@ -4,7 +4,6 @@
 
 'use strict';
 
-import assert from 'assert';
 import Card from '../../src/card/card';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';

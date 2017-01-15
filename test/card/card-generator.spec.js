@@ -3,7 +3,6 @@
  */
 'use strict';
 
-import assert from 'assert';
 import CardGenerator from '../../src/card/card-generator';
 import { expect } from 'chai';
 
