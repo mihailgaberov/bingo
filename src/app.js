@@ -67,7 +67,7 @@ class App {
 		if (!conf.gameConf.marketCards) {
 			ViewManipulator.toggleVisibility(elMarketPlace, false);
 		}
-		MarketCards.setCardPrices(conf.gameConf.cardPrice);
+		MarketCards.setCardPrices(conf.gameConf.cardPrice, document.querySelectorAll('.cards'));
 
 		let elWinPatternsAnimModule = null;
 		if (conf.gameConf.winPatternsAnimModule) {
@@ -93,7 +93,6 @@ class App {
 			const startBtn = document.querySelector('#startBtn');
 			if (startBtn) {
 				startBtn.addEventListener('click', (e) => {
-					console.log('>>> Start button clicked!');
 					this.initPlayingCards(conf, elMarketPlace);
 				});
 			}

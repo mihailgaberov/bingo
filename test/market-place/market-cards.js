@@ -41,6 +41,12 @@ describe('Market Cards module', () => {
 	});
 
 	it('Should set the correct price depending on how many cards are offered', () => {
+		let cards = document.createElement('div');
+		cards.innerHTML = '1 <input type="radio" id="one" name="marketCards" value="1" checked="checked">' +
+			'<img src="/images/market/one_card.png" class="img-responsive">' +
+			'<div class="price"></div>';
 
+		MarketCards.setCardPrices(5, [cards]);
+		expect(cards.querySelector('.price').innerHTML).to.be.equal('<i class="price-icon"></i>5');
 	});
 });

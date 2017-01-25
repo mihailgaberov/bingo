@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/bingo-bigul';
+var dbURI = 'mongodb://127.0.0.1/bingo-bigul';
 var db = mongoose.connection;
 
 mongoose.connect(dbURI);
