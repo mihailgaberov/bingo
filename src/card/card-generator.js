@@ -11,7 +11,7 @@ class CardGenerator {
 	}
 
 	/**
-	 * Generated given number of cards with random number. One card by default.
+	 * Generates given number of cards with random numbers. One card by default.
 	 * @param count
 	 * @returns {{}}
 	 */

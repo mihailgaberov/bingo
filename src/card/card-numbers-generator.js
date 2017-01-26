@@ -9,7 +9,6 @@ class CardNumbersGenerator {
 	constructor(conf) {
 		if (conf !== undefined) {
 			this.conf = conf;
-			//this.arrAmericanNumbers = conf.gameConf.numbers;
 			this.arrAmericanNumbers = this.conf.gameConf.numbers;
 		}
 	}
