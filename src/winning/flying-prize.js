@@ -26,7 +26,7 @@ class FlyingPrize {
 		elFlyingPrize.innerHTML = sum;
 		document.body.appendChild(elFlyingPrize);
 
-		// Animate moving the element to top: 0%, left: 87%
+		// Animate moving the element to given top and left positions
 		Animator.moveDiagonally(elFlyingPrize, 45, 45, -45, 42, Animator.quad, 3000, '%');
 
 		document.addEventListener(EventsConsts.FLYING_PRIZE_ANIMATION_ENDS, () => {
