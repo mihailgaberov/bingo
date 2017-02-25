@@ -4,7 +4,6 @@
 'use strict';
 import App from '../../src/app';
 import { expect, assert } from 'chai';
-// import sinon from 'sinon';
 
 describe('Bingo App', () => {
 
@@ -15,7 +14,7 @@ describe('Bingo App', () => {
 		expect(appBingo.confUrl).to.be.a('string');
 	});
 
-  it('Should initialize the game via Game Initializator', () => {
+  it('Should initialize the game via Game Initializer', () => {
     setTimeout(() => {
       expect(appBingo.initializator).not.to.be.null;
     });
