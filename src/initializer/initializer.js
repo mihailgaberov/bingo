@@ -17,8 +17,10 @@ import WinPatternsAnimModule from '../winning/win-patterns-anim-module';
 
 class Initializator {
   constructor(conf) {
-    this.title = conf.gameConf.appTitle;
-    document.querySelector('title').innerText = this.title;
+    this.conf = conf;
+
+    this.setTitle(conf.gameConf.appTitle);
+
 
     const elMarketPlace = document.querySelector('#marketPlace');
 
@@ -92,6 +94,10 @@ class Initializator {
       );
       MarketCards.buyCards(purchasedCardsCount, conf.gameConf.cardPrice);
     }
+  }
+
+  setTitle(appTitle) {
+    document.querySelector('title').innerText = appTitle;
   }
 }
 

@@ -6,7 +6,7 @@
 import 'es6-promise';
 import 'isomorphic-fetch';
 import { ApiConsts } from './api/api-consts';
-import Initializator from './initializator/initializer';
+import Initializator from './initializer/initializer';
 
 class App {
 	constructor() {
