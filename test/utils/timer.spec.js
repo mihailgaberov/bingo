@@ -3,7 +3,6 @@
  */
 'use strict';
 
-import assert from 'assert';
 import Timer from '../../src/utils/timer';
 import { EventsConsts } from '../../src/events/events-consts';
 import { expect } from 'chai';
@@ -40,6 +39,7 @@ describe('Timer module', () => {
 	it('Should animate pulse for given time and the to be hidden', () => {
 		const el = document.createElement('div');
 		const timer = new Timer(el, 5, EventsConsts.START_GAME, true);
+		timer.pulsate();
 		setTimeout(() => {
 			expect(timer.element.style.display).to.be.equal('none');
 		}, timer.seconds);
