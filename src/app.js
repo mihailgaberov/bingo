@@ -21,41 +21,20 @@ import WinPatternsAnimModule from './winning/win-patterns-anim-module';
 class App {
 	constructor() {
 		this.confUrl = ApiConsts.CONF;
-		this.loadConfigs(App.init);
+
+    fetch(this.confUrl).then((response) => {
+      if (response.status >= 400) {
+        throw new Error("Bad response from server");
+      }
+      return response.json();
+    }).then((config) => {
+      this.init(config);
+    });
 	}
 
-	loadConfigs(callback) {
-		fetch(this.confUrl).then((response) => {
-				if (response.status >= 400) {
-					throw new Error("Bad response from server");
-				}
-				return response.json();
-			}).then((config) => {
-			callback(this, config);
-		});
-		return callback;
-	}
-
-	static init(context, conf) {
-		context.start(conf);
-	}
-
-	initPlayingCards(conf, container) {
-		if (conf.gameConf.playingCards) {
-			this.cardGen = new CardGenerator(conf);
-			const marketCards = new MarketCards(container);
-			const purchasedCardsCount = MarketCards.getPurchasedCardsCount(marketCards.getRadioButtonsArray());
-			const cardDrawer = new CardDrawer(
-				this.cardGen.generateCards(purchasedCardsCount),
-				document.querySelector('#leftGameScreen')
-			);
-			MarketCards.buyCards(purchasedCardsCount, conf.gameConf.cardPrice);
-		}
-	}
-
-	start(conf) {
+	init(conf) {
 		this.title = conf.gameConf.appTitle;
-		document.querySelector('title').innerText = conf.gameConf.appTitle;
+		document.querySelector('title').innerText = this.title;
 		const elMarketPlace = document.querySelector('#marketPlace');
 
 		// Create the components only if they are allowed in the config
@@ -114,6 +93,19 @@ class App {
 			ViewManipulator.showUserInfo();
 		}
 	}
+
+  initPlayingCards(conf, container) {
+    if (conf.gameConf.playingCards) {
+      this.cardGen = new CardGenerator(conf);
+      const marketCards = new MarketCards(container);
+      const purchasedCardsCount = MarketCards.getPurchasedCardsCount(marketCards.getRadioButtonsArray());
+      const cardDrawer = new CardDrawer(
+        this.cardGen.generateCards(purchasedCardsCount),
+        document.querySelector('#leftGameScreen')
+      );
+      MarketCards.buyCards(purchasedCardsCount, conf.gameConf.cardPrice);
+    }
+  }
 }
 
 export default App;
