@@ -42,7 +42,7 @@ describe('Timer module', () => {
 		timer.pulsate();
 		setTimeout(() => {
 			expect(timer.element.style.display).to.be.equal('none');
-		}, timer.seconds);
+		}, timer.seconds * 1000);
 	});
 
 	it('Should provide method hiding the timer', () => {

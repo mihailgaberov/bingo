@@ -25,8 +25,7 @@ class App {
 	}
 
 	loadConfigs(callback) {
-		fetch(this.confUrl)
-			.then((response) => {
+		fetch(this.confUrl).then((response) => {
 				if (response.status >= 400) {
 					throw new Error("Bad response from server");
 				}
