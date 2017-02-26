@@ -11,7 +11,7 @@ import MarketCards from '../market-place/market-cards';
 import Blower from '../blower/blower';
 import Dauber from '../dauber/dauber';
 import Timer from '../utils/timer';
-import { EventsConsts } from '../events/events-consts';
+import {EventsConsts} from '../events/events-consts';
 import WinningDialog from '../winning/winning-dialog';
 import WinPatternsAnimModule from '../winning/win-patterns-anim-module';
 
@@ -31,14 +31,22 @@ class Initializer {
     document.querySelector('title').innerText = appTitle;
   }
 
-   static addWinningDialog(isConfigured) {
-    if (isConfigured) {
-      const winningDialog = new WinningDialog('#winningDialogContainer');
-    }
+  static addWinningDialog(isConfigured) {
+    return isConfigured ? new WinningDialog('#winningDialogContainer') : undefined;
   }
 
   static setCardPrices(isConfigured) {
     MarketCards.setCardPrices(isConfigured, document.querySelectorAll('.cards'));
+  }
+
+  static addWinPatternAnimModule(isConfigured) {
+    let elWinPatternsAnimModule = null;
+    if (isConfigured) {
+      elWinPatternsAnimModule = document.querySelector('#winPatternsAnimModule');
+      const horPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#horizontal'), 5, 5, 'horizontal');
+      const verPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#vertical'), 5, 5, 'vertical');
+      const diagPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#diagonal'), 5, 5, 'diagonal');
+    }
   }
 
   static setupGame(conf, elMarketPlace) {
@@ -89,6 +97,13 @@ class Initializer {
     return purchasedCardsCount
   }
 
+  static addDauber(conf) {
+    if (conf) {
+      const dauber = new Dauber(conf, document.querySelector('#tube'));
+      const blower = new Blower(document.querySelector('#blower-balloon'));
+    }
+  }
+
   static showUserInfo() {
     if (ApiController.isLogged()) {
       ViewManipulator.showUserInfo();
@@ -103,23 +118,6 @@ class Initializer {
       logoutBtn.addEventListener('click', (e) => {
         apiCtrl.logout();
       });
-    }
-  }
-
-  static addDauber(conf) {
-    if (conf) {
-      const dauber = new Dauber(conf, document.querySelector('#tube'));
-      const blower = new Blower(document.querySelector('#blower-balloon'));
-    }
-  }
-
-  static addWinPatternAnimModule(isConfigured) {
-    let elWinPatternsAnimModule = null;
-    if (isConfigured) {
-      elWinPatternsAnimModule = document.querySelector('#winPatternsAnimModule');
-      const horPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#horizontal'), 5, 5, 'horizontal');
-      const verPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#vertical'), 5, 5, 'vertical');
-      const diagPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#diagonal'), 5, 5, 'diagonal');
     }
   }
 }

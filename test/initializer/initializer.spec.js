@@ -5,7 +5,7 @@
 
 import jsdom from 'mocha-jsdom';
 import Initializer from '../../src/initializer/initializer';
-import { expect, assert } from 'chai';
+import {expect, assert} from 'chai';
 
 describe('App Initializer', () => {
 
@@ -38,7 +38,7 @@ describe('App Initializer', () => {
       "appTitle": "Welcome To Bingo Bigul",
       "turnsCount": 4,
       "freeSpotImgPath": "<img src='../../images/small_logo_30x30.png' />",
-      "drawIntervalSeconds":3,
+      "drawIntervalSeconds": 3,
       "beforeStartGameSeconds": 3,
       "marketCards": true,
       "dauber": true,
@@ -50,15 +50,54 @@ describe('App Initializer', () => {
     }
   };
 
-  it('Should apply game configurations', () => {
+  it('Should have method for applying the game configurations', () => {
     expect(Initializer.hasOwnProperty(Initializer.applyConfigurations)).to.be.truthy;
-   });
+  });
 
-  it('Should set app meta title', () => {
+  it('Should have method for setting the app title', () => {
     expect(Initializer.hasOwnProperty(Initializer.setTitle)).to.be.truthy;
   });
 
-   it('Should add Winning Dialog', () => {
+  it('Should have method for adding Winning Dialog', () => {
     expect(Initializer.hasOwnProperty(Initializer.addWinningDialog)).to.be.truthy;
-   });
+  });
+
+  it('Should have method for setting card prices', () => {
+    expect(Initializer.hasOwnProperty(Initializer.setCardPrices)).to.be.truthy;
+  });
+
+  it('Should have method for adding Winning Animation module', () => {
+    expect(Initializer.hasOwnProperty(Initializer.addWinPatternAnimModule)).to.be.truthy;
+  });
+
+  it('Should have method for setup the game', () => {
+    expect(Initializer.hasOwnProperty(Initializer.setupGame)).to.be.truthy;
+  });
+
+  it('Should have method for adding Dauber module', () => {
+    expect(Initializer.hasOwnProperty(Initializer.addDauber)).to.be.truthy;
+  });
+
+  it('Should have method for adding Logout button', () => {
+    expect(Initializer.hasOwnProperty(Initializer.addLogoutBtn)).to.be.truthy;
+  });
+
+  it('Should have method for showing user info', () => {
+    expect(Initializer.hasOwnProperty(Initializer.setupGame)).to.be.truthy;
+  });
+
+  it('Should set the app meta title', () => {
+    const el = document.createElement('title');
+    el.innerText = 'test';
+    document.head.appendChild(el);
+    Initializer.setTitle('Welcome');
+    expect(el.innerText).to.be.equal('Welcome');
+  });
+
+  it('Should add Winning Dialog instance', () => {
+    let wd = Initializer.addWinningDialog(true);
+    expect(wd).not.to.be.undefined;
+    wd = Initializer.addWinningDialog(false);
+    expect(wd).to.be.undefined;
+  });
 });
