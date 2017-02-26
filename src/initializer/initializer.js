@@ -21,7 +21,7 @@ class Initializer {
     Initializer.addWinningDialog(conf.gameConf.winningDialog);
     Initializer.setCardPrices(conf.gameConf.cardPrice);
     Initializer.addWinPatternAnimModule(conf.gameConf.winPatternsAnimModule);
-    Initializer.attachEnoughBalanceListener(Initializer.addMarketPlace(conf.gameConf.marketCards), conf);
+    Initializer.attachEnoughBalanceListener(Initializer.addMarketPlace(conf.gameConf.marketCards), conf, document);
     Initializer.addStartButton(conf, Initializer.addMarketPlace(conf.gameConf.marketCards));
     Initializer.addDauber(conf);
     Initializer.addLogoutBtn();
@@ -64,7 +64,7 @@ class Initializer {
     return startBtn;
   }
 
-  static attachEnoughBalanceListener(elMarketPlace, conf) {
+  static attachEnoughBalanceListener(elMarketPlace, conf, document) {
     document.addEventListener(EventsConsts.ENOUGH_BALANCE, () => {
       ViewManipulator.toggleVisibility(elMarketPlace, false);
       ViewManipulator.toggleVisibility(document.querySelector('#footer'), false);

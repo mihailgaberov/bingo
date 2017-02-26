@@ -165,4 +165,9 @@ describe('App Initializer', () => {
     expect(res.dauber).not.to.be.undefined;
     expect(res.blower).not.to.be.undefined;
   });
+
+  it('Should attach enough balance listener', () => {
+    Initializer.attachEnoughBalanceListener(Initializer.addMarketPlace(true), conf, document);
+    expect(document.hasOwnProperty('enoughBalance')).to.be.truthy;
+  });
 });
