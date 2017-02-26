@@ -135,4 +135,12 @@ describe('App Initializer', () => {
     res = Initializer.addWinPatternAnimModule(false);
     expect(res).to.be.undefined;
   });
+
+  it('Should add start game button', () => {
+    let startBtn = Initializer.addStartButton(conf, Initializer.addMarketPlace(true));
+    expect(startBtn).not.to.be.undefined;
+    conf.gameConf.mainGame = false;
+    startBtn = Initializer.addStartButton(conf, Initializer.addMarketPlace(true));
+    expect(startBtn).to.be.undefined;
+  });
 });
