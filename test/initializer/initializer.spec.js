@@ -143,4 +143,14 @@ describe('App Initializer', () => {
     startBtn = Initializer.addStartButton(conf, Initializer.addMarketPlace(true));
     expect(startBtn).to.be.undefined;
   });
+
+  it('Should create a Timer object', () => {
+    const timer = Initializer.getTimer(conf);
+    expect(timer).not.to.be.undefined;
+    expect(timer).to.be.object;
+    expect(timer.hasOwnProperty(timer.element)).to.be.truthy;
+    expect(timer.hasOwnProperty(timer.seconds)).to.be.truthy;
+    expect(timer.hasOwnProperty(timer.eventName)).to.be.truthy;
+    expect(timer.hasOwnProperty(timer.isVisible)).to.be.truthy;
+  });
 });
