@@ -102,7 +102,7 @@ class Initializer {
       cardGen.generateCards(purchasedCardsCount),
       document.querySelector('#leftGameScreen')
     );
-    return purchasedCardsCount
+    return purchasedCardsCount;
   }
 
   static addDauber(conf) {
