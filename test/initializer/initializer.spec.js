@@ -116,4 +116,23 @@ describe('App Initializer', () => {
     const arrElements = Initializer.setCardPrices(conf.gameConf.cardPrice, cards);
     expect(arrElements[0].querySelector('.price').innerHTML.endsWith('14')).to.be.truthy;
   });
+
+  it('Should add Winning Pattern Animations module', () => {
+    const elWinPatternsAnimModule = document.createElement('div');
+    elWinPatternsAnimModule.setAttribute('id', 'winPatternsAnimModule');
+    const horPattern = document.createElement('div');
+    horPattern.setAttribute('id', 'horizontal');
+    const verPattern = document.createElement('div');
+    verPattern.setAttribute('id', 'vertical');
+    const diagPattern  = document.createElement('div');
+    diagPattern.setAttribute('id', 'diagonal');
+    elWinPatternsAnimModule.appendChild(horPattern);
+    elWinPatternsAnimModule.appendChild(verPattern);
+    elWinPatternsAnimModule.appendChild(diagPattern);
+    document.body.appendChild(elWinPatternsAnimModule);
+    let res = Initializer.addWinPatternAnimModule(true);
+    expect(res).not.to.be.undefined;
+    res = Initializer.addWinPatternAnimModule(false);
+    expect(res).to.be.undefined;
+  });
 });
