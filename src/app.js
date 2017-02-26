@@ -11,7 +11,6 @@ import Initializator from './initializer/initializer';
 class App {
 	constructor() {
 		this.confUrl = ApiConsts.CONF;
-    this.initializator = null;
 
     fetch(this.confUrl).then((response) => {
       if (response.status >= 400) {
@@ -19,7 +18,7 @@ class App {
       }
       return response.json();
     }).then((config) => {
-      this.initializator = new Initializator(config);
+      Initializator.applyConfigurations(config);
     });
 	}
 }

@@ -7,7 +7,7 @@ import jsdom from 'mocha-jsdom';
 import Initializer from '../../src/initializer/initializer';
 import { expect, assert } from 'chai';
 
-describe('Bingo App Initializer', () => {
+describe('App Initializer', () => {
 
   jsdom();
 
@@ -50,18 +50,15 @@ describe('Bingo App Initializer', () => {
     }
   };
 
-  it('Should set the title of the application', () => {
-    /*document.head.appendChild(document.createElement('title'));
-    const initializer = new Initializer(conf);
-    expect(initializer.setTitle).to.be.calledWith(conf.gameConf.appTitle);*/
+  it('Should apply game configurations', () => {
+    expect(Initializer.hasOwnProperty(Initializer.applyConfigurations)).to.be.truthy;
    });
 
+  it('Should set app meta title', () => {
+    expect(Initializer.hasOwnProperty(Initializer.setTitle)).to.be.truthy;
+  });
 
-  /*it('Should initialize the CardGenerator to init the app', () => {
-   expect(appBingo.hasOwnProperty(appBingo.cardGen)).not.to.be.undefined;
+   it('Should add Winning Dialog', () => {
+    expect(Initializer.hasOwnProperty(Initializer.addWinningDialog)).to.be.truthy;
    });
-
-   it('Should initialize the CardDrawer to init the app', () => {
-   expect(appBingo.hasOwnProperty(appBingo.CardDrawer)).not.to.be.undefined;
-   });*/
 });

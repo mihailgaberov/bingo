@@ -16,25 +16,32 @@ import WinningDialog from '../winning/winning-dialog';
 import WinPatternsAnimModule from '../winning/win-patterns-anim-module';
 
 class Initializer {
-  constructor(conf) {
-    this.setTitle(conf.gameConf.appTitle);
-    this.addWinningDialog(conf);
-    const elMarketPlace = this.addMarketPlace(conf);
-    this.setCardPrices(conf);
-    this.addWinPatternAnimModule(conf);
-    this.startGame(conf, elMarketPlace);
-    this.addDauber(conf);
-    this.addLogoutBtn();
-    this.showUserInfo();
+  static applyConfigurations(conf) {
+    Initializer.setTitle(conf.gameConf.appTitle);
+    Initializer.addWinningDialog(conf.gameConf.winningDialog);
+    Initializer.setCardPrices(conf.gameConf.cardPrice);
+    Initializer.addWinPatternAnimModule(conf.gameConf.winPatternsAnimModule);
+    Initializer.setupGame(conf, Initializer.addMarketPlace(conf.gameConf.marketCards));
+    Initializer.addDauber(conf);
+    Initializer.addLogoutBtn();
+    Initializer.showUserInfo();
   }
 
-  addWinningDialog(conf) {
-    if (conf.gameConf.winningDialog) {
+  static setTitle(appTitle) {
+    document.querySelector('title').innerText = appTitle;
+  }
+
+   static addWinningDialog(isConfigured) {
+    if (isConfigured) {
       const winningDialog = new WinningDialog('#winningDialogContainer');
     }
   }
 
-  startGame(conf, elMarketPlace) {
+  static setCardPrices(isConfigured) {
+    MarketCards.setCardPrices(isConfigured, document.querySelectorAll('.cards'));
+  }
+
+  static setupGame(conf, elMarketPlace) {
     if (conf.gameConf.mainGame) {
       const timer = new Timer(
         document.querySelector('#timerContainer'),
@@ -45,37 +52,50 @@ class Initializer {
       document.addEventListener(EventsConsts.ENOUGH_BALANCE, () => {
         ViewManipulator.toggleVisibility(elMarketPlace, false);
         ViewManipulator.toggleVisibility(document.querySelector('#footer'), false);
-        timer.pulsate();
+        timer.startCounting();
       });
 
       const startBtn = document.querySelector('#startBtn');
       if (startBtn) {
         startBtn.addEventListener('click', (e) => {
-          this.initPlayingCards(conf, elMarketPlace);
+          Initializer.buyCards(conf, elMarketPlace);
         });
       }
     }
   }
 
-  addMarketPlace(conf) {
+  static addMarketPlace(isConfigured) {
     const elMarketPlace = document.querySelector('#marketPlace');
-    if (!conf.gameConf.marketCards) {
+    if (!isConfigured) {
       ViewManipulator.toggleVisibility(elMarketPlace, false);
     }
     return elMarketPlace
   }
 
-  setTitle(appTitle) {
-    document.querySelector('title').innerText = appTitle;
+  static buyCards(conf, container) {
+    if (conf.gameConf.playingCards) {
+      const cardGen = new CardGenerator(conf);
+      const marketCards = new MarketCards(container);
+      MarketCards.buyCards(Initializer.renderPurchasedCards(marketCards, cardGen), conf.gameConf.cardPrice);
+    }
   }
 
-  showUserInfo() {
+  static renderPurchasedCards(marketCards, cardGen) {
+    const purchasedCardsCount = MarketCards.getPurchasedCardsCount(marketCards.getRadioButtonsArray());
+    const cardDrawer = new CardDrawer(
+      cardGen.generateCards(purchasedCardsCount),
+      document.querySelector('#leftGameScreen')
+    );
+    return purchasedCardsCount
+  }
+
+  static showUserInfo() {
     if (ApiController.isLogged()) {
       ViewManipulator.showUserInfo();
     }
   }
 
-  addLogoutBtn() {
+  static addLogoutBtn() {
     const apiCtrl = new ApiController();
 
     const logoutBtn = document.querySelector('#logoutBtn');
@@ -86,37 +106,20 @@ class Initializer {
     }
   }
 
-  addDauber(conf) {
-    if (conf.gameConf.dauber) {
+  static addDauber(conf) {
+    if (conf) {
       const dauber = new Dauber(conf, document.querySelector('#tube'));
       const blower = new Blower(document.querySelector('#blower-balloon'));
     }
   }
 
-  addWinPatternAnimModule(conf) {
+  static addWinPatternAnimModule(isConfigured) {
     let elWinPatternsAnimModule = null;
-    if (conf.gameConf.winPatternsAnimModule) {
+    if (isConfigured) {
       elWinPatternsAnimModule = document.querySelector('#winPatternsAnimModule');
       const horPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#horizontal'), 5, 5, 'horizontal');
       const verPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#vertical'), 5, 5, 'vertical');
       const diagPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#diagonal'), 5, 5, 'diagonal');
-    }
-  }
-
-  setCardPrices(conf) {
-    MarketCards.setCardPrices(conf.gameConf.cardPrice, document.querySelectorAll('.cards'));
-  }
-
-  initPlayingCards(conf, container) {
-    if (conf.gameConf.playingCards) {
-      this.cardGen = new CardGenerator(conf);
-      const marketCards = new MarketCards(container);
-      const purchasedCardsCount = MarketCards.getPurchasedCardsCount(marketCards.getRadioButtonsArray());
-      const cardDrawer = new CardDrawer(
-        this.cardGen.generateCards(purchasedCardsCount),
-        document.querySelector('#leftGameScreen')
-      );
-      MarketCards.buyCards(purchasedCardsCount, conf.gameConf.cardPrice);
     }
   }
 }
