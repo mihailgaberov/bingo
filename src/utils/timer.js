@@ -11,7 +11,7 @@ class Timer {
 		this.isVisible = isVisible;
 	}
 
-	pulsate() {
+	startCounting() {
 		let sec = 0;
 		if (!isNaN(parseInt(this.seconds))) {
 			const intervalID = setInterval(() => {

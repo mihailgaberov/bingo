@@ -33,13 +33,13 @@ describe('Timer module', () => {
 
 	it('Should provide method for pulsating', () => {
 		const timer = new Timer(document.querySelector('#timerContainer'), 5, EventsConsts.START_GAME, true);
-		expect(timer.pulsate).not.to.be.undefined;
+		expect(timer.startCounting).not.to.be.undefined;
 	});
 
 	it('Should animate pulse for given time and the to be hidden', () => {
 		const el = document.createElement('div');
 		const timer = new Timer(el, 5, EventsConsts.START_GAME, true);
-		timer.pulsate();
+		timer.startCounting();
 		setTimeout(() => {
 			expect(timer.element.style.display).to.be.equal('none');
 		}, (timer.seconds) * 1000);
