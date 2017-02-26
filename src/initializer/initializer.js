@@ -21,7 +21,8 @@ class Initializer {
     Initializer.addWinningDialog(conf.gameConf.winningDialog);
     Initializer.setCardPrices(conf.gameConf.cardPrice);
     Initializer.addWinPatternAnimModule(conf.gameConf.winPatternsAnimModule);
-    Initializer.setupGame(conf, Initializer.addMarketPlace(conf.gameConf.marketCards));
+    Initializer.attachEnoughBalanceListener(Initializer.addMarketPlace(conf.gameConf.marketCards), conf);
+    Initializer.addStartButton(conf, Initializer.addMarketPlace(conf.gameConf.marketCards));
     Initializer.addDauber(conf);
     Initializer.addLogoutBtn();
     Initializer.showUserInfo();
@@ -50,27 +51,33 @@ class Initializer {
     return elWinPatternsAnimModule;
   }
 
-  static setupGame(conf, elMarketPlace) {
+  static addStartButton(conf, elMarketPlace) {
+    let startBtn = undefined;
     if (conf.gameConf.mainGame) {
-      const timer = new Timer(
-        document.querySelector('#timerContainer'),
-        conf.gameConf.beforeStartGameSeconds,
-        EventsConsts.START_GAME, true
-      );
-
-      document.addEventListener(EventsConsts.ENOUGH_BALANCE, () => {
-        ViewManipulator.toggleVisibility(elMarketPlace, false);
-        ViewManipulator.toggleVisibility(document.querySelector('#footer'), false);
-        timer.startCounting();
-      });
-
-      const startBtn = document.querySelector('#startBtn');
+      startBtn = document.querySelector('#startBtn');
       if (startBtn) {
         startBtn.addEventListener('click', (e) => {
           Initializer.buyCards(conf, elMarketPlace);
         });
       }
     }
+    return startBtn;
+  }
+
+  static attachEnoughBalanceListener(elMarketPlace, conf) {
+    document.addEventListener(EventsConsts.ENOUGH_BALANCE, () => {
+      ViewManipulator.toggleVisibility(elMarketPlace, false);
+      ViewManipulator.toggleVisibility(document.querySelector('#footer'), false);
+      Initializer.getTimer(conf).startCounting();
+    });
+  }
+
+  static getTimer(conf) {
+    return new Timer(
+      document.querySelector('#timerContainer'),
+      conf.gameConf.beforeStartGameSeconds,
+      EventsConsts.START_GAME, true
+    );
   }
 
   static addMarketPlace(isConfigured) {
