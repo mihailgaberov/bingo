@@ -100,4 +100,20 @@ describe('App Initializer', () => {
     wd = Initializer.addWinningDialog(false);
     expect(wd).to.be.undefined;
   });
+
+  it('Should set card prices', () => {
+    let cards = document.createElement('div');
+    cards.setAttribute('class', 'cards');
+    let price = document.createElement('div');
+    price.setAttribute('class', 'price');
+    let radioInput = document.createElement('input');
+    radioInput.setAttribute('type', 'radio');
+    radioInput.checked = true;
+    radioInput.setAttribute('value', 7);
+    cards.appendChild(price);
+    cards.appendChild(radioInput);
+    document.body.appendChild(cards);
+    const arrElements = Initializer.setCardPrices(conf.gameConf.cardPrice, cards);
+    expect(arrElements[0].querySelector('.price').innerHTML.endsWith('14')).to.be.truthy;
+  });
 });

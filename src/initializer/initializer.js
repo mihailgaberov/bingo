@@ -35,8 +35,8 @@ class Initializer {
     return isConfigured ? new WinningDialog('#winningDialogContainer') : undefined;
   }
 
-  static setCardPrices(isConfigured) {
-    MarketCards.setCardPrices(isConfigured, document.querySelectorAll('.cards'));
+  static setCardPrices(price) {
+    return MarketCards.setCardPrices(price, document.querySelectorAll('.cards'));
   }
 
   static addWinPatternAnimModule(isConfigured) {
