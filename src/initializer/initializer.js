@@ -40,13 +40,14 @@ class Initializer {
   }
 
   static addWinPatternAnimModule(isConfigured) {
-    let elWinPatternsAnimModule = null;
+    let elWinPatternsAnimModule = undefined;
     if (isConfigured) {
       elWinPatternsAnimModule = document.querySelector('#winPatternsAnimModule');
       const horPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#horizontal'), 5, 5, 'horizontal');
       const verPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#vertical'), 5, 5, 'vertical');
       const diagPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#diagonal'), 5, 5, 'diagonal');
     }
+    return elWinPatternsAnimModule;
   }
 
   static setupGame(conf, elMarketPlace) {
