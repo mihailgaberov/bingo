@@ -153,4 +153,16 @@ describe('App Initializer', () => {
     expect(timer.hasOwnProperty(timer.eventName)).to.be.truthy;
     expect(timer.hasOwnProperty(timer.isVisible)).to.be.truthy;
   });
+
+  it('Should add dauber elements', () => {
+    const tube = document.createElement('div');
+    tube.setAttribute('id', 'tube');
+    const blowerBaloon = document.createElement('canvas');
+    blowerBaloon.setAttribute('id', 'blower-balloon');
+    document.body.appendChild(tube);
+    document.body.appendChild(blowerBaloon);
+    let res = Initializer.addDauber(conf);
+    expect(res.dauber).not.to.be.undefined;
+    expect(res.blower).not.to.be.undefined;
+  });
 });
