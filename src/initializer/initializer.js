@@ -106,10 +106,12 @@ class Initializer {
   }
 
   static addDauber(conf) {
+    let dauberElements = {};
     if (conf) {
-      const dauber = new Dauber(conf, document.querySelector('#tube'));
-      const blower = new Blower(document.querySelector('#blower-balloon'));
+      dauberElements.dauber = new Dauber(conf, document.querySelector('#tube'));
+      dauberElements.blower = new Blower(document.querySelector('#blower-balloon'));
     }
+    return dauberElements;
   }
 
   static showUserInfo() {
