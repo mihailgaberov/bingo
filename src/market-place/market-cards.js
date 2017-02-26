@@ -45,6 +45,8 @@ class MarketCards {
 			arrElements[len].querySelector('.price').innerHTML = `<i class="price-icon"></i>${parseInt(price * howManyCards)}`;
 			len--;
 		}
+
+		return arrElements;
 	}
 
 	static buyCards(count, price) {
