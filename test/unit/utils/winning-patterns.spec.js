@@ -3,8 +3,7 @@
  */
 'use strict';
 
-import assert from 'assert';
-import { WinningPatterns } from '../../src/utils/winning-patterns';
+import { WinningPatterns } from '../../../src/utils/winning-patterns';
 import { expect } from 'chai';
 
 describe('WinningPatterns module', () => {

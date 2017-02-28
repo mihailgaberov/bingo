@@ -3,8 +3,7 @@
  */
 'use strict';
 
-import assert from 'assert';
-import { Utils } from '../../src/utils/utils';
+import { Utils } from '../../../src/utils/utils';
 import { expect } from 'chai';
 
 describe('Utils service', () => {

@@ -4,7 +4,7 @@
 
 'use strict';
 
-import Card from '../../src/card/card';
+import Card from '../../../src/card/card';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

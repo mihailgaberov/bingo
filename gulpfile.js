@@ -25,7 +25,7 @@ const paths = {
 	html: 'index.html',
 	scripts: './src/**/*.js',
 	sass: './styles/**/*.scss',
-	tests: './test/**/*.js',
+	tests: './test/unit/**/*.js',
 	backOfficeScripts: './src/admin/**/*.js',
 	backOfficeSass: './styles/sass/admin/**/*.scss',
 	buildSass: './build/styles',

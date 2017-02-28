@@ -4,7 +4,7 @@
 
 'use strict';
 
-import ApiController from '../../src/api/api-controller';
+import ApiController from '../../../src/api/api-controller';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 
@@ -14,7 +14,7 @@ describe('Api Controller', () => {
 
 	// Storage Mock
 	function storageMock() {
-		var storage = {};
+		const storage = {};
 
 		return {
 			setItem: function(key, value) {
@@ -30,7 +30,7 @@ describe('Api Controller', () => {
 				return Object.keys(storage).length;
 			},
 			key: function(i) {
-				var keys = Object.keys(storage);
+				const keys = Object.keys(storage);
 				return keys[i] || null;
 			}
 		};

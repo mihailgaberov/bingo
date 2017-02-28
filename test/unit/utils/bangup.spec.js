@@ -3,8 +3,7 @@
  */
 'use strict';
 
-import assert from 'assert';
-import Bangup from '../../src/utils/bangup';
+import Bangup from '../../../src/utils/bangup';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

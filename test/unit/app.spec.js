@@ -2,7 +2,7 @@
  * Created by Mihail on 8/15/2016.
  */
 'use strict';
-import App from '../src/app';
+import App from '../../src/app';
 import { expect, assert } from 'chai';
 import sinon from 'sinon';
 

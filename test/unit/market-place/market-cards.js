@@ -1,13 +1,10 @@
 /**
- * Created by Mihail on 1/15/2017.
- */
-/**
  * Created by Mihail on 9/18/2016.
  */
 
 'use strict';
 
-import MarketCards from '../../src/market-place/market-cards';
+import MarketCards from '../../../src/market-place/market-cards';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

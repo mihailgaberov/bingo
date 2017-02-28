@@ -4,8 +4,8 @@
 
 'use strict';
 
-import FlyingPrize from '../../src/winning/flying-prize';
-import Animator from '../../src/utils/animator'
+import FlyingPrize from '../../../src/winning/flying-prize';
+import Animator from '../../../src/utils/animator'
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

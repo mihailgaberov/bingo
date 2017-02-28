@@ -4,8 +4,7 @@
 
 'use strict';
 
-import assert from 'assert';
-import PubSubService from '../../src/events/pubsub-service';
+import PubSubService from '../../../src/events/pubsub-service';
 import { expect } from 'chai';
 
 describe('PubSub Service', () => {

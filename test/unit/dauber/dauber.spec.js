@@ -3,9 +3,8 @@
  */
 'use strict';
 
-import assert from 'assert';
-import { Utils } from '../../src/utils/utils';
-import Dauber from '../../src/dauber/dauber';
+import { Utils } from '../../../src/utils/utils';
+import Dauber from '../../../src/dauber/dauber';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

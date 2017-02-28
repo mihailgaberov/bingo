@@ -3,8 +3,7 @@
  */
 'use strict';
 
-import assert from 'assert';
-import WinPatternsAnimModule from '../../src/winning/win-patterns-anim-module';
+import WinPatternsAnimModule from '../../../src/winning/win-patterns-anim-module';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

@@ -4,8 +4,7 @@
 
 'use strict';
 
-import Animator from '../../src/utils/animator';
-import assert from 'assert';
+import Animator from '../../../src/utils/animator';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

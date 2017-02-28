@@ -3,9 +3,8 @@
  */
 'use strict';
 
-import assert from 'assert';
-import Timer from '../../src/utils/timer';
-import { EventsConsts } from '../../src/events/events-consts';
+import Timer from '../../../src/utils/timer';
+import { EventsConsts } from '../../../src/events/events-consts';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 
@@ -42,7 +41,7 @@ describe('Timer module', () => {
 		const timer = new Timer(el, 5, EventsConsts.START_GAME, true);
 		setTimeout(() => {
 			expect(timer.element.style.display).to.be.equal('none');
-		}, timer.seconds);
+		}, (timer.seconds) * 1000);
 	});
 
 	it('Should provide method hiding the timer', () => {

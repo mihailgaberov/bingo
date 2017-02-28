@@ -4,7 +4,7 @@
 'use strict';
 
 import assert from 'assert';
-import WinningDialog from '../../src/winning/winning-dialog';
+import WinningDialog from '../../../src/winning/winning-dialog';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import jsdom  from 'mocha-jsdom';

@@ -3,8 +3,7 @@
  */
 'use strict';
 
-import assert from 'assert';
-import CardDrawer from '../../src/card/card-drawer';
+import CardDrawer from '../../../src/card/card-drawer';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

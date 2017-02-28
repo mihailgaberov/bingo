@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import CardGenerator from '../../src/card/card-generator';
+import CardGenerator from '../../../src/card/card-generator';
 import { expect } from 'chai';
 
 describe('Card Generator', () => {

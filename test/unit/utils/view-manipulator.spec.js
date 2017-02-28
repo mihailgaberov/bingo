@@ -4,9 +4,8 @@
 
 'use strict';
 
-import assert from 'assert';
-import ViewManipulator from '../../src/utils/view-manipulator';
-import PubSubService from '../../src/events/pubsub-service';
+import ViewManipulator from '../../../src/utils/view-manipulator';
+import PubSubService from '../../../src/events/pubsub-service';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

@@ -1,13 +1,9 @@
 /**
  * Created by Mihail on 9/8/2016.
  */
-/**
- * Created by Mihail on 8/15/2016.
- */
 'use strict';
 
-import assert from 'assert';
-import { NumbersGenerator } from '../../src/utils/numbers-generator';
+import { NumbersGenerator } from '../../../src/utils/numbers-generator';
 import { expect } from 'chai';
 
 describe('Numbers generation util', () => {

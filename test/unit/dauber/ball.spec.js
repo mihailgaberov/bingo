@@ -3,9 +3,8 @@
  */
 'use strict';
 
-import assert from 'assert';
-import Ball from '../../src/dauber/ball';
-import PubSub from '../../src/events/pubsub-service';
+import Ball from '../../../src/dauber/ball';
+import PubSub from '../../../src/events/pubsub-service';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 

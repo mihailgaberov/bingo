@@ -4,8 +4,7 @@
 
 'use strict';
 
-import assert from 'assert';
-import Blower from '../../src/blower/blower';
+import Blower from '../../../src/blower/blower';
 import { expect } from 'chai';
 import jsdom  from 'mocha-jsdom';
 
@@ -15,7 +14,8 @@ describe('Blower module', () => {
 
 	it('Should create a blower module', (done) => {
 		let el = document.createElement('canvas');
-		let blower = new Blower(el);
+		const blower = new Blower(el);
+		expect(blower).not.to.be.undefined;
 		done();
 	});
 
