@@ -2,7 +2,7 @@
 [ES6](https://github.com/lukehoban/es6features) based Bingo game developed using [TDD](https://en.wikipedia.org/wiki/Test-driven_development) approach (unit testing with [Mocha and Chai](http://mochajs.org/)). Backend with [Express](https://expressjs.com/)/[NodeJS](https://nodejs.org/en/) and [MongoDB](https://www.mongodb.com/) for database.
 
 
-![Image of the app](https://github.com/mihailgaberov/es6-bingo-game/blob/master/screenshots/screenshot.png)
+![Image of the app](https://github.com/mihailgaberov/es6-bingo-game/blob/master/screenshots/login-form.png)
 
 ## Running The App
 
