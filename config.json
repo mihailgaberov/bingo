@@ -22,7 +22,7 @@
 	"skin": {
       "name": "original"
     },
-    "appTitle": "Welcome To Bingo Bigul",
+    "appTitle": "Welcome to Bingo Bigul",
     "turnsCount": 4,
     "freeSpotImgPath": "<img src='../../images/small_logo_30x30.png' />",
     "drawIntervalSeconds":3,
