@@ -44,7 +44,7 @@ class ApiController {
 
 	static register() {
 		const elName = document.querySelector('#registerName');
-		const elEmail = document.querySelector('#regEmail');
+		const elEmail = document.querySelector('#registerEmail');
 		const elPass = document.querySelector('#registerPassword');
 
 		if (elName === null || elName.value === undefined ||

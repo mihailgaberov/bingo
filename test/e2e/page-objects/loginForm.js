@@ -13,6 +13,7 @@ module.exports = {
     githubLogo: '.fa-github',
     linkedInLogo: '.fa-linkedin',
     twitterLogo: '.fa-twitter',
-    facebookLogo: '.fa-facebook'
+    facebookLogo: '.fa-facebook',
+    logoutBtn: '#logoutBtn'
   }
 };
