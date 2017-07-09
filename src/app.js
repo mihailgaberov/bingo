@@ -26,5 +26,5 @@ class App {
 export default App;
 
 (() => {
-	new App();
+	const app = new App();
 })();
