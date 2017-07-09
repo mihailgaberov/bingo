@@ -6,7 +6,7 @@
 import 'es6-promise';
 import 'isomorphic-fetch';
 import { ApiConsts } from './api/api-consts';
-import Initializator from './initializer/initializer';
+import Initializer from './initializer/initializer';
 
 class App {
 	constructor() {
@@ -18,7 +18,7 @@ class App {
       }
       return response.json();
     }).then((config) => {
-      Initializator.applyConfigurations(config);
+      Initializer.applyConfigurations(config);
     });
 	}
 }
@@ -26,5 +26,5 @@ class App {
 export default App;
 
 (() => {
-	const app = new App();
+	new App();
 })();
