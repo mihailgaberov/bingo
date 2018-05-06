@@ -4,7 +4,7 @@
 'use strict';
 
 import LocalStorageService from '../local-storage/local-storage-service';
-import { ApiConsts } from './api-consts';
+import ApiConsts from './api-consts';
 
 class DbService {
 	static loginPlayer(email, pass) {

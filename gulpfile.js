@@ -50,7 +50,7 @@ function compile() {
 
 function compileBackOffice() {
 	const bundler = watchify(browserify('./src/admin/back-office-app.js', {debug: true})
-		.transform('babelify', {presets: ['react', 'es2015', 'stage-0']}));
+		.transform('babelify', {presets: ['react', 'env', 'stage-0']}));
 
 	bundler.bundle()
 		.on('error', (err) => {
@@ -66,7 +66,7 @@ function compileBackOffice() {
 
 function compileDiscoverer() {
 	const bundler = watchify(browserify('./src/admin/discoverer.js', {debug: true})
-		.transform('babelify', {presets: ['react', 'es2015', 'stage-0']}));
+		.transform('babelify', {presets: ['react', 'env', 'stage-0']}));
 
 	bundler.bundle()
 		.on('error', (err) => {
