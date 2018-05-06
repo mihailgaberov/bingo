@@ -70,7 +70,7 @@
     "lodash": "^4.17.10",
     "mocha": "^3.5.3",
     "mocha-jsdom": "^1.1.0",
-    "mongoose": "^4.13.12",
+    "mongoose": "^5.0.17",
     "nightwatch": "^0.9.21",
     "paper": "^0.10.3",
     "react": "^15.6.2",
@@ -89,13 +89,13 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "dotenv": "^2.0.0",
-    "es6-promise": "^3.2.1",
+    "es6-promise": "^4.2.4",
     "express-jwt": "^5.3.1",
     "isomorphic-fetch": "^2.2.1",
-    "jsonwebtoken": "^7.4.3",
+    "jsonwebtoken": "^8.2.1",
     "npm": "^6.0.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "whatwg-fetch": "^1.0.0"
+    "whatwg-fetch": "^2.0.4"
   }
 }
