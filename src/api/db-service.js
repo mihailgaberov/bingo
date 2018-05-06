@@ -24,7 +24,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on login: ', err);
 		});
 	}
 
@@ -46,7 +46,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on register: ', err);
 		});
 	}
 
@@ -63,7 +63,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue.balance;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on getting player balance: ', err);
 		});
 	}
 
@@ -86,7 +86,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on updating balance: ', err);
 		});
 	}
 
@@ -104,7 +104,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on getting all players data: ', err);
 		});
 	}
 
@@ -125,7 +125,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on creating player: ', err);
 		});
 	}
 
@@ -146,7 +146,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on deleting player: ', err);
 		});
 	}
 
@@ -167,7 +167,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on updating player data: ', err);
 		});
 	}
 
@@ -188,7 +188,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on admin login: ', err);
 		});
 	}
 
@@ -210,7 +210,7 @@ class DbService {
 		}).then((returnedValue) => {
 			return returnedValue;
 		}).catch(function (err) {
-			console.log('>>> Fetching error: ', err);
+			console.log('>>> Fetching error on setting wins: ', err);
 		});
 	}
 }
