@@ -7,13 +7,8 @@
 import ViewManipulator from '../../../src/utils/view-manipulator';
 import PubSubService from '../../../src/events/pubsub-service';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('ViewManipulator module', () => {
-	// Skips checking of window at startup. When false, mocha-jsdom will throw an error if window already exists. Defaults to false.
-	jsdom.skipWindowCheck = true;
-	jsdom();
-
 	it('Should select the necessary dom elements', (done) => {
 		const pubsub = new PubSubService();
 		const viewMan = new ViewManipulator(pubsub);

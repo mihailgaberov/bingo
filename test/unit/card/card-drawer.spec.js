@@ -5,12 +5,8 @@
 
 import CardDrawer from '../../../src/card/card-drawer';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('Card Drawer', () => {
-
-	jsdom();
-
 	const objCard = {
 		col1: [ 10, 14, 13, 15, 5 ],
 		col2: [ 27, 23, 21, 29, 22 ],

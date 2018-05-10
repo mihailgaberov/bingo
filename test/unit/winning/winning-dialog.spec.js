@@ -7,14 +7,8 @@ import assert from 'assert';
 import WinningDialog from '../../../src/winning/winning-dialog';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import jsdom  from 'mocha-jsdom';
-
 
 describe('WinningDialog module', () => {
-
-	jsdom.skipWindowCheck = true;
-	jsdom();
-
 	it('Should get the ID of a DOM element to contain the modal', () => {
 		const wd = new WinningDialog('#id');
 		expect(wd.elementID).to.be.equal('#id');

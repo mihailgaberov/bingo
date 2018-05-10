@@ -6,12 +6,8 @@
 import Timer from '../../../src/utils/timer';
 import { EventsConsts } from '../../../src/events/events-consts';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('Timer module', () => {
-
-	jsdom();
-
 	it('Should create new Timer object', () => {
 		const timer = new Timer(document.querySelector('#timerContainer'), 5, EventsConsts.START_GAME, true);
 		expect(timer).not.to.be.undefined;

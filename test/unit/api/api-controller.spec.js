@@ -6,12 +6,8 @@
 
 import ApiController from '../../../src/api/api-controller';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('Api Controller', () => {
-
-	jsdom();
-
 	// Storage Mock
 	function storageMock() {
 		const storage = {};

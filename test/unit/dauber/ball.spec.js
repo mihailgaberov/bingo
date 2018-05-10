@@ -6,12 +6,8 @@
 import Ball from '../../../src/dauber/ball';
 import PubSub from '../../../src/events/pubsub-service';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('Ball module', () => {
-
-	jsdom();
-
 	it('Should create a ball object', (done) => {
 		const pb = new PubSub();
 		const ball = new Ball(34, pb, 'original');

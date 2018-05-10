@@ -6,12 +6,8 @@
 
 import Blower from '../../../src/blower/blower';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('Blower module', () => {
-
-	jsdom();
-
 	it('Should create a blower module', (done) => {
 		let el = document.createElement('canvas');
 		const blower = new Blower(el);

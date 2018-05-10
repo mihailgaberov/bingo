@@ -5,12 +5,8 @@
 
 import Bangup from '../../../src/utils/bangup';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('Bangup module', () => {
-
-	jsdom();
-
 	it('Should have the necessary params - container, start sum, end sum and duration', () => {
 		const window = document.defaultView;
 		window.requestAnimationFrame = ()=> {};

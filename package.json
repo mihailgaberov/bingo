@@ -4,7 +4,7 @@
   "description": "A Bingo game developed with ES6 in TDD manner.",
   "main": "src/app.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register --require test/unit/setup.js --recursive test/unit"
   },
   "jest": {
     "testPathDirs": [
@@ -66,10 +66,10 @@
     "invariant": "^2.2.4",
     "isparta": "^4.0.0",
     "jest-cli": "^17.0.3",
-    "jsdom": "^9.12.0",
+    "jsdom": "^11.10.0",
+    "jsdom-global": "^3.0.2",
     "lodash": "^4.17.10",
     "mocha": "^3.5.3",
-    "mocha-jsdom": "^1.1.0",
     "mongoose": "^5.0.17",
     "nightwatch": "^0.9.21",
     "paper": "^0.10.3",

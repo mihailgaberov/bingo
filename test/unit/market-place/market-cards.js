@@ -6,12 +6,8 @@
 
 import MarketCards from '../../../src/market-place/market-cards';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('Market Cards module', () => {
-
-	jsdom();
-
 	it('Should have container - html element', () => {
 		const container = document.createElement('div');
 		const marketCards = new MarketCards(container);

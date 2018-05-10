@@ -6,12 +6,8 @@
 import { Utils } from '../../../src/utils/utils';
 import Dauber from '../../../src/dauber/dauber';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('Dauber module', () => {
-
-	jsdom();
-
 	let conf = {
 		"gameConf": {
 			"id": "1",

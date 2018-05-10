@@ -5,12 +5,8 @@
 
 import WinPatternsAnimModule from '../../../src/winning/win-patterns-anim-module';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('WinPatternsAnimModule module', () => {
-
-	jsdom();
-
 	it('Should get element container, rows, cols and patterns', () => {
 		const container = document.createElement('section');
 		let wpam = new WinPatternsAnimModule(container, 5, 5, 'horizontal');

@@ -3,14 +3,10 @@
  */
 'use strict';
 
-import jsdom from 'mocha-jsdom';
 import Initializer from '../../../src/initializer/initializer';
 import {expect, assert} from 'chai';
 
 describe('App Initializer', () => {
-
-  jsdom();
-
   const conf = {
     "gameConf": {
       "id": "1",

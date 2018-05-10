@@ -6,12 +6,8 @@
 
 import Animator from '../../../src/utils/animator';
 import { expect } from 'chai';
-import jsdom  from 'mocha-jsdom';
 
 describe('Animator module', () => {
-
-	jsdom();
-
 	it('Should provide linear method used in animations', () => {
 		expect(Animator.linear).not.to.be.undefined;
 	});
