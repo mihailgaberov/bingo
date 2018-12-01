@@ -1,3 +1,4 @@
+require("@babel/polyfill");
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const eslint = require('gulp-eslint');
@@ -13,7 +14,7 @@ const buffer = require('vinyl-buffer');
 const browserify = require('browserify');
 const watchify = require('watchify');
 const babelify = require('babelify');
-const babel = require('babel-core/register');
+const babel = require('@babel/register');
 const isparta = require('isparta');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');

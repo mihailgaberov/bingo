@@ -4,7 +4,7 @@
   "description": "A Bingo game developed with ES6 in TDD manner.",
   "main": "src/app.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require babel-polyfill --require test/unit/setup.js"
+    "test": "mocha --compilers js:@babel/register --require @babel/polyfill --require test/unit/setup.js"
   },
   "jest": {
     "testPathDirs": [
@@ -35,14 +35,17 @@
   "author": "Mihail Gaberov",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.1.6",
     "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
     "autoprefixer": "^6.7.7",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^6.1.2",
-    "babel-jest": "^17.00.2",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-latest": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.4.2",
     "babelify": "^7.2.0",
     "bootstrap-sass": "^3.3.7",
     "browserify": "^13.3.0",
@@ -54,6 +57,7 @@
     "express": "^4.16.3",
     "fbemitter": "^2.1.1",
     "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^3.0.1",
     "gulp-istanbul": "^1.1.3",
@@ -93,7 +97,6 @@
     "express-jwt": "^5.3.1",
     "isomorphic-fetch": "^2.2.1",
     "jsonwebtoken": "^8.2.1",
-    "npm": "^6.0.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "whatwg-fetch": "^2.0.4"

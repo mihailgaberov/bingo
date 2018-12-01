@@ -1,7 +1,8 @@
 {
   "presets": [
-    "latest",
-    "react",
-    "@babel/plugin-transform-runtime"
+    "@babel/preset-env",
+    "@babel/preset-react",
+    "@babel/plugin-transform-runtime",
+    "@babel/preset-flow"
   ]
 }
