@@ -1,5 +1,5 @@
 const { JSDOM } = require('jsdom');
-require('jsdom-global')()
+require("babel-polyfill");
 
 
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');

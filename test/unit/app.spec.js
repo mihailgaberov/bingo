@@ -3,20 +3,11 @@
  */
 'use strict';
 import App from '../../src/app';
-import { expect, assert } from 'chai';
+import Initializer from '../../src/initializer/initializer';
+import { expect } from 'chai';
 
 describe('Bingo App', () => {
-
-	let appBingo = new App();
-
-	it('Should have a url for loading the configs', () => {
-		expect(appBingo.confUrl).to.not.be.undefined;
-		expect(appBingo.confUrl).to.be.a('string');
-	});
-
   it('Should initialize the game via Game Initializer', () => {
-    setTimeout(() => {
-      expect(appBingo.initializator).not.to.be.null;
-    });
+    expect(Initializer.applyConfigurations).to.be.called;
   });
 });
