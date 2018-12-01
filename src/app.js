@@ -9,7 +9,7 @@ import ApiConsts from './api/api-consts';
 import Initializer from './initializer/initializer';
 
 class App {
-	/*constructor() {
+	constructor() {
 		this.confUrl = ApiConsts.CONF;
 
     fetch(this.confUrl).then((response) => {
@@ -20,7 +20,8 @@ class App {
     }).then((config) => {
       Initializer.applyConfigurations(config);
     });
-	}*/
+	}
+
 	static async start() {
 	  const config = await fetch(ApiConsts.CONF);
 	  console.log('>>> config: ', config);

@@ -1,7 +1,7 @@
 {
   "presets": [
-    "env",
+    "latest",
     "react",
-    "stage-0"
+    "@babel/plugin-transform-runtime"
   ]
 }
