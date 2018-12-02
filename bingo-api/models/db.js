@@ -6,7 +6,7 @@ let gracefulShutdown;
 const dbURI = 'mongodb://127.0.0.1/bingo-bigul';
 const db = mongoose.connection;
 
-mongoose.connect(dbURI);
+mongoose.connect(dbURI,  { useNewUrlParser: true });
 
 db.on('connected', function () {
   console.log('Mongoose connected to ' + dbURI);
