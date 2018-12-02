@@ -1,7 +1,7 @@
 {
-  "name": "es6-bingo-game",
-  "version": "0.0.1",
-  "description": "A Bingo game developed with ES6 in TDD manner.",
+  "name": "bingo",
+  "version": "1.0.1",
+  "description": "JavaScript based Bingo game developed using TDD approach unit testing with Mocha and Chai. Backend with Express/NodeJS and MongoDB for database.",
   "main": "src/app.js",
   "scripts": {
     "test": "mocha --compilers js:@babel/register --require @babel/polyfill --require test/unit/setup.js"
