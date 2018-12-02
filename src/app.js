@@ -3,34 +3,26 @@
  */
 'use strict';
 
-import 'es6-promise';
-import 'isomorphic-fetch';
+import 'es6-promise'
 import ApiConsts from './api/api-consts';
 import Initializer from './initializer/initializer';
+import fetch from 'node-fetch';
 
 class App {
-	constructor() {
-		this.confUrl = ApiConsts.CONF;
-
-    fetch(this.confUrl).then((response) => {
+	static async start() {
+    fetch(ApiConsts.CONF).then((response) => {
       if (response.status >= 400) {
         throw new Error("Bad response from server");
       }
       return response.json();
     }).then((config) => {
       Initializer.applyConfigurations(config);
-    });
-	}
-
-	static async start() {
-	  const config = await fetch(ApiConsts.CONF);
-	  console.log('>>> config: ', config);
-    Initializer.applyConfigurations(config);
+    }).catch(error => console.log('>>> error fetching: ', error));
   };
 }
 
 export default App;
 
 ((App) => {
-	App.start();
+	App.start().then(console.log('Game Started!'));
 })(App);

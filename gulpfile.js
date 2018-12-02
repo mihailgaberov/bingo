@@ -39,8 +39,8 @@ function compile() {
 	const bundler = watchify(browserify('./src/app.js', {debug: true}).transform(babelify));
 
 	bundler.bundle()
-		.on('error', (err) => {
-			console.error(err);
+		.on('>>> error in compile in gulpfile', (err) => {
+			console.error('>>> gulpfile emit error: ', err);
 			this.emit('end');
 		})
 		.pipe(source('app.js'))
@@ -55,7 +55,7 @@ function compileBackOffice() {
 		.transform('babelify', {presets: ['react', 'env', 'stage-0']}));
 
 	bundler.bundle()
-		.on('error', (err) => {
+		.on('>>> error in compileBackOffice', (err) => {
 			console.error(err);
 			this.emit('end');
 		})
@@ -71,7 +71,7 @@ function compileDiscoverer() {
 		.transform('babelify', {presets: ['react', 'env', 'stage-0']}));
 
 	bundler.bundle()
-		.on('error', (err) => {
+		.on('>>> error in compileDiscoverer', (err) => {
 			console.error(err);
 			this.emit('end');
 		})
