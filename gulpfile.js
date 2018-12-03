@@ -170,8 +170,8 @@ gulp.task('default', ['clean',
 						'scriptsBackOffice',
 						'scriptsDiscoverer',
 						'sassBackOffice',
-						//'jest',
-						'test',
+						'jest',
+						//'test',
 						'watch',
 						'webserver']);
 
