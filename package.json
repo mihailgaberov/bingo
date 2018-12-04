@@ -37,7 +37,6 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "dotenv": "^2.0.0",
-    "es6-promise": "^4.2.4",
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.2.1",
     "passport": "^0.3.2",
@@ -80,7 +79,6 @@
     "gulp-sourcemaps": "^1.12.1",
     "immutable": "^3.8.2",
     "invariant": "^2.2.4",
-    "isparta": "^4.0.0",
     "jest-cli": "^17.0.3",
     "jsdom": "^11.10.0",
     "lodash": "^4.17.10",

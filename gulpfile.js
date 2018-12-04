@@ -1,3 +1,4 @@
+const babel = require('@babel/register');
 require("@babel/polyfill");
 const gulp = require('gulp');
 const sass = require('gulp-sass');
@@ -14,8 +15,6 @@ const buffer = require('vinyl-buffer');
 const browserify = require('browserify');
 const watchify = require('watchify');
 const babelify = require('babelify');
-const babel = require('@babel/register');
-const isparta = require('isparta');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
 const jest = require('jest-cli');
@@ -125,16 +124,7 @@ gulp.task('jest', function(done) {
 	});
 });
 
-gulp.task('pre-test', () => {
-	gulp.src(paths.scripts)
-		.pipe(istanbul({
-			// supports es6
-			instrumenter: isparta.Instrumenter
-		}))
-		.pipe(istanbul.hookRequire());
-});
-
-gulp.task('test', ['pre-test'], () => {
+gulp.task('test', () => {
 	gulp.src(paths.tests)
 		.pipe(mocha({
 			compilers: {
@@ -171,7 +161,7 @@ gulp.task('default', ['clean',
 						'scriptsDiscoverer',
 						'sassBackOffice',
 						'jest',
-						//'test',
+						'test',
 						'watch',
 						'webserver']);
 
