@@ -17,7 +17,7 @@ class PubSubService {
             this.topics[topic] = [];
 
 
-        this.idx = this.topics[topic].push(listener) -1;
+        this.idx = this.topics[topic].push(listener) - 1;
     }
 
     remove(topic) {
