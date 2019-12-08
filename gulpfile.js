@@ -49,6 +49,7 @@ const paths = {
 		.pipe(gulp.dest(paths.buildScripts));
 }*/
 
+/*
 function compileBackOffice() {
 	const bundler = watchify(browserify('./src/admin/back-office-app.js', {debug: true})
 		.transform('babelify', {presets: ['react', 'env', 'stage-0']}));
@@ -64,7 +65,6 @@ function compileBackOffice() {
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(paths.buildScripts));
 }
-
 function compileDiscoverer() {
 	const bundler = watchify(browserify('./src/admin/discoverer.js', {debug: true})
 		.transform('babelify', {presets: ['react', 'env', 'stage-0']}));
@@ -80,14 +80,23 @@ function compileDiscoverer() {
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(paths.buildScripts));
 }
+*/
 
 // gulp.task('scripts', () => compile());
-gulp.task('scriptsBackOffice', () => compileBackOffice());
-gulp.task('scriptsDiscoverer', () => compileDiscoverer());
+// gulp.task('scriptsBackOffice', () => compileBackOffice());
+// gulp.task('scriptsDiscoverer', () => compileDiscoverer());
 
 // gulp.task('clean', () => del(['build']));
-const clean = () => del(['build']);
-const styles = () => {
+const clean = () => del(['build', 'coverage']);
+
+const lint = (done) => {
+	gulp.src(paths.scripts)
+		.pipe(eslint())
+		.pipe(eslint.format());
+	done();
+};
+
+const styles = (done) => {
 	gulp.src([paths.sass, '!./styles/sass/admin/**/*.scss'])
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sass().on('error', sass.logError))
@@ -103,12 +112,9 @@ const styles = () => {
 		.pipe(rename({suffix: '.min'}))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(paths.buildSass));
+	done();
 };
-const lint = () => {
-	gulp.src(paths.scripts)
-		.pipe(eslint())
-		.pipe(eslint.format());
-};
+
 const scripts = () => {
 	const bundler = watchify(browserify('./src/app.js', {debug: true}).transform(babelify));
 
@@ -123,12 +129,14 @@ const scripts = () => {
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(paths.buildScripts));
 };
-const webserver = () => {
+
+const webserver = (done) => {
 	gulp.src('./')
 		.pipe(server({
 			livereload: false,
-			open: false
+			open: true
 		}));
+	done();
 };
 
 /*
@@ -151,16 +159,17 @@ gulp.task('sass', () => {
 });
 */
 
-gulp.task('sassBackOffice', () => {
+/*gulp.task('sassBackOffice', () => {
 	gulp.src(paths.backOfficeSass)
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(concat('back-office.css'))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(paths.buildSass));
-});
+});*/
 
 
+/*
 const jestConfig = {
 	rootDir: paths.backOfficeTests
 };
@@ -184,6 +193,7 @@ gulp.task('test', () => {
 		}))
 		.pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
 });
+*/
 
 /*gulp.task('webserver', () => {
 	gulp.src('./')
@@ -204,14 +214,6 @@ gulp.task('test', () => {
 const build = gulp.series(clean, gulp.parallel(lint, scripts, styles, webserver));
 // const watch = gulp.parallel(watchFiles, browserSync);
 
-// export tasks
-// exports.images = images;
-// exports.css = css;
-// exports.js = js;
-// exports.jekyll = jekyll;
-// exports.clean = clean;
-// exports.build = build;
-// exports.watch = watch;
 exports.default = build;
 /*
 
