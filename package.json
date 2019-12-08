@@ -66,7 +66,7 @@
     "event-emitter-es6": "^1.1.5",
     "express": "^4.16.3",
     "fbemitter": "^2.1.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^3.0.1",
@@ -74,16 +74,15 @@
     "gulp-mocha": "^3.0.1",
     "gulp-postcss": "^6.4.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^4.0.1",
+    "gulp-sass": "^4.0.2",
     "gulp-server-livereload": "^1.8.4",
     "gulp-sourcemaps": "^1.12.1",
     "immutable": "^3.8.2",
     "invariant": "^2.2.4",
     "jest-cli": "^17.0.3",
     "jsdom": "^11.10.0",
-    "lodash": "^4.17.10",
     "mocha": "^3.5.3",
-    "mongoose": "^5.0.17",
+    "mongoose": "^5.7.14",
     "nightwatch": "^0.9.21",
     "node-fetch": "^2.3.0",
     "paper": "^0.10.3",
@@ -94,7 +93,7 @@
     "vanilla-modal": "^1.6.5",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^1.1.2",
-    "watchify": "^3.11.0"
+    "watchify": "^3.11.1"
   },
   "bugs": {
     "url": "https://github.com/mihailgaberov/bingo/issues"

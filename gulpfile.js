@@ -34,7 +34,7 @@ const paths = {
 	backOfficeTests: './back-office-tests/__tests__'
 };
 
-function compile() {
+/*function compile() {
 	const bundler = watchify(browserify('./src/app.js', {debug: true}).transform(babelify));
 
 	bundler.bundle()
@@ -47,7 +47,7 @@ function compile() {
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(paths.buildScripts));
-}
+}*/
 
 function compileBackOffice() {
 	const bundler = watchify(browserify('./src/admin/back-office-app.js', {debug: true})
@@ -81,13 +81,13 @@ function compileDiscoverer() {
 		.pipe(gulp.dest(paths.buildScripts));
 }
 
-gulp.task('scripts', () => compile());
+// gulp.task('scripts', () => compile());
 gulp.task('scriptsBackOffice', () => compileBackOffice());
 gulp.task('scriptsDiscoverer', () => compileDiscoverer());
 
-gulp.task('clean', () => del(['build']));
-
-gulp.task('sass', () => {
+// gulp.task('clean', () => del(['build']));
+const clean = () => del(['build']);
+const styles = () => {
 	gulp.src([paths.sass, '!./styles/sass/admin/**/*.scss'])
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(sass().on('error', sass.logError))
@@ -103,7 +103,53 @@ gulp.task('sass', () => {
 		.pipe(rename({suffix: '.min'}))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(paths.buildSass));
+};
+const lint = () => {
+	gulp.src(paths.scripts)
+		.pipe(eslint())
+		.pipe(eslint.format());
+};
+const scripts = () => {
+	const bundler = watchify(browserify('./src/app.js', {debug: true}).transform(babelify));
+
+	bundler.bundle()
+		.on('[gulpfile] Error in gulpfile: ', (err) => {
+			console.error('[scripts task] error: ', err);
+			this.emit('end');
+		})
+		.pipe(source('app.js'))
+		.pipe(buffer())
+		.pipe(sourcemaps.init({loadMaps: true}))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(paths.buildScripts));
+};
+const webserver = () => {
+	gulp.src('./')
+		.pipe(server({
+			livereload: false,
+			open: false
+		}));
+};
+
+/*
+gulp.task('sass', () => {
+	gulp.src([paths.sass, '!./styles/sass/admin/!**!/!*.scss'])
+		.pipe(sourcemaps.init({loadMaps: true}))
+		.pipe(sass().on('error', sass.logError))
+		.pipe(concat('all.css'))
+		.pipe(postcss([autoprefixer({
+			browsers: [
+				'last 2 versions',
+				'Android 4.4',
+				'ie 10-11',
+				'ios_saf 8'
+			]
+		})]))
+		.pipe(rename({suffix: '.min'}))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(paths.buildSass));
 });
+*/
 
 gulp.task('sassBackOffice', () => {
 	gulp.src(paths.backOfficeSass)
@@ -139,19 +185,35 @@ gulp.task('test', () => {
 		.pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
 });
 
-gulp.task('webserver', () => {
+/*gulp.task('webserver', () => {
 	gulp.src('./')
 		.pipe(server({
 			livereload: false,
 			open: false
 		}));
-});
+});*/
 
-gulp.task('lint', () => {
+/*gulp.task('lint', () => {
 	gulp.src(paths.scripts)
 		.pipe(eslint())
 		.pipe(eslint.format());
-});
+});*/
+
+
+// const js = gulp.series(scriptsLint, scripts);
+const build = gulp.series(clean, gulp.parallel(lint, scripts, styles, webserver));
+// const watch = gulp.parallel(watchFiles, browserSync);
+
+// export tasks
+// exports.images = images;
+// exports.css = css;
+// exports.js = js;
+// exports.jekyll = jekyll;
+// exports.clean = clean;
+// exports.build = build;
+// exports.watch = watch;
+exports.default = build;
+/*
 
 gulp.task('default', ['clean',
 						'lint',
@@ -183,7 +245,7 @@ gulp.task('bingoGame', ['clean',
 gulp.task('watchBackOffice', () => {
 	gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
 	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
-	gulp.watch([ jestConfig.rootDir + "/**/*.js" ], [ 'jest' ]);
+	gulp.watch([ jestConfig.rootDir + "/!**!/!*.js" ], [ 'jest' ]);
 });
 
 gulp.task('watch', () => {
@@ -192,5 +254,6 @@ gulp.task('watch', () => {
 	gulp.watch(paths.scripts, ['scripts']);
 	gulp.watch(paths.sass, ['sass']);
 	gulp.watch(paths.tests, ['test']);
-	gulp.watch([ jestConfig.rootDir + "/**/*.js" ], [ 'jest' ]);
+	gulp.watch([ jestConfig.rootDir + "/!**!/!*.js" ], [ 'jest' ]);
 });
+*/
