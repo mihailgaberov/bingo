@@ -177,6 +177,33 @@ const testsBackOffice = (done) => {
   });
 };
 
+const test = () => {
+	gulp.src(paths.tests)
+		.pipe(mocha({
+			compilers: {
+				js: babel
+			}
+		}))
+		.pipe(istanbul.writeReports({
+			dir: './coverage',
+			reporters: [ 'lcov' ],
+			reportOpts: { dir: './coverage'}
+		}))
+		.pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
+};
+
+
+const watch = () => {
+	gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
+	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
+	gulp.watch(paths.scripts, ['scripts']);
+	gulp.watch(paths.sass, ['sass']);
+	gulp.watch(paths.tests, ['test']);
+	gulp.watch([ jestConfig.rootDir + "/!**!/!*.js" ], [ 'jest' ]);
+};
+
+
+
 const webserver = (done) => {
   gulp.src('./')
     .pipe(server({
