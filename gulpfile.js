@@ -33,59 +33,6 @@ const paths = {
   backOfficeTests: './back-office-tests/__tests__'
 };
 
-/*function compile() {
-	const bundler = watchify(browserify('./src/app.js', {debug: true}).transform(babelify));
-
-	bundler.bundle()
-		.on('>>> error in compile in gulpfile', (err) => {
-			console.error('>>> gulpfile emit error: ', err);
-			this.emit('end');
-		})
-		.pipe(source('app.js'))
-		.pipe(buffer())
-		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(paths.buildScripts));
-}*/
-
-/*
-function compileBackOffice() {
-	const bundler = watchify(browserify('./src/admin/back-office-app.js', {debug: true})
-		.transform('babelify', {presets: ['react', 'env', 'stage-0']}));
-
-	bundler.bundle()
-		.on('>>> error in compileBackOffice', (err) => {
-			console.error(err);
-			this.emit('end');
-		})
-		.pipe(source('back-office.js'))
-		.pipe(buffer())
-		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(paths.buildScripts));
-}
-function compileDiscoverer() {
-	const bundler = watchify(browserify('./src/admin/discoverer.js', {debug: true})
-		.transform('babelify', {presets: ['react', 'env', 'stage-0']}));
-
-	bundler.bundle()
-		.on('>>> error in compileDiscoverer', (err) => {
-			console.error(err);
-			this.emit('end');
-		})
-		.pipe(source('back-office-discoverer.js'))
-		.pipe(buffer())
-		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(paths.buildScripts));
-}
-*/
-
-// gulp.task('scripts', () => compile());
-// gulp.task('scriptsBackOffice', () => compileBackOffice());
-// gulp.task('scriptsDiscoverer', () => compileDiscoverer());
-// gulp.task('clean', () => del(['build']));
-
 const clean = () => del(['build', 'coverage']);
 
 const lint = (done) => {
@@ -171,38 +118,47 @@ const stylesBackOffice = () => {
     .pipe(gulp.dest(paths.buildSass));
 };
 
+const jestConfig = {
+  rootDir: paths.backOfficeTests
+};
+
 const testsBackOffice = (done) => {
-  jest.runCLI({ config: { rootDir: paths.backOfficeTests } }, ".", function () {
+  jest.runCLI({ config: jestConfig }, ".", function () {
     done();
   });
 };
 
-const test = () => {
-	gulp.src(paths.tests)
-		.pipe(mocha({
-			compilers: {
-				js: babel
-			}
-		}))
-		.pipe(istanbul.writeReports({
-			dir: './coverage',
-			reporters: [ 'lcov' ],
-			reportOpts: { dir: './coverage'}
-		}))
-		.pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
+const test = (done) => {
+  gulp.src(paths.tests)
+    .pipe(mocha({
+      compilers: {
+        js: babel
+      }
+    }))
+    .pipe(istanbul.writeReports({
+      dir: './coverage',
+      reporters: ['lcov'],
+      reportOpts: { dir: './coverage' }
+    }))
+    .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
+  done();
 };
 
+const watchBackOfficeScripts = () => gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
+const watchBackOfficeStyles = () => gulp.watch(paths.backOfficeSass, ['stylesBackOffice']);
+const watchScripts = () => gulp.watch(paths.scripts, ['scripts']);
+const watchStyles = () => gulp.watch(paths.sass, ['styles']);
+const watchTests = () => gulp.watch(paths.tests, ['test']);
+const watchJestTests = () => gulp.watch([jestConfig.rootDir + "/!**!/!*.js"], ['jest']);
 
-const watch = () => {
-	gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
-	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
-	gulp.watch(paths.scripts, ['scripts']);
-	gulp.watch(paths.sass, ['sass']);
-	gulp.watch(paths.tests, ['test']);
-	gulp.watch([ jestConfig.rootDir + "/!**!/!*.js" ], [ 'jest' ]);
-};
-
-
+const watch = () => gulp.parallel(
+  watchBackOfficeScripts,
+  watchBackOfficeStyles,
+  watchScripts,
+  watchStyles,
+  watchTests,
+  watchJestTests
+);
 
 const webserver = (done) => {
   gulp.src('./')
@@ -213,47 +169,6 @@ const webserver = (done) => {
   done();
 };
 
-/*
-const jestConfig = {
-	rootDir: paths.backOfficeTests
-};
-gulp.task('jest', function(done) {
-	jest.runCLI({ config : jestConfig }, ".", function() {
-		done();
-	});
-});
-
-gulp.task('test', () => {
-	gulp.src(paths.tests)
-		.pipe(mocha({
-			compilers: {
-				js: babel
-			}
-		}))
-		.pipe(istanbul.writeReports({
-			dir: './coverage',
-			reporters: [ 'lcov' ],
-			reportOpts: { dir: './coverage'}
-		}))
-		.pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
-});
-*/
-
-/*gulp.task('webserver', () => {
-	gulp.src('./')
-		.pipe(server({
-			livereload: false,
-			open: false
-		}));
-});*/
-
-/*gulp.task('lint', () => {
-	gulp.src(paths.scripts)
-		.pipe(eslint())
-		.pipe(eslint.format());
-});*/
-
-
 const build = gulp.series(clean, gulp.parallel(
   lint,
   scripts,
@@ -261,54 +176,20 @@ const build = gulp.series(clean, gulp.parallel(
   scriptsDiscoverer,
   styles,
   stylesBackOffice,
-	testsBackOffice,
+  testsBackOffice,
+  test,
+  watch,
+  webserver
+));
+
+const buildFrontEnd = gulp.series(clean, gulp.parallel(
+  lint,
+  scripts,
+  styles,
   test,
   watch,
   webserver
 ));
 
 exports.default = build;
-/*
-
-gulp.task('default', ['clean',
-						'lint',
-						'scripts',
-						'sass',
-						'scriptsBackOffice',
-						'scriptsDiscoverer',
-						'sassBackOffice',
-						'jest',
-						'test',
-						'watch',
-						'webserver']);
-
-gulp.task('backOffice', ['clean',
-	'scriptsBackOffice',
-	'scriptsDiscoverer',
-	'sassBackOffice',
-	'jest',
-	'watchBackOffice',
-	'webserver']);
-
-gulp.task('bingoGame', ['clean',
-	'scripts',
-	'sass',
-	'test',
-	'watch',
-	'webserver']);
-
-gulp.task('watchBackOffice', () => {
-	gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
-	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
-	gulp.watch([ jestConfig.rootDir + "/!**!/!*.js" ], [ 'jest' ]);
-});
-
-gulp.task('watch', () => {
-	gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
-	gulp.watch(paths.backOfficeSass, ['sassBackOffice']);
-	gulp.watch(paths.scripts, ['scripts']);
-	gulp.watch(paths.sass, ['sass']);
-	gulp.watch(paths.tests, ['test']);
-	gulp.watch([ jestConfig.rootDir + "/!**!/!*.js" ], [ 'jest' ]);
-});
-*/
+exports.buildFrontEnd = buildFrontEnd;
