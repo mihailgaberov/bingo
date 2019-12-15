@@ -1,10 +1,6 @@
-/**
- * Created by Mihail on 9/14/2016.
- */
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -47,7 +43,7 @@ userSchema.methods.validPassword = function(password) {
 };
 
 userSchema.methods.generateJwt = function() {
-  const expiry = new Date()
+  const expiry = new Date();
   expiry.setDate(expiry.getDate() + 7);
 
 	return jwt.sign({

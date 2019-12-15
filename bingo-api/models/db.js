@@ -1,16 +1,20 @@
-/**
- * Created by Mihail on 9/14/2016.
- */
 const mongoose = require('mongoose');
 let gracefulShutdown;
-const dbURI = 'mongodb://127.0.0.1/bingo-bigul';
 const db = mongoose.connection;
 
-mongoose.connect(dbURI,  { useNewUrlParser: true });
+mongoose
+  .connect(process.env.DB_URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => console.log('DB Connected!'))
+  .catch(err => {
+    console.log(`DB Connection Error: ${err.message}`);
+  });
 mongoose.set('useCreateIndex', true);
 
 db.on('connected', function () {
-  console.log('Mongoose connected to ' + dbURI);
+  console.log('Mongoose connected to ' + process.env.DB_URI);
 });
 db.on('error', function (err) {
   console.log('Mongoose connection error: ' + err);

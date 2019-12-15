@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 const passport = require('passport');
 
 require('./bingo-api/models/db');
@@ -9,12 +10,10 @@ const routesApi = require('./bingo-api/routes/index');
 
 const app = express();
 
-//CORS middleware
 const allowCrossDomain = function (req, res, next) {
 	res.header('Access-Control-Allow-Origin', 'http://localhost:8000');
 	res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
 	res.header('Access-Control-Allow-Headers', 'Content-Type, authorization');
-
 	next();
 };
 
