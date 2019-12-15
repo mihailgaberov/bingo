@@ -5,7 +5,6 @@
 
 import ApiConsts from './api/api-consts';
 import Initializer from './initializer/initializer';
-import fetch from 'node-fetch';
 
 class App {
 	static async start() {
