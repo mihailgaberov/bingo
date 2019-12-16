@@ -1,9 +1,6 @@
-/**
- * Created by Mihail on 12/10/2016.
- */
-const mongoose = require('mongoose')
-const crypto = require('crypto')
-const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose');
+const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const adminSchema = new mongoose.Schema({
@@ -27,12 +24,12 @@ adminSchema.methods.setPassword = function(password) {
 };
 
 adminSchema.methods.validPassword = function(password) {
-  const hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex')
+  const hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
   return this.hash === hash;
 };
 
 adminSchema.methods.generateJwt = function() {
-  const expiry = new Date()
+  const expiry = new Date();
   expiry.setDate(expiry.getDate() + 7);
 
 	return jwt.sign({
