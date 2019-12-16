@@ -1,6 +1,4 @@
-/**
- * Created by Mihail on 11/19/2016.
- */
+
 "use strict";
 
 const ApiConsts = {

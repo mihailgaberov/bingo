@@ -1,5 +1,5 @@
 /**
- * Created by Mihail on 8/15/2016.
+ * Created by Mihail on 8/15/2016 - Started the project on St. Mary day
  */
 'use strict';
 
