@@ -42,7 +42,7 @@ const lint = (done) => {
   done();
 };
 
-const scripts = () => {
+const scripts = (done) => {
   const bundler = watchify(browserify('./src/app.js', { debug: true }).transform(babelify));
 
   bundler.bundle()
@@ -55,11 +55,12 @@ const scripts = () => {
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.buildScripts));
+  done();
 };
 
-const scriptsBackOffice = () => {
+const scriptsBackOffice = (done) => {
   const bundler = watchify(browserify('./src/admin/back-office-app.js', { debug: true })
-    .transform('babelify', { presets: ['react', 'env', 'stage-0'] }));
+    .transform('babelify', { presets: ["@babel/preset-env", "@babel/preset-react"]}));
 
   bundler.bundle()
     .on('[gulpfile] Error in scriptsBackOffice task', (err) => {
@@ -71,6 +72,7 @@ const scriptsBackOffice = () => {
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.buildScripts));
+  done();
 };
 
 const scriptsDiscoverer = () => {
@@ -88,7 +90,6 @@ const scriptsDiscoverer = () => {
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.buildScripts));
 };
-
 
 const styles = (done) => {
   gulp.src([paths.sass, '!./styles/sass/admin/**/*.scss'])
@@ -109,13 +110,14 @@ const styles = (done) => {
   done();
 };
 
-const stylesBackOffice = () => {
+const stylesBackOffice = (done) => {
   gulp.src(paths.backOfficeSass)
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('back-office.css'))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(paths.buildSass));
+  done();
 };
 
 const jestConfig = {
@@ -191,5 +193,13 @@ const buildFrontEnd = gulp.series(clean, gulp.parallel(
   webserver
 ));
 
+const buildBackOffice = gulp.series(clean, gulp.parallel(
+  scriptsBackOffice,
+  stylesBackOffice,
+  testsBackOffice,
+  webserver
+));
+
 exports.default = build;
-exports.buildFrontEnd = buildFrontEnd;
+exports.fe = buildFrontEnd;
+exports.bo = buildBackOffice;
