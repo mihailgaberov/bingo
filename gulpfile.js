@@ -195,9 +195,9 @@ const buildFrontEnd = gulp.series(clean, gulp.parallel(
 
 const buildBackOffice = gulp.series(clean, gulp.parallel(
   scriptsBackOffice,
-  stylesBackOffice,
-  testsBackOffice,
-  webserver
+  stylesBackOffice
+  // testsBackOffice,
+  // webserver
 ));
 
 exports.default = build;
