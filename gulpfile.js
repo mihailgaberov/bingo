@@ -178,8 +178,8 @@ const build = gulp.series(clean, gulp.parallel(
   scriptsDiscoverer,
   styles,
   stylesBackOffice,
-  testsBackOffice,
-  test,
+  // testsBackOffice,
+  // test,
   watch,
   webserver
 ));
@@ -195,9 +195,10 @@ const buildFrontEnd = gulp.series(clean, gulp.parallel(
 
 const buildBackOffice = gulp.series(clean, gulp.parallel(
   scriptsBackOffice,
-  stylesBackOffice
+  stylesBackOffice,
   // testsBackOffice,
-  // webserver
+  watch,
+  webserver
 ));
 
 exports.default = build;
