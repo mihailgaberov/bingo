@@ -1,29 +1,27 @@
-jest
-	.dontMock('../../src/admin/components/Actions')
-	.dontMock('../Wrap')
-;
-
 import React from 'react';
-import TestUtils from 'react-dom/test-utils';
-
+import { cleanup, fireEvent, render, findAllByTestId, waitForElement } from '@testing-library/react';
 import Actions from '../../src/admin/components/Actions';
-import Wrap from '../Wrap';
 
 describe('Click some actions', () => {
-	it('calls you back', () => {
-		const callback = jest.genMockFunction();
-		const actions = TestUtils.renderIntoDocument(
-			<Wrap><Actions onAction={callback} /></Wrap>
-		);
+  // automatically unmount and cleanup DOM after the test is finished.
+  afterEach(cleanup);
 
-		TestUtils
-			.scryRenderedDOMComponentsWithTag(actions, 'span')
-			.forEach(span => TestUtils.Simulate.click(span));
+  it('calls you back', async () => {
+    const callback = jest.fn();
 
-		const calls = callback.mock.calls;
-		expect(calls.length).toEqual(3);
-		expect(calls[0][0]).toEqual('info');
-		expect(calls[1][0]).toEqual('edit');
-		expect(calls[2][0]).toEqual('delete');
-	});
+    const { container } = render(
+      <Actions onAction={callback}/>
+    );
+
+    const data = await waitForElement(() => findAllByTestId(container, 'actions'));
+
+    (await data).forEach(e =>  fireEvent.click(e));
+    const calls = callback.mock.calls;
+
+    expect(calls.length).toEqual(3);
+    expect(calls[0][0]).toEqual('info');
+    expect(calls[1][0]).toEqual('edit');
+    expect(calls[2][0]).toEqual('delete');
+  });
 });
+
