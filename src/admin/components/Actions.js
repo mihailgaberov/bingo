@@ -1,9 +1,4 @@
-/**
- * Created by Mihail on 11/30/2016.
- */
-'use strict';
-
-import React, {PropTypes} from 'react';
+import React from 'react';
 
 const Actions = props =>
 	<div id="actions">
@@ -24,12 +19,4 @@ const Actions = props =>
 			onClick={props.onAction.bind(null, 'delete')}>x</span>
 	</div>;
 
-Actions.propTypes = {
-	onAction: PropTypes.func
-};
-
-Actions.defaultProps = {
-	onAction: () => {}
-};
-
-export default Actions
+export default Actions;

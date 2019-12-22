@@ -1,10 +1,4 @@
-/**
- * Created by Mihail on 11/30/2016.
- */
-'use strict';
-
 /* @flow */
-
 import CRUDStore from '../flux/CRUDStore';
 import FormInput from './FormInput';
 import React, {Component} from 'react';
@@ -73,4 +67,4 @@ class Form extends Component {
 	}
 }
 
-export default Form
+export default Form;

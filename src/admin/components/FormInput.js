@@ -1,13 +1,11 @@
-	/**
- * Created by Mihail on 11/30/2016.
- */
-'use strict';
 /* @flow */
 
-import React, {Component} from 'react';
+import React from 'react';
 
 type FormInputFieldType = 'number' | 'email' | 'text' | 'input';
+
 export type FormInputFieldValue = string | number;
+
 export type FormInputField = {
 	type: FormInputFieldType,
 	defaultValue?: FormInputFieldValue,
@@ -16,7 +14,7 @@ export type FormInputField = {
 	label?: string,
 };
 
-class FormInput extends Component {
+class FormInput extends React.Component {
 
 	props: FormInputField;
 
@@ -71,4 +69,4 @@ class FormInput extends Component {
 	}
 }
 
-export default FormInput
+export default FormInput;

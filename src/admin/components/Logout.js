@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 12/8/2016.
- */
-'use strict';
-
 import React from 'react';
 import Button from './Button';
 import EventsConsts from '../components/EventsConsts';
@@ -45,4 +40,4 @@ class Logout extends React.Component {
 		</div>
 	}
 }
-export default Logout
+export default Logout;

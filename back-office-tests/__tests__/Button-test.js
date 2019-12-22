@@ -1,16 +1,7 @@
-/**
- * Created by Mihail on 12/1/2016.
- */
-jest
-	.dontMock('../../src/admin/components/Button')
-	.dontMock('classnames')
-;
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
-
-const Button = require('../../src/admin/components/Button').default;
+import TestUtils from 'react-dom/test-utils';
+import Button from '../../src/admin/components/Button';
 
 describe('Render Button components', () => {
 	it('renders <a> vs <button>', () => {

@@ -1,6 +1,3 @@
-/**
- * Created by Mihail on 11/30/2016.
- */
 'use strict';
 
 import * as Immutable from 'immutable';
@@ -245,4 +242,4 @@ class Table extends Component {
 	}
 }
 
-export default Table
+export default Table;

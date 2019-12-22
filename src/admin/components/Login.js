@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 12/8/2016.
- */
-'use strict';
-
 import React from 'react';
 import Button from './Button';
 import EventsConsts from '../components/EventsConsts';
@@ -60,4 +55,4 @@ class Login extends React.Component {
 		</div>
 	}
 }
-export default Login
+export default Login;

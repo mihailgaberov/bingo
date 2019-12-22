@@ -127,7 +127,7 @@ const jestConfig = {
 const testsBackOffice = (done) => {
   jest.runCLI({ config: jestConfig }, ".", function () {
     done();
-  });
+  })
 };
 
 const test = (done) => {
@@ -199,9 +199,9 @@ const buildFrontEnd = gulp.series(clean, gulp.parallel(
 const buildBackOffice = gulp.series(clean, gulp.parallel(
   scriptsBackOffice,
   stylesBackOffice,
-  // testsBackOffice,
+  testsBackOffice,
   watch,
-  webserver
+  // webserver
 ));
 
 exports.default = build;

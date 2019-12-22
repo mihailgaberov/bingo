@@ -7,7 +7,7 @@
     "test": "mocha --compilers js:@babel/register --require @babel/polyfill --require test/unit/setup.js"
   },
   "jest": {
-    "testPathDirs": [
+    "roots": [
       "back-office-tests"
     ],
     "transform": {
@@ -17,7 +17,6 @@
     "unmockedModulePathPatterns": [
       "node_modules/react",
       "node_modules/react-dom",
-      "node_modules/react-addons-test-utils",
       "node_modules/fbjs"
     ]
   },
@@ -52,6 +51,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.1.5",
+    "@testing-library/react": "^9.4.0",
     "autoprefixer": "^6.7.7",
     "babel-core": "^6.26.3",
     "babel-eslint": "^9.0.0",
@@ -78,15 +78,14 @@
     "gulp-sourcemaps": "^1.12.1",
     "immutable": "^3.8.2",
     "invariant": "^2.2.4",
-    "jest-cli": "^17.0.3",
+    "jest-cli": "^24.9.0",
     "jsdom": "^11.10.0",
     "mocha": "^3.5.3",
     "mongoose": "^5.7.14",
     "nightwatch": "^0.9.21",
     "paper": "^0.12.3",
-    "react": "^15.6.2",
-    "react-addons-test-utils": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "sinon": "^1.17.7",
     "vanilla-modal": "^1.6.5",
     "vinyl-buffer": "^1.0.1",

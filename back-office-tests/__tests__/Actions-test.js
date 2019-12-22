@@ -1,16 +1,13 @@
-/**
- * Created by Mihail on 12/1/2016.
- */
 jest
 	.dontMock('../../src/admin/components/Actions')
 	.dontMock('../Wrap')
 ;
 
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
-const Actions = require('../../src/admin/components/Actions').default;
-const Wrap = require('../Wrap').default;
+import Actions from '../../src/admin/components/Actions';
+import Wrap from '../Wrap';
 
 describe('Click some actions', () => {
 	it('calls you back', () => {

@@ -1,15 +1,12 @@
-/**
- * Created by Mihail on 12/1/2016.
- */
 jest
 	.dontMock('../../src/admin/components/FormInput')
 	.dontMock('classnames')
 ;
 
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
-const FormInput = require('../../src/admin/components/FormInput').default;
+import FormInput from '../../src/admin/components/FormInput';
 
 describe('FormInput module', () => {
 	it('Renders correct input node', () => {

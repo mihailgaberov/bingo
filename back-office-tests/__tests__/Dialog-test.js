@@ -1,6 +1,3 @@
-/**
- * Created by Mihail on 12/1/2016.
- */
 jest
 	.dontMock('../../src/admin/components/Dialog')
 	.dontMock('../../src/admin/components/Button')
@@ -8,9 +5,9 @@ jest
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-dom/test-utils';
 
-const Dialog = require('../../src/admin/components/Dialog').default;
+import Dialog from '../../src/admin/components/Dialog';
 
 describe('renders with action buttons', () => {
 	it('can haz Cancel', () => {

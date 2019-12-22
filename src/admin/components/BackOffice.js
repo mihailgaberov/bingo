@@ -1,7 +1,3 @@
-/**
- * Created by Mihail on 11/30/2016.
- */
-'use strict';
 /* @flow */
 
 import Button from './Button';

@@ -1,12 +1,7 @@
-/**
- * Created by Mihail on 11/30/2016.
- */
-'use strict';
-
 import Button from './Button';
-import React, {Component, PropTypes} from 'react';
+import React from 'react';
 
-class Dialog extends Component {
+class Dialog extends React.Component {
 
 	componentWillUnmount() {
 		document.body.classList.remove('dialog-modal-open');
@@ -44,14 +39,6 @@ class Dialog extends Component {
 	}
 }
 
-Dialog.propTypes = {
-	header: PropTypes.string,
-	confirmLabel: PropTypes.string,
-	modal: PropTypes.bool,
-	onAction: PropTypes.func,
-	hasCancel: PropTypes.bool
-};
-
 Dialog.defaultProps = {
 	confirmLabel: 'ok',
 	modal: false,
@@ -59,4 +46,4 @@ Dialog.defaultProps = {
 	hasCancel: true
 };
 
-export default Dialog
+export default Dialog;
