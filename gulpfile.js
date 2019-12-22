@@ -153,14 +153,17 @@ const watchStyles = () => gulp.watch(paths.sass, ['styles']);
 const watchTests = () => gulp.watch(paths.tests, ['test']);
 const watchJestTests = () => gulp.watch([jestConfig.rootDir + "/!**!/!*.js"], ['jest']);
 
-const watch = () => gulp.parallel(
-  watchBackOfficeScripts,
-  watchBackOfficeStyles,
-  watchScripts,
-  watchStyles,
-  watchTests,
-  watchJestTests
-);
+const watch = (done) => {
+  gulp.parallel(
+    watchBackOfficeScripts,
+    watchBackOfficeStyles,
+    watchScripts,
+    watchStyles,
+    watchTests,
+    watchJestTests
+  );
+  done();
+};
 
 const webserver = (done) => {
   gulp.src('./')
