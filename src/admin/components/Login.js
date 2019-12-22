@@ -55,7 +55,7 @@ class Login extends React.Component {
 				Login
 			</Button>
 			<footer>
-				<span>&copy; 2016{new Date().getFullYear() && document.write("-"+new Date().getFullYear())} <a href="mailto: mihail.gaberov@gmail.com">Mihail Gaberov</a>.</span>
+				<span>&copy; 2016{new Date().getFullYear() && "-"+new Date().getFullYear()} <a href="mailto: mihail.gaberov@gmail.com">Mihail Gaberov</a>.</span>
 			</footer>
 		</div>
 	}
