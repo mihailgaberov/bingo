@@ -1,8 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-require('dotenv').config();
 const passport = require('passport');
+const path = require('path');
 
+require('dotenv').config();
 require('./bingo-api/models/db');
 require('./bingo-api/config/passport');
 
