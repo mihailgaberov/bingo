@@ -1,6 +1,5 @@
 import React from 'react';
-// import TestUtils from 'react-dom/test-utils';
-import { cleanup, render, fireEvent, findAllByTestId, waitForElement } from '@testing-library/react';
+import { cleanup, render, fireEvent, findByText, waitForElement } from '@testing-library/react';
 
 import Table from '../../src/admin/components/Table';
 import data from '../../src/admin/dummy-data';
@@ -37,29 +36,17 @@ describe('Editing data', () => {
   }
 
   it('Saves new data', async () => {
-    // const window = document.defaultView;
+    const window = document.defaultView;
     window.localStorage = storageMock();
-    /*const table = TestUtils.renderIntoDocument(
-      <Table/>
-    );*/
-    const { table } = render(<Table/>);
-    const newName = 'Mihail Gaberov';
+    const { container } = render(<Table/>);
+    const newName = 'Gosho';
 
-    // const cell = TestUtils.scryRenderedDOMComponentsWithTag(table, 'td')[1];
-    const data = await waitForElement(() => findAllByTestId(table, 'td'));
-    console.log('data: ', data);
-    /*cell.dataset = { // hack around the DOM support in Jest
-      row: cell.getAttribute('data-row'),
-      key: cell.getAttribute('data-key'),
-    };
-*/
-    // TestUtils.Simulate.doubleClick(cell);
-    // fireEvent.doubleClick(cell);
+    const cell = await waitForElement(() => findByText(container, 'Mihail Gaberov'));
+    fireEvent.doubleClick(cell);
 
-    // cell.getElementsByTagName('input')[0].value = newName;
-    // TestUtils.Simulate.submit(cell.getElementsByTagName('form')[0]);
-    // fireEvent.submit(cell.getElementsByTagName('form')[0]);
-    // expect(cell.textContent).toBe(newName);
+    cell.getElementsByTagName('input')[0].value = newName;
+    fireEvent.submit(cell.getElementsByTagName('form')[0]);
+    expect(cell.textContent).toBe(newName);
   });
 
   xit('Deletes data', () => {

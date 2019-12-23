@@ -225,13 +225,12 @@ class Table extends Component {
 										})}
 										key={idx}
 										data-row={rowidx}
-										data-key={schema.id}
-										data-testid="td">
+										data-key={schema.id}>
 										{content}
 									</td>
 								);
 							}, this)}
-							<td className="ExcelDataCenter" data-testid="td">
+							<td className="ExcelDataCenter">
 								<Actions onAction={this._actionClick.bind(this, rowidx)} />
 							</td>
 						</tr>

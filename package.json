@@ -12,7 +12,10 @@
     ],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
-    }
+    },
+    "setupFiles": [
+      "./setupJest.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -73,6 +76,7 @@
     "immutable": "^3.8.2",
     "invariant": "^2.2.4",
     "jest-cli": "^24.9.0",
+    "jest-fetch-mock": "^3.0.0",
     "jsdom": "^11.10.0",
     "mocha": "^3.5.3",
     "mongoose": "^5.7.14",
