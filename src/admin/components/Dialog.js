@@ -40,7 +40,7 @@ class Dialog extends React.Component {
 }
 
 Dialog.defaultProps = {
-	confirmLabel: 'ok',
+	confirmLabel: 'OK',
 	modal: false,
 	onAction: () => {},
 	hasCancel: true

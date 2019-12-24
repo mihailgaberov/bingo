@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, render, fireEvent, findByText, waitForElement } from '@testing-library/react';
+import { cleanup, findAllByTestId, findByText, fireEvent, render, waitForElement } from '@testing-library/react';
 
 import Table from '../../src/admin/components/Table';
 import data from '../../src/admin/dummy-data';
@@ -10,6 +10,10 @@ Store.init(data);
 describe('Editing data', () => {
   // automatically unmount and cleanup DOM after the test is finished.
   afterEach(cleanup);
+
+  beforeEach(() => {
+    fetch.resetMocks()
+  });
 
   // Storage Mock
   function storageMock() {
@@ -38,7 +42,7 @@ describe('Editing data', () => {
   it('Saves new data', async () => {
     const window = document.defaultView;
     window.localStorage = storageMock();
-    const { container } = render(<Table/>);
+    const { container } = render(<Table />);
     const newName = 'Gosho';
 
     const cell = await waitForElement(() => findByText(container, 'Mihail Gaberov'));
@@ -49,20 +53,18 @@ describe('Editing data', () => {
     expect(cell.textContent).toBe(newName);
   });
 
-  xit('Deletes data', () => {
-    const table = TestUtils.renderIntoDocument(
-      <Table/>
-    );
+  it('Deletes data', async () => {
+    fetch.mockResponseOnce(JSON.stringify({ data: 'ok' }));
 
-    TestUtils.Simulate.click( // x icon
-      TestUtils.findRenderedDOMComponentWithClass(table, 'actions-delete')
-    );
-    TestUtils.Simulate.click( // confirmation dialog
-      TestUtils.findRenderedDOMComponentWithClass(table, 'button')
-    );
+    const { container } = render(<Table />);
+    const deleteIcon = await waitForElement(() => findByText(container, 'x'));
+    fireEvent.click(deleteIcon);
 
-    expect(TestUtils.scryRenderedDOMComponentsWithTag(table, 'td').length).toBe(4);
+    const confirmationDialogOkBtn = await waitForElement(() => findByText(container, 'Delete'));
+    fireEvent.click(confirmationDialogOkBtn);
 
+    const cells = await waitForElement(() => findAllByTestId(container, 'td'));
+    expect(cells.length).toBe(4);
   });
 
 });
