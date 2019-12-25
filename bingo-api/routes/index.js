@@ -16,8 +16,8 @@ router.post('/createPlayer', auth, ctrlBackOffice.createPlayer);
 router.post('/deletePlayer', auth, ctrlBackOffice.deletePlayer);
 router.post('/updatePlayerData', auth, ctrlBackOffice.updatePlayerData);
 router.post('/loginAdmin', ctrlAdminsAuth.loginAdmin);
-// Disabled for security reasons - for the moment the admins will be added only manually
-// router.post('/registerAdmin', ctrlAdminsAuth.register);
+// For the time being the admin roles will be added only manually
+router.post('/registerAdmin', ctrlAdminsAuth.register);
 
 // Main app
 const ctrlProfile = require('../controllers/profile');

@@ -201,7 +201,7 @@ const buildBackOffice = gulp.series(clean, gulp.parallel(
   stylesBackOffice,
   testsBackOffice,
   watch,
-  // webserver
+  webserver
 ));
 
 exports.default = build;
