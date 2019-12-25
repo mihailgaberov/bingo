@@ -1,72 +1,57 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { cleanup, findByText, render, waitForElement } from '@testing-library/react';
+import { cleanup, findAllByText, findByText, fireEvent, render, waitForElement } from '@testing-library/react';
 import Dialog from '../../src/admin/components/Dialog';
 
 describe('renders with action buttons', () => {
-	// automatically unmount and cleanup DOM after the test is finished.
-	afterEach(cleanup);
+  // automatically unmount and cleanup DOM after the test is finished.
+  afterEach(cleanup);
 
-	it('can haz Cancel', async () => {
-		const { container } = render(<Dialog>Civilized dialog</Dialog>);
+  it('can have Cancel', async () => {
+    const { container } = render(<Dialog>Civilized dialog</Dialog>);
 
+    const cancel = await waitForElement(() => findByText(container, 'Cancel'));
+    expect(cancel.nodeName).toBe('SPAN');
 
-		const cancel = await waitForElement(() => findByText(container, 'Cancel'));
-		expect(cancel.nodeName).toBe('SPAN');
+    const ok = await waitForElement(() => findByText(container, 'OK'));
+    expect(ok.textContent).toBe(Dialog.defaultProps.confirmLabel);
+  });
 
-		const ok = await waitForElement(() => findByText(container, 'OK'));
-		expect(ok.textContent).toBe(Dialog.defaultProps.confirmLabel);
-	});
+  it('can have a single dismiss button', async () => {
+    const { container } = render(<Dialog hasCancel={false} confirmLabel="Confirm">Civilized dialog</Dialog>);
+    const ok = await waitForElement(() => findAllByText(container, 'Confirm'));
+    expect(ok.length).toBe(1);
+  });
 
-	xit('can haz a single dismiss button', () => {
-		const dialog = TestUtils.renderIntoDocument(
-			<Dialog hasCancel={false} confirmLabel="confirm">Civilized dialog</Dialog>
-		);
-		const cancels = TestUtils
-			.scryRenderedDOMComponentsWithClass(dialog, 'dialog-dismiss');
-		expect(cancels.length).toBe(0);
-		let ok = TestUtils
-			.findRenderedDOMComponentWithTag(dialog, 'button');
-		expect(ok.textContent).toBe('confirm');
-	});
+  it('can be modal', () => {
+    let { container } = render(<Dialog modal>Civilized dialog</Dialog>);
+    expect(Array.from(document.body.classList)).toContain('dialog-modal-open');
 
-	xit('can be modal', () => {
-		const dialog = TestUtils.renderIntoDocument(
-			<Dialog modal={true}>Civilized dialog</Dialog>
-		);
-		expect(Array.from(document.body.classList)).toContain('dialog-modal-open');
+    // removing the dialog
+    container = render('');
+    expect(Array.from(document.body.classList)).not.toBe('dialog-modal-open');
+  });
 
-		// removing the dialog
-		ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(dialog).parentNode);
-		expect(Array.from(document.body.classList)).not.toContain('dialog-modal-open');
-	});
+  it('has head and body', async () => {
+    const { container } = render(<Dialog header="Header Title">Civilized dialog</Dialog>);
+    const head = await waitForElement(() => findAllByText(container, 'Header Title'));
+    expect((await head).length).toBe(1);
+    const body = await waitForElement(() => findAllByText(container, 'Civilized dialog'));
+    expect((await body).length).toBe(1);
+  });
 
-	xit('has head and body', () => {
-		const dialog = TestUtils.renderIntoDocument(
-			<Dialog header="head">Civilized dialog</Dialog>
-		);
-		let node = ReactDOM.findDOMNode(dialog);
-		expect(node.getElementsByClassName('dialog-header')[0].innerHTML).toBe('head');
-		expect(node.querySelector('.dialog-body').textContent).toBe('Civilized dialog');
-	});
+  it('sends correct actions', async () => {
+    const callback = jest.fn();
+    let { container } = render(<Dialog onAction={callback} />);
+    const cancelBtn = await waitForElement(() => findByText(container, 'Cancel'));
+    fireEvent.click(cancelBtn);
 
-	xit('sends correct actions', () => {
-		const callback = jest.genMockFunction();
-		const yescancel = TestUtils.renderIntoDocument(
-			<Dialog onAction={callback} />
-		);
-		TestUtils.Simulate.click(
-			TestUtils.findRenderedDOMComponentWithTag(yescancel, 'button'));
-		const nocancel = TestUtils.renderIntoDocument(
-			<Dialog onAction={callback} hasCancel={false} />
-		);
-		TestUtils.Simulate.click(
-			TestUtils.findRenderedDOMComponentWithTag(nocancel, 'button'));
+    const okBtn = await waitForElement(() => findByText(container, 'OK'));
+    fireEvent.click(okBtn);
 
-		const calls = callback.mock.calls;
-		expect(calls.length).toEqual(2);
-		expect(calls[0][0]).toEqual('confirm');
-		expect(calls[1][0]).toEqual('dismiss');
-	});
+    const calls = callback.mock.calls;
+    expect(calls.length).toEqual(2);
+    expect(calls[0][0]).toEqual('dismiss');
+    expect(calls[1][0]).toEqual('confirm');
+  });
 
 });
