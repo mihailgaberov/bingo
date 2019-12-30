@@ -1,5 +1,5 @@
 # Bingo Bigul
-[JavaScript](https://www.javascript.com/) based Bingo game developed using [TDD](https://en.wikipedia.org/wiki/Test-driven_development) approach (unit testing with [Mocha and Chai](http://mochajs.org/)). Backend with [Express](https://expressjs.com/)/[NodeJS](https://nodejs.org/en/) and [MongoDB](https://www.mongodb.com/) for database.
+Famous Bingo game built with [JavaScript](https://www.javascript.com/). It has a back office app built with [ReactJS](https://reactjs.org/) and [MongoDB](https://www.mongodb.com/) for database.
 
 [![Build Status](https://img.shields.io/travis/mihailgaberov/es6-bingo-game.svg?style=flat-square)](https://travis-ci.org/mihailgaberov/es6-bingo-game)
 
