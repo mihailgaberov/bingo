@@ -24,8 +24,8 @@ const paths = {
   html: 'index.html',
   scripts: './src/**/*.js',
   sass: './styles/**/*.scss',
-  // tests: './test/unit/**/*.js',
-  tests: './test/unit/app.spec.js',
+  tests: './test/unit/**/*.js',
+  // tests: './test/unit/app.spec.js',
   backOfficeScripts: './src/admin/**/*.js',
   backOfficeSass: './styles/sass/admin/**/*.scss',
   buildSass: './build/styles',
@@ -181,8 +181,8 @@ const build = gulp.series(clean, gulp.parallel(
   scriptsDiscoverer,
   styles,
   stylesBackOffice,
-  // testsBackOffice,
-  // test,
+  testsBackOffice,
+  test,
   watch,
   webserver
 ));

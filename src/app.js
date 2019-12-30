@@ -1,8 +1,8 @@
 /**
  * Created by Mihail on 8/15/2016 - Started the project on St. Mary day
  */
-'use strict';
 
+import fetch from 'node-fetch';
 import ApiConsts from './api/api-consts';
 import Initializer from './initializer/initializer';
 
