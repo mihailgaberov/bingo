@@ -32,7 +32,7 @@ describe('Api Controller', () => {
 		};
 	}
 
-	it('Should initialize View Ctrl to interact with the views', () => {
+	test('Should initialize View Ctrl to interact with the views', () => {
 		const window = document.defaultView;
 		window.localStorage = storageMock();
 

@@ -9,21 +9,24 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 
 describe('WinningDialog module', () => {
-	it('Should get the ID of a DOM element to contain the modal', () => {
+	test('Should get the ID of a DOM element to contain the modal', () => {
 		const wd = new WinningDialog('#id');
 		expect(wd.elementID).to.be.equal('#id');
 	});
 
-	it('Should attach the necessary listeners', () => {
+	test('Should attach the necessary listeners', () => {
 		const spy = sinon.spy(WinningDialog, 'attachListeners');
-		const wd = new WinningDialog('#id');
+		new WinningDialog('#id');
 		assert(spy.calledOnce);
 	});
 
-	it('Should assign the appropriate css class depending on how many bingos are won', () => {
-		let className = WinningDialog.getHeaderImgClass(1);
-		expect(className).to.be.equal('winner-one-bingo');
-		className = WinningDialog.getHeaderImgClass(0);
-		expect(className).to.be.equal('no-bingo');
-	});
+	test(
+        'Should assign the appropriate css class depending on how many bingos are won',
+        () => {
+            let className = WinningDialog.getHeaderImgClass(1);
+            expect(className).to.be.equal('winner-one-bingo');
+            className = WinningDialog.getHeaderImgClass(0);
+            expect(className).to.be.equal('no-bingo');
+        }
+    );
 });

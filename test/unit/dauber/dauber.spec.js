@@ -32,28 +32,28 @@ describe('Dauber module', () => {
 		}
 	};
 
-	it('Should create a dauber module', (done) => {
+	test('Should create a dauber module', (done) => {
 		const selector = document.createElement('section');
 		const dauber = new Dauber(conf, selector);
 		expect(dauber).to.not.be.undefined;
 		done();
 	});
 
-	it('Should be able to start the drawing of numbers/balls', (done) => {
+	test('Should be able to start the drawing of numbers/balls', (done) => {
 		const selector = document.createElement('section');
 		const dauber = new Dauber(conf, selector);
 		expect(dauber.startDrawing).not.to.be.undefined;
 		done();
 	});
 
-	it('Should be able to stop the drawing of numbers/balls', (done) => {
+	test('Should be able to stop the drawing of numbers/balls', (done) => {
 		const selector = document.createElement('section');
 		const dauber = new Dauber(conf, selector);
 		expect(dauber.endGame).not.to.be.undefined;
 		done();
 	});
 
-	it('Should produce each number from the range only once', (done) => {
+	test('Should produce each number from the range only once', (done) => {
 		const selector = document.createElement('section');
 		const dauber = new Dauber(conf, selector);
 		expect(dauber.drawNewNumber).not.to.be.undefined;
@@ -70,39 +70,45 @@ describe('Dauber module', () => {
 		done();
 	});
 
-	it('Should be able to start drawing a new ball on each given time interval', (done) => {
-		const elChild = document.createElement('div');
-		document.body.appendChild(elChild);
-		const dauber = new Dauber(conf, elChild);
-		const intervalInMs = 2000;
-		dauber.startDrawing(intervalInMs);
-		setTimeout(() => {
-			dauber.endGame();
-		}, 6000);
+	test(
+        'Should be able to start drawing a new ball on each given time interval',
+        (done) => {
+            const elChild = document.createElement('div');
+            document.body.appendChild(elChild);
+            const dauber = new Dauber(conf, elChild);
+            const intervalInMs = 2000;
+            dauber.startDrawing(intervalInMs);
+            setTimeout(() => {
+                dauber.endGame();
+            }, 6000);
 
-		expect(dauber.drawBall).to.be.calledTwice;
-		done();
-	});
+            expect(dauber.drawBall).to.be.calledTwice;
+            done();
+        }
+    );
 
-	it('Should be able to moveVerticalHorizontal the balls when 5 are visible and hide the first one', (done) => {
-		const selector = document.createElement('div');
-		document.body.appendChild(selector);
+	test(
+        'Should be able to moveVerticalHorizontal the balls when 5 are visible and hide the first one',
+        (done) => {
+            const selector = document.createElement('div');
+            document.body.appendChild(selector);
 
-		const dauber = new Dauber(conf, selector);
-		expect(dauber.arrVisibleBalls).not.to.be.undefined;
-		expect(dauber.arrVisibleBalls).to.be.array;
+            const dauber = new Dauber(conf, selector);
+            expect(dauber.arrVisibleBalls).not.to.be.undefined;
+            expect(dauber.arrVisibleBalls).to.be.array;
 
-		const divEl = document.createElement('div');
-		dauber.arrVisibleBalls = [
-			{ elBall: divEl },
-			{ elBall: divEl },
-			{ elBall: divEl },
-			{ elBall: divEl },
-			{ elBall: divEl }
-		];
-		dauber.animateVisibleBalls();
-		expect(dauber.arrVisibleBalls.length).to.be.eql(4);
-		expect(dauber.arrVisibleBalls[0].elBall.style.display).to.be.equal('none');
-		done();
-	});
+            const divEl = document.createElement('div');
+            dauber.arrVisibleBalls = [
+                { elBall: divEl },
+                { elBall: divEl },
+                { elBall: divEl },
+                { elBall: divEl },
+                { elBall: divEl }
+            ];
+            dauber.animateVisibleBalls();
+            expect(dauber.arrVisibleBalls.length).to.be.eql(4);
+            expect(dauber.arrVisibleBalls[0].elBall.style.display).to.be.equal('none');
+            done();
+        }
+    );
 });

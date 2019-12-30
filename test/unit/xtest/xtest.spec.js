@@ -8,7 +8,7 @@ import { expect } from 'chai';
 
 describe('Xtest module', () => {
 
-	it('Should xtest xtest xtest', () => {
+	test('Should xtest xtest xtest', () => {
 		expect(true).to.be.truthy;
 	});
 

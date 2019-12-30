@@ -9,16 +9,16 @@ import Animator from '../../../src/utils/animator'
 import { expect } from 'chai';
 
 describe('FlyingPrize module', () => {
-	it('Should contain the prize sum to animate flying', () => {
+	test('Should contain the prize sum to animate flying', () => {
 		const fp = new FlyingPrize(123);
 		expect(fp.sum).to.be.equal(123);
 	});
 
-	it('Should contain a method for animating the prize', () => {
+	test('Should contain a method for animating the prize', () => {
 		expect(FlyingPrize.animatePrizeFlying).not.to.be.undefined;
 	});
 
-	it('Should use Animator method moveDiagonally', () => {
+	test('Should use Animator method moveDiagonally', () => {
 		FlyingPrize.animatePrizeFlying(123);
 		expect(Animator.moveDiagonally).to.be.calledOnce;
 	});

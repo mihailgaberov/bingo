@@ -8,7 +8,7 @@ import { expect } from 'chai';
 
 describe('WinningPatterns module', () => {
 
-	it('Should provide a method for checking horizontal Bingo pattern', () => {
+	test('Should provide a method for checking horizontal Bingo pattern', () => {
 		let arr = ['11', '21', '31', '41', '51'];
 		let res = WinningPatterns.checkHorizontalPattern(arr);
 		expect(res).to.be.truthy;
@@ -26,7 +26,7 @@ describe('WinningPatterns module', () => {
 		expect(res).to.be.falsy;
 	});
 
-	it('Should provide a method for checking vertical Bingo pattern', () => {
+	test('Should provide a method for checking vertical Bingo pattern', () => {
 		let arr = ['11', '12', '13', '14', '15'];
 		let res = WinningPatterns.checkVerticalPattern(arr);
 		expect(res).to.be.truthy;
@@ -44,7 +44,7 @@ describe('WinningPatterns module', () => {
 		expect(res).to.be.falsy;
 	});
 
-	it('Should provide a method for checking diagonal Bingo pattern', () => {
+	test('Should provide a method for checking diagonal Bingo pattern', () => {
 		let arr = ["11", "22", "44", "55"];
 		let res = WinningPatterns.checkDiagonalPattern(arr);
 		expect(res).to.be.truthy;
@@ -62,7 +62,7 @@ describe('WinningPatterns module', () => {
 		expect(res).to.be.falsy;
 	});
 
-	it('Should provide a method for checking corners Bingo pattern', () => {
+	test('Should provide a method for checking corners Bingo pattern', () => {
 		let arr = ["11", "15", "51", "55"];
 		let res = WinningPatterns.checkCornersPattern(arr);
 		expect(res).to.be.truthy;

@@ -8,14 +8,14 @@ import Blower from '../../../src/blower/blower';
 import { expect } from 'chai';
 
 describe('Blower module', () => {
-	it('Should create a blower module', (done) => {
+	test('Should create a blower module', (done) => {
 		let el = document.createElement('canvas');
 		const blower = new Blower(el);
 		expect(blower).not.to.be.undefined;
 		done();
 	});
 
-	it('Should initwith stopped animation', (done) => {
+	test('Should initwith stopped animation', (done) => {
 		let el = document.createElement('canvas');
 		let blower = new Blower(el);
 		expect(blower.init).to.be.object;
@@ -24,7 +24,7 @@ describe('Blower module', () => {
 		done();
 	});
 
-	it('Should create an array with 75 ball objects', (done) => {
+	test('Should create an array with 75 ball objects', (done) => {
 		let el = document.createElement('canvas');
 		let blower = new Blower(el);
 		expect(blower.balls).to.be.an('array');
@@ -32,14 +32,14 @@ describe('Blower module', () => {
 		done();
 	});
 
-	it('Should have mechanism for starting the animation', (done) => {
+	test('Should have mechanism for starting the animation', (done) => {
 		let el = document.createElement('canvas');
 		let blower = new Blower(el);
 		expect(blower.startAnimation).to.be.function;
 		done();
 	});
 
-	it('Should have mechanism for stopping the animation', (done) => {
+	test('Should have mechanism for stopping the animation', (done) => {
 		let el = document.createElement('canvas');
 		let blower = new Blower(el);
 		expect(blower.stopAnimation).to.be.function;

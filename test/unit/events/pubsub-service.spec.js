@@ -11,16 +11,16 @@ describe('PubSub Service', () => {
 
 	const pubsub = new PubSubService();
 
-	it('Should initialize topics object', () => {
+	test('Should initialize topics object', () => {
 		expect(pubsub.topics).not.to.be.undefined;
 		expect(pubsub.topics).to.be.object;
 	});
 
-	it('Should initialize hOP variable', () => {
+	test('Should initialize hOP variable', () => {
 		expect(pubsub.hOP).not.to.be.undefined;
 	});
 
-	it('Should publish events with topic and info', () => {
+	test('Should publish events with topic and info', () => {
 		pubsub.topics['test'] = [()=>{}];
 		pubsub.publish('test', {});
 
@@ -28,7 +28,7 @@ describe('PubSub Service', () => {
 		expect(pubsub.topics['test']).not.to.be.calledOnce;
 	});
 
-	it('Should subscribe to events with topic and attach a listener', () => {
+	test('Should subscribe to events with topic and attach a listener', () => {
 		const listener = () => {};
 		pubsub.subscribe('eventName', listener);
 		expect(pubsub.topics['eventName']).not.to.be.undefined;
@@ -36,7 +36,7 @@ describe('PubSub Service', () => {
 		expect(listener).to.be.calledOnce;
 	});
 
-	it('Should remove subscriptions', () => {
+	test('Should remove subscriptions', () => {
 		const removeMe = () => {};
 		pubsub.subscribe('removeMeEvent', removeMe);
 		expect(pubsub.topics['removeMeEvent']).not.to.be.undefined;

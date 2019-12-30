@@ -28,20 +28,23 @@ describe('Card Numbers Generator', () => {
 	let cardGen = new GenerateCardNumbers({'gameConf': {'numbers': arrAmericanNumbers}});
 
 
-	it('Should initialize with an array of 75 numbers', () => {
+	test('Should initialize with an array of 75 numbers', () => {
 		expect(cardGen.arrAmericanNumbers.length).to.be.equal(75);
 	});
 
-	it('Should generate a random card with 24 numbers divided by columns', () => {
-		const card = cardGen.generate();
+	test(
+        'Should generate a random card with 24 numbers divided by columns',
+        () => {
+            const card = cardGen.generate();
 
-		expect(card).to.be.object;
-		expect(card).to.have.property('col1').that.is.an('array').with.length.of(5);
-		expect(card).to.have.property('col2').that.is.an('array').with.length.of(5);
-		expect(card).to.have.property('col3').that.is.an('array').with.length.of(5);
-		expect(card).to.have.property('col4').that.is.an('array').with.length.of(5);
-		expect(card).to.have.property('col5').that.is.an('array').with.length.of(5);
+            expect(card).to.be.object;
+            expect(card).to.have.property('col1').that.is.an('array').with.length.of(5);
+            expect(card).to.have.property('col2').that.is.an('array').with.length.of(5);
+            expect(card).to.have.property('col3').that.is.an('array').with.length.of(5);
+            expect(card).to.have.property('col4').that.is.an('array').with.length.of(5);
+            expect(card).to.have.property('col5').that.is.an('array').with.length.of(5);
 
-	});
+        }
+    );
 
 });

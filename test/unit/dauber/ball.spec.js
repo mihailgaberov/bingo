@@ -8,14 +8,14 @@ import PubSub from '../../../src/events/pubsub-service';
 import { expect } from 'chai';
 
 describe('Ball module', () => {
-	it('Should create a ball object', (done) => {
+	test('Should create a ball object', (done) => {
 		const pb = new PubSub();
 		const ball = new Ball(34, pb, 'original');
 		expect(ball).not.to.be.undefined;
 		done();
 	});
 
-	it('Should create a ball object with given number', (done) => {
+	test('Should create a ball object with given number', (done) => {
 		const pb = new PubSub();
 		const ball = new Ball(34, pb, 'original');
 		expect(ball.elNumber.innerText).not.to.be.undefined;
@@ -23,14 +23,14 @@ describe('Ball module', () => {
 		done();
 	});
 
-	it('Should create a ball object with given css class', (done) => {
+	test('Should create a ball object with given css class', (done) => {
 		const pb = new PubSub();
 		const ball = new Ball(34, pb, { name: 'original' });
 		expect(ball.elBall.className).to.be.equal('original_ballN');
 		done();
 	});
 
-	it('Should be able to draw itself', (done) => {
+	test('Should be able to draw itself', (done) => {
 		const pb = new PubSub();
 		const ball = new Ball(34, pb, 'original');
 		expect(ball.draw).not.to.be.undefined;
@@ -41,7 +41,7 @@ describe('Ball module', () => {
 		done();
 	});
 
-	it('Should have methods moveVerticalHorizontal and animate', (done) => {
+	test('Should have methods moveVerticalHorizontal and animate', (done) => {
 		const pb = new PubSub();
 		const ball = new Ball(34, pb, 'original');
 		expect(ball.move).not.to.be.undefined;
