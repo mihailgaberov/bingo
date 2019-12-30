@@ -1,4 +1,3 @@
-const babel = require('@babel/register');
 require("@babel/polyfill");
 const gulp = require('gulp');
 const sass = require('gulp-sass');
@@ -16,16 +15,14 @@ const browserify = require('browserify');
 const watchify = require('watchify');
 const babelify = require('babelify');
 const istanbul = require('gulp-istanbul');
-const mocha = require('gulp-mocha');
-const jest = require('jest-cli');
+const gulpJest = require('gulp-jest').default;
 
 
 const paths = {
   html: 'index.html',
   scripts: './src/**/*.js',
   sass: './styles/**/*.scss',
-  tests: './test/unit/**/*.js',
-  // tests: './test/unit/app.spec.js',
+  tests: './front-end-tests/__tests__',
   backOfficeScripts: './src/admin/**/*.js',
   backOfficeSass: './styles/sass/admin/**/*.scss',
   buildSass: './build/styles',
@@ -60,7 +57,7 @@ const scripts = (done) => {
 
 const scriptsBackOffice = (done) => {
   const bundler = watchify(browserify('./src/admin/back-office-app.js', { debug: true })
-    .transform('babelify', { presets: ["@babel/preset-env", "@babel/preset-react"]}));
+    .transform('babelify', { presets: ["@babel/preset-env", "@babel/preset-react"] }));
 
   bundler.bundle()
     .on('[gulpfile] Error in scriptsBackOffice task', (err) => {
@@ -123,20 +120,25 @@ const stylesBackOffice = (done) => {
 const jestConfig = {
   rootDir: paths.backOfficeTests
 };
-
 const testsBackOffice = (done) => {
-  jest.runCLI({ config: jestConfig }, ".", function () {
-    done();
-  })
+  gulp.src(paths.backOfficeTests).pipe(gulpJest({
+    "preprocessorIgnorePatterns": [
+      "<rootDir>/build/", "<rootDir>/node_modules/"
+    ],
+    "roots": ["back-office-tests"],
+    "automock": false
+  }))
+  done();
 };
 
 const test = (done) => {
-  gulp.src(paths.tests)
-    .pipe(mocha({
-      compilers: {
-        js: babel
-      }
-    }))
+  gulp.src(paths.tests).pipe(gulpJest({
+    "preprocessorIgnorePatterns": [
+      "<rootDir>/build/", "<rootDir>/node_modules/"
+    ],
+    "roots": ["front-end-tests"],
+    "automock": false
+  }))
     .pipe(istanbul.writeReports({
       dir: './coverage',
       reporters: ['lcov'],
@@ -207,3 +209,4 @@ const buildBackOffice = gulp.series(clean, gulp.parallel(
 exports.default = build;
 exports.fe = buildFrontEnd;
 exports.bo = buildBackOffice;
+exports.test = test;
