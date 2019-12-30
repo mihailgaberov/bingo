@@ -127,7 +127,7 @@ const testsBackOffice = (done) => {
     ],
     "roots": ["back-office-tests"],
     "automock": false
-  }))
+  }));
   done();
 };
 
@@ -209,4 +209,3 @@ const buildBackOffice = gulp.series(clean, gulp.parallel(
 exports.default = build;
 exports.fe = buildFrontEnd;
 exports.bo = buildBackOffice;
-exports.test = test;

@@ -9,7 +9,8 @@
       "^.+\\.js?$": "babel-jest"
     },
     "setupFiles": [
-      "./setupJest.js"
+      "./setupJest.js",
+      "jest-canvas-mock"
     ]
   },
   "repository": {
@@ -71,11 +72,12 @@
     "gulp-sourcemaps": "^1.12.1",
     "immutable": "^3.8.2",
     "invariant": "^2.2.4",
+    "jest-canvas-mock": "^2.2.0",
     "jest-cli": "^24.9.0",
     "jest-fetch-mock": "^3.0.0",
     "mongoose": "^5.7.14",
     "nightwatch": "^0.9.21",
-    "paper": "^0.12.3",
+    "paper": "^0.12.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "vanilla-modal": "^1.6.5",

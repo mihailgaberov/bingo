@@ -1,24 +1,17 @@
-/**
- * Created by Mihail on 10/1/2016.
- */
-
-'use strict';
-
 import Blower from '../../../src/blower/blower';
-import { expect } from 'chai';
 
 describe('Blower module', () => {
-	test('Should create a blower module', (done) => {
+	test('Should create a blower component', async (done) => {
 		let el = document.createElement('canvas');
 		const blower = new Blower(el);
-		expect(blower).not.to.be.undefined;
+		expect(blower).not.toBe(undefined);
 		done();
 	});
 
-	test('Should initwith stopped animation', (done) => {
+	test('Should init with stopped animation', async (done) => {
 		let el = document.createElement('canvas');
 		let blower = new Blower(el);
-		expect(blower.init).to.be.object;
+		expect(blower.init).toBe(object);
 		expect(blower.init).to.have.property('play').that.is.falsy;
 		expect(blower.init).to.have.property('isPlaying').that.is.falsy;
 		done();

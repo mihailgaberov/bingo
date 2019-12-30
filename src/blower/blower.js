@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 9/24/2016.
- */
-'use strict';
-
 import ViewManipulator from '../utils/view-manipulator';
 import { paper } from '../../node_modules/paper/dist/paper-full';
 import { NumbersGenerator } from '../utils/numbers-generator';
