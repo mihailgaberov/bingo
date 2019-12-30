@@ -1,10 +1,4 @@
-/**
- * Created by Mihail on 8/15/2016.
- */
-'use strict';
-
 import CardGenerator from '../../../src/card/card-generator';
-import { expect } from 'chai';
 
 describe('Card Generator', () => {
 
@@ -28,7 +22,7 @@ describe('Card Generator', () => {
 	const cardGen = new CardGenerator({'gameConf': {'numbers': arrAmericanNumbers}});
 
 	test('Should initialize Card creation services', () => {
-		expect(cardGen).not.to.be.undefined;
+		expect(cardGen).toBeTruthy();
 	});
 
 	test('Should generate a given number of cards', () => {
@@ -36,9 +30,10 @@ describe('Card Generator', () => {
 
 		const cards = cardGen.generateCards(count);
 
-		expect(cards).to.be.object;
+		expect(cards).toBeTruthy();
+
 		while (count > 0) {
-			expect(cards).to.have.property('card' + count).that.is.an('object');
+			expect(cards).toHaveProperty('card' + count);
 			count--;
 		}
 	});
