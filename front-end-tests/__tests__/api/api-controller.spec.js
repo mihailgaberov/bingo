@@ -1,14 +1,6 @@
-/**
- * Created by Mihail on 9/18/2016.
- */
-
-'use strict';
-
 import ApiController from '../../../src/api/api-controller';
-import { expect } from 'chai';
 
 describe('Api Controller', () => {
-	// Storage Mock
 	function storageMock() {
 		const storage = {};
 
@@ -37,6 +29,6 @@ describe('Api Controller', () => {
 		window.localStorage = storageMock();
 
 		const apiCtrl = new ApiController();
-		expect(apiCtrl.viewCtrl).not.to.be.undefined;
+		expect(apiCtrl.viewCtrl).not.toBe(undefined);
 	});
 });
