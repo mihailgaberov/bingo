@@ -1,10 +1,4 @@
-/**
- * Created by Mihail on 10/23/2016.
- */
-'use strict';
-
 import Bangup from '../../../src/utils/bangup';
-import { expect } from 'chai';
 
 describe('Bangup module', () => {
 	test(
@@ -14,11 +8,11 @@ describe('Bangup module', () => {
             window.requestAnimationFrame = ()=> {};
             const elContainer = document.createElement('div');
             const bangup = new Bangup(elContainer, 0, 100, 3);
-            expect(bangup.container).not.to.be.undefined;
-            expect(bangup.startTime).not.to.be.undefined;
-            expect(bangup.fromSum).not.to.be.undefined;
-            expect(bangup.toSum).not.to.be.undefined;
-            expect(bangup.duration).not.to.be.undefined;
+            expect(bangup.container).toBeDefined();
+            expect(bangup.startTime).toBeDefined();
+            expect(bangup.fromSum).toBeDefined();
+            expect(bangup.toSum).toBeDefined();
+            expect(bangup.duration).toBeDefined();
         }
     );
 
@@ -29,7 +23,7 @@ describe('Bangup module', () => {
 		const elContainer = document.createElement('div');
     new Bangup(elContainer, 0, 100, duration);
     setTimeout(() => {
-			expect(elContainer.innerHTML).to.be.equal('100');
+			expect(elContainer.innerHTML).toEqual('100');
 		}, duration * 1000);
 	});
 });
