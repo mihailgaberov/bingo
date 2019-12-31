@@ -1,32 +1,24 @@
-/**
- * Created by Mihail on 11/2/2016.
- */
-'use strict';
-
-import assert from 'assert';
 import WinningDialog from '../../../src/winning/winning-dialog';
-import { expect } from 'chai';
-import sinon from 'sinon';
 
 describe('WinningDialog module', () => {
 	test('Should get the ID of a DOM element to contain the modal', () => {
 		const wd = new WinningDialog('#id');
-		expect(wd.elementID).to.be.equal('#id');
+		expect(wd.elementID).toEqual('#id');
 	});
 
 	test('Should attach the necessary listeners', () => {
-		const spy = sinon.spy(WinningDialog, 'attachListeners');
+		const spy = spyOn(WinningDialog, 'attachListeners');
 		new WinningDialog('#id');
-		assert(spy.calledOnce);
+		expect(spy).toHaveBeenCalled();
 	});
 
 	test(
         'Should assign the appropriate css class depending on how many bingos are won',
         () => {
             let className = WinningDialog.getHeaderImgClass(1);
-            expect(className).to.be.equal('winner-one-bingo');
+            expect(className).toEqual('winner-one-bingo');
             className = WinningDialog.getHeaderImgClass(0);
-            expect(className).to.be.equal('no-bingo');
+            expect(className).toEqual('no-bingo');
         }
     );
 });
