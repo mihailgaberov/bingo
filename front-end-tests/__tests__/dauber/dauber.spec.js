@@ -1,8 +1,6 @@
 import { Utils } from '../../../src/utils/utils';
 import Dauber from '../../../src/dauber/dauber';
 
-jest.useFakeTimers();
-
 describe('Dauber module', () => {
   let conf = {
     "gameConf": {
@@ -65,19 +63,6 @@ describe('Dauber module', () => {
     expect(arrDrawnNumbers.length).toEqual(arrRes.length);
     done();
   });
-
-  test('Should be able to start drawing a new ball on each given time interval', () => {
-      const elChild = document.createElement('div');
-      document.body.appendChild(elChild);
-      const dauber = new Dauber(conf, elChild);
-      const intervalInMs = 2000;
-      dauber.startDrawing(intervalInMs);
-      setTimeout(() => {
-        dauber.endGame();
-      }, 6000);
-      expect(setTimeout).toHaveBeenCalledTimes(1);
-    }
-  );
 
   test(
     'Should be able to moveVerticalHorizontal the balls when 5 are visible and hide the first one',

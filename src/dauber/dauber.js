@@ -1,9 +1,3 @@
-/**
- * Created by Mihail on 10/2/2016.
- */
-
-'use strict';
-
 import ViewManipulator from '../utils/view-manipulator';
 import { EventsConsts } from '../events/events-consts';
 import { NumbersGenerator } from '../utils/numbers-generator';

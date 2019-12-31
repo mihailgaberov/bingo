@@ -1,15 +1,9 @@
-/**
- * Created by Mihail on 10/2/2016.
- */
-
-'use strict';
-
 import { Utils } from '../utils/utils';
 import { EventsConsts } from '../events/events-consts';
 import Animator from '../utils/animator';
 
 class Ball {
-	constructor(num, pubsub, skin) {
+	constructor(num, pubsub, skin = { "name": "original" }) {
 		this.elBall = document.createElement('div');
 		this.elBall.setAttribute('id', 'ball');
 		this.elNumber = document.createElement('span');
@@ -105,7 +99,7 @@ class Ball {
 			let delta = opts.delta(progress);
 			opts.step(delta);
 
-			if (progress == 1) {
+			if (progress === 1) {
 				if (opts.isFifth === 5)
 					this.pubsub.publish(EventsConsts.FIFTH_BALL_DRAWN, {});
 				clearInterval(id);
