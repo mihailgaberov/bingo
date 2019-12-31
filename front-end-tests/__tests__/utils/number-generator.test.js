@@ -1,10 +1,4 @@
-/**
- * Created by Mihail on 9/8/2016.
- */
-'use strict';
-
 import { NumbersGenerator } from '../../../src/utils/numbers-generator';
-import { expect } from 'chai';
 
 describe('Numbers generation util', () => {
 
@@ -15,7 +9,7 @@ describe('Numbers generation util', () => {
 			res2 = NumbersGenerator.getRandomNumber(min, max);
 		}
 
-		expect(res1).not.to.be.equal(res2);
+		expect(res1).not.toEqual(res2);
 	});
 
 	test(
@@ -25,9 +19,9 @@ describe('Numbers generation util', () => {
 
             const  arrRes =  NumbersGenerator.getColumnNumbers(arr);
 
-            expect(arrRes.length).to.be.equal(5);
-            expect(arrRes[0]).not.to.be.equal(arrRes[1]).not.to.be.equal(arrRes[2])
-                .not.to.be.equal(arrRes[3]).not.to.be.equal(arrRes[4]);
+            expect(arrRes.length).toEqual(5);
+            expect(arrRes[0]).not.toEqual(arrRes[1]).not.toEqual(arrRes[2])
+                .not.toEqual(arrRes[3]).not.toEqual(arrRes[4]);
 
          }
     );
@@ -39,7 +33,7 @@ describe('Numbers generation util', () => {
 
             const arrRes = NumbersGenerator.getColumnNumbers(arr, 5);
 
-            expect(arrRes.length).to.be.equal(5);
+            expect(arrRes.length).toEqual(5);
 
             for (let i=0; i < arrRes.length; i++) {
                 expect(arrRes[i]).to.be.least(1);
@@ -55,7 +49,7 @@ describe('Numbers generation util', () => {
 
             const arrRes = NumbersGenerator.getColumnNumbers(arr, 5);
 
-            expect(arrRes.length).to.be.equal(5);
+            expect(arrRes.length).toEqual(5);
 
             for (let i=0; i < arrRes.length; i++) {
                 expect(arrRes[i]).to.be.least(16);
@@ -71,7 +65,7 @@ describe('Numbers generation util', () => {
 
             const arrRes = NumbersGenerator.getColumnNumbers(arr, 5);
 
-            expect(arrRes.length).to.be.equal(5);
+            expect(arrRes.length).toEqual(5);
 
             for (let i=0; i < arrRes.length; i++) {
                 expect(arrRes[i]).to.be.least(31);
@@ -87,7 +81,7 @@ describe('Numbers generation util', () => {
 
             const arrRes = NumbersGenerator.getColumnNumbers(arr, 5);
 
-            expect(arrRes.length).to.be.equal(5);
+            expect(arrRes.length).toEqual(5);
 
             for (let i=0; i < arrRes.length; i++) {
                 expect(arrRes[i]).to.be.least(46);
@@ -103,11 +97,11 @@ describe('Numbers generation util', () => {
 
             const arrRes = NumbersGenerator.getColumnNumbers(arr, 5);
 
-            expect(arrRes.length).to.be.equal(5);
+            expect(arrRes.length).toEqual(5);
 
             for (let i=0; i < arrRes.length; i++) {
-                expect(arrRes[i]).to.be.least(61);
-                expect(arrRes[i]).to.be.most(75);
+                expect(arrRes[i]).not.toBeLessThan(61);
+                expect(arrRes[i]).not.toBeGreaterThan(75);
             }
         }
     );
