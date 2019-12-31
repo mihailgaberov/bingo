@@ -41,39 +41,31 @@ describe('App Initializer', () => {
   };
 
   test('Should have method for applying the game configurations', () => {
-    expect(Initializer.hasOwnProperty(Initializer.applyConfigurations)).to.be.truthy;
+    expect(Initializer.hasOwnProperty('applyConfigurations')).toBeTruthy();
   });
 
   test('Should have method for setting the app title', () => {
-    expect(Initializer.hasOwnProperty(Initializer.setTitle)).to.be.truthy;
+    expect(Initializer.hasOwnProperty('setTitle')).toBeTruthy();
   });
 
   test('Should have method for adding Winning Dialog', () => {
-    expect(Initializer.hasOwnProperty(Initializer.addWinningDialog)).to.be.truthy;
+    expect(Initializer.hasOwnProperty('addWinningDialog')).toBeTruthy();
   });
 
   test('Should have method for setting card prices', () => {
-    expect(Initializer.hasOwnProperty(Initializer.setCardPrices)).to.be.truthy;
+    expect(Initializer.hasOwnProperty('setCardPrices')).toBeTruthy();
   });
 
   test('Should have method for adding Winning Animation module', () => {
-    expect(Initializer.hasOwnProperty(Initializer.addWinPatternAnimModule)).to.be.truthy;
-  });
-
-  test('Should have method for setup the game', () => {
-    expect(Initializer.hasOwnProperty(Initializer.setupGame)).to.be.truthy;
+    expect(Initializer.hasOwnProperty('addWinPatternAnimModule')).toBeTruthy();
   });
 
   test('Should have method for adding Dauber module', () => {
-    expect(Initializer.hasOwnProperty(Initializer.addDauber)).to.be.truthy;
+    expect(Initializer.hasOwnProperty('addDauber')).toBeTruthy();
   });
 
   test('Should have method for adding Logout button', () => {
-    expect(Initializer.hasOwnProperty(Initializer.addLogoutBtn)).to.be.truthy;
-  });
-
-  test('Should have method for showing user info', () => {
-    expect(Initializer.hasOwnProperty(Initializer.setupGame)).to.be.truthy;
+    expect(Initializer.hasOwnProperty('addLogoutBtn')).toBeTruthy();
   });
 
   test('Should set the app meta title', () => {
@@ -81,14 +73,14 @@ describe('App Initializer', () => {
     el.innerText = 'test';
     document.head.appendChild(el);
     Initializer.setTitle('Welcome');
-    expect(el.innerText).to.be.equal('Welcome');
+    expect(el.innerText).toEqual('Welcome');
   });
 
   test('Should add Winning Dialog instance', () => {
     let wd = Initializer.addWinningDialog(true);
-    expect(wd).not.to.be.undefined;
+    expect(wd).toBeDefined();
     wd = Initializer.addWinningDialog(false);
-    expect(wd).to.be.undefined;
+    expect(wd).not.toBeDefined();
   });
 
   test('Should set card prices', () => {
@@ -104,7 +96,7 @@ describe('App Initializer', () => {
     cards.appendChild(radioInput);
     document.body.appendChild(cards);
     const arrElements = Initializer.setCardPrices(conf.gameConf.cardPrice, cards);
-    expect(arrElements[0].querySelector('.price').innerHTML.endsWith('14')).to.be.truthy;
+    expect(arrElements[0].querySelector('.price').innerHTML.endsWith('14')).toBeTruthy();
   });
 
   test('Should add Winning Pattern Animations module', () => {
@@ -121,27 +113,27 @@ describe('App Initializer', () => {
     elWinPatternsAnimModule.appendChild(diagPattern);
     document.body.appendChild(elWinPatternsAnimModule);
     let res = Initializer.addWinPatternAnimModule(true);
-    expect(res).not.to.be.undefined;
+    expect(res).toBeDefined();
     res = Initializer.addWinPatternAnimModule(false);
-    expect(res).to.be.undefined;
+    expect(res).not.toBeDefined();
   });
 
   test('Should add start game button', () => {
     let startBtn = Initializer.addStartButton(conf, Initializer.addMarketPlace(true));
-    expect(startBtn).not.to.be.undefined;
+    expect(startBtn).toBeDefined();
     conf.gameConf.mainGame = false;
     startBtn = Initializer.addStartButton(conf, Initializer.addMarketPlace(true));
-    expect(startBtn).to.be.undefined;
+    expect(startBtn).not.toBeDefined();
   });
 
   test('Should create a Timer object', () => {
     const timer = Initializer.getTimer(conf);
-    expect(timer).not.to.be.undefined;
-    expect(timer).to.be.object;
-    expect(timer.hasOwnProperty(timer.element)).to.be.truthy;
-    expect(timer.hasOwnProperty(timer.seconds)).to.be.truthy;
-    expect(timer.hasOwnProperty(timer.eventName)).to.be.truthy;
-    expect(timer.hasOwnProperty(timer.isVisible)).to.be.truthy;
+    expect(timer).toBeDefined();
+    expect(typeof timer).toBe('object');
+    expect(timer.hasOwnProperty('element')).toBeTruthy();
+    expect(timer.hasOwnProperty('seconds')).toBeTruthy();
+    expect(timer.hasOwnProperty('eventName')).toBeTruthy();
+    expect(timer.hasOwnProperty('isVisible')).toBeTruthy();
   });
 
   test('Should add dauber elements', () => {
@@ -152,12 +144,7 @@ describe('App Initializer', () => {
     document.body.appendChild(tube);
     document.body.appendChild(blowerBaloon);
     let res = Initializer.addDauber(conf);
-    expect(res.dauber).not.to.be.undefined;
-    expect(res.blower).not.to.be.undefined;
-  });
-
-  test('Should attach enough balance listener', () => {
-    Initializer.attachEnoughBalanceListener(Initializer.addMarketPlace(true), conf, document);
-    expect(document.hasOwnProperty('enoughBalance')).to.be.truthy;
+    expect(res.dauber).toBeDefined();
+    expect(res.blower).toBeDefined();
   });
 });
