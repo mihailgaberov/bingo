@@ -1,18 +1,11 @@
-/**
- * Created by Mihail on 9/18/2016.
- */
-
-'use strict';
-
 import MarketCards from '../../../src/market-place/market-cards';
-import { expect } from 'chai';
 
 describe('Market Cards module', () => {
 	test('Should have container - html element', () => {
 		const container = document.createElement('div');
 		const marketCards = new MarketCards(container);
-		expect(marketCards.container).not.to.be.undefined;
-		expect(marketCards.container.tagName).to.be.equal('DIV');
+		expect(marketCards.container).toBeDefined();
+		expect(marketCards.container.tagName).toEqual('DIV');
 	});
 
 	test('Should define the count of the purchased cards', () => {
@@ -30,7 +23,7 @@ describe('Market Cards module', () => {
 		];
 
 		const countCards = MarketCards.getPurchasedCardsCount(arrRadioButtons);
-		expect(countCards).to.be.equal(4);
+		expect(countCards).toEqual(4);
 	});
 
 	test(
@@ -42,7 +35,7 @@ describe('Market Cards module', () => {
                 '<div class="price"></div>';
 
             MarketCards.setCardPrices(5, [cards]);
-            expect(cards.querySelector('.price').innerHTML).to.be.equal('<i class="price-icon"></i>5');
+            expect(cards.querySelector('.price').innerHTML).toEqual('<i class="price-icon"></i>5');
         }
     );
 });
