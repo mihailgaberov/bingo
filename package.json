@@ -76,7 +76,6 @@
     "jest-cli": "^24.9.0",
     "jest-fetch-mock": "^3.0.0",
     "mongoose": "^5.7.14",
-    "nightwatch": "^0.9.21",
     "paper": "^0.12.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
