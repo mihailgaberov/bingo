@@ -1,18 +1,7 @@
-/**
- * Created by Mihail on 10/16/2016.
- */
-"use strict";
-
 import { Utils } from '../utils/utils';
 
 const WinningPatterns = {
-	checkHorizontalPattern(arr) {
-		const arrCoordinates = [];
-		arr.forEach((el) => {
-			let coorY = el.substr(1, 2);
-			arrCoordinates.push(coorY);
-		});
-
+	isBingo(arrCoordinates) {
 		let isBingo = false;
 		for (let i = 1; i <= 5; i++) {
 			if (i !== 3) {
@@ -25,8 +14,17 @@ const WinningPatterns = {
 				}
 			}
 		}
-
 		return isBingo;
+	},
+
+	checkHorizontalPattern(arr) {
+		const arrCoordinates = [];
+		arr.forEach((el) => {
+			let coorY = el.substr(1, 2);
+			arrCoordinates.push(coorY);
+		});
+
+		return this.isBingo(arrCoordinates);
 	},
 
 	checkVerticalPattern(arr) {
@@ -36,20 +34,7 @@ const WinningPatterns = {
 			arrCoordinates.push(coorX);
 		});
 
-		let isBingo = false;
-		for (let i = 1; i <= 5; i++) {
-			if (i !== 3) {
-				if (Utils.countInArray(arrCoordinates, i) === 5) {
-					isBingo = true;
-				}
-			} else {
-				if (Utils.countInArray(arrCoordinates, i) === 4) {
-					isBingo = true;
-				}
-			}
-		}
-
-		return isBingo;
+		return this.isBingo(arrCoordinates);
 	},
 
 	checkDiagonalPattern(arr) {
