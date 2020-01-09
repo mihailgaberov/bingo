@@ -45,9 +45,5 @@ To run the app, follow these steps.
   ```shell
   node server.js
   ```
-8. To run the e2e tests, execute the following command:
 
-  ```shell
-  node nightwatch.js
-  ```
-9. Browse to [http://localhost:8000](http://localhost:8000) to see the app.
+8. Browse to [http://localhost:8000](http://localhost:8000) to see the app.
