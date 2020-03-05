@@ -1,12 +1,9 @@
-/**
- * Created by Mihail on 12/10/2016.
- */
-var passport = require('passport');
-var mongoose = require('mongoose');
-var Admin = mongoose.model('Admins');
+const passport = require('passport');
+const mongoose = require('mongoose');
+const Admin = mongoose.model('Admins');
 
 module.exports.register = function (req, res) {
-	var admin = new Admin();
+	const admin = new Admin();
 
 	admin.name = req.body.name;
 	admin.email = req.body.email;
@@ -21,7 +18,7 @@ module.exports.register = function (req, res) {
 		} else {
 			admin.setPassword(req.body.password);
 			admin.save(function (err) {
-				var token = admin.generateJwt();
+				const token = admin.generateJwt();
 				res.status(200);
 				res.json({
 					'token': token
@@ -33,7 +30,7 @@ module.exports.register = function (req, res) {
 
 module.exports.loginAdmin = function (req, res) {
 	passport.authenticate('adminLogin', function (err, admin, info) {
-		var token;
+		let token;
 
 		if (err) {
 			res.status(404).json(err);
