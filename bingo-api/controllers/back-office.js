@@ -1,10 +1,5 @@
-/**
- * Created by Mihail on 12/4/2016.
- */
-"use strict";
-
-var mongoose = require('mongoose');
-var User = mongoose.model('Users');
+const mongoose = require('mongoose');
+const User = mongoose.model('Users');
 
 module.exports.getPlayersData = function (req, res) {
 	User
