@@ -23,8 +23,8 @@ const paths = {
   scripts: './src/**/*.js',
   sass: './styles/**/*.scss',
   tests: './front-end-tests/__tests__',
-  backOfficeScripts: './src/admin/**/*.js',
-  backOfficeSass: './styles/sass/admin/**/*.scss',
+  backOfficeScripts: './src/back-office/**/*.js',
+  backOfficeSass: './styles/sass/back-office/**/*.scss',
   buildSass: './build/styles',
   buildScripts: './build/js',
   backOfficeTests: './back-office-tests/__tests__'
@@ -56,7 +56,7 @@ const scripts = (done) => {
 };
 
 const scriptsBackOffice = (done) => {
-  const bundler = watchify(browserify('./src/admin/back-office-app.js', { debug: true })
+  const bundler = watchify(browserify('./src/back-office/back-office-app.js', { debug: true })
     .transform('babelify', { presets: ["@babel/preset-env", "@babel/preset-react"] }));
 
   bundler.bundle()
@@ -73,7 +73,7 @@ const scriptsBackOffice = (done) => {
 };
 
 const scriptsDiscoverer = () => {
-  const bundler = watchify(browserify('./src/admin/discoverer.js', { debug: true })
+  const bundler = watchify(browserify('./src/back-office/discoverer.js', { debug: true })
     .transform('babelify', { presets: ['react', 'env', 'stage-0'] }));
 
   bundler.bundle()
@@ -89,7 +89,7 @@ const scriptsDiscoverer = () => {
 };
 
 const styles = (done) => {
-  gulp.src([paths.sass, '!./styles/sass/admin/**/*.scss'])
+  gulp.src([paths.sass, '!./styles/sass/back-office/**/*.scss'])
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('all.css'))
