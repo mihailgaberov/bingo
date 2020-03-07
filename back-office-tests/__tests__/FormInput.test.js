@@ -1,5 +1,5 @@
 jest
-	.dontMock('../../src/admin/components/FormInput')
+	.dontMock('../../src/back-office/components/FormInput')
 	.dontMock('classnames')
 ;
 
