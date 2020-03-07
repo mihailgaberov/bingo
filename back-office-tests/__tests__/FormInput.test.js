@@ -6,7 +6,7 @@ jest
 import React from 'react';
 import TestUtils from 'react-dom/test-utils';
 
-import FormInput from '../../src/admin/components/FormInput';
+import FormInput from '../../src/back-office/components/FormInput';
 
 describe('FormInput module', () => {
 	it('Renders correct input node', () => {

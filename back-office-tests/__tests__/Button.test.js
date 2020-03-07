@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
-import Button from '../../src/admin/components/Button';
+import Button from '../../src/back-office/components/Button';
 
 describe('Render Button components', () => {
 	it('renders <a> vs <button>', () => {

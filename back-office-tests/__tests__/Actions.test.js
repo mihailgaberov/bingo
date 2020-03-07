@@ -1,6 +1,6 @@
 import React from 'react';
 import { cleanup, fireEvent, render, findAllByTestId, waitForElement } from '@testing-library/react';
-import Actions from '../../src/admin/components/Actions';
+import Actions from '../../src/back-office/components/Actions';
 
 describe('Click some actions', () => {
   // automatically unmount and cleanup DOM after the test is finished.

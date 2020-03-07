@@ -1,6 +1,6 @@
 import React from 'react';
 import { cleanup, findAllByText, findByText, fireEvent, render, waitForElement } from '@testing-library/react';
-import Dialog from '../../src/admin/components/Dialog';
+import Dialog from '../../src/back-office/components/Dialog';
 
 describe('renders with action buttons', () => {
   // automatically unmount and cleanup DOM after the test is finished.

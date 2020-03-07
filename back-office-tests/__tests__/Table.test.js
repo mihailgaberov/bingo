@@ -1,9 +1,9 @@
 import React from 'react';
 import { cleanup, findAllByTestId, findByText, fireEvent, render, waitForElement } from '@testing-library/react';
 
-import Table from '../../src/admin/components/Table';
-import data from '../../src/admin/dummy-data';
-import Store from '../../src/admin/flux/CRUDStore';
+import Table from '../../src/back-office/components/Table';
+import data from '../../src/back-office/dummy-data';
+import Store from '../../src/back-office/flux/CRUDStore';
 
 Store.init(data);
 
