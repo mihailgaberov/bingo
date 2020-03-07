@@ -1,6 +1,3 @@
-/**
- * Created by Mihail on 9/14/2016.
- */
 const passport = require('passport');
 const mongoose = require('mongoose');
 const User = mongoose.model('Users');
