@@ -3,7 +3,7 @@
  */
 'use strict';
 
-import ApiController from '../api/api-controller';
+import ApiController from '../API/api-controller';
 import ViewManipulator from '../utils/view-manipulator';
 import CardGenerator from '../card/card-generator';
 import CardDrawer from '../card/card-drawer';

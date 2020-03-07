@@ -6,7 +6,7 @@
 
 import { EventsConsts } from '../events/events-consts';
 import Animator from '../utils/animator';
-import ApiController from '../api/api-controller';
+import ApiController from '../API/api-controller';
 
 class FlyingPrize {
 	constructor(sum) {

@@ -1,4 +1,4 @@
-import ApiController from '../../../src/api/api-controller';
+import ApiController from '../../../src/API/api-controller';
 
 describe('Api Controller', () => {
 	function storageMock() {

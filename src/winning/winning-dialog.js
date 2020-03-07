@@ -3,7 +3,7 @@
  */
 "use strict";
 
-import ApiController from '../api/api-controller';
+import ApiController from '../API/api-controller';
 import VanillaModal from 'vanilla-modal';
 import { EventsConsts } from '../events/events-consts';
 import FlyingPrize from './flying-prize';

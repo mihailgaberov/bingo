@@ -5,7 +5,7 @@
 
 import { EventsConsts } from '../events/events-consts';
 import ViewManipulator from '../utils/view-manipulator';
-import ApiController from '../api/api-controller';
+import ApiController from '../API/api-controller';
 
 class MarketCards {
 	constructor(container) {

@@ -3,7 +3,7 @@
  */
 
 import fetch from 'node-fetch';
-import ApiConsts from './api/api-consts';
+import ApiConsts from './API/api-consts';
 import Initializer from './initializer/initializer';
 
 class App {

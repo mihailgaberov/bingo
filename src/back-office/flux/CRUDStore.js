@@ -7,7 +7,7 @@
 import {EventEmitter} from 'fbemitter';
 import {List} from 'immutable';
 import schema from '../schema';
-import ApiCtrl from '../../api/api-controller';
+import ApiCtrl from '../../API/api-controller';
 import EventsConsts from '../components/EventsConsts';
 
 let data: List<Object>;

@@ -10,7 +10,7 @@ import Logo from './components/Logo';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import BackOffice from './components/BackOffice';
-import ApiCtrl from '../api/api-controller';
+import ApiCtrl from '../API/api-controller';
 
 ApiCtrl.getPlayersDataPromise().then((data) => {
 	CRUDStore.init(data);

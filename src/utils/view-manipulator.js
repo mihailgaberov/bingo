@@ -5,7 +5,7 @@
 "use strict";
 
 import { EventsConsts } from '../events/events-consts';
-import ApiController from '../api/api-controller';
+import ApiController from '../API/api-controller';
 import LocalStorageService from '../local-storage/local-storage-service';
 import Bangup from '../utils/bangup';
 
