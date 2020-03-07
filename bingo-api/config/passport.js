@@ -1,11 +1,8 @@
-/**
- * Created by Mihail on 9/14/2016.
- */
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var mongoose = require('mongoose');
-var User = mongoose.model('Users');
-var Admin = mongoose.model('Admins');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const mongoose = require('mongoose');
+const User = mongoose.model('Users');
+const Admin = mongoose.model('Admins');
 
 passport.use('userLogin', new LocalStrategy({
 		usernameField: 'email'
