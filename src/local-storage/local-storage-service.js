@@ -1,10 +1,4 @@
-/**
- * Created by Mihail on 9/17/2016.
- */
-'use strict';
-
 class LocalStorageService {
-	constructor() {}
 
 	static saveToken(token) {
 		window.localStorage['mean-token'] = token;
