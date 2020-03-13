@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 2/25/2017.
- */
-'use strict';
-
 import ApiController from '../API/api-controller';
 import ViewManipulator from '../utils/view-manipulator';
 import CardGenerator from '../card/card-generator';
@@ -44,9 +39,9 @@ class Initializer {
     let elWinPatternsAnimModule = undefined;
     if (isConfigured) {
       elWinPatternsAnimModule = document.querySelector('#winPatternsAnimModule');
-      const horPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#horizontal'), 5, 5, 'horizontal');
-      const verPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#vertical'), 5, 5, 'vertical');
-      const diagPattern = new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#diagonal'), 5, 5, 'diagonal');
+      new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#horizontal'), 5, 5, 'horizontal');
+      new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#vertical'), 5, 5, 'vertical');
+      new WinPatternsAnimModule(elWinPatternsAnimModule.querySelector('#diagonal'), 5, 5, 'diagonal');
     }
     return elWinPatternsAnimModule;
   }
@@ -56,7 +51,7 @@ class Initializer {
     if (conf.gameConf.mainGame) {
       startBtn = document.querySelector('#startBtn');
       if (startBtn) {
-        startBtn.addEventListener('click', (e) => {
+        startBtn.addEventListener('click', () => {
           Initializer.buyCards(conf, elMarketPlace);
         });
       }
@@ -98,7 +93,7 @@ class Initializer {
 
   static renderPurchasedCards(marketCards, cardGen) {
     const purchasedCardsCount = MarketCards.getPurchasedCardsCount(marketCards.getRadioButtonsArray());
-    const cardDrawer = new CardDrawer(
+    new CardDrawer(
       cardGen.generateCards(purchasedCardsCount),
       document.querySelector('#leftGameScreen')
     );
@@ -125,7 +120,7 @@ class Initializer {
 
     const logoutBtn = document.querySelector('#logoutBtn');
     if (logoutBtn) {
-      logoutBtn.addEventListener('click', (e) => {
+      logoutBtn.addEventListener('click', () => {
         apiCtrl.logout();
       });
     }
