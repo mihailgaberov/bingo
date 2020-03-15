@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 9/8/2016.
- */
-"use strict";
-
 const NumbersGenerator = {
 	getRandomNumber (min, max) {
 		if (max === undefined) {

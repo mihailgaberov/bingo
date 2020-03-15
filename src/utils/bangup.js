@@ -1,7 +1,3 @@
-/**
- * Created by Mihail on 10/23/2016.
- */
-
 class Bangup {
 	constructor(container, fromSum, toSum, duration) {
 		this.container = container;

@@ -1,9 +1,3 @@
-/**
- * Created by Mihail on 10/29/2016.
- */
-
-'use strict';
-
 import { EventsConsts } from '../events/events-consts';
 
 class Animator {

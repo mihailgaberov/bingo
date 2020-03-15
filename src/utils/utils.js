@@ -1,9 +1,3 @@
-/**
- * Created by Mihail on 10/2/2016.
- */
-
-"use strict";
-
 const Utils = {
 	eliminateDuplicates(arr) {
 		return [...new Set(arr)];

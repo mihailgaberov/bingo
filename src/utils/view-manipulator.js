@@ -1,9 +1,3 @@
-/**
- * Created by Mihail on 9/20/2016.
- */
-
-"use strict";
-
 import { EventsConsts } from '../events/events-consts';
 import ApiController from '../API/api-controller';
 import LocalStorageService from '../local-storage/local-storage-service';
