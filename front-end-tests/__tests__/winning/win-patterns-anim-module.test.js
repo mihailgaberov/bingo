@@ -51,6 +51,6 @@ describe('WinPatternsAnimModule module', () => {
   test('Should have method for animating diagonal pattern', () => {
     const container = document.createElement('section');
     const wpam = new WinPatternsAnimModule(container, 5, 5, 'diagonal');
-    expect(wpam.startDiagonallAnim).toBeDefined();
+    expect(wpam.startDiagonalAnim).toBeDefined();
   });
 });

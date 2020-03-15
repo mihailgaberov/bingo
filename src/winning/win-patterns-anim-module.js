@@ -57,7 +57,7 @@ class WinPatternsAnimModule {
 				this.startVerticalAnim();
 				break;
 			case 'diagonal':
-				this.startDiagonallAnim();
+				this.startDiagonalAnim();
 				break;
 		}
 	}
@@ -116,7 +116,7 @@ class WinPatternsAnimModule {
 		}, 1000)
 	}
 
-	startDiagonallAnim() {
+	startDiagonalAnim() {
 		let count = 1;
 		setInterval(() => {
 			this.clearTable();
