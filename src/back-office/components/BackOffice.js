@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import EventsConsts from './EventsConsts';
 
 type State = {
-	addnew: boolean,
+	addNew: boolean,
 	count: number,
 	errorUserExists: boolean,
 	errorDeletion: boolean,
@@ -25,7 +25,7 @@ class BackOffice extends Component {
 	constructor() {
 		super();
 		this.state = {
-			addnew: false,
+			addNew: false,
 			errorUserExists: false,
 			errorDeletion: false,
 			errorUpdating: false,
@@ -61,7 +61,7 @@ class BackOffice extends Component {
 	}
 
 	shouldComponentUpdate(newProps: Object, newState: State): boolean {
-		return  newState.addnew !== this.state.addnew ||
+		return  newState.addNew !== this.state.addNew ||
 				newState.count !== this.state.count ||
 				newState.errorUserExists !== this.state.errorUserExists ||
 				newState.errorDeletion !== this.state.errorDeletion ||
@@ -115,7 +115,7 @@ class BackOffice extends Component {
 				<div className="back-office-datagrid">
 					<Table />
 				</div>
-				{this.state.addnew
+				{this.state.addNew
 					? <Dialog
 					modal={true}
 					header="Add New Player"
