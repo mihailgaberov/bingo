@@ -1,5 +1,3 @@
-'use strict';
-
 import * as Immutable from 'immutable';
 import Actions from './Actions';
 import CRUDActions from '../flux/CRUDActions';
@@ -24,7 +22,7 @@ type DialogState = {
 
 type State = {
   data: Immutable.List<Object>,
-  sortby: ?string,
+  sortBy: ?string,
   descending: boolean,
   edit: ?EditState,
   dialog: ?DialogState
@@ -38,7 +36,7 @@ class Table extends Component {
     super();
     this.state = {
       data: CRUDStore.getData(),
-      sortby: null, // schema.id
+      sortBy: null, // schema.id
       descending: false,
       edit: null, // {row index, schema.id},
       dialog: null, // {type, idx}
@@ -52,10 +50,10 @@ class Table extends Component {
   }
 
   _sort(key: string) {
-    const descending = this.state.sortby === key && !this.state.descending;
+    const descending = this.state.sortBy === key && !this.state.descending;
     CRUDActions.sort(key, descending);
     this.setState({
-      sortby: key,
+      sortBy: key,
       descending: descending,
     });
   }
@@ -180,7 +178,7 @@ class Table extends Component {
               return null;
             }
             let title = item.label;
-            if (this.state.sortby === item.id) {
+            if (this.state.sortBy === item.id) {
               title += this.state.descending ? ' \u2191' : ' \u2193';
             }
             return (
