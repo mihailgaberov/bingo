@@ -74,7 +74,7 @@ const scriptsBackOffice = (done) => {
 
 const scriptsDiscoverer = () => {
   const bundler = watchify(browserify('./src/back-office/discoverer.js', { debug: true })
-    .transform('babelify', { presets: ['react', 'env', 'stage-0'] }));
+    .transform('babelify', { presets: ["@babel/preset-env", "@babel/preset-react"] }));
 
   bundler.bundle()
     .on('[gulpfile] Error in scriptsDiscoverer task', (err) => {
@@ -200,6 +200,7 @@ const buildFrontEnd = gulp.series(clean, gulp.parallel(
 
 const buildBackOffice = gulp.series(clean, gulp.parallel(
   scriptsBackOffice,
+  scriptsDiscoverer,
   stylesBackOffice,
   testsBackOffice,
   watch,
