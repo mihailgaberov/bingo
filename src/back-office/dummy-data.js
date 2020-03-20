@@ -1,7 +1,7 @@
 export default [
 	{
 		name: 'Mihail Gaberov',
-		email: 'me@mihail-gaberov.eu',
+		email: 'mihail.gaberov@gmail.com',
 		balance: '555',
 		wins: '1232'
 	}

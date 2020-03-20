@@ -7,9 +7,9 @@ import FormInput from './components/FormInput';
 import Form from './components/Form';
 import Actions from './components/Actions';
 import Dialog from './components/Dialog';
-import schema from './schema';
+import data from './dummy-data';
 
-CRUDStore.init(schema);
+CRUDStore.init(data);
 
 
 ReactDOM.render(
