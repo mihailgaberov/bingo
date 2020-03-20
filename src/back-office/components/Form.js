@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import type {FormInputField, FormInputFieldValue} from './FormInput';
 
 type Props = {
-	readonly?: boolean,
+	readOnly?: boolean,
 	recordId: ?number,
 };
 
@@ -36,14 +36,17 @@ class Form extends Component {
 	}
 
 	render() {
+		const { readOnly } = this.props;
+
 		return (
 			<form id="form">{this.fields.map((field: FormInputField) => {
 				let prefilled: FormInputFieldValue = '';
 				if (this.initialData) {
 					prefilled = this.initialData[field.id];
+					console.log('>>> prefilled:', prefilled);
 				}
 
-				if (!this.props.readonly) {
+				if (!readOnly) {
 					return (
 						<div className="form-row" key={field.id}>
 							<label className="form-label" htmlFor={field.id}>{field.label}:</label>
@@ -51,9 +54,11 @@ class Form extends Component {
 						</div>
 					);
 				}
+
 				if (!prefilled) {
 					return null;
 				}
+
 				return (
 					<div className="form-row" key={field.id}>
 						<span className="form-label">{field.label}:</span>

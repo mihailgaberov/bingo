@@ -24,6 +24,7 @@ const paths = {
   sass: './styles/**/*.scss',
   tests: './front-end-tests/__tests__',
   backOfficeScripts: './src/back-office/**/*.js',
+  discovererScripts: './src/back-office/*.js',
   backOfficeSass: './styles/sass/back-office/**/*.scss',
   buildSass: './build/styles',
   buildScripts: './build/js',
@@ -149,6 +150,7 @@ const test = (done) => {
 };
 
 const watchBackOfficeScripts = () => gulp.watch(paths.backOfficeScripts, ['scriptsBackOffice']);
+const watchDiscovererScripts = () => gulp.watch(paths.discovererScripts, ['scriptsDiscoverer']);
 const watchBackOfficeStyles = () => gulp.watch(paths.backOfficeSass, ['stylesBackOffice']);
 const watchScripts = () => gulp.watch(paths.scripts, ['scripts']);
 const watchStyles = () => gulp.watch(paths.sass, ['styles']);
@@ -158,6 +160,7 @@ const watchJestTests = () => gulp.watch([jestConfig.rootDir + "/!**!/!*.js"], ['
 const watch = (done) => {
   gulp.parallel(
     watchBackOfficeScripts,
+    watchDiscovererScripts,
     watchBackOfficeStyles,
     watchScripts,
     watchStyles,

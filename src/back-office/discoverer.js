@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 11/30/2016.
- */
-'use strict';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CRUDStore from './flux/CRUDStore';
@@ -55,7 +50,7 @@ ReactDOM.render(
 		<Form />
 
 		<h2>Form readonly</h2>
-		<Form readonly={true} recordId={0} />
+		<Form readOnly={true} recordId={0} />
 
 		<h2>Actions</h2>
 		<div><Actions onAction={type => alert(type)}/></div>
