@@ -31,13 +31,13 @@ To run the app, follow these steps.
 5. To run only the game client + unit tests, execute the following command:
 
   ```shell
-  gulp bingoGame
+  gulp fe
   ```
   
 6. To run only the back office app + unit test for it, execute the following command:
 
   ```shell
-  gulp backOffice
+  gulp bo
   ```
   
 7. To run the server, execute the following command:
