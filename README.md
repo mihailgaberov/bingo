@@ -68,4 +68,4 @@ _The default `dbpath` for MongoDB is `/data/db`, which means that if you have in
   gulp bo
   ```
 
-8. Browse to [http://localhost:8000](http://localhost:8000) to see the app.
+11. Browse to [http://localhost:8000](http://localhost:8000) to see the app.
