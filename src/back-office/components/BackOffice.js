@@ -70,7 +70,7 @@ class BackOffice extends Component {
 	}
 
 	_addNewDialog() {
-		this.setState({addnew: true});
+		this.setState({addNew: true});
 	}
 
 	_closeErrorDialog() {
