@@ -42,7 +42,7 @@ DB_URI=mongodb://127.0.0.1/<your database name>
 mongod
 ```
 
-_The default `dbpath` for MongoDB is `/data/db`, which means that if you have installed MongoDB in your `C:\` drive `mongod` with use it implicitly. But if you have you database installed on different path, you need to use `--dbpath=/path/to/your/db` parameter to specify it. It could be for example like this: `mongod --dbpath d:\mongodb\data\db`. For more info on this you may take a look [here](https://docs.mongodb.com/manual/reference/configuration-options/)._
+> The default `dbpath` for MongoDB is `/data/db`, which means that if you have installed MongoDB in your `C:\` drive `mongod` with use it implicitly. But if you have you database installed on different path, you need to use `--dbpath=/path/to/your/db` parameter to specify it. It could be for example like this: `mongod --dbpath d:\mongodb\data\db`. For more info on this you may take a look [here](https://docs.mongodb.com/manual/reference/configuration-options/).
 
 7. After you have your database running, you need to start the game server. You can do it by executing the following command in the project main directory:
 
