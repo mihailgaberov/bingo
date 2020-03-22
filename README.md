@@ -27,7 +27,7 @@ To run the app, follow these steps:
   ```
   > **Note:** Gulp must be installed globally, but a local version will also be installed to ensure a compatible version is used for the project.
 
-4. Make sure you have .env file in your main project directory, containing the correct values for the following:
+4. Make sure you have `.env` file in your main project directory, containing the correct values for the following:
 
 ```dotenv
 DB_SECRET=<yourdatabasepassword>
