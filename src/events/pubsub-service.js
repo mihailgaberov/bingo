@@ -1,10 +1,6 @@
 /**
- * Created by mgab on 20/09/16.
  * Used pubsub pattern - https://davidwalsh.name/pubsub-javascript
  */
-
-'use strict';
-
 class PubSubService {
     constructor() {
         this.topics = {};

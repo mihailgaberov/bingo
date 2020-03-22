@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 11/1/2016.
- */
-"use strict";
-
 import ApiController from '../API/api-controller';
 import VanillaModal from 'vanilla-modal';
 import { EventsConsts } from '../events/events-consts';

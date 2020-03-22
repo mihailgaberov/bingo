@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 10/12/2016.
- */
-'use strict';
-
 import { EventsConsts } from '../events/events-consts';
 import { WinningPatterns } from '../utils/winning-patterns';
 

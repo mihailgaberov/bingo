@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 11/22/2016.
- */
-'use strict';
-
 import ViewManipulator from '../utils/view-manipulator';
 import { EventsConsts } from '../events/events-consts';
 

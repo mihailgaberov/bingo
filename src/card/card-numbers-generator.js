@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 8/15/2016.
- */
-'use strict';
-
 import { NumbersGenerator } from '../utils/numbers-generator';
 
 class CardNumbersGenerator {

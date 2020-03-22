@@ -1,9 +1,3 @@
-/**
- * Created by Mihail on 11/10/2016.
- */
-
-"use strict";
-
 import { EventsConsts } from '../events/events-consts';
 import Animator from '../utils/animator';
 import ApiController from '../API/api-controller';

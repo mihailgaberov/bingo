@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 9/11/2016.
- */
-'use strict';
-
 import Card from './card';
 import { EventsConsts } from '../events/events-consts';
 import ViewManipulator from '../utils/view-manipulator';
@@ -37,7 +32,7 @@ class CardDrawer {
 
 		return arrCards;
 	}
-	
+
 	static generateCardTable(objCard) {
 		return new Card(objCard);
 	}

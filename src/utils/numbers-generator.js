@@ -7,7 +7,6 @@ const NumbersGenerator = {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	},
 
-
 	/**
 	 * Do random generation of the numbers by columns:
 	 * On a real Bingo card, each column has a different
