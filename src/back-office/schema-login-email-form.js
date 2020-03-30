@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 12/10/2016.
- */
-'use strict';
-
 export default [
 	{
 		id: 'email',
