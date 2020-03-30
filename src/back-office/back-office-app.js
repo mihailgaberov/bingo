@@ -1,8 +1,3 @@
-/**
- * Created by Mihail on 11/30/2016.
- */
-'use strict';
-
 import CRUDStore from './flux/CRUDStore';
 import React from 'react';
 import ReactDOM from 'react-dom';
