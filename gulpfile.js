@@ -14,7 +14,6 @@ const buffer = require('vinyl-buffer');
 const browserify = require('browserify');
 const watchify = require('watchify');
 const babelify = require('babelify');
-const istanbul = require('gulp-istanbul');
 const gulpJest = require('gulp-jest').default;
 
 
@@ -140,12 +139,6 @@ const test = (done) => {
     "roots": ["front-end-tests"],
     "automock": false
   }))
-    .pipe(istanbul.writeReports({
-      dir: './coverage',
-      reporters: ['lcov'],
-      reportOpts: { dir: './coverage' }
-    }))
-    .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
   done();
 };
 
