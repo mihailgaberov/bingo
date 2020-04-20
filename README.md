@@ -72,7 +72,7 @@ mongod
 
 
 ## How to create admin users
-I have been receiving queries by several people on how can they create admin users when start using the app and decided to put the instructions here for anybody who needs them.
+I have been receiving queries by several people on how can they create admin users and decided to put the instructions here for anybody who needs them.
 
 First, for anyone who doesn't want to go through all the steps, I am uploading a sample JSON file that you can directly import in your database, in the `admins` collection. The [file](https://github.com/mihailgaberov/bingo/blob/master/admins.sample.json) contains only one user with the following credentials:
 ```
