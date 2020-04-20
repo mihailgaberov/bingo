@@ -84,6 +84,7 @@ password: Bingo!@#
 2. Start your local mongo instance by running 'mongod' in your terminal
 3. Start the game server by running 'node server.js' in the root directory (this assumes you have installed Node.js on your machine)
 4. Install Postman or Insomnia (apps for dealing with RESTful APIs) and create a POST request, as it follows:
+
    URL:  http://localhost:8888/bingo-api/registerAdmin
    
    and the body (should be in Form URL Encoded type):
