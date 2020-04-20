@@ -87,13 +87,15 @@ password: Bingo!@#
 
    URL:  http://localhost:8888/bingo-api/registerAdmin
    
-   and the body (should be in Form URL Encoded type):
+   The body of the request (should be in Form URL Encoded type):
    
+ ```
    email: yourdesiredemail@address.com
    
    name: yourdesiredname
    
    password: yourdesiredpassword
+```
    
 If successful, you should see a generated token in the response, e.g.
  
