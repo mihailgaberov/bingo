@@ -69,3 +69,29 @@ mongod
   ```
 
 11. Browse to [http://localhost:8000](http://localhost:8000) to see the app.
+
+
+## How to create admin users
+I have been receiving queries by several people on how can they create admin users when start using the app and decided to put the instructions here for anybody who needs them.
+
+First, for anyone who doesn't want to go through all the steps, I am uploading a sample JSON file that you can directly import in your database, in the `admins` collection. The [file](https://github.com/mihailgaberov/bingo/blob/master/admins.sample.json) contains only one user with the following credentials:
+```
+email: testadmin@bingobigul.com
+password: Bingo!@#
+```
+#### Steps:
+1. Start the main app by running 'gulp' in the root directory
+2. Start your local mongo instance by running 'mongod' in your terminal
+3. Start the game server by running 'node server.js' in the root directory (this assumes you have installed Node.js on your machine)
+4. Install Postman or Insomnia (apps for dealing with RESTful APIs) and create a POST request, as it follows:
+   URL:  http://localhost:8888/bingo-api/registerAdmin
+   
+   and the body (should be in Form URL Encoded type):
+   email: yourdesiredemail@address.com
+   name: yourdesiredname
+   password: yourdesiredpassword
+   
+If successful, you should see a generated token in the response, e.g. 
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTlkM2MzNWQ4MTQzOTI1YTRmOGMyNjIiLCJlbWFpbCI6InRlc3RhZG1pbkBiaW5nb2JpZ3VsLmNvbSIsIm5hbWUiOiJBZG1pbiIsImV4cCI6MTU4Nzk2NzY2OSwiaWF0IjoxNTg3MzYyODY5fQ.BqDWdeqviG0rtfNoKXarpitylgZm1IcaFA7TfFgfsY4"
+}

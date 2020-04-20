@@ -1,0 +1,1 @@
+{"_id":{"$oid":"5e9d3c35d8143925a4f8c262"},"name":"Admin","email":"testadmin@bingobigul.com","salt":"929f0e638697d17e4d237e5152f31302","hash":"a01afc165778e75cb24e5de758117a51f3a5b4a84a39f51eb56b7cb9ebd915fdc32f2e102707d86b038464b172556f97f2b6503d0cee0549b983c0c4e09d3ba9","__v":{"$numberInt":"0"}}
