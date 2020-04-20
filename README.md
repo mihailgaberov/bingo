@@ -88,6 +88,7 @@ password: Bingo!@#
    URL:  http://localhost:8888/bingo-api/registerAdmin
    
    and the body (should be in Form URL Encoded type):
+   
    email: yourdesiredemail@address.com
    name: yourdesiredname
    password: yourdesiredpassword
