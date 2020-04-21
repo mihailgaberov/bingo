@@ -83,7 +83,7 @@ password: Bingo!@#
 1. Start the main app by running 'gulp' in the root directory
 2. Start your local mongo instance by running 'mongod' in your terminal
 3. Start the game server by running 'node server.js' in the root directory (this assumes you have installed Node.js on your machine)
-4. Install Postman or Insomnia (apps for dealing with RESTful APIs) and create a POST request, as it follows:
+4. Install [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/) (apps for dealing with RESTful APIs) and create a POST request, as it follows:
 
    URL:  http://localhost:8888/bingo-api/registerAdmin
    
@@ -103,7 +103,7 @@ If successful, you should see a generated token in the response, e.g.
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTlkM2MzNWQ4MTQzOTI1YTRmOGMyNjIiLCJlbWFpbCI6InRlc3RhZG1pbkBiaW5nb2JpZ3VsLmNvbSIsIm5hbWUiOiJBZG1pbiIsImV4cCI6MTU4Nzk2NzY2OSwiaWF0IjoxNTg3MzYyODY5fQ.BqDWdeqviG0rtfNoKXarpitylgZm1IcaFA7TfFgfsY4"
 }
 
-5. To access back office app, use http://localhost:8000/back-office.html
+5. :tada: To access back-office app, please use http://localhost:8000/back-office.html
 
 
 MIT License
