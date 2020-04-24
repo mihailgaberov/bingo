@@ -85,7 +85,7 @@ class BackOffice extends Component {
 	}
 
 	_addNew(action: string) {
-		this.setState({addnew: false});
+		this.setState({addNew: false});
 		if (action === 'confirm') {
 			CRUDActions.create(this.refs.form.getData());
 		}
