@@ -1,5 +1,5 @@
 # Bingo Bigul
-Famous Bingo game built with [JavaScript](https://www.javascript.com/). It has a back office app built with [ReactJS](https://reactjs.org/) and uses [MongoDB](https://www.mongodb.com/) for database.
+Famous Bingo game built with [JavaScript](https://www.javascript.com/). It has a back office app built with [React](https://reactjs.org/) and uses [MongoDB](https://www.mongodb.com/) for database.
 
 ![Main login screen](https://github.com/mihailgaberov/bingo/blob/master/screenshots/main-login-screen.png)
 ![Lobby screen](https://github.com/mihailgaberov/bingo/blob/master/screenshots/lobby-screen.png)
