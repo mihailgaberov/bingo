@@ -18,23 +18,23 @@ class Animator {
 		return progress
 	}
 
-	static animate(opts) {
+	static animate({ duration, delta, step, delay }) {
 		const start = new Date;
 
 		const id = setInterval(function () {
 			const timePassed = new Date - start;
-			let progress = timePassed / opts.duration;
+			let progress = timePassed / duration;
 
 			if (progress > 1) progress = 1;
 
-			const delta = opts.delta(progress);
+			const delta = delta(progress);
 
-			opts.step(delta);
+			step(delta);
 
 			if (progress === 1) {
 				clearInterval(id);
 			}
-		}, opts.delay || 10);
+		}, delay || 10);
 	}
 
 	static moveVerticalHorizontal(element, toTop, toLeft, delta, duration, units) {
