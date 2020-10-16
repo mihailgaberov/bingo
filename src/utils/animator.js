@@ -21,7 +21,7 @@ class Animator {
 	static animate(opts) {
 		const start = new Date;
 
-		var id = setInterval(function () {
+		const id = setInterval(function () {
 			const timePassed = new Date - start;
 			let progress = timePassed / opts.duration;
 
