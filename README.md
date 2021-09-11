@@ -10,6 +10,12 @@ Famous Bingo game built with [JavaScript](https://www.javascript.com/). It has a
 ![Back office edit screen](https://github.com/mihailgaberov/bingo/blob/master/screenshots/back-office-edit-screen.png)
 ![Discoverer screen](https://github.com/mihailgaberov/bingo/blob/master/screenshots/discoverer-screen.png)
 
+### Stargazers
+[![Stargazers repo roster for @mihailgaberov/bingo](https://reporoster.com/stars/mihailgaberov/bingo)](https://github.com/mihailgaberov/bingo/stargazers)
+### Forkers
+[![Forkers repo roster for @mihailgaberov/bingo](https://reporoster.com/forks/mihailgaberov/bingo)](https://github.com/mihailgaberov/bingo/network/members)
+
+
 ## Running The App
 
 To run the app, follow these steps:
