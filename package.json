@@ -32,7 +32,7 @@
     "dotenv": "^2.0.0",
     "express-jwt": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"
   },
