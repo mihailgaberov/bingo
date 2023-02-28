@@ -63,7 +63,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^6.0.0",
     "gulp-jest": "^4.0.3",
-    "gulp-mocha": "^3.0.1",
+    "gulp-mocha": "^8.0.0",
     "gulp-postcss": "^6.4.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.2",
