@@ -74,7 +74,7 @@
     "jest-canvas-mock": "^2.2.0",
     "jest-cli": "^29.6.1",
     "jest-fetch-mock": "^3.0.0",
-    "mongoose": "^5.13.15",
+    "mongoose": "^5.13.20",
     "paper": "^0.12.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
