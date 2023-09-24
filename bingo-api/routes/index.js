@@ -5,7 +5,8 @@ require('dotenv').config();
 
 const auth = jwt({
 	secret: process.env.DB_SECRET,
-	userProperty: 'payload'
+	userProperty: 'payload',
+	algorithms: ["HS256"]
 });
 
 // Back office app
