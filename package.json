@@ -49,7 +49,7 @@
     "autoprefixer": "^10.4.16",
     "babel-core": "^6.26.3",
     "babel-eslint": "^9.0.0",
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^29.7.0",
     "babelify": "^10.0.0",
     "bootstrap-sass": "^3.3.7",
     "browserify": "^16.2.3",
@@ -58,7 +58,7 @@
     "event-emitter-es6": "^1.1.5",
     "express": "^4.19.2",
     "fbemitter": "^2.1.1",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^6.0.0",
@@ -81,7 +81,7 @@
     "vanilla-modal": "^1.6.5",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0",
-    "watchify": "^3.11.1"
+    "watchify": "^4.0.0"
   },
   "bugs": {
     "url": "https://github.com/mihailgaberov/bingo/issues"
