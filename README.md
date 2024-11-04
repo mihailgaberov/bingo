@@ -121,7 +121,7 @@ If successful, you should see a generated token in the response, e.g.
 
 MIT License
 
-Copyright (c) 2016 - 2022 Mihail Gaberov
+Copyright (c) 2016 - 2024 Mihail Gaberov
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
