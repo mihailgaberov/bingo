@@ -28,7 +28,7 @@
   "author": "Mihail Gaberov",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.20.3",
+    "body-parser": "^1.20.6",
     "dotenv": "^2.0.0",
     "express-jwt": "^6.0.0",
     "jsonwebtoken": "^9.0.0",
